@@ -32,3 +32,13 @@ mail:
   sender:
     email: ENC(Pv5Gvm0N7LAl4wx51TrKXrkDENW2VIvpW4Ae3ZIod+I=)
     name: ENC(mCgRGGxEhhOBxoVnSOrbJxKMEWBjrDLd)
+
+oauth2:
+  user:
+    kakao:
+      client-id: dea66bed3e385ce5f8f4f7e817cd5f17
+      redirect-uri: http://localhost:8080/oauth
+  provider:
+    kakao:
+      token-uri: https://kauth.kakao.com/oauth/token?
+      user-info-uri: https://kapi.kakao.com/v2/user/me

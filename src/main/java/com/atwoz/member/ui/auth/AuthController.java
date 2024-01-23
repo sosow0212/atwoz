@@ -1,12 +1,12 @@
 package com.atwoz.member.ui.auth;
 
 import com.atwoz.member.application.auth.AuthService;
-import com.atwoz.member.application.auth.dto.LoginRequest;
 import com.atwoz.member.application.auth.dto.SignupRequest;
 import com.atwoz.member.ui.auth.dto.TokenResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +19,10 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/signup")
-    public ResponseEntity<TokenResponse> signup(@RequestBody @Valid final SignupRequest request) {
-        String token = authService.signup(request);
-        return ResponseEntity.ok(new TokenResponse(token));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<TokenResponse> login(@RequestBody @Valid final LoginRequest request) {
-        String token = authService.login(request);
+    @PostMapping("/login/{provider}")
+    public ResponseEntity<TokenResponse> login(@PathVariable final String provider,
+                                                @RequestBody @Valid final SignupRequest request) {
+        String token = authService.login(provider, request);
         return ResponseEntity.ok(new TokenResponse(token));
     }
 }

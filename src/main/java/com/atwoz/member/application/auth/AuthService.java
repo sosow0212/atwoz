@@ -6,9 +6,9 @@ import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;
 import com.atwoz.member.ui.auth.dto.OAuthTokenResponse;
-import com.atwoz.member.ui.auth.support.oauth.InMemoryProviderRepository;
 import com.atwoz.member.ui.auth.support.oauth.OAuthAttributes;
 import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.ui.auth.support.oauth.OAuthProviderRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,11 +34,11 @@ public class AuthService {
 
     private final MemberRepository memberRepository;
     private final TokenProvider tokenProvider;
-    private final InMemoryProviderRepository inMemoryProviderRepository;
+    private final OAuthProviderRepository OAuthProviderRepository;
 
     @Transactional
     public String login(final LoginRequest request) {
-        OAuthProvider oauthProvider = inMemoryProviderRepository.findByProviderName(request.provider());
+        OAuthProvider oauthProvider = OAuthProviderRepository.findByProviderName(request.provider());
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();

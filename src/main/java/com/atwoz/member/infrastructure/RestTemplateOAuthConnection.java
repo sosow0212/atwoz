@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateOAuthConnection implements OAuthConnectionManager {
 
     @Override
-    public String getAccessToken(final OAuthProvider oAuthProvider, final String code) {
+    public String getAccessTokenResponse(final OAuthProvider oAuthProvider, final String code) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

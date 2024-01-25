@@ -1,6 +1,7 @@
 package com.atwoz.member.application.auth;
 
 import com.atwoz.member.application.auth.dto.LoginRequest;
+import com.atwoz.member.application.auth.dto.OAuthTokenResponse;
 import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
@@ -28,10 +29,21 @@ public class AuthService {
     @Transactional
     public String login(final LoginRequest request) {
         OAuthProvider oauthProvider = oAuthProviderRepository.findByProviderName(request.provider());
-        String accessToken = oAuthConnectionManager.getAccessToken(oauthProvider, request.code());
-        Member member = getMemberWith(accessToken, oauthProvider.getUserInfoUrl(), request.provider());
+        String accessTokenResponse = oAuthConnectionManager.getAccessTokenResponse(oauthProvider, request.code());
+        OAuthTokenResponse oAuthTokenResponse = getOAuthTokenResponse(accessTokenResponse);
+        Member member = getMemberWith(oAuthTokenResponse.getAccessToken(), oauthProvider.getUserInfoUrl(),
+                request.provider());
 
         return tokenProvider.create(member.getId());
+    }
+
+    private OAuthTokenResponse getOAuthTokenResponse(final String accessTokenResponse) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(accessTokenResponse, OAuthTokenResponse.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException();
+        }
     }
 
     private Member getMemberWith(final String accessToken, final String userInfoUrl, final String provider) {

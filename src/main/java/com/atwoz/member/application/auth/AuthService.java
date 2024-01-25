@@ -1,6 +1,6 @@
 package com.atwoz.member.application.auth;
 
-import com.atwoz.member.application.auth.dto.SignupRequest;
+import com.atwoz.member.application.auth.dto.LoginRequest;
 import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
@@ -39,7 +39,7 @@ public class AuthService {
     private final InMemoryProviderRepository inMemoryProviderRepository;
 
     @Transactional
-    public String login(final String provider, final SignupRequest request) {
+    public String login(final String provider, final LoginRequest request) {
         OAuthProvider oauthProvider = inMemoryProviderRepository.findByProviderName(provider);
 
         RestTemplate restTemplate = new RestTemplate();

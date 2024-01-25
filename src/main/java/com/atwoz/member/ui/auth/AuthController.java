@@ -1,7 +1,7 @@
 package com.atwoz.member.ui.auth;
 
 import com.atwoz.member.application.auth.AuthService;
-import com.atwoz.member.application.auth.dto.SignupRequest;
+import com.atwoz.member.application.auth.dto.LoginRequest;
 import com.atwoz.member.ui.auth.dto.TokenResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class AuthController {
 
     @PostMapping("/login/{provider}")
     public ResponseEntity<TokenResponse> login(@PathVariable final String provider,
-                                                @RequestBody @Valid final SignupRequest request) {
+                                                @RequestBody @Valid final LoginRequest request) {
         String token = authService.login(provider, request);
         return ResponseEntity.ok(new TokenResponse(token));
     }

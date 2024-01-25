@@ -12,21 +12,10 @@ import com.atwoz.member.ui.auth.support.oauth.OAuthProviderRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 @Service
@@ -35,24 +24,14 @@ public class AuthService {
     private final MemberRepository memberRepository;
     private final TokenProvider tokenProvider;
     private final OAuthProviderRepository OAuthProviderRepository;
+    private final OAuthConnectionManager oAuthConnectionManager;
 
     @Transactional
     public String login(final LoginRequest request) {
         OAuthProvider oauthProvider = OAuthProviderRepository.findByProviderName(request.provider());
+        String accessToken = oAuthConnectionManager.getAccessToken(oauthProvider, request.code());
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("grant_type", "authorization_code");
-        params.add("client_id", oauthProvider.getClientId());
-        params.add("redirect_uri", oauthProvider.getRedirectUrl());
-        params.add("code", request.code());
-
-        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, httpHeaders);
-        String response = restTemplate.postForObject(oauthProvider.getTokenUrl(), requestEntity, String.class);
-        OAuthTokenResponse oauthTokenResponse = jsonToTokenResponse(response);
+        OAuthTokenResponse oauthTokenResponse = jsonToTokenResponse(accessToken);
 
         Member member = extractRealInfo(oauthTokenResponse.getAccessToken(), oauthProvider.getUserInfoUrl(),
                 request.provider());
@@ -61,25 +40,14 @@ public class AuthService {
     }
 
     public Member extractRealInfo(final String accessToken, final String userInfoUrl, final String provider) {
-        try {
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setBearerAuth(accessToken);
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            RequestEntity<Void> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI(userInfoUrl));
+        String response = oAuthConnectionManager.extractRealInfo(accessToken, userInfoUrl);
+        HashMap<String, Object> map = jsonToMap(response);
+        UserProfile userProfile = OAuthAttributes.extract(provider, map);
 
-            ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-            HashMap<String, Object> map = jsonToMap(responseEntity.getBody());
-            UserProfile userProfile = OAuthAttributes.extract(provider, map);
-
-            return memberRepository.findByEmail(userProfile.getEmail())
-                    .orElseGet(() -> {
-                        return createMember(userProfile);
-                    });
-
-        } catch (URISyntaxException e) {
-            throw new RuntimeException();
-        }
+        return memberRepository.findByEmail(userProfile.getEmail())
+                .orElseGet(() -> {
+                    return createMember(userProfile);
+                });
     }
 
     private Member createMember(final UserProfile userProfile) {
@@ -101,7 +69,6 @@ public class AuthService {
 
     private HashMap<String, Object> jsonToMap(final String json) {
         ObjectMapper objectMapper = new ObjectMapper();
-
         try {
             return objectMapper.readValue(json, new TypeReference<HashMap<String, Object>>() {
             });

@@ -5,7 +5,6 @@ import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;
-import com.atwoz.member.ui.auth.dto.OAuthTokenResponse;
 import com.atwoz.member.ui.auth.support.oauth.OAuthAttributes;
 import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
 import com.atwoz.member.ui.auth.support.oauth.OAuthProviderRepository;
@@ -23,48 +22,24 @@ public class AuthService {
 
     private final MemberRepository memberRepository;
     private final TokenProvider tokenProvider;
-    private final OAuthProviderRepository OAuthProviderRepository;
+    private final OAuthProviderRepository oAuthProviderRepository;
     private final OAuthConnectionManager oAuthConnectionManager;
 
     @Transactional
     public String login(final LoginRequest request) {
-        OAuthProvider oauthProvider = OAuthProviderRepository.findByProviderName(request.provider());
+        OAuthProvider oauthProvider = oAuthProviderRepository.findByProviderName(request.provider());
         String accessToken = oAuthConnectionManager.getAccessToken(oauthProvider, request.code());
-
-        OAuthTokenResponse oauthTokenResponse = jsonToTokenResponse(accessToken);
-
-        Member member = extractRealInfo(oauthTokenResponse.getAccessToken(), oauthProvider.getUserInfoUrl(),
-                request.provider());
+        Member member = getMemberWith(accessToken, oauthProvider.getUserInfoUrl(), request.provider());
 
         return tokenProvider.create(member.getId());
     }
 
-    public Member extractRealInfo(final String accessToken, final String userInfoUrl, final String provider) {
+    private Member getMemberWith(final String accessToken, final String userInfoUrl, final String provider) {
         String response = oAuthConnectionManager.extractRealInfo(accessToken, userInfoUrl);
         HashMap<String, Object> map = jsonToMap(response);
         UserProfile userProfile = OAuthAttributes.extract(provider, map);
 
-        return memberRepository.findByEmail(userProfile.getEmail())
-                .orElseGet(() -> {
-                    return createMember(userProfile);
-                });
-    }
-
-    private Member createMember(final UserProfile userProfile) {
-        Member member = userProfile.toMember();
-        memberRepository.save(member);
-        return member;
-    }
-
-    private OAuthTokenResponse jsonToTokenResponse(final String json) {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            OAuthTokenResponse oauthTokenResponse = objectMapper.readValue(json, OAuthTokenResponse.class);
-            return oauthTokenResponse;
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException();
-        }
+        return getOrCreateMemberByProfile(userProfile);
     }
 
     private HashMap<String, Object> jsonToMap(final String json) {
@@ -75,5 +50,18 @@ public class AuthService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException();
         }
+    }
+
+    private Member getOrCreateMemberByProfile(final UserProfile userProfile) {
+        return memberRepository.findByEmail(userProfile.getEmail())
+                .orElseGet(() -> {
+                    return createMemberWith(userProfile);
+                });
+    }
+
+    private Member createMemberWith(final UserProfile userProfile) {
+        Member member = userProfile.toMember();
+        memberRepository.save(member);
+        return member;
     }
 }

@@ -1,5 +1,7 @@
 package com.atwoz.member.ui.auth.support.oauth;
 
+import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.Provider;
+import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.User;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AccessLevel;
@@ -10,9 +12,16 @@ public class OAuthAdapter {
 
     public static Map<String, OAuthProvider> getOauthProviders(final OAuthProperties properties) {
         Map<String, OAuthProvider> oauthProvider = new HashMap<>();
+        Map<String, User> user = properties.getUser();
+        Map<String, Provider> provider = properties.getProvider();
 
-        properties.getUser().forEach((key, value) -> oauthProvider.put(key,
-                new OAuthProvider(value, properties.getProvider().get(key))));
+        user.forEach((key, value) ->
+                oauthProvider.put(key, createOAuthProvider(user.get(key), provider.get(key))));
+
         return oauthProvider;
+    }
+
+    private static OAuthProvider createOAuthProvider(final User user, final Provider provider) {
+        return new OAuthProvider(user, provider);
     }
 }

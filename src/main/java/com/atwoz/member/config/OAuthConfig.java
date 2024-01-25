@@ -15,7 +15,7 @@ public class OAuthConfig {
 
     private final OAuthProperties oauthProperties;
 
-    public OAuthConfig(OAuthProperties oauthProperties) {
+    public OAuthConfig(final OAuthProperties oauthProperties) {
         this.oauthProperties = oauthProperties;
     }
 

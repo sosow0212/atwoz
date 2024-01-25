@@ -16,6 +16,7 @@ public class OAuthProperties {
     @Getter
     @Setter
     public static class User {
+
         private String clientId;
         private String redirectUri;
     }
@@ -23,6 +24,7 @@ public class OAuthProperties {
     @Getter
     @Setter
     public static class Provider {
+
         private String tokenUri;
         private String userInfoUri;
     }

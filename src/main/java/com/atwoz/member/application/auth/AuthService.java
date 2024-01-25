@@ -5,7 +5,6 @@ import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;
-import com.atwoz.member.domain.member.NicknameGenerator;
 import com.atwoz.member.ui.auth.dto.OAuthTokenResponse;
 import com.atwoz.member.ui.auth.support.oauth.InMemoryProviderRepository;
 import com.atwoz.member.ui.auth.support.oauth.OAuthAttributes;
@@ -35,7 +34,6 @@ public class AuthService {
 
     private final MemberRepository memberRepository;
     private final TokenProvider tokenProvider;
-    private final NicknameGenerator nicknameGenerator;
     private final InMemoryProviderRepository inMemoryProviderRepository;
 
     @Transactional

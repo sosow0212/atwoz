@@ -39,8 +39,8 @@ public class AuthService {
     private final InMemoryProviderRepository inMemoryProviderRepository;
 
     @Transactional
-    public String login(final String provider, final LoginRequest request) {
-        OAuthProvider oauthProvider = inMemoryProviderRepository.findByProviderName(provider);
+    public String login(final LoginRequest request) {
+        OAuthProvider oauthProvider = inMemoryProviderRepository.findByProviderName(request.provider());
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -56,7 +56,8 @@ public class AuthService {
         String response = restTemplate.postForObject(oauthProvider.getTokenUrl(), requestEntity, String.class);
         OAuthTokenResponse oauthTokenResponse = jsonToTokenResponse(response);
 
-        Member member = extractRealInfo(oauthTokenResponse.getAccessToken(), oauthProvider.getUserInfoUrl(), provider);
+        Member member = extractRealInfo(oauthTokenResponse.getAccessToken(), oauthProvider.getUserInfoUrl(),
+                request.provider());
 
         return tokenProvider.create(member.getId());
     }

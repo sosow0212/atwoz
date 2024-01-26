@@ -56,6 +56,17 @@ public class Member extends BaseEntity {
                 .build();
     }
 
+    public static Member createWithOAuthLogin(final String email,
+                                              final String nickname) {
+
+        return Member.builder()
+                .email(email)
+                .password("password")
+                .nickname(nickname)
+                .memberRole(MemberRole.MEMBER)
+                .build();
+    }
+
     public void validatePassword(final String password) {
         if (!this.password.equals(password)) {
             throw new PasswordNotMatchedException();

@@ -1,4 +1,4 @@
-package com.atwoz.member.config.oauth;
+package com.atwoz.member.ui.auth.support.oauth;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,22 +10,19 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "oauth2")
 public class OAuthProperties {
 
-    private final Map<String, User> user = new HashMap<>();
-    private final Map<String, Provider> provider = new HashMap<>();
+    Map<String, OAuthProvider> providers = new HashMap<>();
 
     @Getter
     @Setter
-    public static class User {
+    public static class OAuthProvider {
 
         private String clientId;
         private String redirectUri;
-    }
-
-    @Getter
-    @Setter
-    public static class Provider {
-
         private String tokenUri;
         private String userInfoUri;
+    }
+
+    public OAuthProvider findByProviderName(final String name) {
+        return providers.get(name);
     }
 }

@@ -1,7 +1,7 @@
 package com.atwoz.member.ui.auth.interceptor;
 
-import com.atwoz.member.ui.auth.support.AuthenticationContext;
-import com.atwoz.member.ui.auth.support.AuthenticationExtractor;
+import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
+import com.atwoz.member.ui.auth.support.auth.AuthenticationExtractor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

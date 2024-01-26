@@ -1,10 +1,9 @@
-package com.atwoz.member.ui.auth.support;
+package com.atwoz.member.ui.auth.support.auth;
 
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
+import java.util.Objects;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
-
-import java.util.Objects;
 
 @RequestScope
 @Component

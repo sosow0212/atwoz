@@ -1,8 +1,8 @@
 package com.atwoz.member.ui.auth.support.resolver;
 
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
-import com.atwoz.member.ui.auth.support.AuthMember;
-import com.atwoz.member.ui.auth.support.AuthenticationContext;
+import com.atwoz.member.ui.auth.support.auth.AuthMember;
+import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

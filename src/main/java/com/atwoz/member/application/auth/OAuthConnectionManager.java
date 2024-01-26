@@ -1,10 +1,10 @@
 package com.atwoz.member.application.auth;
 
-import com.atwoz.member.config.oauth.OAuthProvider;
+import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.OAuthProvider;
 
 public interface OAuthConnectionManager {
 
-    String getAccessTokenResponse(final OAuthProvider oAuthProvider, final String code);
+    String getAccessTokenResponse (final OAuthProvider oAuthProvider, final String code);
 
-    String extractRealInfo(final String accessToken, final String userInfoUrl);
+    String getMemberInfoResponse(final String accessToken, final String userInfoUrl);
 }

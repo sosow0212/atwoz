@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.config.oauth;
 
 import java.util.HashMap;
 import java.util.Map;

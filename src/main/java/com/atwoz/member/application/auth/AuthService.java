@@ -2,13 +2,13 @@ package com.atwoz.member.application.auth;
 
 import com.atwoz.member.application.auth.dto.LoginRequest;
 import com.atwoz.member.application.auth.dto.OAuthTokenResponse;
+import com.atwoz.member.config.oauth.OAuthAttributes;
+import com.atwoz.member.config.oauth.OAuthProvider;
+import com.atwoz.member.config.oauth.OAuthProviderRepository;
 import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.domain.auth.UserProfile;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;
-import com.atwoz.member.ui.auth.support.oauth.OAuthAttributes;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProviderRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

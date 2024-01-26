@@ -1,9 +1,5 @@
-package com.atwoz.member.config;
+package com.atwoz.member.config.oauth;
 
-import com.atwoz.member.ui.auth.support.oauth.OAuthAdapter;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProviderRepository;
 import java.util.Map;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

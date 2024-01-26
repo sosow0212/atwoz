@@ -1,7 +1,7 @@
 package com.atwoz.member.infrastructure;
 
 import com.atwoz.member.application.auth.OAuthConnectionManager;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.config.oauth.OAuthProvider;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.springframework.http.HttpEntity;

@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.config.oauth;
 
 import com.atwoz.member.domain.auth.UserProfile;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

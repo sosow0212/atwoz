@@ -1,7 +1,7 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.config.oauth;
 
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.Provider;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.User;
+import com.atwoz.member.config.oauth.OAuthProperties.Provider;
+import com.atwoz.member.config.oauth.OAuthProperties.User;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AccessLevel;

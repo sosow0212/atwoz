@@ -1,6 +1,6 @@
 package com.atwoz.member.application.auth;
 
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.config.oauth.OAuthProvider;
 
 public interface OAuthConnectionManager {
 

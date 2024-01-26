@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegisteredEvent extends Event {
 
-    private final Long memberId;
     private final String email;
     private final String nickname;
 }

@@ -1,10 +1,10 @@
 package com.atwoz.member.infrastructure.oauth;
 
-import com.atwoz.member.application.auth.JsonMapper;
-import com.atwoz.member.application.auth.OAuthConnectionManager;
-import com.atwoz.member.application.auth.OAuthRequester;
+import com.atwoz.member.domain.oauth.JsonMapper;
+import com.atwoz.member.domain.oauth.OAuthConnectionManager;
+import com.atwoz.member.domain.oauth.OAuthRequester;
 import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.OAuthProvider;
+import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +24,7 @@ public class KakaoOAuthRequester implements OAuthRequester {
     @Override
     public MemberInfo getMemberInfo(final String accessToken, final OAuthProvider oAuthProvider) {
         String memberInfoResponse = oAuthConnectionManager.getMemberInfoResponse(accessToken,
-                oAuthProvider.getUserInfoUri());
+                oAuthProvider.userInfoUri());
 
         return jsonMapper.extractMemberInfoFrom(memberInfoResponse);
     }

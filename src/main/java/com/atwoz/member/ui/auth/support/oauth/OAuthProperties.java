@@ -1,28 +1,18 @@
 package com.atwoz.member.ui.auth.support.oauth;
 
-import java.util.HashMap;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
+@AllArgsConstructor
 @ConfigurationProperties(prefix = "oauth2")
 public class OAuthProperties {
 
-    Map<String, OAuthProvider> providers = new HashMap<>();
-
-    @Getter
-    @Setter
-    public static class OAuthProvider {
-
-        private String clientId;
-        private String redirectUri;
-        private String tokenUri;
-        private String userInfoUri;
-    }
+    private final Map<OAuthPlatform, OAuthProvider> properties;
 
     public OAuthProvider findByProviderName(final String name) {
-        return providers.get(name);
+        return properties.get(OAuthPlatform.findPlatform(name));
     }
 }

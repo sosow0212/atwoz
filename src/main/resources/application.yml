@@ -34,7 +34,7 @@ mail:
     name: ENC(mCgRGGxEhhOBxoVnSOrbJxKMEWBjrDLd)
 
 oauth2:
-  providers:
+  properties:
     kakao:
       client-id: dea66bed3e385ce5f8f4f7e817cd5f17
       redirect-uri: http://localhost:8080/oauth

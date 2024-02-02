@@ -1,6 +1,6 @@
-package com.atwoz.member.application.auth;
+package com.atwoz.member.application.member;
 
-import com.atwoz.member.domain.auth.ValidatedLoginEvent;
+import com.atwoz.member.application.event.ValidatedLoginEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

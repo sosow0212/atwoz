@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.ui.auth.support.auth;
 
 import java.util.Arrays;
 

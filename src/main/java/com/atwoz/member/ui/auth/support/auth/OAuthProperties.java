@@ -1,5 +1,6 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.ui.auth.support.auth;
 
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

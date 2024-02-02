@@ -2,11 +2,11 @@ package com.atwoz.member.application.auth;
 
 import com.atwoz.global.event.Events;
 import com.atwoz.member.application.auth.dto.LoginRequest;
+import com.atwoz.member.application.auth.dto.MemberInfo;
+import com.atwoz.member.application.event.ValidatedLoginEvent;
+import com.atwoz.member.domain.auth.OAuthRequester;
 import com.atwoz.member.domain.auth.TokenProvider;
-import com.atwoz.member.domain.auth.ValidatedLoginEvent;
-import com.atwoz.member.domain.oauth.OAuthRequester;
-import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

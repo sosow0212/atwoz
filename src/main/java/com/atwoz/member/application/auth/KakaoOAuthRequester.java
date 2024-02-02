@@ -1,10 +1,10 @@
-package com.atwoz.member.infrastructure.oauth;
+package com.atwoz.member.application.auth;
 
-import com.atwoz.member.domain.oauth.JsonMapper;
-import com.atwoz.member.domain.oauth.OAuthConnectionManager;
-import com.atwoz.member.domain.oauth.OAuthRequester;
-import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.application.auth.dto.MemberInfo;
+import com.atwoz.member.domain.auth.JsonMapper;
+import com.atwoz.member.domain.auth.OAuthConnectionManager;
+import com.atwoz.member.domain.auth.OAuthRequester;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

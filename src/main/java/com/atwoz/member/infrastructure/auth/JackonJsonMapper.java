@@ -1,7 +1,7 @@
-package com.atwoz.member.infrastructure.oauth;
+package com.atwoz.member.infrastructure.auth;
 
-import com.atwoz.member.domain.oauth.JsonMapper;
-import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
+import com.atwoz.member.application.auth.dto.MemberInfo;
+import com.atwoz.member.domain.auth.JsonMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

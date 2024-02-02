@@ -1,7 +1,8 @@
 package com.atwoz.member.ui.auth.support.resolver;
 
-import com.atwoz.member.ui.auth.support.oauth.OAuthAuthority;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties;
+import com.atwoz.member.ui.auth.support.auth.OAuthAuthority;
+import com.atwoz.member.ui.auth.support.auth.OAuthProperties;
+import com.atwoz.member.ui.auth.support.auth.RequestProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;

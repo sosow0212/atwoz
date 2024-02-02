@@ -1,6 +1,6 @@
-package com.atwoz.member.ui.auth.support.resolver;
+package com.atwoz.member.ui.auth.support.auth;
 
-import com.atwoz.member.domain.oauth.JsonMapper;
+import com.atwoz.member.domain.auth.JsonMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;

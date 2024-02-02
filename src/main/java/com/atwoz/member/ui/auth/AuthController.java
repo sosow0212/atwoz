@@ -2,9 +2,9 @@ package com.atwoz.member.ui.auth;
 
 import com.atwoz.member.application.auth.AuthService;
 import com.atwoz.member.application.auth.dto.LoginRequest;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import com.atwoz.member.ui.auth.dto.TokenResponse;
-import com.atwoz.member.ui.auth.support.oauth.OAuthAuthority;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.ui.auth.support.auth.OAuthAuthority;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.atwoz.member.infrastructure.oauth.dto;
+package com.atwoz.member.application.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,4 +1,4 @@
-package com.atwoz.member.application.auth;
+package com.atwoz.member.application.member;
 
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;

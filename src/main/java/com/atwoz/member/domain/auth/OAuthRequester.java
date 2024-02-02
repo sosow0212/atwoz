@@ -1,7 +1,7 @@
-package com.atwoz.member.domain.oauth;
+package com.atwoz.member.domain.auth;
 
-import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
+import com.atwoz.member.application.auth.dto.MemberInfo;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 
 public interface OAuthRequester {
 

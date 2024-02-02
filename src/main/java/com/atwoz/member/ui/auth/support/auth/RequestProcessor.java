@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.auth.support.resolver;
+package com.atwoz.member.ui.auth.support.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;

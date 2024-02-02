@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.auth;
+package com.atwoz.member.application.event;
 
 import com.atwoz.global.event.Event;
 import lombok.Getter;

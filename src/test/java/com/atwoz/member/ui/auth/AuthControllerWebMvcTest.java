@@ -2,7 +2,7 @@ package com.atwoz.member.ui.auth;
 
 import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.application.auth.dto.SignupRequest;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -14,11 +14,13 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
+import static com.atwoz.member.fixture.auth.OAuthProviderFixture.인증_기관_생성;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -34,42 +36,23 @@ class AuthControllerWebMvcTest extends MockBeanInjection {
     private ObjectMapper objectMapper;
 
     @Test
-    void 회원가입을_진행한다() throws Exception {
-        // given
-        SignupRequest req = new SignupRequest("email@email.com", "passsword");
-        when(authService.signup(req)).thenReturn("response_token_info");
-
-        // when & then
-        mockMvc.perform(post("/api/signup")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(req))
-                ).andExpect(status().isOk())
-                .andDo(customDocument("do_signup",
-                        requestFields(
-                                fieldWithPath("email").description("이메일"),
-                                fieldWithPath("password").description("패스워드")
-                        ),
-                        responseFields(
-                                fieldWithPath("token").description("발급되는 토큰")
-                        )
-                ));
-    }
-
-    @Test
     void 로그인을_진행한다() throws Exception {
         // given
-        LoginRequest req = new LoginRequest("email@email.com", "password");
-        when(authService.login(req)).thenReturn("response_token_info");
+        OAuthProvider oAuthProvider = 인증_기관_생성();
+        LoginRequest loginRequest = new LoginRequest("KAKAO", "code");
+        String expectedToken = "token";
+        when(authService.login(loginRequest, oAuthProvider)).thenReturn(expectedToken);
 
         // when & then
         mockMvc.perform(post("/api/login")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(req))
+                        .content(objectMapper.writeValueAsString(loginRequest))
                 ).andExpect(status().isOk())
-                .andDo(customDocument("do_login",
+                .andDo(print())
+                .andDo(customDocument("do_signup",
                         requestFields(
-                                fieldWithPath("email").description("이메일"),
-                                fieldWithPath("password").description("패스워드")
+                                fieldWithPath("provider").description("인증기관"),
+                                fieldWithPath("code").description("인증코드")
                         ),
                         responseFields(
                                 fieldWithPath("token").description("발급되는 토큰")

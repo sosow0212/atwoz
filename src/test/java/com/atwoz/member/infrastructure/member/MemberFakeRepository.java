@@ -2,7 +2,6 @@ package com.atwoz.member.infrastructure.member;
 
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.domain.member.MemberRepository;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -36,7 +35,6 @@ public class MemberFakeRepository implements MemberRepository {
         Member saved = Member.builder()
                 .id(id)
                 .email(member.getEmail())
-                .password(member.getPassword())
                 .nickname(member.getNickname())
                 .memberRole(member.getMemberRole())
                 .build();

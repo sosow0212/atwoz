@@ -3,7 +3,7 @@ package com.atwoz.member.ui.auth.support.auth;
 import java.util.Arrays;
 
 public enum OAuthPlatform {
-    KAKAO("kakao");
+    KAKAO("KAKAO");
 
     private final String name;
 

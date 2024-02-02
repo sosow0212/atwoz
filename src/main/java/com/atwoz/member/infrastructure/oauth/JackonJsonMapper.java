@@ -1,6 +1,6 @@
 package com.atwoz.member.infrastructure.oauth;
 
-import com.atwoz.member.application.auth.JsonMapper;
+import com.atwoz.member.domain.oauth.JsonMapper;
 import com.atwoz.member.infrastructure.oauth.dto.MemberInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -31,6 +31,18 @@ public class JackonJsonMapper implements JsonMapper {
             String nickname = jsonNode.get("kakao_account").get("profile").get("nickname").asText();
             return new MemberInfo(email, nickname);
 
+        } catch (JsonProcessingException exception) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public String extractValueForKey(final String json, final String key) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonNode jsonNode = objectMapper.readTree(json);
+            return jsonNode.get(key).asText();
+            
         } catch (JsonProcessingException exception) {
             throw new IllegalArgumentException();
         }

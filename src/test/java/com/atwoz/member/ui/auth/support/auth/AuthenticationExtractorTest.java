@@ -1,6 +1,5 @@
-package com.atwoz.member.ui.auth.support;
+package com.atwoz.member.ui.auth.support.auth;
 
-import com.atwoz.member.ui.auth.support.auth.AuthenticationExtractor;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayNameGeneration;

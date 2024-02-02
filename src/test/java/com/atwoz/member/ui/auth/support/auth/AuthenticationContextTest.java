@@ -1,7 +1,6 @@
-package com.atwoz.member.ui.auth.support;
+package com.atwoz.member.ui.auth.support.auth;
 
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
-import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

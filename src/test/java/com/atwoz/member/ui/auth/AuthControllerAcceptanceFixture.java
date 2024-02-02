@@ -2,7 +2,6 @@ package com.atwoz.member.ui.auth;
 
 import com.atwoz.helper.IntegrationHelper;
 import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.application.auth.dto.SignupRequest;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.ui.auth.dto.TokenResponse;
 import io.restassured.RestAssured;
@@ -13,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AuthControllerAcceptanceFixture extends IntegrationHelper {
 
-    protected SignupRequest 회원_가입_데이터를_요청한다() {
-        return new SignupRequest("email", "password");
+    protected LoginRequest 회원_가입_데이터를_요청한다() {
+        return new LoginRequest("kakao", "code");
     }
 
     protected <T> ExtractableResponse 요청한다(final T request, final String url) {

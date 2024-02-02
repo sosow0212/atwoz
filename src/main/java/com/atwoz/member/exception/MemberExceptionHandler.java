@@ -1,6 +1,7 @@
 package com.atwoz.member.exception;
 
 import com.atwoz.member.exception.exceptions.auth.ExpiredTokenException;
+import com.atwoz.member.exception.exceptions.auth.JsonDataInvalidException;
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
 import com.atwoz.member.exception.exceptions.auth.SignatureInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
@@ -68,6 +69,11 @@ public class MemberExceptionHandler {
     @ExceptionHandler(LoginInvalidException.class)
     public ResponseEntity<String> handleLoginInvalidException(final LoginInvalidException e) {
         return getUnauthorized(e);
+    }
+
+    @ExceptionHandler(JsonDataInvalidException.class)
+    public ResponseEntity<String> handleJsonDataInvalidException(final JsonDataInvalidException e) {
+        return getBadRequest(e);
     }
 
     private ResponseEntity<String> getNotFoundResponse(final Exception e) {

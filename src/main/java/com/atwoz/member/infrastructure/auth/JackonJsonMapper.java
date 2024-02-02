@@ -2,6 +2,7 @@ package com.atwoz.member.infrastructure.auth;
 
 import com.atwoz.member.application.auth.dto.MemberInfo;
 import com.atwoz.member.domain.auth.JsonMapper;
+import com.atwoz.member.exception.exceptions.auth.JsonDataInvalidException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +19,7 @@ public class JackonJsonMapper implements JsonMapper {
             return jsonNode.get("access_token").asText();
 
         } catch (JsonProcessingException exception) {
-            throw new IllegalArgumentException();
+            throw new JsonDataInvalidException();
         }
     }
 
@@ -32,7 +33,7 @@ public class JackonJsonMapper implements JsonMapper {
             return new MemberInfo(email, nickname);
 
         } catch (JsonProcessingException exception) {
-            throw new IllegalArgumentException();
+            throw new JsonDataInvalidException();
         }
     }
 
@@ -42,9 +43,9 @@ public class JackonJsonMapper implements JsonMapper {
         try {
             JsonNode jsonNode = objectMapper.readTree(json);
             return jsonNode.get(key).asText();
-            
+
         } catch (JsonProcessingException exception) {
-            throw new IllegalArgumentException();
+            throw new JsonDataInvalidException();
         }
     }
 }

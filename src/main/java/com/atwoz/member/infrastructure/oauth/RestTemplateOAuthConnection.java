@@ -1,8 +1,8 @@
 package com.atwoz.member.infrastructure.oauth;
 
-import com.atwoz.member.application.auth.OAuthConnectionManager;
 import com.atwoz.member.domain.auth.RestTemplateConfig;
-import com.atwoz.member.ui.auth.support.oauth.OAuthProperties.OAuthProvider;
+import com.atwoz.member.domain.oauth.OAuthConnectionManager;
+import com.atwoz.member.ui.auth.support.oauth.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,12 +26,12 @@ public class RestTemplateOAuthConnection implements OAuthConnectionManager {
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
-        params.add("client_id", oAuthProvider.getClientId());
-        params.add("redirect_uri", oAuthProvider.getRedirectUri());
+        params.add("client_id", oAuthProvider.clientId());
+        params.add("redirect_uri", oAuthProvider.redirectUri());
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, httpHeaders);
-        return restTemplate.postForObject(oAuthProvider.getTokenUri(), requestEntity, String.class);
+        return restTemplate.postForObject(oAuthProvider.tokenUri(), requestEntity, String.class);
     }
 
     @Override

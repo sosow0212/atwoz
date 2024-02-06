@@ -1,7 +1,7 @@
 package com.atwoz.member.infrastructure.auth;
 
 import com.atwoz.member.application.auth.dto.MemberInfo;
-import com.atwoz.member.domain.auth.OAuthRequester;
+import com.atwoz.member.application.auth.OAuthRequester;
 import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 
 public class OAuthFakeRequester implements OAuthRequester {

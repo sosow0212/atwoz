@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.auth;
+package com.atwoz.member.application.auth;
 
 import com.atwoz.member.application.auth.dto.MemberInfo;
 import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;

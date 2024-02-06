@@ -3,13 +3,12 @@ package com.atwoz.member.application.auth;
 import com.atwoz.member.application.auth.dto.MemberInfo;
 import com.atwoz.member.domain.auth.JsonMapper;
 import com.atwoz.member.domain.auth.OAuthConnectionManager;
-import com.atwoz.member.domain.auth.OAuthRequester;
 import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
+@Component
 public class KakaoOAuthRequester implements OAuthRequester {
 
     private final OAuthConnectionManager oAuthConnectionManager;

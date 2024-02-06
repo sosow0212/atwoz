@@ -1,7 +1,7 @@
 package com.atwoz.member.infrastructure.auth;
 
 import com.atwoz.member.domain.auth.OAuthConnectionManager;
-import com.atwoz.member.domain.auth.RestTemplateConfig;
+import com.atwoz.member.config.RestTemplateConfig;
 import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;

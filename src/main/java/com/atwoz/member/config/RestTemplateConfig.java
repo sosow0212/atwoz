@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.auth;
+package com.atwoz.member.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

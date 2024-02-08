@@ -51,5 +51,16 @@ oauth2:
       redirect-uri: http://localhost:8080/oauth
       token-uri: https://kauth.kakao.com/oauth/token?
       user-info-uri: https://kapi.kakao.com/v2/user/me
+      member-info-key-word-request:
+        email-key-word: kakao_account.email
+        nickname-key-word: kakao_account.profile.nickname
 
+    google:
+      client-id: 894937970075-tkfknm38alogkb114q8cnid780va7bcf.apps.googleusercontent.com
+      redirect-uri: http://localhost:8080/auth/google/callback
+      token-uri: https://oauth2.googleapis.com/token?
+      user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+      member-info-key-word-request:
+        email-key-word: email
+        nickname-key-word: name
 

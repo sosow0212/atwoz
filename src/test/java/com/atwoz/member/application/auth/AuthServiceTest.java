@@ -3,7 +3,7 @@ package com.atwoz.member.application.auth;
 import com.atwoz.member.application.auth.dto.LoginRequest;
 import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.infrastructure.auth.OAuthFakeRequester;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -35,12 +35,12 @@ class AuthServiceTest {
     void 로그인을_진행하면_토큰을_반환한다() {
         // given
         LoginRequest loginRequest = new LoginRequest("kakao", "code");
-        OAuthProvider oAuthProvider = 인증_기관_생성();
+        OAuthProviderRequest oAuthProviderRequest = 인증_기관_생성();
         String expectedToken = "token";
         when(tokenProvider.create(anyString())).thenReturn(expectedToken);
 
         // when
-        String token = authService.login(loginRequest, oAuthProvider);
+        String token = authService.login(loginRequest, oAuthProviderRequest);
 
         // then
         assertThat(token).isEqualTo(expectedToken);

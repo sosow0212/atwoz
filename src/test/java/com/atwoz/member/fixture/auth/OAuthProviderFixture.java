@@ -1,13 +1,17 @@
 package com.atwoz.member.fixture.auth;
 
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.MemberInfoKeyWordRequest;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 
 public class OAuthProviderFixture {
 
-    public static OAuthProvider 인증_기관_생성() {
-        return new OAuthProvider("clientId",
+    public static OAuthProviderRequest 인증_기관_생성() {
+
+        return new OAuthProviderRequest("clientId",
+                "clientSecret",
                 "redirectUri",
                 "tokenUri",
-                "userInfoUri");
+                "userInfoUri",
+                new MemberInfoKeyWordRequest("emailKeyWord", "nicknameKeyWord"));
     }
 }

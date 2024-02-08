@@ -2,7 +2,7 @@ package com.atwoz.member.ui.auth;
 
 import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -38,10 +38,10 @@ class AuthControllerWebMvcTest extends MockBeanInjection {
     @Test
     void 로그인을_진행한다() throws Exception {
         // given
-        OAuthProvider oAuthProvider = 인증_기관_생성();
-        LoginRequest loginRequest = new LoginRequest("KAKAO", "code");
+        OAuthProviderRequest oAuthProviderRequest = 인증_기관_생성();
+        LoginRequest loginRequest = new LoginRequest("kakao", "code");
         String expectedToken = "token";
-        when(authService.login(loginRequest, oAuthProvider)).thenReturn(expectedToken);
+        when(authService.login(loginRequest, oAuthProviderRequest)).thenReturn(expectedToken);
 
         // when & then
         mockMvc.perform(post("/api/login")

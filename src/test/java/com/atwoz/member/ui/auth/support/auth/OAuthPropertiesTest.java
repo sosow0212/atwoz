@@ -1,9 +1,7 @@
-package com.atwoz.member.ui.auth.support.oauth;
+package com.atwoz.member.ui.auth.support.auth;
 
 import com.atwoz.helper.IntegrationHelper;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
-import com.atwoz.member.ui.auth.support.auth.OAuthPlatform;
-import com.atwoz.member.ui.auth.support.auth.OAuthProperties;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import org.junit.jupiter.api.Test;
@@ -24,10 +22,10 @@ class OAuthPropertiesTest extends IntegrationHelper {
         OAuthPlatform oAuthPlatform = OAuthPlatform.KAKAO;
 
         // when
-        OAuthProvider oAuthProvider = oAuthProperties.findByProviderName(oAuthPlatform.name());
+        OAuthProviderRequest oAuthProviderRequest = oAuthProperties.findByProviderName("kakao");
 
         // then
-        assertThat(oAuthProvider).usingRecursiveComparison()
+        assertThat(oAuthProviderRequest).usingRecursiveComparison()
                 .isEqualTo(oAuthProperties.getProperties().get(oAuthPlatform));
     }
 }

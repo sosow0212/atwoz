@@ -1,12 +1,12 @@
 package com.atwoz.member.domain.auth;
 
-import com.atwoz.member.application.auth.dto.MemberInfo;
+import com.atwoz.member.infrastructure.auth.dto.MemberInfoKeyWordRequest;
+import com.atwoz.member.infrastructure.auth.dto.MemberInfoResponse;
 
 public interface JsonMapper {
 
-    String extractAccessTokenFrom(String accessTokenResponse);
+    String getValueByKey(String json, String key);
 
-    MemberInfo extractMemberInfoFrom(String memberInfoResponse);
-
-    String extractValueForKey(String json, String key);
+    MemberInfoResponse extractMemberInfoFrom(String memberInfoResponse,
+                                             MemberInfoKeyWordRequest memberInfoKeyWordRequest);
 }

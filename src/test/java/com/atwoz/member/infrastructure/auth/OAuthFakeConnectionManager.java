@@ -1,12 +1,12 @@
 package com.atwoz.member.infrastructure.auth;
 
 import com.atwoz.member.domain.auth.OAuthConnectionManager;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 
 public class OAuthFakeConnectionManager implements OAuthConnectionManager {
 
     @Override
-    public String getAccessTokenResponse(final OAuthProvider oAuthProvider, final String code) {
+    public String getAccessTokenResponse(final OAuthProviderRequest oAuthProviderRequest, final String code) {
         return "fakeAccessToken";
     }
 

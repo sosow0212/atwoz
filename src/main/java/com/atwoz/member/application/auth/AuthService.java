@@ -2,10 +2,10 @@ package com.atwoz.member.application.auth;
 
 import com.atwoz.global.event.Events;
 import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.application.auth.dto.MemberInfo;
 import com.atwoz.member.application.event.ValidatedLoginEvent;
 import com.atwoz.member.domain.auth.TokenProvider;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProvider;
+import com.atwoz.member.infrastructure.auth.dto.MemberInfoResponse;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +18,11 @@ public class AuthService {
     private final OAuthRequester oAuthRequester;
 
     @Transactional
-    public String login(final LoginRequest request, final OAuthProvider provider) {
+    public String login(final LoginRequest request, final OAuthProviderRequest provider) {
         String accessToken = oAuthRequester.getAccessToken(request.code(), provider);
-        MemberInfo memberInfo = oAuthRequester.getMemberInfo(accessToken, provider);
-        Events.raise(new ValidatedLoginEvent(memberInfo.email(), memberInfo.name()));
+        MemberInfoResponse memberInfoResponse = oAuthRequester.getMemberInfo(accessToken, provider);
+        Events.raise(new ValidatedLoginEvent(memberInfoResponse.email(), memberInfoResponse.name()));
 
-        return tokenProvider.create(memberInfo.email());
+        return tokenProvider.create(memberInfoResponse.email());
     }
 }

@@ -3,7 +3,9 @@ package com.atwoz.member.ui.auth.support.auth;
 import java.util.Arrays;
 
 public enum OAuthPlatform {
-    KAKAO("KAKAO");
+
+    KAKAO("kakao"),
+    GOOGLE("google");
 
     private final String name;
 
@@ -12,6 +14,7 @@ public enum OAuthPlatform {
     }
 
     public static OAuthPlatform findPlatform(final String name) {
+
         return Arrays.stream(values())
                 .filter(platform -> name.equals(platform.name))
                 .findFirst()

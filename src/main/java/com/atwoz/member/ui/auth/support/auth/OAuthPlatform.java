@@ -1,5 +1,6 @@
 package com.atwoz.member.ui.auth.support.auth;
 
+import com.atwoz.member.exception.exceptions.auth.OAuthPlatformNotFountException;
 import java.util.Arrays;
 
 public enum OAuthPlatform {
@@ -18,6 +19,6 @@ public enum OAuthPlatform {
         return Arrays.stream(values())
                 .filter(platform -> name.equals(platform.name))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(OAuthPlatformNotFountException::new);
     }
 }

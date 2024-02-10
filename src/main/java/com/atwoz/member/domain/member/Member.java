@@ -1,7 +1,6 @@
 package com.atwoz.member.domain.member;
 
 import com.atwoz.global.domain.BaseEntity;
-import com.atwoz.member.exception.exceptions.member.PasswordNotMatchedException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,9 +31,6 @@ public class Member extends BaseEntity {
     private String email;
 
     @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
     private String nickname;
 
     @Enumerated(value = EnumType.STRING)
@@ -46,19 +42,21 @@ public class Member extends BaseEntity {
     }
 
     public static Member createDefaultRole(final String email,
-                                           final String password,
                                            final NicknameGenerator nicknameGenerator) {
         return Member.builder()
                 .email(email)
-                .password(password)
                 .nickname(nicknameGenerator.createRandomNickname())
                 .memberRole(MemberRole.MEMBER)
                 .build();
     }
 
-    public void validatePassword(final String password) {
-        if (!this.password.equals(password)) {
-            throw new PasswordNotMatchedException();
-        }
+    public static Member createWithOAuthLogin(final String email,
+                                              final String nickname) {
+
+        return Member.builder()
+                .email(email)
+                .nickname(nickname)
+                .memberRole(MemberRole.MEMBER)
+                .build();
     }
 }

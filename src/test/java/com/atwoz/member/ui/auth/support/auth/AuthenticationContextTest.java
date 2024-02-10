@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.auth.support;
+package com.atwoz.member.ui.auth.support.auth;
 
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
 import org.junit.jupiter.api.BeforeEach;

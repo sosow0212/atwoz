@@ -2,7 +2,7 @@ package com.atwoz.member.ui.auth.interceptor;
 
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
 import com.atwoz.member.infrastructure.auth.JwtTokenProvider;
-import com.atwoz.member.ui.auth.support.AuthenticationContext;
+import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.DisplayNameGeneration;

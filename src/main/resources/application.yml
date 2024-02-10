@@ -32,3 +32,28 @@ mail:
   sender:
     email: ENC(Pv5Gvm0N7LAl4wx51TrKXrkDENW2VIvpW4Ae3ZIod+I=)
     name: ENC(mCgRGGxEhhOBxoVnSOrbJxKMEWBjrDLd)
+
+oauth2:
+  properties:
+    kakao:
+      client-id: dea66bed3e385ce5f8f4f7e817cd5f17
+      redirect-uri: http://localhost:8080/oauth
+      token-uri: https://kauth.kakao.com/oauth/token?
+      user-info-uri: https://kapi.kakao.com/v2/user/me
+      member-info-key-word-request:
+        email-key-word: kakao_account.email
+        nickname-key-word: kakao_account.profile.nickname
+
+    google:
+      client-id: 894937970075-tkfknm38alogkb114q8cnid780va7bcf.apps.googleusercontent.com
+      client-secret: ENC(qrynytuO78QS+YT7qc1m3gnpafeOsfTcjY25bbd5+YPjm1xVzsgatIEFvzfRJCer)
+      redirect-uri: http://localhost:8080/auth/google/callback
+      token-uri: https://oauth2.googleapis.com/token?
+      user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+      member-info-key-word-request:
+        email-key-word: email
+        nickname-key-word: name
+
+
+
+

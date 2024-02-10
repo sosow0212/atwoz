@@ -1,9 +1,8 @@
-package com.atwoz.member.ui.auth.support;
+package com.atwoz.member.ui.auth.support.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.util.StringUtils;
-
 import java.util.Optional;
+import org.springframework.util.StringUtils;
 
 public class AuthenticationExtractor {
 

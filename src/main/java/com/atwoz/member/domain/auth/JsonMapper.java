@@ -5,8 +5,8 @@ import com.atwoz.member.infrastructure.auth.dto.MemberInfoResponse;
 
 public interface JsonMapper {
 
-    String getValueByKey(String json, String key);
+    String getValueByKey(final String json, final String key);
 
-    MemberInfoResponse extractMemberInfoFrom(String memberInfoResponse,
-                                             MemberInfoKeyWordRequest memberInfoKeyWordRequest);
+    MemberInfoResponse extractMemberInfoFrom(final String memberInfoResponse,
+                                             final MemberInfoKeyWordRequest memberInfoKeyWordRequest);
 }

@@ -5,10 +5,7 @@ import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
 
 public interface OAuthRequester {
 
-    String getAccessToken(String code, OAuthProviderRequest provider);
+    String getAccessToken(final String code, final OAuthProviderRequest provider);
 
-    MemberInfoResponse getMemberInfo(String accessToken, OAuthProviderRequest oAuthProviderRequest);
+    MemberInfoResponse getMemberInfo(final String accessToken, final OAuthProviderRequest oAuthProviderRequest);
 }
-
-
-

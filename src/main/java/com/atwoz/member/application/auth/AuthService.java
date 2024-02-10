@@ -23,6 +23,6 @@ public class AuthService {
         MemberInfoResponse memberInfoResponse = oAuthRequester.getMemberInfo(accessToken, provider);
         Events.raise(new ValidatedLoginEvent(memberInfoResponse.email(), memberInfoResponse.name()));
 
-        return tokenProvider.create(memberInfoResponse.email());
+        return tokenProvider.createTokenWith(memberInfoResponse.email());
     }
 }

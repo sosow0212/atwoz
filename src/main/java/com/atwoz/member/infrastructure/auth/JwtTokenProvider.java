@@ -18,12 +18,10 @@ import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Getter
 @NoArgsConstructor
 @Component
 public class JwtTokenProvider implements TokenProvider {
@@ -42,7 +40,7 @@ public class JwtTokenProvider implements TokenProvider {
     }
 
     @Override
-    public String create(final String email) {
+    public String createTokenWith(final String email) {
         Claims claims = Jwts.claims();
         claims.put("email", email);
         return createToken(claims);

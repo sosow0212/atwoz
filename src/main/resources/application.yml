@@ -46,6 +46,7 @@ oauth2:
 
     google:
       client-id: 894937970075-tkfknm38alogkb114q8cnid780va7bcf.apps.googleusercontent.com
+      client-secret: ENC(qrynytuO78QS+YT7qc1m3gnpafeOsfTcjY25bbd5+YPjm1xVzsgatIEFvzfRJCer)
       redirect-uri: http://localhost:8080/auth/google/callback
       token-uri: https://oauth2.googleapis.com/token?
       user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo

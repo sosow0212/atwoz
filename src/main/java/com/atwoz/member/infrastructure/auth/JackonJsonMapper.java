@@ -48,7 +48,7 @@ public class JackonJsonMapper implements JsonMapper {
     private String getValue(final String keyWord, final JsonNode jsonNode) {
 
         return Arrays.stream(keyWord.split(DELIMITER))
-                .reduce(jsonNode, JsonNode::get, (a, b) -> b)
+                .reduce(jsonNode, JsonNode::get, (parentPath, childPath) -> childPath)
                 .asText();
     }
 }

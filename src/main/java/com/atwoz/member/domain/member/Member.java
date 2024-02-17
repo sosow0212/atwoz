@@ -1,8 +1,6 @@
 package com.atwoz.member.domain.member;
 
 import com.atwoz.global.domain.BaseEntity;
-import com.atwoz.member.domain.profile.Job;
-import com.atwoz.member.domain.profile.Location;
 import com.atwoz.member.domain.profile.hobby.Hobbies;
 import com.atwoz.member.domain.profile.image.Images;
 import com.atwoz.member.domain.profile.style.Styles;
@@ -45,23 +43,15 @@ public class Member extends BaseEntity {
 
     @Embedded
     @Column(nullable = false)
-    private Location location;
+    private Hobbies hobbies = new Hobbies();
 
     @Embedded
     @Column(nullable = false)
-    private Job job;
+    private Styles styles = new Styles();
 
     @Embedded
     @Column(nullable = false)
-    private Hobbies hobbies;
-
-    @Embedded
-    @Column(nullable = false)
-    private Styles styles;
-
-    @Embedded
-    @Column(nullable = false)
-    private Images images;
+    private Images images = new Images();
 
     public boolean isAdmin() {
         return this.memberRole.isAdministrator();

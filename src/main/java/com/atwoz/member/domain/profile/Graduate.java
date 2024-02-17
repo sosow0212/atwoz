@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.graduate;
+package com.atwoz.member.domain.profile;
 
 public enum Graduate {
 

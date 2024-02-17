@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.smoke;
+package com.atwoz.member.domain.profile;
 
 public enum Smoke {
 

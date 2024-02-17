@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.drink;
+package com.atwoz.member.domain.profile;
 
 public enum Drink {
 

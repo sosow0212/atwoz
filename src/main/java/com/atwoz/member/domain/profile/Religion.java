@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.religion;
+package com.atwoz.member.domain.profile;
 
 public enum Religion {
 

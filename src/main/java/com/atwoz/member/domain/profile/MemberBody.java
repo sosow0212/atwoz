@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.gender;
+package com.atwoz.member.domain.profile;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,16 +7,14 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Table(name = "gender")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class MemberGender {
+public class MemberBody {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +23,13 @@ public class MemberGender {
     @Column(nullable = false)
     private Long memberId;
 
+    @Column(nullable = false)
+    private Integer age;
+
+    @Column(nullable = false)
+    private Integer height;
+
+    @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 }

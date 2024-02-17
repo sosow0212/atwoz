@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.mbti;
+package com.atwoz.member.domain.profile;
 
 public enum Mbti {
 

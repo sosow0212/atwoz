@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.gender;
+package com.atwoz.member.domain.profile;
 
 public enum Gender {
 

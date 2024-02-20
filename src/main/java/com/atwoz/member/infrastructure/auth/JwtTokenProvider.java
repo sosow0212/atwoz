@@ -14,13 +14,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 @NoArgsConstructor
 @Component
@@ -71,13 +71,13 @@ public class JwtTokenProvider implements TokenProvider {
     }
 
     @Override
-    public Long extract(final String token) {
+    public String extract(final String token) {
         try {
             return Jwts.parser()
                     .setSigningKey(secret.getBytes())
                     .parseClaimsJws(token)
                     .getBody()
-                    .get("id", Long.class);
+                    .get("email", String.class);
         } catch (SecurityException e) {
             throw new SignatureInvalidException();
         } catch (MalformedJwtException e) {

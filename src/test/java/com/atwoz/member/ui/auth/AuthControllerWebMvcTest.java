@@ -1,18 +1,5 @@
 package com.atwoz.member.ui.auth;
 
-import com.atwoz.helper.MockBeanInjection;
-import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-
 import static com.atwoz.helper.RestDocsHelper.customDocument;
 import static com.atwoz.member.fixture.auth.OAuthProviderFixture.인증_기관_생성;
 import static org.mockito.Mockito.when;
@@ -22,6 +9,21 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.atwoz.helper.MockBeanInjection;
+import com.atwoz.member.application.auth.dto.LoginRequest;
+import com.atwoz.member.domain.member.MemberRepository;
+import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -34,6 +36,9 @@ class AuthControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @MockBean
+    private MemberRepository memberRepository;
 
     @Test
     void 로그인을_진행한다() throws Exception {

@@ -1,5 +1,8 @@
 package com.atwoz.member.config;
 
+import static com.atwoz.member.ui.auth.interceptor.HttpMethod.ANY;
+import static com.atwoz.member.ui.auth.interceptor.HttpMethod.OPTIONS;
+
 import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
 import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
 import com.atwoz.member.ui.auth.interceptor.PathMatcherInterceptor;
@@ -10,11 +13,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import java.util.List;
-
-import static com.atwoz.member.ui.auth.interceptor.HttpMethod.ANY;
-import static com.atwoz.member.ui.auth.interceptor.HttpMethod.OPTIONS;
 
 @RequiredArgsConstructor
 @Configuration
@@ -33,7 +32,7 @@ public class AuthConfig implements WebMvcConfigurer {
     private HandlerInterceptor parseMemberIdFromTokenInterceptor() {
         return new PathMatcherInterceptor(parseMemberIdFromTokenInterceptor)
                 .excludePathPattern("/**", OPTIONS)
-                .addPathPatterns("/admin/**", ANY);
+                .addPathPatterns("/**", ANY);
     }
 
     /**

@@ -38,6 +38,7 @@ public class Styles {
         List<Style> newStyles = styles.stream()
                 .map(Style::from)
                 .toList();
+        
         this.memberId = memberId;
         this.styles = newStyles;
     }

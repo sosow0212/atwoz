@@ -1,12 +1,11 @@
 package com.atwoz.member.domain.info.hobby;
 
 import com.atwoz.global.exception.exceptions.NullValueException;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,20 +15,17 @@ import java.util.Set;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Embeddable
 public class Hobbies {
 
     private static final int MINIMUM_SIZE = 1;
     private static final int MAXIMUM_SIZE = 3;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
+    @Column(name = "member_id", insertable = false, updatable = false)
     private Long memberId;
 
     @ElementCollection
+    @CollectionTable(name = "member_hobbies", joinColumns = @JoinColumn(name = "member_id"))
     private List<Hobby> hobbies;
 
     public Hobbies(final Long memberId, final List<String> hobbies) {

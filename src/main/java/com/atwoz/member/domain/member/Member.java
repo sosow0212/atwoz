@@ -1,7 +1,10 @@
 package com.atwoz.member.domain.member;
 
 import com.atwoz.global.domain.BaseEntity;
+import com.atwoz.member.domain.info.hobby.Hobbies;
+import com.atwoz.member.domain.info.style.Styles;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -23,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Member extends BaseEntity {
 
+    @Column(name = "member_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,8 +41,22 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private MemberRole memberRole;
 
+    @Embedded
+    private Hobbies hobbies;
+
+    @Embedded
+    private Styles styles;
+
     public boolean isAdmin() {
         return this.memberRole.isAdministrator();
+    }
+
+    public void updateHobbies(final Hobbies hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public void updateStyles(final Styles styles) {
+        this.styles = styles;
     }
 
     public static Member createDefaultRole(final String email,

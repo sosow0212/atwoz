@@ -6,12 +6,12 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class StyleWriteEvent extends Event {
+public class StyleWroteEvent extends Event {
 
     private final Long memberId;
     private final List<StyleWriteRequest> styles;
 
-    public StyleWriteEvent(final Long memberId, final List<StyleWriteRequest> styles) {
+    public StyleWroteEvent(final Long memberId, final List<StyleWriteRequest> styles) {
         super();
         this.memberId = memberId;
         this.styles = styles;

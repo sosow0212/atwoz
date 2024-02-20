@@ -1,10 +1,10 @@
 package com.atwoz.member.application.info;
 
 import com.atwoz.global.event.Events;
-import com.atwoz.member.application.event.HobbyWriteEvent;
-import com.atwoz.member.application.event.OptionWriteEvent;
-import com.atwoz.member.application.event.ProfileWriteEvent;
-import com.atwoz.member.application.event.StyleWriteEvent;
+import com.atwoz.member.application.event.HobbyWroteEvent;
+import com.atwoz.member.application.event.OptionWroteEvent;
+import com.atwoz.member.application.event.ProfileWroteEvent;
+import com.atwoz.member.application.event.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
@@ -27,10 +27,10 @@ public class InfoService {
         List<HobbyWriteRequest> hobbies = request.hobbies();
         List<StyleWriteRequest> styles = request.styles();
 
-        Events.raise(new ProfileWriteEvent(memberId, profileWriteRequest));
-        Events.raise(new OptionWriteEvent(memberId, optionWriteRequest));
+        Events.raise(new ProfileWroteEvent(memberId, profileWriteRequest));
+        Events.raise(new OptionWroteEvent(memberId, optionWriteRequest));
 
-        Events.raise(new HobbyWriteEvent(memberId, hobbies));
-        Events.raise(new StyleWriteEvent(memberId, styles));
+        Events.raise(new HobbyWroteEvent(memberId, hobbies));
+        Events.raise(new StyleWroteEvent(memberId, styles));
     }
 }

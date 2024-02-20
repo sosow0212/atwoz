@@ -5,12 +5,12 @@ import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import lombok.Getter;
 
 @Getter
-public class ProfileWriteEvent extends Event {
+public class ProfileWroteEvent extends Event {
 
     private final Long memberId;
     private final ProfileWriteRequest request;
 
-    public ProfileWriteEvent(final Long memberId, final ProfileWriteRequest request) {
+    public ProfileWroteEvent(final Long memberId, final ProfileWriteRequest request) {
         super();
         this.memberId = memberId;
         this.request = request;

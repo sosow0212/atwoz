@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Member extends BaseEntity {
 
-    @Column(name = "member_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

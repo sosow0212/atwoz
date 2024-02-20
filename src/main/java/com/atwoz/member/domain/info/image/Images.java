@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.style;
+package com.atwoz.member.domain.info.image;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
@@ -8,12 +8,12 @@ import java.util.List;
 
 @Getter
 @Embeddable
-public class Styles {
+public class Images {
 
     @ElementCollection
-    private List<Style> styles;
+    private List<Image> images;
 
-    public Styles() {
-        this.styles = new ArrayList<>();
+    public Images() {
+        this.images = new ArrayList<>();
     }
 }

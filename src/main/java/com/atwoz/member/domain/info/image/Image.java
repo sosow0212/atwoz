@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.profile.style;
+package com.atwoz.member.domain.info.image;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -6,8 +6,8 @@ import lombok.Getter;
 
 @Getter
 @Embeddable
-public class Style {
+public class Image {
 
     @Column(nullable = false)
-    private String style;
+    private String url;
 }

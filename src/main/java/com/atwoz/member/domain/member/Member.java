@@ -1,11 +1,7 @@
 package com.atwoz.member.domain.member;
 
 import com.atwoz.global.domain.BaseEntity;
-import com.atwoz.member.domain.profile.hobby.Hobbies;
-import com.atwoz.member.domain.profile.image.Images;
-import com.atwoz.member.domain.profile.style.Styles;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -40,18 +36,6 @@ public class Member extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
     private MemberRole memberRole;
-
-    @Embedded
-    @Column(nullable = false)
-    private Hobbies hobbies = new Hobbies();
-
-    @Embedded
-    @Column(nullable = false)
-    private Styles styles = new Styles();
-
-    @Embedded
-    @Column(nullable = false)
-    private Images images = new Images();
 
     public boolean isAdmin() {
         return this.memberRole.isAdministrator();

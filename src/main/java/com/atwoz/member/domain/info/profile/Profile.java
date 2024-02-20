@@ -1,10 +1,8 @@
-package com.atwoz.member.domain.profile;
+package com.atwoz.member.domain.info.profile;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class MemberProfile {
+public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +23,7 @@ public class MemberProfile {
     private Long memberId;
 
     @Column(nullable = false)
-    private Integer age;
-
-    @Column(nullable = false)
-    private Integer height;
-
-    @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
+    private MemberBody memberBody;
 
     @Embedded
     @Column(nullable = false)
@@ -41,4 +32,11 @@ public class MemberProfile {
     @Embedded
     @Column(nullable = false)
     private Job job;
+
+    public Profile(final Long memberId, final MemberBody memberBody, final Location location, final Job job) {
+        this.memberId = memberId;
+        this.memberBody = memberBody;
+        this.location = location;
+        this.job = job;
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class ProfileWroteEventHandler {
+public class ProfileEventHandler {
 
     private final ProfileService profileService;
 

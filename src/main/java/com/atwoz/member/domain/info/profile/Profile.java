@@ -6,12 +6,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "member_profile")
 @Entity
 public class Profile {
 
@@ -35,6 +37,10 @@ public class Profile {
 
     public Profile(final Long memberId, final MemberBody memberBody, final Location location, final Job job) {
         this.memberId = memberId;
+        updateContents(memberBody, location, job);
+    }
+
+    public void updateContents(final MemberBody memberBody, final Location location, final Job job) {
         this.memberBody = memberBody;
         this.location = location;
         this.job = job;

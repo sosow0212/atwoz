@@ -13,8 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Table(name = "member_option")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "member_option")
 @Entity
 public class Option {
 
@@ -45,13 +45,18 @@ public class Option {
     @Enumerated(value = EnumType.STRING)
     private Graduate graduate;
 
-    public Option(final Long memberId, final String smoke, final String religion,
-                  final String drink, final String mbti, final String graduate) {
+    public Option(final Long memberId, final Smoke smoke, final Religion religion,
+                  final Drink drink, final Mbti mbti, final Graduate graduate) {
         this.memberId = memberId;
-        this.smoke = Smoke.findByName(smoke);
-        this.religion = Religion.findByName(religion);
-        this.drink = Drink.findByName(drink);
-        this.mbti = Mbti.findByName(mbti);
-        this.graduate = Graduate.findByName(graduate);
+        updateContents(smoke, religion, drink, mbti, graduate);
+    }
+
+    public void updateContents(final Smoke smoke, final Religion religion, final Drink drink,
+                               final Mbti mbti, final Graduate graduate) {
+        this.smoke = smoke;
+        this.religion = religion;
+        this.drink = drink;
+        this.mbti = mbti;
+        this.graduate = graduate;
     }
 }

@@ -6,6 +6,7 @@ import com.atwoz.member.infrastructure.info.option.OptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -17,7 +18,23 @@ public class OptionService {
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Option option = optionFactory.fromRequest(memberId, request);
-        optionRepository.save(option);
+        Optional<Option> findOption = findByMemberId(memberId);
+        Option newOption = optionFactory.fromRequest(memberId, request);
+        if (findOption.isEmpty()) {
+            optionRepository.save(newOption);
+            return;
+        }
+        Option existOption = findOption.get();
+        existOption.updateContents(
+                existOption.getSmoke(),
+                existOption.getReligion(),
+                existOption.getDrink(),
+                existOption.getMbti(),
+                existOption.getGraduate()
+        );
+    }
+
+    private Optional<Option> findByMemberId(final Long memberId) {
+        return optionRepository.findByMemberId(memberId);
     }
 }

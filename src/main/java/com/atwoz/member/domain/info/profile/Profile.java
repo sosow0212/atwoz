@@ -25,7 +25,7 @@ public class Profile {
     private Long memberId;
 
     @Column(nullable = false)
-    private MemberBody memberBody;
+    private Body body;
 
     @Embedded
     @Column(nullable = false)
@@ -35,13 +35,13 @@ public class Profile {
     @Column(nullable = false)
     private Job job;
 
-    public Profile(final Long memberId, final MemberBody memberBody, final Location location, final Job job) {
+    public Profile(final Long memberId, final Body body, final Location location, final Job job) {
         this.memberId = memberId;
-        updateContents(memberBody, location, job);
+        updateContents(body, location, job);
     }
 
-    public void updateContents(final MemberBody memberBody, final Location location, final Job job) {
-        this.memberBody = memberBody;
+    public void updateContents(final Body body, final Location location, final Job job) {
+        this.body = body;
         this.location = location;
         this.job = job;
     }

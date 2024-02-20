@@ -26,7 +26,7 @@ public class ProfileService {
             return;
         }
         Profile existProfile = findProfile.get();
-        existProfile.updateContents(newProfile.getMemberBody(), newProfile.getLocation(), newProfile.getJob());
+        existProfile.updateContents(newProfile.getBody(), newProfile.getLocation(), newProfile.getJob());
     }
 
     private Optional<Profile> findByMemberId(final Long memberId) {

@@ -39,6 +39,7 @@ public class Hobbies {
                 .map(Hobby::from)
                 .toList();
 
+        this.memberId = memberId;
         this.hobbies = newHobbies;
     }
 

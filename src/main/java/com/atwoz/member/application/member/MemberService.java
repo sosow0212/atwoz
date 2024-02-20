@@ -24,15 +24,18 @@ public class MemberService {
 
     @Transactional
     public void updateHobbies(final Long memberId, final Hobbies hobbies) {
-        Member member = memberRepository.findById(memberId)
-                        .orElseThrow(MemberNotFoundException::new);
+        Member member = findById(memberId);
         member.updateHobbies(hobbies);
+    }
+
+    private Member findById(final Long memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(MemberNotFoundException::new);
     }
 
     @Transactional
     public void updateStyles(final Long memberId, final Styles styles) {
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(MemberNotFoundException::new);
+        Member member = findById(memberId);
         member.updateStyles(styles);
     }
 }

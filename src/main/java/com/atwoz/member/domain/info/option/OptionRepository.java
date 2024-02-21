@@ -1,6 +1,5 @@
-package com.atwoz.member.infrastructure.info.option;
+package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.domain.info.option.Option;
 import java.util.Optional;
 
 public interface OptionRepository {

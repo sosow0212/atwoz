@@ -2,7 +2,7 @@ package com.atwoz.member.application.info.option;
 
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Option;
-import com.atwoz.member.infrastructure.info.option.OptionRepository;
+import com.atwoz.member.domain.info.option.OptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

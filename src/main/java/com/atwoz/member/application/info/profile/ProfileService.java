@@ -2,7 +2,7 @@ package com.atwoz.member.application.info.profile;
 
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.Profile;
-import com.atwoz.member.infrastructure.info.profile.ProfileRepository;
+import com.atwoz.member.domain.info.profile.ProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

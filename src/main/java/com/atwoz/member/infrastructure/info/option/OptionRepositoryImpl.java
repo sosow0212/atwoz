@@ -1,6 +1,7 @@
 package com.atwoz.member.infrastructure.info.option;
 
 import com.atwoz.member.domain.info.option.Option;
+import com.atwoz.member.domain.info.option.OptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

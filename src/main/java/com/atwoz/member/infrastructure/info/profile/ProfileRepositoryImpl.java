@@ -1,6 +1,7 @@
 package com.atwoz.member.infrastructure.info.profile;
 
 import com.atwoz.member.domain.info.profile.Profile;
+import com.atwoz.member.domain.info.profile.ProfileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

@@ -10,6 +10,8 @@ import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
+import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
+import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import com.atwoz.member.exception.exceptions.member.MemberAlreadyExistedException;
 import com.atwoz.member.exception.exceptions.member.MemberNotFoundException;
 import com.atwoz.member.exception.exceptions.member.PasswordNotMatchedException;
@@ -92,6 +94,17 @@ public class MemberExceptionHandler {
 
     @ExceptionHandler(HobbySizeException.class)
     public ResponseEntity<String> handleHobbySizeException(final HobbySizeException e) {
+        return getBadRequest(e);
+    }
+
+    // info - style
+    @ExceptionHandler(StyleNotFoundException.class)
+    public ResponseEntity<String> handleStyleNotFoundException(final StyleNotFoundException e) {
+        return getNotFoundResponse(e);
+    }
+
+    @ExceptionHandler(StyleSizeException.class)
+    public ResponseEntity<String> handleStyleSizeException(final StyleSizeException e) {
         return getBadRequest(e);
     }
 

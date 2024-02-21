@@ -28,13 +28,15 @@ public class InfoService {
                 .stream()
                 .map(HobbyWriteRequest::hobby)
                 .toList();
-
-        List<StyleWriteRequest> styles = request.styles();
+        List<String> styleNames = request.styles()
+                .stream()
+                .map(StyleWriteRequest::style)
+                .toList();
 
         Events.raise(new ProfileWroteEvent(memberId, profileWriteRequest));
         Events.raise(new OptionWroteEvent(memberId, optionWriteRequest));
 
         Events.raise(new HobbyWroteEvent(memberId, hobbyNames));
-        Events.raise(new StyleWroteEvent(memberId, styles));
+        Events.raise(new StyleWroteEvent(memberId, styleNames));
     }
 }

@@ -8,6 +8,8 @@ import com.atwoz.member.exception.exceptions.auth.SignatureInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.member.MemberAlreadyExistedException;
 import com.atwoz.member.exception.exceptions.member.MemberNotFoundException;
 import com.atwoz.member.exception.exceptions.member.PasswordNotMatchedException;
@@ -80,6 +82,17 @@ public class MemberExceptionHandler {
     @ExceptionHandler(OAuthPlatformNotFountException.class)
     public ResponseEntity<String> handleOAuthPlatformNotFountException(final OAuthPlatformNotFountException e) {
         return getNotFoundResponse(e);
+    }
+
+    // info - hobby
+    @ExceptionHandler(HobbyNotFoundException.class)
+    public ResponseEntity<String> handleHobbyNotFoundException(final HobbyNotFoundException e) {
+        return getNotFoundResponse(e);
+    }
+
+    @ExceptionHandler(HobbySizeException.class)
+    public ResponseEntity<String> handleHobbySizeException(final HobbySizeException e) {
+        return getBadRequest(e);
     }
 
     private ResponseEntity<String> getNotFoundResponse(final Exception e) {

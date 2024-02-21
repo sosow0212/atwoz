@@ -5,9 +5,9 @@ import com.atwoz.member.application.event.HobbyWroteEvent;
 import com.atwoz.member.application.event.OptionWroteEvent;
 import com.atwoz.member.application.event.ProfileWroteEvent;
 import com.atwoz.member.application.event.StyleWroteEvent;
+import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
-import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import lombok.RequiredArgsConstructor;
@@ -24,13 +24,17 @@ public class InfoService {
     public void writeProfile(final Long memberId, final InfoWriteRequest request) {
         ProfileWriteRequest profileWriteRequest = request.profile();
         OptionWriteRequest optionWriteRequest = request.option();
-        List<HobbyWriteRequest> hobbies = request.hobbies();
+        List<String> hobbyNames = request.hobbies()
+                .stream()
+                .map(HobbyWriteRequest::hobby)
+                .toList();
+
         List<StyleWriteRequest> styles = request.styles();
 
         Events.raise(new ProfileWroteEvent(memberId, profileWriteRequest));
         Events.raise(new OptionWroteEvent(memberId, optionWriteRequest));
 
-        Events.raise(new HobbyWroteEvent(memberId, hobbies));
+        Events.raise(new HobbyWroteEvent(memberId, hobbyNames));
         Events.raise(new StyleWroteEvent(memberId, styles));
     }
 }

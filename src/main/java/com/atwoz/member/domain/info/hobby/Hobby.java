@@ -1,6 +1,5 @@
 package com.atwoz.member.domain.info.hobby;
 
-import com.atwoz.global.exception.exceptions.NullValueException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
@@ -18,13 +17,6 @@ public class Hobby {
     private String hobby;
 
     public static Hobby from(final String hobby) {
-        validateIsNotNull(hobby);
         return new Hobby(hobby);
-    }
-
-    private static void validateIsNotNull(final String hobby) {
-        if (hobby == null) {
-            throw new NullValueException();
-        }
     }
 }

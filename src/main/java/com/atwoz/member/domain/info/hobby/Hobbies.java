@@ -1,6 +1,5 @@
 package com.atwoz.member.domain.info.hobby;
 
-import com.atwoz.global.exception.exceptions.NullValueException;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -29,7 +28,6 @@ public class Hobbies {
     private List<Hobby> hobbies;
 
     public Hobbies(final Long memberId, final List<String> hobbies) {
-        validateIsNullMemberId(memberId);
         validateHobbies(hobbies);
         List<Hobby> newHobbies = hobbies.stream()
                 .map(Hobby::from)
@@ -39,22 +37,9 @@ public class Hobbies {
         this.hobbies = newHobbies;
     }
 
-    private void validateIsNullMemberId(final Long memberId) {
-        if (memberId == null) {
-            throw new NullValueException();
-        }
-    }
-
     private void validateHobbies(final List<String> hobbies) {
-        validateIsNull(hobbies);
         validateIsDuplicate(hobbies);
         validateSize(hobbies);
-    }
-
-    private void validateIsNull(final List<String> hobbies) {
-        if (hobbies == null) {
-            throw new NullValueException();
-        }
     }
 
     private void validateIsDuplicate(final List<String> hobbies) {

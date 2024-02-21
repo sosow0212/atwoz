@@ -1,6 +1,5 @@
 package com.atwoz.member.domain.info.style;
 
-import com.atwoz.global.exception.exceptions.NullValueException;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -29,7 +28,6 @@ public class Styles {
     private List<Style> styles;
 
     public Styles(final Long memberId, final List<String> styles) {
-        validateIsNullMemberId(memberId);
         validateStyles(styles);
         List<Style> newStyles = styles.stream()
                 .map(Style::from)
@@ -39,22 +37,9 @@ public class Styles {
         this.styles = newStyles;
     }
 
-    private void validateIsNullMemberId(final Long memberId) {
-        if (memberId == null) {
-            throw new NullValueException();
-        }
-    }
-
     private void validateStyles(final List<String> styles) {
-        validateIsNullStyles(styles);
         validateIsDuplicate(styles);
         validateSize(styles);
-    }
-
-    private void validateIsNullStyles(final List<String> styles) {
-        if (styles == null) {
-            throw new NullValueException();
-        }
     }
 
     private void validateIsDuplicate(final List<String> styles) {

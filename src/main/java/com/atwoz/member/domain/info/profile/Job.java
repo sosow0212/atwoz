@@ -1,6 +1,5 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.global.exception.exceptions.NullValueException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
@@ -16,14 +15,6 @@ public class Job {
     private String job;
 
     public Job(final String job) {
-        validateNotNull(job);
-
         this.job = job;
-    }
-
-    public void validateNotNull(final String job) {
-        if (job == null) {
-            throw new NullValueException();
-        }
     }
 }

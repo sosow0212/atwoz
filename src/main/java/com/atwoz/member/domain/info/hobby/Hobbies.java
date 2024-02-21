@@ -50,7 +50,7 @@ public class Hobbies {
     }
 
     private void validateSize(final List<String> hobbies) {
-        if (hobbies.size() < MINIMUM_SIZE || hobbies.size() > MAXIMUM_SIZE) {
+        if (hobbies.isEmpty() || hobbies.size() > MAXIMUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }

@@ -50,7 +50,7 @@ public class Styles {
     }
 
     private void validateSize(final List<String> styles) {
-        if (styles.size() < MINIMUM_SIZE || styles.size() > MAXIMUM_SIZE) {
+        if (styles.isEmpty() || styles.size() > MAXIMUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }

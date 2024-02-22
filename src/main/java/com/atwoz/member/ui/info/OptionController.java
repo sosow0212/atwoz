@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto;
+package com.atwoz.member.ui.info;
 
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;

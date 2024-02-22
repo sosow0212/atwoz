@@ -9,10 +9,15 @@ import com.atwoz.member.domain.info.profile.Job;
 import com.atwoz.member.domain.info.profile.Location;
 import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
+import com.atwoz.member.domain.info.profile.year.YearManager;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 public class ProfileFactory {
+
+    private final YearManager yearManager;
 
     public Profile fromRequest(final Long memberId, final ProfileWriteRequest request) {
         Body body = createMemberBody(request);
@@ -23,11 +28,12 @@ public class ProfileFactory {
     }
 
     private Body createMemberBody(final ProfileWriteRequest request) {
+        int currentYear = yearManager.getCurrentYear();
         int birthYear = request.birthYear();
         int height = request.height();
         Gender gender = Gender.findByName(request.gender());
 
-        return new Body(birthYear, height, gender);
+        return new Body(currentYear, birthYear, height, gender);
     }
 
     private Location createLocation(final LocationWriteRequest request) {

@@ -8,7 +8,6 @@ import jakarta.persistence.Enumerated;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -30,10 +29,10 @@ public class Body {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    public Body(final int birthYear, final int height, final Gender gender) {
+    public Body(final int currentYear, final int birthYear, final int height, final Gender gender) {
         validateHeight(height);
 
-        this.age = calculateAgeFromYear(birthYear);
+        this.age = calculateAgeFromYear(currentYear, birthYear);
         this.height = height;
         this.gender = gender;
     }
@@ -44,10 +43,8 @@ public class Body {
         }
     }
 
-    private int calculateAgeFromYear(final int year) {
-        LocalDateTime nowTime = LocalDateTime.now();
-        int nowYear = nowTime.getYear();
-        int memberAge = Math.abs(nowYear - year);
+    private int calculateAgeFromYear(final int currentYear, final int birthYear) {
+        int memberAge = Math.abs(currentYear - birthYear);
         if (memberAge < MIN_AGE || MAX_AGE < memberAge) {
             throw new ProfileRangeException();
         }

@@ -3,10 +3,10 @@ package com.atwoz.member.application.info.option;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
+import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,13 +18,12 @@ public class OptionService {
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Optional<Option> findOption = findByMemberId(memberId);
         Option newOption = optionFactory.fromRequest(memberId, request);
-        if (findOption.isEmpty()) {
+        if (!isMemberOptionExist(memberId)) {
             optionRepository.save(newOption);
             return;
         }
-        Option existOption = findOption.get();
+        Option existOption = findByMemberId(memberId);
         existOption.updateContents(
                 newOption.getSmoke(),
                 newOption.getReligion(),
@@ -34,7 +33,12 @@ public class OptionService {
         );
     }
 
-    private Optional<Option> findByMemberId(final Long memberId) {
-        return optionRepository.findByMemberId(memberId);
+    private boolean isMemberOptionExist(final Long memberId) {
+        return optionRepository.isExistMemberOption(memberId);
+    }
+
+    public Option findByMemberId(final Long memberId) {
+        return optionRepository.findByMemberId(memberId)
+                .orElseThrow(OptionNotFoundException::new);
     }
 }

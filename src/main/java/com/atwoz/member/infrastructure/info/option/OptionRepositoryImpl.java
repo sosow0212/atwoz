@@ -21,4 +21,9 @@ public class OptionRepositoryImpl implements OptionRepository {
     public Optional<Option> findByMemberId(final Long memberId) {
         return optionJpaRepository.findByMemberId(memberId);
     }
+
+    @Override
+    public boolean isExistMemberOption(final Long memberId) {
+        return findByMemberId(memberId).isPresent();
+    }
 }

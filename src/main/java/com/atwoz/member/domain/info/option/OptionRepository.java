@@ -6,4 +6,5 @@ public interface OptionRepository {
 
     void save(final Option option);
     Optional<Option> findByMemberId(final Long memberId);
+    boolean isExistMemberOption(final Long memberId);
 }

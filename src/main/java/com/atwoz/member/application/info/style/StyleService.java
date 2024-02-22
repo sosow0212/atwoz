@@ -30,4 +30,8 @@ public class StyleService {
     public void deleteBeforeMemberStyles(final Long memberId) {
         styleRepository.deleteStylesByMemberId(memberId);
     }
+
+    public List<Style> findMemberStyles(final Long memberId) {
+        return styleRepository.findAllByMemberId(memberId);
+    }
 }

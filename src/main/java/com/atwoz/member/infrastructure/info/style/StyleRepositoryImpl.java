@@ -26,4 +26,9 @@ public class StyleRepositoryImpl implements StyleRepository {
     public void deleteStylesByMemberId(final Long memberId) {
         styleJpaRepository.deleteByMemberId(memberId);
     }
+
+    @Override
+    public List<Style> findAllByMemberId(final Long memberId) {
+        return styleJpaRepository.findAllByMemberId(memberId);
+    }
 }

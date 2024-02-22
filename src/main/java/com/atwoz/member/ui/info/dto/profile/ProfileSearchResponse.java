@@ -23,7 +23,7 @@ public record ProfileSearchResponse(
 ) {
     public static ProfileSearchResponse from(final Profile profile) {
         Body body = profile.getBody();
-        int year = body.getBirthYear();
+        int age = body.getAge();
         int height = body.getHeight();
         Gender gender = body.getGender();
 
@@ -32,7 +32,7 @@ public record ProfileSearchResponse(
         Job job = profile.getJob();
 
         return new ProfileSearchResponse(
-                year,
+                age,
                 height,
                 gender.getName(),
                 LocationSearchResponse.from(location),

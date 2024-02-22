@@ -33,16 +33,21 @@ public class Profile {
 
     @Embedded
     @Column(nullable = false)
+    private Position position;
+
+    @Embedded
+    @Column(nullable = false)
     private Job job;
 
-    public Profile(final Long memberId, final Body body, final Location location, final Job job) {
+    public Profile(final Long memberId, final Body body, final Location location, final Position position, final Job job) {
         this.memberId = memberId;
-        updateContents(body, location, job);
+        updateContents(body, location, position, job);
     }
 
-    public void updateContents(final Body body, final Location location, final Job job) {
+    public void updateContents(final Body body, final Location location, final Position position, final Job job) {
         this.body = body;
         this.location = location;
+        this.position = position;
         this.job = job;
     }
 }

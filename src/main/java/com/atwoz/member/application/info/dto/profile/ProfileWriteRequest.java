@@ -16,6 +16,8 @@ public record ProfileWriteRequest(
 
         LocationWriteRequest location,
 
+        PositionWriteRequest position,
+
         @NotBlank(message = "직업이 작성되어야 합니다.")
         String job
 ){

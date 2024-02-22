@@ -26,11 +26,11 @@ public class OptionService {
         }
         Option existOption = findOption.get();
         existOption.updateContents(
-                existOption.getSmoke(),
-                existOption.getReligion(),
-                existOption.getDrink(),
-                existOption.getMbti(),
-                existOption.getGraduate()
+                newOption.getSmoke(),
+                newOption.getReligion(),
+                newOption.getDrink(),
+                newOption.getMbti(),
+                newOption.getGraduate()
         );
     }
 

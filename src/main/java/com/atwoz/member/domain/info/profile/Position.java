@@ -3,10 +3,12 @@ package com.atwoz.member.domain.info.profile;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileRangeException;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
 public class Position {

@@ -23,11 +23,11 @@ public class ProfileFactory {
     }
 
     private Body createMemberBody(final ProfileWriteRequest request) {
-        Integer age = request.age();
-        Integer height = request.height();
+        int birthYear = request.birthYear();
+        int height = request.height();
         Gender gender = Gender.findByName(request.gender());
 
-        return new Body(age, height, gender);
+        return new Body(birthYear, height, gender);
     }
 
     private Location createLocation(final LocationWriteRequest request) {

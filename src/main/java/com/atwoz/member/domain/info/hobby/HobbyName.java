@@ -1,10 +1,13 @@
 package com.atwoz.member.domain.info.hobby;
 
+import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import lombok.Getter;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 public enum HobbyName {
@@ -59,8 +62,13 @@ public enum HobbyName {
             throw new HobbySizeException();
         }
 
+        Set<String> uniqueNames = new HashSet<>(names);
+        if (uniqueNames.size() != names.size()) {
+            throw new HobbyDuplicateException();
+        }
+
         int validSize = Arrays.stream(values())
-                .filter(hobbyName -> names.contains(hobbyName.getName()))
+                .filter(hobbyName -> uniqueNames.contains(hobbyName.getName()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {

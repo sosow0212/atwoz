@@ -1,10 +1,13 @@
 package com.atwoz.member.domain.info.style;
 
+import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
 import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import lombok.Getter;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 public enum StyleName {
@@ -60,8 +63,13 @@ public enum StyleName {
             throw new StyleSizeException();
         }
 
+        Set<String> uniqueNames = new HashSet<>(names);
+        if (uniqueNames.size() != names.size()) {
+            throw new StyleDuplicateException();
+        }
+
         int validSize = Arrays.stream(values())
-                .filter(hobbyName -> names.contains(hobbyName.getName()))
+                .filter(hobbyName -> uniqueNames.contains(hobbyName.getName()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {

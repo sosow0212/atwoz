@@ -30,4 +30,8 @@ public class HobbyService {
     public void deleteBeforeMemberHobbies(final Long memberId) {
         hobbyRepository.deleteHobbiesByMemberId(memberId);
     }
+
+    public List<Hobby> findMemberHobbies(final Long memberId) {
+        return hobbyRepository.findAllByMemberId(memberId);
+    }
 }

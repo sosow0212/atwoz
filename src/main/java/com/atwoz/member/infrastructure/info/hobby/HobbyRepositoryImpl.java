@@ -26,4 +26,9 @@ public class HobbyRepositoryImpl implements HobbyRepository {
     public void deleteHobbiesByMemberId(final Long memberId) {
         hobbyJpaRepository.deleteByMemberId(memberId);
     }
+
+    @Override
+    public List<Hobby> findAllByMemberId(final Long memberId) {
+        return hobbyJpaRepository.findAllByMemberId(memberId);
+    }
 }

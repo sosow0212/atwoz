@@ -54,6 +54,10 @@ oauth2:
         email-key-word: email
         nickname-key-word: name
 
-
-
-
+management:
+  server:
+    port: 8088
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health

@@ -21,4 +21,9 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     public Optional<Profile> findByMemberId(final Long memberId) {
         return profileJpaRepository.findByMemberId(memberId);
     }
+
+    @Override
+    public boolean isExistMemberProfile(final Long memberId) {
+        return findByMemberId(memberId).isPresent();
+    }
 }

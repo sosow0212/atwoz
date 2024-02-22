@@ -3,10 +3,10 @@ package com.atwoz.member.application.info.profile;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
+import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,14 +18,14 @@ public class ProfileService {
 
     @Transactional
     public void writeProfile(final Long memberId, final ProfileWriteRequest request) {
-
-        Optional<Profile> findProfile = findByMemberId(memberId);
         Profile newProfile = profileFactory.fromRequest(memberId, request);
-        if (findProfile.isEmpty()) {
+
+        if (!isMemberProfileExist(memberId)) {
             profileRepository.save(newProfile);
             return;
         }
-        Profile existProfile = findProfile.get();
+
+        Profile existProfile = findByMemberId(memberId);
         existProfile.updateContents(
                 newProfile.getBody(),
                 newProfile.getLocation(),
@@ -34,7 +34,12 @@ public class ProfileService {
         );
     }
 
-    private Optional<Profile> findByMemberId(final Long memberId) {
-        return profileRepository.findByMemberId(memberId);
+    private boolean isMemberProfileExist(final Long memberId) {
+        return profileRepository.isExistMemberProfile(memberId);
+    }
+
+    public Profile findByMemberId(final Long memberId) {
+        return profileRepository.findByMemberId(memberId)
+                .orElseThrow(ProfileNotFoundException::new);
     }
 }

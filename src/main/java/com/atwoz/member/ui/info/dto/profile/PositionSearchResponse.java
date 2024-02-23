@@ -1,12 +1,13 @@
 package com.atwoz.member.ui.info.dto.profile;
 
 import com.atwoz.member.domain.info.profile.Position;
+import java.math.BigDecimal;
 
 public record PositionSearchResponse(
 
-        double latitude,
+        BigDecimal latitude,
 
-        double longitude
+        BigDecimal longitude
 ) {
     public static PositionSearchResponse from(final Position position) {
         return new PositionSearchResponse(position.getLatitude(), position.getLongitude());

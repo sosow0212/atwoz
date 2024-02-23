@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.math.BigDecimal;
 
 @Getter
 @EqualsAndHashCode
@@ -13,15 +14,15 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class Position {
 
-    private static final int MIN_LATITUDE = -90;
-    private static final int MAX_LATITUDE = 90;
-    private static final int MIN_LONGITUDE = -180;
-    private static final int MAX_LONGITUDE = 180;
+    private static final BigDecimal MIN_LATITUDE = BigDecimal.valueOf(-90);
+    private static final BigDecimal MAX_LATITUDE = BigDecimal.valueOf(90);
+    private static final BigDecimal MIN_LONGITUDE = BigDecimal.valueOf(-180);
+    private static final BigDecimal MAX_LONGITUDE = BigDecimal.valueOf(180);
 
-    private double latitude;
-    private double longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
 
-    public Position(final double latitude, final double longitude) {
+    public Position(final BigDecimal latitude, final BigDecimal longitude) {
         validateLatitude(latitude);
         validateLongitude(longitude);
 
@@ -29,14 +30,14 @@ public class Position {
         this.longitude = longitude;
     }
 
-    private static void validateLatitude(final double latitude) {
-        if (latitude < MIN_LATITUDE || latitude > MAX_LATITUDE) {
+    private static void validateLatitude(final BigDecimal latitude) {
+        if (latitude.compareTo(MIN_LATITUDE) < 0 || latitude.compareTo(MAX_LATITUDE) > 0) {
             throw new ProfileRangeException();
         }
     }
 
-    private static void validateLongitude(final double longitude) {
-        if (longitude < MIN_LONGITUDE || longitude > MAX_LONGITUDE) {
+    private static void validateLongitude(final BigDecimal longitude) {
+        if (longitude.compareTo(MIN_LONGITUDE) < 0 || longitude.compareTo(MAX_LONGITUDE) > 0) {
             throw new ProfileRangeException();
         }
     }

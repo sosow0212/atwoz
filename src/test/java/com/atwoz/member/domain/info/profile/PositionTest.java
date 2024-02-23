@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -19,8 +20,8 @@ class PositionTest {
     @Test
     void 입력값이_올바른_경우_생성된다() {
         // given
-        double latitude = 40;
-        double longitude = 130;
+        BigDecimal latitude = BigDecimal.valueOf(40);
+        BigDecimal longitude = BigDecimal.valueOf(130);
 
         // when & then
         assertDoesNotThrow(() -> new Position(latitude, longitude));
@@ -28,7 +29,7 @@ class PositionTest {
 
     @ParameterizedTest(name = "위도 {0}, 경도 {1}인 경우")
     @MethodSource("latitudeAndLongitude")
-    void 위도_또는_경도_제한을_벗어나면_예외가_발생한다(final double latitude, final double longitude) {
+    void 위도_또는_경도_제한을_벗어나면_예외가_발생한다(final BigDecimal latitude, final BigDecimal longitude) {
         // when & then
         assertThatThrownBy(() -> new Position(latitude, longitude))
                 .isInstanceOf(ProfileRangeException.class);
@@ -36,10 +37,10 @@ class PositionTest {
 
     static Stream<Arguments> latitudeAndLongitude() {
         return Stream.of(
-                Arguments.of(-100, 130),
-                Arguments.of(100, 130),
-                Arguments.of(40, -200),
-                Arguments.of(40, 200)
+                Arguments.of(BigDecimal.valueOf(-100), BigDecimal.valueOf(130)),
+                Arguments.of(BigDecimal.valueOf(100), BigDecimal.valueOf(130)),
+                Arguments.of(BigDecimal.valueOf(40), BigDecimal.valueOf(-200)),
+                Arguments.of(BigDecimal.valueOf(40), BigDecimal.valueOf(200))
         );
     }
 }

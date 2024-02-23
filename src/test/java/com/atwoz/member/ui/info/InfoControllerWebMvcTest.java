@@ -32,6 +32,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import java.math.BigDecimal;
 import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -77,8 +78,8 @@ class InfoControllerWebMvcTest {
         int height = 171;
         String gender = "남성";
         LocationWriteRequest locationWriteRequest = new LocationWriteRequest("서울시", "강남구");
-        double latitude = 70.3;
-        double longitude = 140.3;
+        BigDecimal latitude = BigDecimal.valueOf(70.3);
+        BigDecimal longitude = BigDecimal.valueOf(140.3);
         PositionWriteRequest positionWriteRequest = new PositionWriteRequest(latitude, longitude);
         String job = "개발자";
         ProfileWriteRequest profileWriteRequest = new ProfileWriteRequest(

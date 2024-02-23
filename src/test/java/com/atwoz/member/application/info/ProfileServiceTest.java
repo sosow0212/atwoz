@@ -19,6 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import java.math.BigDecimal;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -44,8 +45,8 @@ class ProfileServiceTest {
         int birthYear = 2000;
         int height = 171;
         String gender = "남성";
-        double latitude = 70.5;
-        double longitude = 140.3;
+        BigDecimal latitude = BigDecimal.valueOf(70.5);
+        BigDecimal longitude = BigDecimal.valueOf(140.3);
         String job = "개발자";
         LocationWriteRequest location = new LocationWriteRequest("서울시", "강남구");
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
@@ -70,8 +71,8 @@ class ProfileServiceTest {
         int birthYear = 2000;
         int height = 171;
         String gender = "남성";
-        double latitude = 70.5;
-        double longitude = 140.3;
+        BigDecimal latitude = BigDecimal.valueOf(70.5);
+        BigDecimal longitude = BigDecimal.valueOf(140.3);
         String job = "개발자";
         LocationWriteRequest location = new LocationWriteRequest("서울시", "강남구");
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);

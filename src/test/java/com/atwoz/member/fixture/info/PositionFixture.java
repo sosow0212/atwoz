@@ -1,12 +1,13 @@
 package com.atwoz.member.fixture.info;
 
 import com.atwoz.member.domain.info.profile.Position;
+import java.math.BigDecimal;
 
 public class PositionFixture {
 
     public static Position 일반_좌표_생성() {
-        double latitude = 40;
-        double longitude = 170;
+        BigDecimal latitude = BigDecimal.valueOf(40);
+        BigDecimal longitude = BigDecimal.valueOf(170);
 
         return new Position(latitude, longitude);
     }

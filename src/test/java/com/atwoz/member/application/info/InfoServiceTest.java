@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
+import java.math.BigDecimal;
 import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -49,8 +50,8 @@ class InfoServiceTest {
         int height = 171;
         String gender = "남성";
         LocationWriteRequest location = new LocationWriteRequest("서울시", "강남구");
-        double latitude = 70.5;
-        double longitude = 140.3;
+        BigDecimal latitude = BigDecimal.valueOf(70.5);
+        BigDecimal longitude = BigDecimal.valueOf(140.3);
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
         String job = "개발자";
         ProfileWriteRequest profileWriteRequest = new ProfileWriteRequest(

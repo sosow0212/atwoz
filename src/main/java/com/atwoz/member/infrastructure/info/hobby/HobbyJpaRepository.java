@@ -8,5 +8,5 @@ public interface HobbyJpaRepository extends JpaRepository<Hobby, Long> {
 
     void deleteByMemberId(final Long memberId);
 
-    List<Hobby> findAllByMemberId(Long memberId);
+    List<Hobby> findAllByMemberId(final Long memberId);
 }

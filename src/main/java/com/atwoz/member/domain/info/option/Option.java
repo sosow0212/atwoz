@@ -47,14 +47,21 @@ public class Option {
     @Enumerated(value = EnumType.STRING)
     private Graduate graduate;
 
-    public Option(final Long memberId, final Smoke smoke, final Religion religion,
-                  final Drink drink, final Mbti mbti, final Graduate graduate) {
+    public Option(final Long memberId,
+                  final Smoke smoke,
+                  final Religion religion,
+                  final Drink drink,
+                  final Mbti mbti,
+                  final Graduate graduate) {
         this.memberId = memberId;
         updateContents(smoke, religion, drink, mbti, graduate);
     }
 
-    public void updateContents(final Smoke smoke, final Religion religion, final Drink drink,
-                               final Mbti mbti, final Graduate graduate) {
+    public void updateContents(final Smoke smoke,
+                               final Religion religion,
+                               final Drink drink,
+                               final Mbti mbti,
+                               final Graduate graduate) {
         this.smoke = smoke;
         this.religion = religion;
         this.drink = drink;

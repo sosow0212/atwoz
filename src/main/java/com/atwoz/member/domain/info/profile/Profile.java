@@ -41,7 +41,11 @@ public class Profile {
     @Column(nullable = false)
     private Job job;
 
-    public Profile(final Long memberId, final Body body, final Location location, final Position position, final Job job) {
+    public Profile(final Long memberId,
+                   final Body body,
+                   final Location location,
+                   final Position position,
+                   final Job job) {
         this.memberId = memberId;
         updateContents(body, location, position, job);
     }

@@ -24,7 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @ExtendWith(MockitoExtension.class)
-public class ProfileServiceTest {
+class ProfileServiceTest {
 
     private ProfileService profileService;
     private ProfileRepository profileRepository;

@@ -39,7 +39,7 @@ import java.util.List;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(InfoController.class)
-public class InfoControllerWebMvcTest {
+class InfoControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;

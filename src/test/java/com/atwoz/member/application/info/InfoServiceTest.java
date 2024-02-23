@@ -30,7 +30,7 @@ import java.util.List;
 @SpringBootTest
 @RecordApplicationEvents
 @ExtendWith(MockitoExtension.class)
-public class InfoServiceTest {
+class InfoServiceTest {
 
     @Autowired
     private InfoService infoService;

@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @DataJpaTest
-public class StyleJpaRepositoryTest {
+class StyleJpaRepositoryTest {
 
     @Autowired
     private StyleJpaRepository styleJpaRepository;

@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-public class PositionTest {
+class PositionTest {
 
     @Test
     void 입력값이_올바른_경우_생성된다() {

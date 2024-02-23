@@ -13,7 +13,7 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-public class StyleNameTest {
+class StyleNameTest {
 
     @Test
     void 스타일이_존재하면_정상적으로_가져온다() {

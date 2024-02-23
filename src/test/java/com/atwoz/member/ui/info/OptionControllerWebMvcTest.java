@@ -36,7 +36,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(OptionController.class)
-public class OptionControllerWebMvcTest {
+class OptionControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-public class GenderTest {
+class GenderTest {
 
     @Test
     void 올바른_선택_시_조회된다() {

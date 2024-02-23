@@ -17,7 +17,7 @@ import java.util.List;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @ExtendWith(MockitoExtension.class)
-public class HobbyServiceTest {
+class HobbyServiceTest {
 
     private HobbyService hobbyService;
     private HobbyRepository hobbyRepository;

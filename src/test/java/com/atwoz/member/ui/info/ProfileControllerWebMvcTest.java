@@ -39,7 +39,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(ProfileController.class)
-public class ProfileControllerWebMvcTest {
+class ProfileControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;

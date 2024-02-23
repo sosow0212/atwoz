@@ -21,7 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @ExtendWith(MockitoExtension.class)
-public class OptionServiceTest {
+class OptionServiceTest {
 
     private OptionService optionService;
     private OptionRepository optionRepository;

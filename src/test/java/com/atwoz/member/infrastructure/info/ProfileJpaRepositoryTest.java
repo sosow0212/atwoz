@@ -27,7 +27,7 @@ import java.util.Optional;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @DataJpaTest
-public class ProfileJpaRepositoryTest {
+class ProfileJpaRepositoryTest {
 
     @Autowired
     private ProfileJpaRepository profileJpaRepository;

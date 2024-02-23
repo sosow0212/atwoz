@@ -33,7 +33,7 @@ import java.util.List;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(HobbyController.class)
-public class HobbyControllerWebMvcTest {
+class HobbyControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;

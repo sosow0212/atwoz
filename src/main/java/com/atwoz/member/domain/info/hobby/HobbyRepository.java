@@ -7,5 +7,5 @@ public interface HobbyRepository {
     void save(final Hobby hobby);
     void saveAll(final List<Hobby> memberHobbies);
     void deleteHobbiesByMemberId(final Long memberId);
-    List<Hobby> findAllByMemberId(Long memberId);
+    List<Hobby> findAllByMemberId(final Long memberId);
 }

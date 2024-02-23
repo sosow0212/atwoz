@@ -2,6 +2,7 @@ package com.atwoz.member.application.info;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.option.OptionFactory;
@@ -16,7 +17,6 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.Optional;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -25,11 +25,13 @@ public class OptionServiceTest {
 
     private OptionService optionService;
     private OptionRepository optionRepository;
+    private OptionFactory optionFactory;
 
     @BeforeEach
     void init() {
+        optionFactory = new OptionFactory();
         optionRepository = new OptionFakeRepository();
-        optionService = new OptionService(optionRepository);
+        optionService = new OptionService(optionRepository, optionFactory);
     }
 
     @Test
@@ -43,13 +45,17 @@ public class OptionServiceTest {
         String mbti = "INFJ";
 
         OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
+        Option expectedOption = optionFactory.fromRequest(memberId, request);
 
         // when
         optionService.writeOption(memberId, request);
 
         // then
-        Optional<Option> memberOption = optionRepository.findByMemberId(memberId);
-        assertThat(memberOption).isPresent();
+        assertSoftly(softly -> {
+            softly.assertThat(optionRepository.isExistMemberOption(memberId)).isTrue();
+            softly.assertThat(optionRepository.findByMemberId(memberId)).isPresent();
+            softly.assertThat(optionRepository.findByMemberId(memberId).get()).isEqualTo(expectedOption);
+        });
     }
 
     @Test
@@ -63,8 +69,9 @@ public class OptionServiceTest {
         String mbti = "INFJ";
 
         OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
-        Option expectedOption = OptionFactory.fromRequest(memberId, request);
+        
         optionService.writeOption(memberId, request);
+        Option expectedOption = optionFactory.fromRequest(memberId, request);
 
         // when
         Option memberOption = optionService.findByMemberId(memberId);

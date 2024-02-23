@@ -17,8 +17,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.event.ApplicationEvents;
@@ -29,7 +27,6 @@ import java.util.List;
 @SuppressWarnings("NonAsciiCharacters")
 @SpringBootTest
 @RecordApplicationEvents
-@ExtendWith(MockitoExtension.class)
 class InfoServiceTest {
 
     @Autowired

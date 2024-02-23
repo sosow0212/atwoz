@@ -18,7 +18,7 @@ public class OptionController {
     private final OptionService optionService;
 
     @GetMapping
-    public ResponseEntity<OptionSearchResponse> findOption(@AuthMember Long memberId) {
+    public ResponseEntity<OptionSearchResponse> findOption(@AuthMember final Long memberId) {
         Option option = optionService.findByMemberId(memberId);
         OptionSearchResponse response = OptionSearchResponse.from(option);
 

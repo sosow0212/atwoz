@@ -19,7 +19,7 @@ public class StyleController {
     private final StyleService styleService;
 
     @GetMapping
-    public ResponseEntity<List<StyleSearchResponse>> findMemberStyles(@AuthMember Long memberId) {
+    public ResponseEntity<List<StyleSearchResponse>> findMemberStyles(@AuthMember final Long memberId) {
         List<StyleSearchResponse> styles = styleService.findMemberStyles(memberId)
                 .stream()
                 .map(Style::getStyleName)

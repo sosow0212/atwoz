@@ -18,7 +18,7 @@ public class ProfileController {
     private final ProfileService profileService;
 
     @GetMapping
-    public ResponseEntity<ProfileSearchResponse> findProfile(@AuthMember Long memberId) {
+    public ResponseEntity<ProfileSearchResponse> findProfile(@AuthMember final Long memberId) {
         Profile profile = profileService.findByMemberId(memberId);
         ProfileSearchResponse response = ProfileSearchResponse.from(profile);
 

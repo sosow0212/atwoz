@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record ProfileWriteRequest(
-
         @NotNull(message = "출생년도가 작성되어야 합니다.")
         Integer birthYear,
 

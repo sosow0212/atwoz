@@ -5,7 +5,6 @@ import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import java.util.List;
 
 public record InfoWriteRequest(
-
         ProfileWriteRequest profile,
 
         OptionWriteRequest option,

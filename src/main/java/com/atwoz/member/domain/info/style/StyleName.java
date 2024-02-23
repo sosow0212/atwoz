@@ -54,7 +54,7 @@ public enum StyleName {
     public static List<StyleName> findAllByNames(final List<String> names) {
         validateSize(names);
         return names.stream()
-                .map(StyleName::from)
+                .map(StyleName::findBy)
                 .toList();
     }
 
@@ -77,7 +77,7 @@ public enum StyleName {
         }
     }
 
-    private static StyleName from(final String name) {
+    private static StyleName findBy(final String name) {
         return Arrays.stream(values())
                 .filter(styleName -> styleName.isSame(name))
                 .findFirst()

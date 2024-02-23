@@ -33,7 +33,7 @@ class InfoServiceTest {
     private InfoService infoService;
 
     @Autowired
-    ApplicationEvents events;
+    private ApplicationEvents events;
 
     @BeforeEach
     void init() {

@@ -10,6 +10,8 @@
 === 스타일 조회
 
 ==== 요청
+include::{snippets}/style-controller-web-mvc-test/search_styles/http-request.adoc[]
+
 ==== 응답
 include::{snippets}/style-controller-web-mvc-test/search_styles/http-response.adoc[]
 include::{snippets}/style-controller-web-mvc-test/search_styles/response-fields.adoc[]

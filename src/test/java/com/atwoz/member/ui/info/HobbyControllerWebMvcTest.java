@@ -17,7 +17,6 @@ import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
 import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
 import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
 import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -38,9 +37,6 @@ public class HobbyControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @MockBean
     private HobbyService hobbyService;

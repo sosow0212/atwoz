@@ -51,24 +51,34 @@ public enum HobbyName {
     }
 
     public static List<HobbyName> findAllByNames(final List<String> names) {
-        validateSize(names);
+        validateNames(names);
         return names.stream()
                 .map(HobbyName::from)
                 .toList();
     }
 
-    public static void validateSize(final List<String> names) {
+    private static void validateNames(final List<String> names) {
+        validateIsNotEmptyNames(names);
+        validateIsUniqueNames(names);
+        validateIsNotOverMaxSizeOfHobby(names);
+    }
+
+    private static void validateIsNotEmptyNames(final List<String> names) {
         if (names.isEmpty()) {
             throw new HobbySizeException();
         }
+    }
 
+    private static void validateIsUniqueNames(final List<String> names) {
         Set<String> uniqueNames = new HashSet<>(names);
         if (uniqueNames.size() != names.size()) {
             throw new HobbyDuplicateException();
         }
+    }
 
+    private static void validateIsNotOverMaxSizeOfHobby(final List<String> names) {
         int validSize = Arrays.stream(values())
-                .filter(hobbyName -> uniqueNames.contains(hobbyName.getName()))
+                .filter(hobbyName -> names.contains(hobbyName.getName()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {

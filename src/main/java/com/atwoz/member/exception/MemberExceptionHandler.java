@@ -1,5 +1,6 @@
 package com.atwoz.member.exception;
 
+import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
 import com.atwoz.member.exception.exceptions.auth.ExpiredTokenException;
 import com.atwoz.member.exception.exceptions.auth.JsonDataInvalidException;
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
@@ -8,8 +9,13 @@ import com.atwoz.member.exception.exceptions.auth.SignatureInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
+import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.ProfileRangeException;
+import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
 import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import com.atwoz.member.exception.exceptions.member.MemberAlreadyExistedException;
@@ -86,6 +92,12 @@ public class MemberExceptionHandler {
         return getNotFoundResponse(e);
     }
 
+    // info - enum
+    @ExceptionHandler(PropertyNotFoundException.class)
+    public ResponseEntity<String> handlePropertyNotFoundException(final PropertyNotFoundException e) {
+        return getNotFoundResponse(e);
+    }
+
     // info - hobby
     @ExceptionHandler(HobbyNotFoundException.class)
     public ResponseEntity<String> handleHobbyNotFoundException(final HobbyNotFoundException e) {
@@ -94,6 +106,11 @@ public class MemberExceptionHandler {
 
     @ExceptionHandler(HobbySizeException.class)
     public ResponseEntity<String> handleHobbySizeException(final HobbySizeException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(HobbyDuplicateException.class)
+    public ResponseEntity<String> handleHobbyDuplicationException(final HobbyDuplicateException e) {
         return getBadRequest(e);
     }
 
@@ -106,6 +123,28 @@ public class MemberExceptionHandler {
     @ExceptionHandler(StyleSizeException.class)
     public ResponseEntity<String> handleStyleSizeException(final StyleSizeException e) {
         return getBadRequest(e);
+    }
+
+    @ExceptionHandler(StyleDuplicateException.class)
+    public ResponseEntity<String> handleStyleDuplicateException(final StyleDuplicateException e) {
+        return getBadRequest(e);
+    }
+
+    // info - profile
+    @ExceptionHandler(ProfileNotFoundException.class)
+    public ResponseEntity<String> handleProfileNotFoundException(ProfileNotFoundException e) {
+        return getNotFoundResponse(e);
+    }
+
+    @ExceptionHandler(ProfileRangeException.class)
+    public ResponseEntity<String> handleProfileRangeException(final ProfileRangeException e) {
+        return getBadRequest(e);
+    }
+
+    // info - option
+    @ExceptionHandler(OptionNotFoundException.class)
+    public ResponseEntity<String> handleOptionNotFoundException(final OptionNotFoundException e) {
+        return getNotFoundResponse(e);
     }
 
     private ResponseEntity<String> getNotFoundResponse(final Exception e) {

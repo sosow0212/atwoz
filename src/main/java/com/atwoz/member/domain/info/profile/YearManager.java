@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.profile.year;
+package com.atwoz.member.domain.info.profile;
 
 public interface YearManager {
 

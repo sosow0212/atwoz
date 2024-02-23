@@ -1,5 +1,6 @@
-package com.atwoz.member.domain.info.profile.year;
+package com.atwoz.member.infrastructure.info;
 
+import com.atwoz.member.domain.info.profile.YearManager;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 

@@ -9,7 +9,7 @@ import com.atwoz.member.domain.info.profile.Job;
 import com.atwoz.member.domain.info.profile.Location;
 import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
-import com.atwoz.member.domain.info.profile.year.YearManager;
+import com.atwoz.member.domain.info.profile.YearManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

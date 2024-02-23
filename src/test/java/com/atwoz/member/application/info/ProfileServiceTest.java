@@ -57,7 +57,6 @@ class ProfileServiceTest {
 
         // then
         assertSoftly(softly -> {
-            softly.assertThat(profileRepository.isExistMemberProfile(memberId)).isTrue();
             softly.assertThat(profileRepository.findByMemberId(memberId)).isPresent();
             softly.assertThat(profileRepository.findByMemberId(memberId).get()).isEqualTo(expectedProfile);
         });

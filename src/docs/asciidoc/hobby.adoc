@@ -1,0 +1,15 @@
+:toc: left
+:source-highlighter: highlightjs
+:sectlinks:
+:toclevels: 2
+:sectlinks:
+:sectnums:
+
+== Hobby
+
+=== 취미 조회
+
+==== 요청
+==== 응답
+include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/http-response.adoc[]
+include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/response-fields.adoc[]

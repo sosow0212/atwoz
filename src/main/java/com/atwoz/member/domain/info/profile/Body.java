@@ -46,7 +46,7 @@ public class Body {
     }
 
     private int calculateAgeFromYear(final int currentYear, final int birthYear) {
-        int memberAge = Math.abs(currentYear - birthYear);
+        int memberAge = currentYear - birthYear;
         if (memberAge < MIN_AGE || MAX_AGE < memberAge) {
             throw new ProfileRangeException();
         }

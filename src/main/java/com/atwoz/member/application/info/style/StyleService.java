@@ -17,7 +17,7 @@ public class StyleService {
 
     @Transactional
     public void saveMemberStyles(final Long memberId, final List<String> styleNames) {
-        deleteBeforeMemberStyles(memberId);
+        deleteMemberStyles(memberId);
         List<Style> memberStyles = StyleName.findAllByNames(styleNames)
                 .stream()
                 .map(styleName -> new Style(memberId, styleName))
@@ -27,7 +27,7 @@ public class StyleService {
     }
 
     @Transactional
-    public void deleteBeforeMemberStyles(final Long memberId) {
+    public void deleteMemberStyles(final Long memberId) {
         styleRepository.deleteStylesByMemberId(memberId);
     }
 

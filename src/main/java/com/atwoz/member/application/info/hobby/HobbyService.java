@@ -17,7 +17,7 @@ public class HobbyService {
 
     @Transactional
     public void saveMemberHobbies(final Long memberId, final List<String> hobbyNames) {
-        deleteBeforeMemberHobbies(memberId);
+        deleteMemberHobbies(memberId);
         List<Hobby> memberHobbies = HobbyName.findAllByNames(hobbyNames)
                 .stream()
                 .map(hobbyName -> new Hobby(memberId, hobbyName))
@@ -27,7 +27,7 @@ public class HobbyService {
     }
 
     @Transactional
-    public void deleteBeforeMemberHobbies(final Long memberId) {
+    public void deleteMemberHobbies(final Long memberId) {
         hobbyRepository.deleteHobbiesByMemberId(memberId);
     }
 

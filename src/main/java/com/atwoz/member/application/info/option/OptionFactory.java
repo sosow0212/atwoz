@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 public class OptionFactory {
 
     public Option fromRequest(final Long memberId, final OptionWriteRequest request) {
-
         Smoke smoke = Smoke.findByName(request.smoke());
         Religion religion = Religion.findByName(request.religion());
         Drink drink = Drink.findByName(request.drink());

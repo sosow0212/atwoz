@@ -24,6 +24,6 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 
     @Override
     public boolean isExistMemberProfile(final Long memberId) {
-        return findByMemberId(memberId).isPresent();
+        return profileJpaRepository.isExistMemberOption(memberId);
     }
 }

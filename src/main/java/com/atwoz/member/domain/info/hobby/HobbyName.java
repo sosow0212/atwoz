@@ -53,7 +53,7 @@ public enum HobbyName {
     public static List<HobbyName> findAllByNames(final List<String> names) {
         validateNames(names);
         return names.stream()
-                .map(HobbyName::from)
+                .map(HobbyName::findBy)
                 .toList();
     }
 
@@ -86,7 +86,7 @@ public enum HobbyName {
         }
     }
 
-    private static HobbyName from(final String name) {
+    private static HobbyName findBy(final String name) {
         return Arrays.stream(values())
                 .filter(hobbyName -> hobbyName.isSame(name))
                 .findFirst()

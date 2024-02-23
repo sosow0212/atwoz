@@ -1,0 +1,15 @@
+:toc: left
+:source-highlighter: highlightjs
+:sectlinks:
+:toclevels: 2
+:sectlinks:
+:sectnums:
+
+== Profile
+
+=== Profile 조회
+
+==== 요청
+==== 응답
+include::{snippets}/profile-controller-web-mvc-test/search_profile/http-response.adoc[]
+include::{snippets}/profile-controller-web-mvc-test/search_profile/response-fields.adoc[]

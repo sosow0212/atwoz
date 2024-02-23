@@ -13,12 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OptionService {
 
-    private final OptionFactory optionFactory;
     private final OptionRepository optionRepository;
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Option newOption = optionFactory.fromRequest(memberId, request);
+        Option newOption = OptionFactory.fromRequest(memberId, request);
         if (!isMemberOptionExist(memberId)) {
             optionRepository.save(newOption);
             return;

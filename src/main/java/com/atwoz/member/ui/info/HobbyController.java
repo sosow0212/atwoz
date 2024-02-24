@@ -1,7 +1,6 @@
 package com.atwoz.member.ui.info;
 
 import com.atwoz.member.application.info.hobby.HobbyService;
-import com.atwoz.member.domain.info.hobby.Hobby;
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +21,7 @@ public class HobbyController {
     public ResponseEntity<List<HobbySearchResponse>> findMemberHobbies(@AuthMember final Long memberId) {
         List<HobbySearchResponse> hobbies = hobbyService.findMemberHobbies(memberId)
                 .stream()
-                .map(Hobby::getHobbyName)
-                .map(hobbyName -> new HobbySearchResponse(hobbyName.getName()))
+                .map(HobbySearchResponse::from)
                 .toList();
 
         return ResponseEntity.ok()

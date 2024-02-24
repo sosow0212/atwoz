@@ -27,7 +27,6 @@ import java.util.List;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @AutoConfigureRestDocs
-@MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(StyleController.class)
 class StyleControllerWebMvcTest extends MockBeanInjection {
 

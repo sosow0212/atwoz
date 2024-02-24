@@ -3,6 +3,9 @@ package com.atwoz.member.ui.info;
 import static com.atwoz.helper.RestDocsHelper.customDocument;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -41,12 +44,7 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
     void 회원의_profile을_조회한다() throws Exception {
         // given
         Long memberId = 1L;
-
-        when(oAuthArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(parseMemberIdFromTokenInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(loginValidCheckerInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(authArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(authArgumentResolver.resolveArgument(any(), any(), any(), any())).thenReturn(memberId);
+        String bearerToken = "Bearer token";
 
         Body body = BodyFixture.일반_body_생성();
         Location location = LocationFixture.일반_위치_생성();
@@ -55,10 +53,11 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
 
         Profile savedProfile = new Profile(memberId, body, location, position, job);
 
-        when(profileService.findByMemberId(memberId)).thenReturn(savedProfile);
+        when(profileService.findByMemberId(any())).thenReturn(savedProfile);
 
         // when & then
-        mockMvc.perform(get("/api/info/profile"))
+        mockMvc.perform(get("/api/info/profile")
+                        .header(AUTHORIZATION, bearerToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.age").value(body.getAge()))
                 .andExpect(jsonPath("$.height").value(body.getHeight()))
@@ -70,6 +69,9 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
                 .andExpect(jsonPath("$.job").value(job.getJob()))
                 .andDo(print())
                 .andDo(customDocument("search_profile",
+                        requestHeaders(
+                                headerWithName("Authorization").description("유저 토큰 정보")
+                        ),
                         responseFields(
                                 fieldWithPath("age").description("나이"),
                                 fieldWithPath("height").description("키"),

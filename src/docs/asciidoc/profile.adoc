@@ -11,7 +11,7 @@
 
 ==== 요청
 include::{snippets}/profile-controller-web-mvc-test/search_profile/http-request.adoc[]
-
+include::{snippets}/profile-controller-web-mvc-test/search_profile/request-headers.adoc[]
 ==== 응답
 include::{snippets}/profile-controller-web-mvc-test/search_profile/http-response.adoc[]
 include::{snippets}/profile-controller-web-mvc-test/search_profile/response-fields.adoc[]

@@ -13,7 +13,11 @@ public class HobbyFakeRepository implements HobbyRepository {
 
     @Override
     public void save(final Hobby hobby) {
-        Hobby newHobby = new Hobby(hobby.getMemberId(), hobby.getHobbyName());
+        Hobby newHobby = Hobby.builder()
+                .id(id)
+                .memberId(hobby.getMemberId())
+                .hobbyName(hobby.getHobbyName())
+                .build();
         map.put(id, newHobby);
         id++;
     }

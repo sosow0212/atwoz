@@ -1,7 +1,6 @@
 package com.atwoz.member.ui.info;
 
 import com.atwoz.member.application.info.style.StyleService;
-import com.atwoz.member.domain.info.style.Style;
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
 import com.atwoz.member.ui.info.dto.StyleSearchResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +21,7 @@ public class StyleController {
     public ResponseEntity<List<StyleSearchResponse>> findMemberStyles(@AuthMember final Long memberId) {
         List<StyleSearchResponse> styles = styleService.findMemberStyles(memberId)
                 .stream()
-                .map(Style::getStyleName)
-                .map(styleName -> new StyleSearchResponse(styleName.getName()))
+                .map(StyleSearchResponse::from)
                 .toList();
 
         return ResponseEntity.ok()

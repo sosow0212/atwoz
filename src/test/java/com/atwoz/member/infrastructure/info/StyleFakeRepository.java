@@ -13,7 +13,11 @@ public class StyleFakeRepository implements StyleRepository {
 
     @Override
     public void save(final Style style) {
-        Style newStyle = new Style(style.getMemberId(), style.getStyleName());
+        Style newStyle = Style.builder()
+                .id(id)
+                .memberId(style.getMemberId())
+                .styleName(style.getStyleName())
+                .build();
         map.put(id, newStyle);
         id++;
     }

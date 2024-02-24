@@ -1,8 +1,9 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,12 +51,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_작성한다() throws Exception {
         // given
         Long memberId = 1L;
-
-        when(oAuthArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(parseMemberIdFromTokenInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(loginValidCheckerInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(authArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(authArgumentResolver.resolveArgument(any(), any(), any(), any())).thenReturn(memberId);
+        String bearerToken = "Bearer token";
 
         int birthYear = 2000;
         int height = 171;
@@ -101,11 +97,15 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
 
         // when & then
         mockMvc.perform(post("/api/info")
+                        .header(AUTHORIZATION, bearerToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(infoWriteRequest)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andDo(customDocument("write_info",
+                        requestHeaders(
+                                headerWithName("Authorization").description("유저 토큰 정보")
+                        ),
                         requestFields(
                                 fieldWithPath("profile.birthYear").description("출생년도"),
                                 fieldWithPath("profile.height").description("키"),

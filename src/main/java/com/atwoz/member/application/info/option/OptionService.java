@@ -19,7 +19,7 @@ public class OptionService {
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
         Option newOption = optionFactory.fromRequest(memberId, request);
-        if (!isMemberOptionExist(memberId)) {
+        if (!optionRepository.isExistMemberOption(memberId)) {
             optionRepository.save(newOption);
             return;
         }
@@ -31,10 +31,6 @@ public class OptionService {
                 newOption.getMbti(),
                 newOption.getGraduate()
         );
-    }
-
-    private boolean isMemberOptionExist(final Long memberId) {
-        return optionRepository.isExistMemberOption(memberId);
     }
 
     public Option findByMemberId(final Long memberId) {

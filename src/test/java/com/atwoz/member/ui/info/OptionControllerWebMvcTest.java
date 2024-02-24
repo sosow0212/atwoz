@@ -3,6 +3,9 @@ package com.atwoz.member.ui.info;
 import static com.atwoz.helper.RestDocsHelper.customDocument;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,12 +41,7 @@ class OptionControllerWebMvcTest extends MockBeanInjection {
     void 회원의_option을_조회한다() throws Exception {
         // given
         Long memberId = 1L;
-
-        when(oAuthArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(parseMemberIdFromTokenInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(loginValidCheckerInterceptor.preHandle(any(), any(), any())).thenReturn(true);
-        when(authArgumentResolver.supportsParameter(any())).thenReturn(true);
-        when(authArgumentResolver.resolveArgument(any(), any(), any(), any())).thenReturn(memberId);
+        String bearerToken = "Bearer token";
 
         Smoke smoke = Smoke.NEVER;
         Religion religion = Religion.CHRIST;
@@ -52,10 +50,11 @@ class OptionControllerWebMvcTest extends MockBeanInjection {
         Graduate graduate = Graduate.SEOUL_FOURTH;
         Option savedOption = new Option(memberId, smoke, religion, drink, mbti, graduate);
 
-        when(optionService.findByMemberId(memberId)).thenReturn(savedOption);
+        when(optionService.findByMemberId(any())).thenReturn(savedOption);
 
         // when & then
-        mockMvc.perform(get("/api/info/option"))
+        mockMvc.perform(get("/api/info/option")
+                        .header(AUTHORIZATION, bearerToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.drink").value("전혀 마시지 않음"))
                 .andExpect(jsonPath("$.graduate").value("서울 4년제"))
@@ -64,6 +63,9 @@ class OptionControllerWebMvcTest extends MockBeanInjection {
                 .andExpect(jsonPath("$.mbti").value("INFJ"))
                 .andDo(print())
                 .andDo(customDocument("search_option",
+                        requestHeaders(
+                                headerWithName("Authorization").description("유저 토큰 정보")
+                        ),
                         responseFields(
                                 fieldWithPath("drink").description("음주 단계"),
                                 fieldWithPath("graduate").description("최종 학력"),

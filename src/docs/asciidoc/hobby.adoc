@@ -11,7 +11,7 @@
 
 ==== 요청
 include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/http-request.adoc[]
-
+include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/request-headers.adoc[]
 ==== 응답
 include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/http-response.adoc[]
 include::{snippets}/hobby-controller-web-mvc-test/search_hobbies/response-fields.adoc[]

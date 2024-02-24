@@ -8,8 +8,6 @@ import com.atwoz.member.application.event.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,21 +20,27 @@ public class InfoService {
 
     @Transactional
     public void writeProfile(final Long memberId, final InfoWriteRequest request) {
-        ProfileWriteRequest profileWriteRequest = request.profile();
-        OptionWriteRequest optionWriteRequest = request.option();
-        List<String> hobbyNames = request.hobbies()
-                .stream()
-                .map(HobbyWriteRequest::hobby)
-                .toList();
-        List<String> styleNames = request.styles()
-                .stream()
-                .map(StyleWriteRequest::style)
-                .toList();
+        List<String> hobbyNames = extractHobbyNamesFromInfoWriteRequest(request);
+        List<String> styleNames = extractStyleNamesFromInfoWriteRequest(request);
 
-        Events.raise(new ProfileWroteEvent(memberId, profileWriteRequest));
-        Events.raise(new OptionWroteEvent(memberId, optionWriteRequest));
+        Events.raise(new ProfileWroteEvent(memberId, request.profile()));
+        Events.raise(new OptionWroteEvent(memberId, request.option()));
 
         Events.raise(new HobbyWroteEvent(memberId, hobbyNames));
         Events.raise(new StyleWroteEvent(memberId, styleNames));
+    }
+
+    private List<String> extractHobbyNamesFromInfoWriteRequest(final InfoWriteRequest request) {
+        return request.hobbies()
+                .stream()
+                .map(HobbyWriteRequest::hobby)
+                .toList();
+    }
+
+    private List<String> extractStyleNamesFromInfoWriteRequest(final InfoWriteRequest request) {
+        return request.styles()
+                .stream()
+                .map(StyleWriteRequest::style)
+                .toList();
     }
 }

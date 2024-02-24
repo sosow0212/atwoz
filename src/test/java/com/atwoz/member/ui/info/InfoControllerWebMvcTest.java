@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.info.InfoService;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
@@ -17,10 +18,6 @@ import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.LocationWriteRequest;
 import com.atwoz.member.application.info.dto.profile.PositionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
-import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
-import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
-import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -40,7 +37,7 @@ import java.util.List;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(InfoController.class)
-class InfoControllerWebMvcTest {
+class InfoControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private MockMvc mockMvc;
@@ -50,18 +47,6 @@ class InfoControllerWebMvcTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @MockBean
-    private AuthArgumentResolver authArgumentResolver;
-
-    @MockBean
-    private ParseMemberIdFromTokenInterceptor parseMemberIdFromTokenInterceptor;
-
-    @MockBean
-    private LoginValidCheckerInterceptor loginValidCheckerInterceptor;
-
-    @MockBean
-    private OAuthArgumentResolver oAuthArgumentResolver;
 
     @Test
     void 회원_정보를_작성한다() throws Exception {

@@ -10,13 +10,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.atwoz.member.application.info.style.StyleService;
+import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.domain.info.style.Style;
 import com.atwoz.member.domain.info.style.StyleName;
-import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
-import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
-import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
-import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -33,25 +29,10 @@ import java.util.List;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(StyleController.class)
-class StyleControllerWebMvcTest {
+class StyleControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private StyleService styleService;
-
-    @MockBean
-    private AuthArgumentResolver authArgumentResolver;
-
-    @MockBean
-    private ParseMemberIdFromTokenInterceptor parseMemberIdFromTokenInterceptor;
-
-    @MockBean
-    private LoginValidCheckerInterceptor loginValidCheckerInterceptor;
-
-    @MockBean
-    private OAuthArgumentResolver oAuthArgumentResolver;
 
     @Test
     void 회원의_스타일을_조회한다() throws Exception {

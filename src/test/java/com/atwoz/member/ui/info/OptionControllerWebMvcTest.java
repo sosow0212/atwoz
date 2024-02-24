@@ -10,17 +10,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.atwoz.member.application.info.option.OptionService;
+import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.domain.info.option.Drink;
 import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
-import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
-import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
-import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -36,25 +32,10 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(OptionController.class)
-class OptionControllerWebMvcTest {
+class OptionControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private OptionService optionService;
-
-    @MockBean
-    private AuthArgumentResolver authArgumentResolver;
-
-    @MockBean
-    private ParseMemberIdFromTokenInterceptor parseMemberIdFromTokenInterceptor;
-
-    @MockBean
-    private LoginValidCheckerInterceptor loginValidCheckerInterceptor;
-
-    @MockBean
-    private OAuthArgumentResolver oAuthArgumentResolver;
 
     @Test
     void 회원의_option을_조회한다() throws Exception {

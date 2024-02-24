@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.atwoz.member.application.info.profile.ProfileService;
+import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.domain.info.profile.Body;
 import com.atwoz.member.domain.info.profile.Job;
 import com.atwoz.member.domain.info.profile.Location;
@@ -20,10 +20,6 @@ import com.atwoz.member.fixture.info.BodyFixture;
 import com.atwoz.member.fixture.info.JobFixture;
 import com.atwoz.member.fixture.info.LocationFixture;
 import com.atwoz.member.fixture.info.PositionFixture;
-import com.atwoz.member.ui.auth.interceptor.LoginValidCheckerInterceptor;
-import com.atwoz.member.ui.auth.interceptor.ParseMemberIdFromTokenInterceptor;
-import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
-import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -39,25 +35,10 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureRestDocs
 @MockBean(JpaMetamodelMappingContext.class)
 @WebMvcTest(ProfileController.class)
-class ProfileControllerWebMvcTest {
+class ProfileControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private ProfileService profileService;
-
-    @MockBean
-    private AuthArgumentResolver authArgumentResolver;
-
-    @MockBean
-    private ParseMemberIdFromTokenInterceptor parseMemberIdFromTokenInterceptor;
-
-    @MockBean
-    private LoginValidCheckerInterceptor loginValidCheckerInterceptor;
-
-    @MockBean
-    private OAuthArgumentResolver oAuthArgumentResolver;
 
     @Test
     void 회원의_profile을_조회한다() throws Exception {

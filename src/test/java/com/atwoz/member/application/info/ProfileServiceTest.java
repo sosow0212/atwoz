@@ -47,7 +47,7 @@ class ProfileServiceTest {
         String gender = "남성";
         BigDecimal latitude = BigDecimal.valueOf(70.5);
         BigDecimal longitude = BigDecimal.valueOf(140.3);
-        String job = "개발자";
+        String job = "A001";
         LocationWriteRequest location = new LocationWriteRequest("서울시", "강남구");
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
         ProfileWriteRequest request = new ProfileWriteRequest(birthYear, height, gender, location, position, job);
@@ -73,7 +73,7 @@ class ProfileServiceTest {
         String gender = "남성";
         BigDecimal latitude = BigDecimal.valueOf(70.5);
         BigDecimal longitude = BigDecimal.valueOf(140.3);
-        String job = "개발자";
+        String job = "A001";
         LocationWriteRequest location = new LocationWriteRequest("서울시", "강남구");
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
         ProfileWriteRequest request = new ProfileWriteRequest(birthYear, height, gender, location, position, job);

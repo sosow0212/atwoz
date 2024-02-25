@@ -66,7 +66,7 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
                 .andExpect(jsonPath("$.location.sector").value(location.getSector()))
                 .andExpect(jsonPath("$.position.latitude").value(position.getLatitude()))
                 .andExpect(jsonPath("$.position.longitude").value(position.getLongitude()))
-                .andExpect(jsonPath("$.job").value(job.getJob()))
+                .andExpect(jsonPath("$.job").value(job.getCode()))
                 .andDo(print())
                 .andDo(customDocument("search_profile",
                         requestHeaders(
@@ -80,7 +80,7 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
                                 fieldWithPath("location.sector").description("위치 (구)"),
                                 fieldWithPath("position.latitude").description("위도"),
                                 fieldWithPath("position.longitude").description("경도"),
-                                fieldWithPath("job").description("직업")
+                                fieldWithPath("job").description("직업 코드")
                         )
                 ));
     }

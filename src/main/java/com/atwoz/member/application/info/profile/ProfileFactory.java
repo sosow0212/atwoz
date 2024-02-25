@@ -44,7 +44,7 @@ public class ProfileFactory {
         return new Position(request.latitude(), request.longitude());
     }
 
-    private Job createJob(final String job) {
-        return new Job(job);
+    private Job createJob(final String code) {
+        return Job.findBy(code);
     }
 }

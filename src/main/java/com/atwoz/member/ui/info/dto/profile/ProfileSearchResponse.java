@@ -37,7 +37,7 @@ public record ProfileSearchResponse(
                 gender.getName(),
                 LocationSearchResponse.from(location),
                 PositionSearchResponse.from(position),
-                job.getJob()
+                job.getCode()
         );
     }
 }

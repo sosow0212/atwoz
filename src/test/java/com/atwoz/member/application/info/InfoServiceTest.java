@@ -53,7 +53,7 @@ class InfoServiceTest {
         BigDecimal latitude = BigDecimal.valueOf(70.5);
         BigDecimal longitude = BigDecimal.valueOf(140.3);
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
-        String job = "개발자";
+        String job = "A001";
         ProfileWriteRequest profileWriteRequest = new ProfileWriteRequest(
                 birthYear,
                 height,

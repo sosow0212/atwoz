@@ -18,56 +18,56 @@ class StyleNameTest {
     @Test
     void 스타일이_존재하면_정상적으로_가져온다() {
         // given
-        List<String> styleNames = List.of("패션 센스", "다정다감", "유머 감각");
-        List<StyleName> expectedStyleNames = List.of(StyleName.FASHION, StyleName.FRIENDLY, StyleName.FUNNY);
+        List<String> styleCodes = List.of("C001", "C002", "C003");
+        List<StyleName> expectedStyles = List.of(StyleName.FASHION, StyleName.FRIENDLY, StyleName.FUNNY);
 
         // when
-        List<StyleName> findStyleNames = StyleName.findAllByNames(styleNames);
+        List<StyleName> findStyles = StyleName.findAllByCodes(styleCodes);
 
         // then
         assertSoftly(softly -> {
-            softly.assertThat(findStyleNames.size()).isEqualTo(styleNames.size());
-            softly.assertThat(findStyleNames).containsAll(expectedStyleNames);
+            softly.assertThat(findStyles.size()).isEqualTo(styleCodes.size());
+            softly.assertThat(findStyles).containsAll(expectedStyles);
         });
     }
 
     @Test
     void 스타일_갯수가_초과되면_예외가_발생한다() {
         // given
-        List<String> styleNames = List.of("패션 센스", "다정다감", "유머 감각", "좋은 비율");
+        List<String> styleCodes = List.of("C001", "C002", "C003", "C004");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByNames(styleNames))
+        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleSizeException.class);
     }
 
     @Test
     void 아예_선택하지_않으면_예외가_발생한다() {
         // given
-        List<String> styleNames = List.of();
+        List<String> styleCodes = List.of();
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByNames(styleNames))
+        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleSizeException.class);
     }
 
     @Test
     void 없는_스타일을_선택하면_예외가_발생한다() {
         // given
-        List<String> styleNames = List.of("hello");
+        List<String> styleCodes = List.of("ABCD");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByNames(styleNames))
+        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleNotFoundException.class);
     }
 
     @Test
     void 중복_선택하면_예외가_발생한다() {
         // given
-        List<String> styleNames = List.of("패션 센스", "패션 센스");
+        List<String> styleCodes = List.of("C001", "C001");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByNames(styleNames))
+        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleDuplicateException.class);
     }
 }

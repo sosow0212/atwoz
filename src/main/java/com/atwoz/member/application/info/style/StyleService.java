@@ -18,7 +18,7 @@ public class StyleService {
     @Transactional
     public void saveMemberStyles(final Long memberId, final List<String> styleNames) {
         deleteMemberStyles(memberId);
-        List<Style> memberStyles = StyleName.findAllByNames(styleNames)
+        List<Style> memberStyles = StyleName.findAllByCodes(styleNames)
                 .stream()
                 .map(styleName -> new Style(memberId, styleName))
                 .toList();

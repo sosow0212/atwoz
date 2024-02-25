@@ -29,10 +29,10 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_저장한다() {
         // given
         Long memberId = 1L;
-        List<String> styleNames = List.of("긍정적", "유머 감각");
+        List<String> styleCodes = List.of("C012", "C003");
 
         // when
-        styleService.saveMemberStyles(memberId, styleNames);
+        styleService.saveMemberStyles(memberId, styleCodes);
 
         // then
         List<Style> saveStyles = styleRepository.findAllByMemberId(memberId);
@@ -43,8 +43,8 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_삭제한다() {
         // given
         Long memberId = 1L;
-        List<String> styleNames = List.of("긍정적", "유머 감각");
-        styleService.saveMemberStyles(memberId, styleNames);
+        List<String> styleCodes = List.of("C012", "C003");
+        styleService.saveMemberStyles(memberId, styleCodes);
 
         // when
         styleService.deleteMemberStyles(memberId);
@@ -57,8 +57,8 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_조회한다() {
         // given
         Long memberId = 1L;
-        List<String> styleNames = List.of("긍정적", "유머 감각");
-        styleService.saveMemberStyles(memberId, styleNames);
+        List<String> styleCodes = List.of("C012", "C003");
+        styleService.saveMemberStyles(memberId, styleCodes);
 
         // when
         List<Style> memberStyles = styleService.findMemberStyles(memberId);

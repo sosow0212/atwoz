@@ -82,8 +82,8 @@ class InfoServiceTest {
         );
 
         List<StyleWriteRequest> styleWriteRequests = List.of(
-            new StyleWriteRequest("긍정적"),
-            new StyleWriteRequest("예의 바름")
+            new StyleWriteRequest("C012"),
+            new StyleWriteRequest("C021")
         );
 
         InfoWriteRequest request = new InfoWriteRequest(

@@ -100,7 +100,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                         .header(AUTHORIZATION, bearerToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(infoWriteRequest)))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andDo(print())
                 .andDo(customDocument("write_info",
                         requestHeaders(

@@ -5,6 +5,7 @@ import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,7 @@ public class InfoController {
     public ResponseEntity<Void> writeInfo(@AuthMember final Long memberId,
                                           @Valid @RequestBody final InfoWriteRequest request) {
         infoService.writeProfile(memberId, request);
-        return ResponseEntity.ok()
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
     }
 }

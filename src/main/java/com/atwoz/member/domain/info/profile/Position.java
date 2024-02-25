@@ -1,6 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.exception.exceptions.info.profile.ProfileRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -32,13 +33,13 @@ public class Position {
 
     private static void validateLatitude(final BigDecimal latitude) {
         if (latitude.compareTo(MIN_LATITUDE) < 0 || latitude.compareTo(MAX_LATITUDE) > 0) {
-            throw new ProfileRangeException();
+            throw new LatitudeRangeException();
         }
     }
 
     private static void validateLongitude(final BigDecimal longitude) {
         if (longitude.compareTo(MIN_LONGITUDE) < 0 || longitude.compareTo(MAX_LONGITUDE) > 0) {
-            throw new ProfileRangeException();
+            throw new LongitudeRangeException();
         }
     }
 }

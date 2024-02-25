@@ -1,6 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.exception.exceptions.info.profile.ProfileRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
@@ -41,14 +42,14 @@ public class Body {
 
     private void validateHeight(final int height) {
         if (height < MIN_HEIGHT || MAX_HEIGHT < height) {
-            throw new ProfileRangeException();
+            throw new HeightRangeException();
         }
     }
 
     private int calculateAgeFromYear(final int currentYear, final int birthYear) {
         int memberAge = currentYear - birthYear;
         if (memberAge < MIN_AGE || MAX_AGE < memberAge) {
-            throw new ProfileRangeException();
+            throw new AgeRangeException();
         }
         return memberAge;
     }

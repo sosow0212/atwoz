@@ -14,7 +14,10 @@ import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
-import com.atwoz.member.exception.exceptions.info.profile.ProfileRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
 import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
@@ -136,8 +139,23 @@ public class MemberExceptionHandler {
         return getNotFoundResponse(e);
     }
 
-    @ExceptionHandler(ProfileRangeException.class)
-    public ResponseEntity<String> handleProfileRangeException(final ProfileRangeException e) {
+    @ExceptionHandler(AgeRangeException.class)
+    public ResponseEntity<String> handleAgeRangeException(final AgeRangeException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(HeightRangeException.class)
+    public ResponseEntity<String> handleHeightRangeException(final HeightRangeException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(LatitudeRangeException.class)
+    public ResponseEntity<String> handleLatitudeRangeException(final LatitudeRangeException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(LongitudeRangeException.class)
+    public ResponseEntity<String> handleLongitudeRangeException(final LongitudeRangeException e) {
         return getBadRequest(e);
     }
 

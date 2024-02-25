@@ -51,15 +51,15 @@ class HobbyControllerWebMvcTest extends MockBeanInjection {
                         .header(AUTHORIZATION, bearerToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].hobby").value("댄스"))
-                .andExpect(jsonPath("$[1].hobby").value("애니메이션"))
+                .andExpect(jsonPath("$[0].hobby").value(HobbyName.DANCE.getCode()))
+                .andExpect(jsonPath("$[1].hobby").value(HobbyName.ANIMATION.getCode()))
                 .andDo(print())
                 .andDo(customDocument("search_hobbies",
                         requestHeaders(
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),
                         responseFields(
-                                fieldWithPath("[].hobby").description("취미 이름")
+                                fieldWithPath("[].hobby").description("취미 코드")
                         )
                 ));
     }

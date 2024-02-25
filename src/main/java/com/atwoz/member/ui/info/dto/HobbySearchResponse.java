@@ -10,6 +10,6 @@ public record HobbySearchResponse(
 
     public static HobbySearchResponse from(final Hobby hobby) {
         HobbyName hobbyName = hobby.getHobbyName();
-        return new HobbySearchResponse(hobbyName.getName());
+        return new HobbySearchResponse(hobbyName.getCode());
     }
 }

@@ -10,6 +10,6 @@ public record StyleSearchResponse(
 
     public static StyleSearchResponse from(final Style style) {
         StyleName styleName = style.getStyleName();
-        return new StyleSearchResponse(styleName.getName());
+        return new StyleSearchResponse(styleName.getCode());
     }
 }

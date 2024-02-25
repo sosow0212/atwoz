@@ -51,15 +51,15 @@ class StyleControllerWebMvcTest extends MockBeanInjection {
                         .header(AUTHORIZATION, bearerToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].style").value("긍정적"))
-                .andExpect(jsonPath("$[1].style").value("진중함"))
+                .andExpect(jsonPath("$[0].style").value(StyleName.POSITIVE.getCode()))
+                .andExpect(jsonPath("$[1].style").value(StyleName.GENTLE.getCode()))
                 .andDo(print())
                 .andDo(customDocument("search_styles",
                         requestHeaders(
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),
                         responseFields(
-                                fieldWithPath("[].style").description("스타일 이름")
+                                fieldWithPath("[].style").description("스타일 코드")
                         )
                 ));
     }

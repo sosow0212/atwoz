@@ -77,8 +77,8 @@ class InfoServiceTest {
         );
 
         List<HobbyWriteRequest> hobbyWriteRequests = List.of(
-            new HobbyWriteRequest("노래"),
-            new HobbyWriteRequest("댄스")
+            new HobbyWriteRequest("B006"),
+            new HobbyWriteRequest("B007")
         );
 
         List<StyleWriteRequest> styleWriteRequests = List.of(

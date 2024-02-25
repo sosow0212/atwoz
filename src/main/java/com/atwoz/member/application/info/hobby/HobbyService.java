@@ -18,7 +18,7 @@ public class HobbyService {
     @Transactional
     public void saveMemberHobbies(final Long memberId, final List<String> hobbyNames) {
         deleteMemberHobbies(memberId);
-        List<Hobby> memberHobbies = HobbyName.findAllByNames(hobbyNames)
+        List<Hobby> memberHobbies = HobbyName.findAllByCodes(hobbyNames)
                 .stream()
                 .map(hobbyName -> new Hobby(memberId, hobbyName))
                 .toList();

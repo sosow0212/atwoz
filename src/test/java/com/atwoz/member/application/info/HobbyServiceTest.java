@@ -29,10 +29,10 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_저장한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyNames = List.of("자전거", "애니메이션");
+        List<String> hobbyCodes = List.of("B028", "B020");
 
         // when
-        hobbyService.saveMemberHobbies(memberId, hobbyNames);
+        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // then
         List<Hobby> saveHobbies = hobbyRepository.findAllByMemberId(memberId);
@@ -43,8 +43,8 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_삭제한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyNames = List.of("자전거", "애니메이션");
-        hobbyService.saveMemberHobbies(memberId, hobbyNames);
+        List<String> hobbyCodes = List.of("B028", "B020");
+        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when
         hobbyService.deleteMemberHobbies(memberId);
@@ -57,8 +57,8 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_조회한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyNames = List.of("자전거", "애니메이션");
-        hobbyService.saveMemberHobbies(memberId, hobbyNames);
+        List<String> hobbyCodes = List.of("B028", "B020");
+        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when
         List<Hobby> memberHobbies = hobbyService.findMemberHobbies(memberId);

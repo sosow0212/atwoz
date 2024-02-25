@@ -18,56 +18,56 @@ class HobbyNameTest {
     @Test
     void 취미가_존재하면_정상적으로_가져온다() {
         // given
-        List<String> hobbyNames = List.of("국내여행 · 해외여행", "골프", "댄스");
-        List<HobbyName> expectedHobbyNames = List.of(HobbyName.TRIP, HobbyName.GOLF, HobbyName.DANCE);
+        List<String> hobbyCodes = List.of("B001", "B002", "B007");
+        List<HobbyName> expectedHobbies = List.of(HobbyName.TRIP, HobbyName.GOLF, HobbyName.DANCE);
 
         // when
-        List<HobbyName> findHobbyNames = HobbyName.findAllByNames(hobbyNames);
+        List<HobbyName> findHobbies = HobbyName.findAllByCodes(hobbyCodes);
 
         // then
         assertSoftly(softly -> {
-            softly.assertThat(findHobbyNames.size()).isEqualTo(hobbyNames.size());
-            softly.assertThat(findHobbyNames).containsAll(expectedHobbyNames);
+            softly.assertThat(findHobbies.size()).isEqualTo(hobbyCodes.size());
+            softly.assertThat(findHobbies).containsAll(expectedHobbies);
         });
     }
 
     @Test
     void 취미_갯수가_초과되면_예외가_발생한다() {
         // given
-        List<String> hobbyNames = List.of("국내여행 · 해외여행", "골프", "댄스", "쇼핑");
+        List<String> hobbyCodes = List.of("B001", "B002", "B007", "B017");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByNames(hobbyNames))
+        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbySizeException.class);
     }
 
     @Test
     void 아예_선택하지_않으면_예외가_발생한다() {
         // given
-        List<String> hobbyNames = List.of();
+        List<String> hobbyCodes = List.of();
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByNames(hobbyNames))
+        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbySizeException.class);
     }
 
     @Test
     void 없는_취미를_선택하면_예외가_발생한다() {
         // given
-        List<String> hobbyNames = List.of("hello");
+        List<String> hobbyCodes = List.of("ABCD");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByNames(hobbyNames))
+        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbyNotFoundException.class);
     }
 
     @Test
     void 중복_선택하면_예외가_발생한다() {
         // given
-        List<String> hobbyNames = List.of("댄스", "댄스");
+        List<String> hobbyCodes = List.of("B001", "B001");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByNames(hobbyNames))
+        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbyDuplicateException.class);
     }
 }

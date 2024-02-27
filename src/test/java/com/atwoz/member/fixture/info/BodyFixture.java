@@ -7,11 +7,11 @@ import com.atwoz.member.infrastructure.info.FakeYearManager;
 
 public class BodyFixture {
 
-    private static final int BIRTH_YEAR = 2000;
-    private static final int HEIGHT = 171;
-
     public static Body 일반_body_생성() {
         YearManager yearManager = new FakeYearManager();
-        return new Body(yearManager, BIRTH_YEAR, HEIGHT, Gender.MALE);
+        int birthYear = 2000;
+        int height = 171;
+
+        return new Body(yearManager, birthYear, height, Gender.MALE);
     }
 }

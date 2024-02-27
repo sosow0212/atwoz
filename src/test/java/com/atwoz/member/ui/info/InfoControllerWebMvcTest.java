@@ -1,6 +1,12 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
+import static com.atwoz.member.domain.info.hobby.HobbyName.COOK;
+import static com.atwoz.member.domain.info.hobby.HobbyName.WINE;
+import static com.atwoz.member.domain.info.style.StyleName.GENTLE;
+import static com.atwoz.member.domain.info.style.StyleName.POSITIVE;
+import static com.atwoz.member.fixture.info.dto.OptionWriteRequestFixture.옵션_생성_요청;
+import static com.atwoz.member.fixture.info.dto.ProfileWriteRequestFixture.프로필_생성_요청;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
 import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
@@ -16,8 +22,6 @@ import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.dto.profile.LocationWriteRequest;
-import com.atwoz.member.application.info.dto.profile.PositionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -29,7 +33,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import java.math.BigDecimal;
 import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -50,47 +53,19 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     @Test
     void 회원_정보를_작성한다() throws Exception {
         // given
-        Long memberId = 1L;
         String bearerToken = "Bearer token";
 
-        int birthYear = 2000;
-        int height = 171;
-        String gender = "남성";
-        LocationWriteRequest locationWriteRequest = new LocationWriteRequest("서울시", "강남구");
-        BigDecimal latitude = BigDecimal.valueOf(70.3);
-        BigDecimal longitude = BigDecimal.valueOf(140.3);
-        PositionWriteRequest positionWriteRequest = new PositionWriteRequest(latitude, longitude);
-        String job = "개발자";
-        ProfileWriteRequest profileWriteRequest = new ProfileWriteRequest(
-                birthYear,
-                height,
-                gender,
-                locationWriteRequest,
-                positionWriteRequest,
-                job
-        );
-
-        String drink = "전혀 마시지 않음";
-        String graduate = "서울 4년제";
-        String religion = "기독교";
-        String smoke = "비흡연";
-        String mbti = "INFJ";
-        OptionWriteRequest optionWriteRequest = new OptionWriteRequest(
-                drink,
-                graduate,
-                religion,
-                smoke,
-                mbti
-        );
+        ProfileWriteRequest profileWriteRequest = 프로필_생성_요청();
+        OptionWriteRequest optionWriteRequest = 옵션_생성_요청();
 
         List<HobbyWriteRequest> hobbies = List.of(
-                new HobbyWriteRequest("와인"),
-                new HobbyWriteRequest("요리")
+                new HobbyWriteRequest(WINE.getCode()),
+                new HobbyWriteRequest(COOK.getCode())
         );
 
         List<StyleWriteRequest> styles = List.of(
-                new StyleWriteRequest("긍정적"),
-                new StyleWriteRequest("진중함")
+                new StyleWriteRequest(POSITIVE.getCode()),
+                new StyleWriteRequest(GENTLE.getCode())
         );
 
         InfoWriteRequest infoWriteRequest = new InfoWriteRequest(profileWriteRequest, optionWriteRequest, hobbies, styles);
@@ -121,9 +96,9 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                                 fieldWithPath("option.smoke").description("흡연 단계"),
                                 fieldWithPath("option.mbti").description("MBTI"),
                                 fieldWithPath("hobbies").description("취미 목록"),
-                                fieldWithPath("hobbies[].hobby").description("취미 이름"),
+                                fieldWithPath("hobbies[].hobby").description("취미 코드"),
                                 fieldWithPath("styles").description("스타일 목록"),
-                                fieldWithPath("styles[].style").description("스타일 이름")
+                                fieldWithPath("styles[].style").description("스타일 코드")
                         )
                 ));
     }

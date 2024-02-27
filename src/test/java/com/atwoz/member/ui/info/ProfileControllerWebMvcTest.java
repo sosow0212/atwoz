@@ -1,6 +1,10 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
+import static com.atwoz.member.fixture.info.BodyFixture.일반_body_생성;
+import static com.atwoz.member.fixture.info.JobFixture.일반_직업_생성;
+import static com.atwoz.member.fixture.info.LocationFixture.일반_위치_생성;
+import static com.atwoz.member.fixture.info.PositionFixture.일반_좌표_생성;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
@@ -19,10 +23,6 @@ import com.atwoz.member.domain.info.profile.Job;
 import com.atwoz.member.domain.info.profile.Location;
 import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
-import com.atwoz.member.fixture.info.BodyFixture;
-import com.atwoz.member.fixture.info.JobFixture;
-import com.atwoz.member.fixture.info.LocationFixture;
-import com.atwoz.member.fixture.info.PositionFixture;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -46,10 +46,10 @@ class ProfileControllerWebMvcTest extends MockBeanInjection {
         Long memberId = 1L;
         String bearerToken = "Bearer token";
 
-        Body body = BodyFixture.일반_body_생성();
-        Location location = LocationFixture.일반_위치_생성();
-        Position position = PositionFixture.일반_좌표_생성();
-        Job job = JobFixture.일반_직업_생성();
+        Body body = 일반_body_생성();
+        Location location = 일반_위치_생성();
+        Position position = 일반_좌표_생성();
+        Job job = 일반_직업_생성();
 
         Profile savedProfile = new Profile(memberId, body, location, position, job);
 

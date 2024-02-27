@@ -10,5 +10,5 @@ import java.util.List;
 public class HobbyWroteEvent extends Event {
 
     private final Long memberId;
-    private final List<String> hobbyNames;
+    private final List<String> hobbyCodes;
 }

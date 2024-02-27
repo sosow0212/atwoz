@@ -15,8 +15,8 @@ public class HobbyEventHandler {
     @EventListener
     public void writeHobbies(final HobbyWroteEvent event) {
         Long memberId = event.getMemberId();
-        List<String> hobbyNames = event.getHobbyNames();
+        List<String> hobbyCodes = event.getHobbyCodes();
 
-        hobbyService.saveMemberHobbies(memberId, hobbyNames);
+        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
     }
 }

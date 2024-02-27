@@ -15,8 +15,8 @@ public class StyleEventHandler {
     @EventListener
     public void writeHobbies(final StyleWroteEvent event) {
         Long memberId = event.getMemberId();
-        List<String> styleNames = event.getStyleNames();
+        List<String> styleCodes = event.getStyleCodes();
 
-        styleService.saveMemberStyles(memberId, styleNames);
+        styleService.saveMemberStyles(memberId, styleCodes);
     }
 }

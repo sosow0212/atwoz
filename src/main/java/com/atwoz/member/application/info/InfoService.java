@@ -20,14 +20,14 @@ public class InfoService {
 
     @Transactional
     public void writeInfo(final Long memberId, final InfoWriteRequest request) {
-        List<String> hobbyNames = extractHobbyNamesFromInfoWriteRequest(request);
-        List<String> styleNames = extractStyleNamesFromInfoWriteRequest(request);
+        List<String> hobbyCodes = extractHobbyNamesFromInfoWriteRequest(request);
+        List<String> styleCodes = extractStyleNamesFromInfoWriteRequest(request);
 
         Events.raise(new ProfileWroteEvent(memberId, request.profile()));
         Events.raise(new OptionWroteEvent(memberId, request.option()));
 
-        Events.raise(new HobbyWroteEvent(memberId, hobbyNames));
-        Events.raise(new StyleWroteEvent(memberId, styleNames));
+        Events.raise(new HobbyWroteEvent(memberId, hobbyCodes));
+        Events.raise(new StyleWroteEvent(memberId, styleCodes));
     }
 
     private List<String> extractHobbyNamesFromInfoWriteRequest(final InfoWriteRequest request) {

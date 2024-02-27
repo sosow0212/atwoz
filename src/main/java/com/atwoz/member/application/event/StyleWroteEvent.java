@@ -10,5 +10,5 @@ import java.util.List;
 public class StyleWroteEvent extends Event {
 
     private final Long memberId;
-    private final List<String> styleNames;
+    private final List<String> styleCodes;
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class InfoService {
 
     @Transactional
-    public void writeProfile(final Long memberId, final InfoWriteRequest request) {
+    public void writeInfo(final Long memberId, final InfoWriteRequest request) {
         List<String> hobbyNames = extractHobbyNamesFromInfoWriteRequest(request);
         List<String> styleNames = extractStyleNamesFromInfoWriteRequest(request);
 

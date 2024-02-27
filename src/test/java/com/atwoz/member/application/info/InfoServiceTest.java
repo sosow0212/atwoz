@@ -89,7 +89,7 @@ class InfoServiceTest {
 
 
         // when
-        infoService.writeProfile(memberId, request);
+        infoService.writeInfo(memberId, request);
 
         // then
         int profileWroteEventCount = (int) events.stream(ProfileWroteEvent.class).count();

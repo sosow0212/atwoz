@@ -22,7 +22,7 @@ public class InfoController {
     @PostMapping
     public ResponseEntity<Void> writeInfo(@AuthMember final Long memberId,
                                           @Valid @RequestBody final InfoWriteRequest request) {
-        infoService.writeProfile(memberId, request);
+        infoService.writeInfo(memberId, request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .build();
     }

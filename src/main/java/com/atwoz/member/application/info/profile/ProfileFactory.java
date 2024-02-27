@@ -10,24 +10,18 @@ import com.atwoz.member.domain.info.profile.Location;
 import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.YearManager;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
-@Component
 public class ProfileFactory {
 
-    private final YearManager yearManager;
-
-    public Profile fromRequest(final Long memberId, final ProfileWriteRequest request) {
-        Body body = createMemberBody(request);
+    public static Profile of(final Long memberId, final ProfileWriteRequest request, final YearManager yearManager) {
+        Body body = createMemberBody(request, yearManager);
         Location location = createLocation(request.location());
         Position position = createPosition(request.position());
         Job job = createJob(request.job());
         return new Profile(memberId, body, location, position, job);
     }
 
-    private Body createMemberBody(final ProfileWriteRequest request) {
+    private static Body createMemberBody(final ProfileWriteRequest request, final YearManager yearManager) {
         int currentYear = yearManager.getCurrentYear();
         int birthYear = request.birthYear();
         int height = request.height();
@@ -36,15 +30,15 @@ public class ProfileFactory {
         return new Body(currentYear, birthYear, height, gender);
     }
 
-    private Location createLocation(final LocationWriteRequest request) {
+    private static Location createLocation(final LocationWriteRequest request) {
         return new Location(request.city(), request.sector());
     }
 
-    private Position createPosition(final PositionWriteRequest request) {
+    private static Position createPosition(final PositionWriteRequest request) {
         return new Position(request.latitude(), request.longitude());
     }
 
-    private Job createJob(final String code) {
+    private static Job createJob(final String code) {
         return Job.findBy(code);
     }
 }

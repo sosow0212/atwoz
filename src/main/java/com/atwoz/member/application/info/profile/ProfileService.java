@@ -3,6 +3,7 @@ package com.atwoz.member.application.info.profile;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
+import com.atwoz.member.domain.info.profile.YearManager;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProfileService {
 
     private final ProfileRepository profileRepository;
-    private final ProfileFactory profileFactory;
+    private final YearManager yearManager;
 
     @Transactional
     public void writeProfile(final Long memberId, final ProfileWriteRequest request) {
-        Profile newProfile = profileFactory.fromRequest(memberId, request);
+        Profile newProfile = ProfileFactory.of(memberId, request, yearManager);
 
         if (!isMemberProfileExist(memberId)) {
             profileRepository.save(newProfile);

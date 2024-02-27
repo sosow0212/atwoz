@@ -22,13 +22,11 @@ class OptionServiceTest {
 
     private OptionService optionService;
     private OptionRepository optionRepository;
-    private OptionFactory optionFactory;
 
     @BeforeEach
     void init() {
-        optionFactory = new OptionFactory();
         optionRepository = new OptionFakeRepository();
-        optionService = new OptionService(optionRepository, optionFactory);
+        optionService = new OptionService(optionRepository);
     }
 
     @Test
@@ -42,7 +40,7 @@ class OptionServiceTest {
         String mbti = "INFJ";
 
         OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
-        Option expectedOption = optionFactory.fromRequest(memberId, request);
+        Option expectedOption = OptionFactory.of(memberId, request);
 
         // when
         optionService.writeOption(memberId, request);
@@ -68,7 +66,7 @@ class OptionServiceTest {
         OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
         
         optionService.writeOption(memberId, request);
-        Option expectedOption = optionFactory.fromRequest(memberId, request);
+        Option expectedOption = OptionFactory.of(memberId, request);
 
         // when
         Option memberOption = optionService.findByMemberId(memberId);

@@ -27,15 +27,13 @@ class ProfileServiceTest {
 
     private ProfileService profileService;
     private ProfileRepository profileRepository;
-    private ProfileFactory profileFactory;
     private YearManager yearManager;
 
     @BeforeEach
     void init() {
         profileRepository = new ProfileFakeRepository();
         yearManager = new FakeYearManager();
-        profileFactory = new ProfileFactory(yearManager);
-        profileService = new ProfileService(profileRepository, profileFactory);
+        profileService = new ProfileService(profileRepository, yearManager);
     }
 
     @Test
@@ -52,7 +50,7 @@ class ProfileServiceTest {
         PositionWriteRequest position = new PositionWriteRequest(latitude, longitude);
         ProfileWriteRequest request = new ProfileWriteRequest(birthYear, height, gender, location, position, job);
 
-        Profile expectedProfile = profileFactory.fromRequest(memberId, request);
+        Profile expectedProfile = ProfileFactory.of(memberId, request, yearManager);
 
         // when
         profileService.writeProfile(memberId, request);
@@ -79,7 +77,7 @@ class ProfileServiceTest {
         ProfileWriteRequest request = new ProfileWriteRequest(birthYear, height, gender, location, position, job);
 
         profileService.writeProfile(memberId, request);
-        Profile expectedProfile = profileFactory.fromRequest(memberId, request);
+        Profile expectedProfile = ProfileFactory.of(memberId, request, yearManager);
 
         // when
         Profile findProfile = profileService.findByMemberId(memberId);

@@ -1,5 +1,6 @@
 package com.atwoz.member.application.info;
 
+import static com.atwoz.member.fixture.info.dto.OptionWriteRequestFixture.옵션_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -33,13 +34,8 @@ class OptionServiceTest {
     void option을_저장한다() {
         // given
         Long memberId = 1L;
-        String drink = "전혀 마시지 않음";
-        String graduate = "서울 4년제";
-        String religion = "기독교";
-        String smoke = "비흡연";
-        String mbti = "INFJ";
 
-        OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
+        OptionWriteRequest request = 옵션_생성_요청();
         Option expectedOption = OptionFactory.of(memberId, request);
 
         // when
@@ -57,13 +53,8 @@ class OptionServiceTest {
     void option을_조회한다() {
         // given
         Long memberId = 1L;
-        String drink = "전혀 마시지 않음";
-        String graduate = "서울 4년제";
-        String religion = "기독교";
-        String smoke = "비흡연";
-        String mbti = "INFJ";
 
-        OptionWriteRequest request = new OptionWriteRequest(drink, graduate, religion, smoke, mbti);
+        OptionWriteRequest request = 옵션_생성_요청();
         
         optionService.writeOption(memberId, request);
         Option expectedOption = OptionFactory.of(memberId, request);

@@ -1,5 +1,7 @@
 package com.atwoz.member.application.info;
 
+import static com.atwoz.member.domain.info.hobby.HobbyName.COOK;
+import static com.atwoz.member.domain.info.hobby.HobbyName.WINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.atwoz.member.application.info.hobby.HobbyService;
@@ -29,7 +31,7 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_저장한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyCodes = List.of("B028", "B020");
+        List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
 
         // when
         hobbyService.saveMemberHobbies(memberId, hobbyCodes);
@@ -43,7 +45,7 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_삭제한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyCodes = List.of("B028", "B020");
+        List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
         hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when
@@ -57,7 +59,7 @@ class HobbyServiceTest {
     void 회원의_모든_취미를_조회한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyCodes = List.of("B028", "B020");
+        List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
         hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when

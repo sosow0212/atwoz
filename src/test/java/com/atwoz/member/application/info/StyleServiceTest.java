@@ -1,5 +1,7 @@
 package com.atwoz.member.application.info;
 
+import static com.atwoz.member.domain.info.style.StyleName.GENTLE;
+import static com.atwoz.member.domain.info.style.StyleName.POSITIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.atwoz.member.application.info.style.StyleService;
@@ -29,7 +31,7 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_저장한다() {
         // given
         Long memberId = 1L;
-        List<String> styleCodes = List.of("C012", "C003");
+        List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
 
         // when
         styleService.saveMemberStyles(memberId, styleCodes);
@@ -43,7 +45,7 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_삭제한다() {
         // given
         Long memberId = 1L;
-        List<String> styleCodes = List.of("C012", "C003");
+        List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
         styleService.saveMemberStyles(memberId, styleCodes);
 
         // when
@@ -57,7 +59,7 @@ class StyleServiceTest {
     void 회원의_모든_스타일을_조회한다() {
         // given
         Long memberId = 1L;
-        List<String> styleCodes = List.of("C012", "C003");
+        List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
         styleService.saveMemberStyles(memberId, styleCodes);
 
         // when

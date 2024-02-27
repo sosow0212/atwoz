@@ -22,12 +22,11 @@ public class ProfileFactory {
     }
 
     private static Body createMemberBody(final ProfileWriteRequest request, final YearManager yearManager) {
-        int currentYear = yearManager.getCurrentYear();
         int birthYear = request.birthYear();
         int height = request.height();
         Gender gender = Gender.findByName(request.gender());
 
-        return new Body(currentYear, birthYear, height, gender);
+        return new Body(yearManager, birthYear, height, gender);
     }
 
     private static Location createLocation(final LocationWriteRequest request) {

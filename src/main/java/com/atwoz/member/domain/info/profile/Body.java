@@ -32,10 +32,10 @@ public class Body {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    public Body(final int currentYear, final int birthYear, final int height, final Gender gender) {
+    public Body(final YearManager yearManager, final int birthYear, final int height, final Gender gender) {
         validateHeight(height);
 
-        this.age = calculateAgeFromYear(currentYear, birthYear);
+        this.age = calculateAgeFromYear(yearManager, birthYear);
         this.height = height;
         this.gender = gender;
     }
@@ -46,7 +46,8 @@ public class Body {
         }
     }
 
-    private int calculateAgeFromYear(final int currentYear, final int birthYear) {
+    private int calculateAgeFromYear(final YearManager yearManager, final int birthYear) {
+        int currentYear = yearManager.getCurrentYear();
         int memberAge = currentYear - birthYear;
         if (memberAge < MIN_AGE || MAX_AGE < memberAge) {
             throw new AgeRangeException();

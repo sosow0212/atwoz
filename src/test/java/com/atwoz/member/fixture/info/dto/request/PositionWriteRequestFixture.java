@@ -1,4 +1,4 @@
-package com.atwoz.member.fixture.info.dto;
+package com.atwoz.member.fixture.info.dto.request;
 
 import com.atwoz.member.application.info.dto.profile.PositionWriteRequest;
 import java.math.BigDecimal;

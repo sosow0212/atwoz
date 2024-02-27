@@ -8,6 +8,8 @@ import com.atwoz.member.application.event.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
+import com.atwoz.member.domain.info.InfoRepository;
+import com.atwoz.member.ui.info.dto.InfoSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import java.util.List;
 @Transactional(readOnly = true)
 @Service
 public class InfoService {
+
+    private final InfoRepository infoRepository;
 
     @Transactional
     public void writeInfo(final Long memberId, final InfoWriteRequest request) {
@@ -42,5 +46,9 @@ public class InfoService {
                 .stream()
                 .map(StyleWriteRequest::style)
                 .toList();
+    }
+
+    public InfoSearchResponse findInfo(final Long memberId) {
+        return infoRepository.findByMemberId(memberId);
     }
 }

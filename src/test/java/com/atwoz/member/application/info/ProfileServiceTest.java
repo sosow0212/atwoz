@@ -1,6 +1,6 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.ProfileWriteRequestFixture.프로필_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.ProfileWriteRequestFixture.프로필_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;

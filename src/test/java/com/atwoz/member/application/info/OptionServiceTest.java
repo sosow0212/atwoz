@@ -45,7 +45,9 @@ class OptionServiceTest {
         assertSoftly(softly -> {
             softly.assertThat(optionRepository.isExistMemberOption(memberId)).isTrue();
             softly.assertThat(optionRepository.findByMemberId(memberId)).isPresent();
-            softly.assertThat(optionRepository.findByMemberId(memberId).get()).isEqualTo(expectedOption);
+            softly.assertThat(optionRepository.findByMemberId(memberId).get())
+                    .usingRecursiveComparison()
+                    .isEqualTo(expectedOption);
         });
     }
 
@@ -63,7 +65,8 @@ class OptionServiceTest {
         Option memberOption = optionService.findByMemberId(memberId);
 
         // then
-        assertThat(memberOption).isEqualTo(expectedOption);
+        assertThat(memberOption).usingRecursiveComparison()
+                .isEqualTo(expectedOption);
     }
 
     @Test

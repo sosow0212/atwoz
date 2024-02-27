@@ -48,7 +48,9 @@ class ProfileServiceTest {
         // then
         assertSoftly(softly -> {
             softly.assertThat(profileRepository.findByMemberId(memberId)).isPresent();
-            softly.assertThat(profileRepository.findByMemberId(memberId).get()).isEqualTo(expectedProfile);
+            softly.assertThat(profileRepository.findByMemberId(memberId).get())
+                    .usingRecursiveComparison()
+                    .isEqualTo(expectedProfile);
         });
     }
 
@@ -65,7 +67,8 @@ class ProfileServiceTest {
         Profile findProfile = profileService.findByMemberId(memberId);
 
         // then
-        assertThat(findProfile).isEqualTo(expectedProfile);
+        assertThat(findProfile).usingRecursiveComparison()
+                .isEqualTo(expectedProfile);
     }
 
     @Test

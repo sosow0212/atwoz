@@ -13,7 +13,6 @@ import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.LocationWriteRequest;
 import com.atwoz.member.application.info.dto.profile.PositionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -35,12 +34,7 @@ class InfoServiceTest {
 
     @Autowired
     private ApplicationEvents events;
-
-    @BeforeEach
-    void init() {
-        infoService = new InfoService();
-    }
-
+    
     @Test
     void 모든_정보를_저장한다() {
         // given

@@ -1,8 +1,8 @@
 package com.atwoz.member.application.info.style;
 
+import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.Style;
-import com.atwoz.member.domain.info.style.StyleName;
-import com.atwoz.member.domain.info.style.StyleRepository;
+import com.atwoz.member.domain.info.style.MemberStyleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,25 +13,25 @@ import java.util.List;
 @Service
 public class StyleService {
 
-    private final StyleRepository styleRepository;
+    private final MemberStyleRepository memberStyleRepository;
 
     @Transactional
     public void saveMemberStyles(final Long memberId, final List<String> styleNames) {
         deleteMemberStyles(memberId);
-        List<Style> memberStyles = StyleName.findAllByCodes(styleNames)
+        List<MemberStyle> memberStyles = Style.findAllByCodes(styleNames)
                 .stream()
-                .map(styleName -> new Style(memberId, styleName))
+                .map(style -> new MemberStyle(memberId, style))
                 .toList();
 
-        styleRepository.saveAll(memberStyles);
+        memberStyleRepository.saveAll(memberStyles);
     }
 
     @Transactional
     public void deleteMemberStyles(final Long memberId) {
-        styleRepository.deleteStylesByMemberId(memberId);
+        memberStyleRepository.deleteStylesByMemberId(memberId);
     }
 
-    public List<Style> findMemberStyles(final Long memberId) {
-        return styleRepository.findAllByMemberId(memberId);
+    public List<MemberStyle> findMemberStyles(final Long memberId) {
+        return memberStyleRepository.findAllByMemberId(memberId);
     }
 }

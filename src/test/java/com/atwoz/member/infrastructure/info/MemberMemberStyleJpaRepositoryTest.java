@@ -3,11 +3,11 @@ package com.atwoz.member.infrastructure.info;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.Style;
-import com.atwoz.member.domain.info.style.StyleName;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.fixture.member.MemberFixture;
-import com.atwoz.member.infrastructure.info.style.StyleJpaRepository;
+import com.atwoz.member.infrastructure.info.style.MemberStyleJpaRepository;
 import com.atwoz.member.infrastructure.member.MemberJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -21,10 +21,10 @@ import java.util.stream.Stream;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @DataJpaTest
-class StyleJpaRepositoryTest {
+class MemberMemberStyleJpaRepositoryTest {
 
     @Autowired
-    private StyleJpaRepository styleJpaRepository;
+    private MemberStyleJpaRepository memberStyleJpaRepository;
 
     @Autowired
     private MemberJpaRepository memberJpaRepository;
@@ -39,15 +39,15 @@ class StyleJpaRepositoryTest {
     @Test
     void 회원_스타일을_저장한다() {
         // given
-        StyleName styleName = StyleName.POSITIVE;
+        Style style = Style.POSITIVE;
         Long memberId = member.getId();
-        Style memberStyle = new Style(memberId, styleName);
+        MemberStyle memberStyle = new MemberStyle(memberId, style);
 
         // when
-        Style saveStyle = styleJpaRepository.save(memberStyle);
+        MemberStyle saveMemberStyle = memberStyleJpaRepository.save(memberStyle);
 
         // then
-        assertThat(saveStyle)
+        assertThat(saveMemberStyle)
                 .usingRecursiveComparison()
                 .isEqualTo(memberStyle);
     }
@@ -55,18 +55,18 @@ class StyleJpaRepositoryTest {
     @Test
     void 회원_스타일을_조회한다() {
         // given
-        StyleName styleName = StyleName.POSITIVE;
+        Style style = Style.POSITIVE;
         Long memberId = member.getId();
-        Style memberStyle = new Style(memberId, styleName);
-        Style saveStyle = styleJpaRepository.save(memberStyle);
+        MemberStyle memberStyle = new MemberStyle(memberId, style);
+        MemberStyle saveMemberStyle = memberStyleJpaRepository.save(memberStyle);
 
         // when
-        List<Style> findMemberStyles = styleJpaRepository.findAllByMemberId(memberId);
+        List<MemberStyle> findMemberStyles = memberStyleJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {
             softly.assertThat(findMemberStyles.size()).isEqualTo(1);
-            softly.assertThat(findMemberStyles).contains(saveStyle);
+            softly.assertThat(findMemberStyles).contains(saveMemberStyle);
         });
     }
 
@@ -74,13 +74,13 @@ class StyleJpaRepositoryTest {
     void 회원_스타일_목록을_저장_및_조회한다() {
         // given
         Long memberId = member.getId();
-        List<Style> memberStyles = Stream.of(StyleName.POSITIVE, StyleName.GENTLE)
-                .map(styleName -> new Style(memberId, styleName))
-                .map(style -> styleJpaRepository.save(style))
+        List<MemberStyle> memberStyles = Stream.of(Style.POSITIVE, Style.GENTLE)
+                .map(style -> new MemberStyle(memberId, style))
+                .map(style -> memberStyleJpaRepository.save(style))
                 .toList();
 
         // when
-        List<Style> findMemberStyles = styleJpaRepository.findAllByMemberId(memberId);
+        List<MemberStyle> findMemberStyles = memberStyleJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {

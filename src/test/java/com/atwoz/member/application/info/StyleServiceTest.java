@@ -1,13 +1,13 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.domain.info.style.StyleName.GENTLE;
-import static com.atwoz.member.domain.info.style.StyleName.POSITIVE;
+import static com.atwoz.member.domain.info.style.Style.GENTLE;
+import static com.atwoz.member.domain.info.style.Style.POSITIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.atwoz.member.application.info.style.StyleService;
-import com.atwoz.member.domain.info.style.Style;
-import com.atwoz.member.domain.info.style.StyleRepository;
-import com.atwoz.member.infrastructure.info.StyleFakeRepository;
+import com.atwoz.member.domain.info.style.MemberStyle;
+import com.atwoz.member.domain.info.style.MemberStyleRepository;
+import com.atwoz.member.infrastructure.info.MemberStyleFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -19,12 +19,12 @@ import java.util.List;
 class StyleServiceTest {
 
     private StyleService styleService;
-    private StyleRepository styleRepository;
+    private MemberStyleRepository memberStyleRepository;
 
     @BeforeEach
     void init() {
-        styleRepository = new StyleFakeRepository();
-        styleService = new StyleService(styleRepository);
+        memberStyleRepository = new MemberStyleFakeRepository();
+        styleService = new StyleService(memberStyleRepository);
     }
 
     @Test
@@ -37,7 +37,7 @@ class StyleServiceTest {
         styleService.saveMemberStyles(memberId, styleCodes);
 
         // then
-        List<Style> saveStyles = styleRepository.findAllByMemberId(memberId);
+        List<MemberStyle> saveStyles = memberStyleRepository.findAllByMemberId(memberId);
         assertThat(saveStyles.size()).isEqualTo(2);
     }
 
@@ -52,7 +52,7 @@ class StyleServiceTest {
         styleService.deleteMemberStyles(memberId);
 
         // then
-        assertThat(styleRepository.findAllByMemberId(memberId)).isEmpty();
+        assertThat(memberStyleRepository.findAllByMemberId(memberId)).isEmpty();
     }
 
     @Test
@@ -63,7 +63,7 @@ class StyleServiceTest {
         styleService.saveMemberStyles(memberId, styleCodes);
 
         // when
-        List<Style> memberStyles = styleService.findMemberStyles(memberId);
+        List<MemberStyle> memberStyles = styleService.findMemberStyles(memberId);
 
         // then
         assertThat(memberStyles.size()).isEqualTo(2);

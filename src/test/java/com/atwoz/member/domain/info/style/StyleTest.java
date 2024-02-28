@@ -13,16 +13,16 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class StyleNameTest {
+class StyleTest {
 
     @Test
     void 스타일이_존재하면_정상적으로_가져온다() {
         // given
         List<String> styleCodes = List.of("C001", "C002", "C003");
-        List<StyleName> expectedStyles = List.of(StyleName.FASHION, StyleName.FRIENDLY, StyleName.FUNNY);
+        List<Style> expectedStyles = List.of(Style.FASHION, Style.FRIENDLY, Style.FUNNY);
 
         // when
-        List<StyleName> findStyles = StyleName.findAllByCodes(styleCodes);
+        List<Style> findStyles = Style.findAllByCodes(styleCodes);
 
         // then
         assertSoftly(softly -> {
@@ -37,7 +37,7 @@ class StyleNameTest {
         List<String> styleCodes = List.of("C001", "C002", "C003", "C004");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
+        assertThatThrownBy(() -> Style.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleSizeException.class);
     }
 
@@ -47,7 +47,7 @@ class StyleNameTest {
         List<String> styleCodes = List.of();
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
+        assertThatThrownBy(() -> Style.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleSizeException.class);
     }
 
@@ -57,7 +57,7 @@ class StyleNameTest {
         List<String> styleCodes = List.of("ABCD");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
+        assertThatThrownBy(() -> Style.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleNotFoundException.class);
     }
 
@@ -67,7 +67,7 @@ class StyleNameTest {
         List<String> styleCodes = List.of("C001", "C001");
 
         // when & then
-        assertThatThrownBy(() -> StyleName.findAllByCodes(styleCodes))
+        assertThatThrownBy(() -> Style.findAllByCodes(styleCodes))
                 .isInstanceOf(StyleDuplicateException.class);
     }
 }

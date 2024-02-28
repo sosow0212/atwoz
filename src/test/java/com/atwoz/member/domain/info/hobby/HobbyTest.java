@@ -13,16 +13,16 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class HobbyNameTest {
+class HobbyTest {
 
     @Test
     void 취미가_존재하면_정상적으로_가져온다() {
         // given
         List<String> hobbyCodes = List.of("B001", "B002", "B007");
-        List<HobbyName> expectedHobbies = List.of(HobbyName.TRIP, HobbyName.GOLF, HobbyName.DANCE);
+        List<Hobby> expectedHobbies = List.of(Hobby.TRIP, Hobby.GOLF, Hobby.DANCE);
 
         // when
-        List<HobbyName> findHobbies = HobbyName.findAllByCodes(hobbyCodes);
+        List<Hobby> findHobbies = Hobby.findAllByCodes(hobbyCodes);
 
         // then
         assertSoftly(softly -> {
@@ -37,7 +37,7 @@ class HobbyNameTest {
         List<String> hobbyCodes = List.of("B001", "B002", "B007", "B017");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
+        assertThatThrownBy(() -> Hobby.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbySizeException.class);
     }
 
@@ -47,7 +47,7 @@ class HobbyNameTest {
         List<String> hobbyCodes = List.of();
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
+        assertThatThrownBy(() -> Hobby.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbySizeException.class);
     }
 
@@ -57,7 +57,7 @@ class HobbyNameTest {
         List<String> hobbyCodes = List.of("ABCD");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
+        assertThatThrownBy(() -> Hobby.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbyNotFoundException.class);
     }
 
@@ -67,7 +67,7 @@ class HobbyNameTest {
         List<String> hobbyCodes = List.of("B001", "B001");
 
         // when & then
-        assertThatThrownBy(() -> HobbyName.findAllByCodes(hobbyCodes))
+        assertThatThrownBy(() -> Hobby.findAllByCodes(hobbyCodes))
                 .isInstanceOf(HobbyDuplicateException.class);
     }
 }

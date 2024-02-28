@@ -1,12 +1,12 @@
 package com.atwoz.member.infrastructure.info.hobby;
 
-import com.atwoz.member.domain.info.hobby.Hobby;
+import com.atwoz.member.domain.info.hobby.MemberHobby;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
-public interface HobbyJpaRepository extends JpaRepository<Hobby, Long> {
+public interface HobbyJpaRepository extends JpaRepository<MemberHobby, Long> {
 
     void deleteByMemberId(final Long memberId);
 
-    List<Hobby> findAllByMemberId(final Long memberId);
+    List<MemberHobby> findAllByMemberId(final Long memberId);
 }

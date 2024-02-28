@@ -1,13 +1,13 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.domain.info.hobby.HobbyName.COOK;
-import static com.atwoz.member.domain.info.hobby.HobbyName.WINE;
+import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
+import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.atwoz.member.application.info.hobby.HobbyService;
-import com.atwoz.member.domain.info.hobby.Hobby;
-import com.atwoz.member.domain.info.hobby.HobbyRepository;
-import com.atwoz.member.infrastructure.info.HobbyFakeRepository;
+import com.atwoz.member.domain.info.hobby.MemberHobby;
+import com.atwoz.member.domain.info.hobby.MemberHobbyRepository;
+import com.atwoz.member.infrastructure.info.MemberHobbyFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -16,15 +16,15 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class HobbyServiceTest {
+class MemberHobbyServiceTest {
 
     private HobbyService hobbyService;
-    private HobbyRepository hobbyRepository;
+    private MemberHobbyRepository memberHobbyRepository;
 
     @BeforeEach
     void init() {
-        hobbyRepository = new HobbyFakeRepository();
-        hobbyService = new HobbyService(hobbyRepository);
+        memberHobbyRepository = new MemberHobbyFakeRepository();
+        hobbyService = new HobbyService(memberHobbyRepository);
     }
 
     @Test
@@ -37,8 +37,8 @@ class HobbyServiceTest {
         hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // then
-        List<Hobby> saveHobbies = hobbyRepository.findAllByMemberId(memberId);
-        assertThat(saveHobbies.size()).isEqualTo(2);
+        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
+        assertThat(saveMemberHobbies.size()).isEqualTo(hobbyCodes.size());
     }
 
     @Test
@@ -52,7 +52,7 @@ class HobbyServiceTest {
         hobbyService.deleteMemberHobbies(memberId);
 
         // then
-        assertThat(hobbyRepository.findAllByMemberId(memberId)).isEmpty();
+        assertThat(memberHobbyRepository.findAllByMemberId(memberId)).isEmpty();
     }
 
     @Test
@@ -63,9 +63,9 @@ class HobbyServiceTest {
         hobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when
-        List<Hobby> memberHobbies = hobbyService.findMemberHobbies(memberId);
+        List<MemberHobby> memberHobbies = hobbyService.findMemberHobbies(memberId);
 
         // then
-        assertThat(memberHobbies.size()).isEqualTo(2);
+        assertThat(memberHobbies.size()).isEqualTo(hobbyCodes.size());
     }
 }

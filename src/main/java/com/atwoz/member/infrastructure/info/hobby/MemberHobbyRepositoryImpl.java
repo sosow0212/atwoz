@@ -1,24 +1,24 @@
 package com.atwoz.member.infrastructure.info.hobby;
 
-import com.atwoz.member.domain.info.hobby.Hobby;
-import com.atwoz.member.domain.info.hobby.HobbyRepository;
+import com.atwoz.member.domain.info.hobby.MemberHobby;
+import com.atwoz.member.domain.info.hobby.MemberHobbyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
-public class HobbyRepositoryImpl implements HobbyRepository {
+public class MemberHobbyRepositoryImpl implements MemberHobbyRepository {
 
     private final HobbyJpaRepository hobbyJpaRepository;
 
     @Override
-    public void save(final Hobby hobby) {
-        hobbyJpaRepository.save(hobby);
+    public void save(final MemberHobby memberHobby) {
+        hobbyJpaRepository.save(memberHobby);
     }
 
     @Override
-    public void saveAll(final List<Hobby> memberHobbies) {
+    public void saveAll(final List<MemberHobby> memberHobbies) {
         hobbyJpaRepository.saveAll(memberHobbies);
     }
 
@@ -28,7 +28,7 @@ public class HobbyRepositoryImpl implements HobbyRepository {
     }
 
     @Override
-    public List<Hobby> findAllByMemberId(final Long memberId) {
+    public List<MemberHobby> findAllByMemberId(final Long memberId) {
         return hobbyJpaRepository.findAllByMemberId(memberId);
     }
 }

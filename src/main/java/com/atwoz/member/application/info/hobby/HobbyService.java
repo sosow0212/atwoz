@@ -1,8 +1,8 @@
 package com.atwoz.member.application.info.hobby;
 
 import com.atwoz.member.domain.info.hobby.Hobby;
-import com.atwoz.member.domain.info.hobby.HobbyName;
-import com.atwoz.member.domain.info.hobby.HobbyRepository;
+import com.atwoz.member.domain.info.hobby.MemberHobby;
+import com.atwoz.member.domain.info.hobby.MemberHobbyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,25 +13,25 @@ import java.util.List;
 @Service
 public class HobbyService {
 
-    private final HobbyRepository hobbyRepository;
+    private final MemberHobbyRepository memberHobbyRepository;
 
     @Transactional
     public void saveMemberHobbies(final Long memberId, final List<String> hobbyCodes) {
         deleteMemberHobbies(memberId);
-        List<Hobby> memberHobbies = HobbyName.findAllByCodes(hobbyCodes)
+        List<MemberHobby> memberHobbies = Hobby.findAllByCodes(hobbyCodes)
                 .stream()
-                .map(hobbyName -> new Hobby(memberId, hobbyName))
+                .map(hobby -> new MemberHobby(memberId, hobby))
                 .toList();
 
-        hobbyRepository.saveAll(memberHobbies);
+        memberHobbyRepository.saveAll(memberHobbies);
     }
 
     @Transactional
     public void deleteMemberHobbies(final Long memberId) {
-        hobbyRepository.deleteHobbiesByMemberId(memberId);
+        memberHobbyRepository.deleteHobbiesByMemberId(memberId);
     }
 
-    public List<Hobby> findMemberHobbies(final Long memberId) {
-        return hobbyRepository.findAllByMemberId(memberId);
+    public List<MemberHobby> findMemberHobbies(final Long memberId) {
+        return memberHobbyRepository.findAllByMemberId(memberId);
     }
 }

@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.domain.info.hobby.Hobby;
-import com.atwoz.member.domain.info.hobby.HobbyName;
+import com.atwoz.member.domain.info.hobby.MemberHobby;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.fixture.member.MemberFixture;
 import com.atwoz.member.infrastructure.info.hobby.HobbyJpaRepository;
@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @DataJpaTest
-class HobbyJpaRepositoryTest {
+class MemberHobbyJpaRepositoryTest {
 
     @Autowired
     private HobbyJpaRepository hobbyJpaRepository;
@@ -39,12 +39,12 @@ class HobbyJpaRepositoryTest {
     @Test
     void 회원_취미를_저장한다() {
         // given
-        HobbyName hobbyName = HobbyName.ANIMATION;
+        Hobby hobby = Hobby.ANIMATION;
         Long memberId = member.getId();
-        Hobby memberHobby = new Hobby(memberId, hobbyName);
+        MemberHobby memberHobby = new MemberHobby(memberId, hobby);
 
         // when
-        Hobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
+        MemberHobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
 
         // then
         assertThat(saveMemberHobby)
@@ -55,13 +55,13 @@ class HobbyJpaRepositoryTest {
     @Test
     void 회원_취미를_조회한다() {
         // given
-        HobbyName hobbyName = HobbyName.ANIMATION;
+        Hobby hobby = Hobby.ANIMATION;
         Long memberId = member.getId();
-        Hobby memberHobby = new Hobby(memberId, hobbyName);
-        Hobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
+        MemberHobby memberHobby = new MemberHobby(memberId, hobby);
+        MemberHobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
 
         // when
-        List<Hobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
+        List<MemberHobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {
@@ -74,13 +74,13 @@ class HobbyJpaRepositoryTest {
     void 회원_취미_목록을_저장_및_조회한다() {
         // given
         Long memberId = member.getId();
-        List<Hobby> memberHobbies = Stream.of(HobbyName.BICYCLE, HobbyName.DANCE)
-                .map(hobbyName -> new Hobby(memberId, hobbyName))
+        List<MemberHobby> memberHobbies = Stream.of(Hobby.BICYCLE, Hobby.DANCE)
+                .map(hobbyName -> new MemberHobby(memberId, hobbyName))
                 .map(hobby -> hobbyJpaRepository.save(hobby))
                 .toList();
 
         // when
-        List<Hobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
+        List<MemberHobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {

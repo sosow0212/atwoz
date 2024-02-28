@@ -1,8 +1,8 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
-import static com.atwoz.member.domain.info.hobby.HobbyName.COOK;
-import static com.atwoz.member.domain.info.hobby.HobbyName.WINE;
+import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
+import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.style.StyleName.GENTLE;
 import static com.atwoz.member.domain.info.style.StyleName.POSITIVE;
 import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;

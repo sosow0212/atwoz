@@ -76,7 +76,7 @@ class MemberStyleJpaRepositoryTest {
         Long memberId = member.getId();
         List<MemberStyle> memberStyles = Stream.of(Style.POSITIVE, Style.GENTLE)
                 .map(style -> new MemberStyle(memberId, style))
-                .map(style -> memberStyleJpaRepository.save(style))
+                .map(memberStyle -> memberStyleJpaRepository.save(memberStyle))
                 .toList();
 
         // when

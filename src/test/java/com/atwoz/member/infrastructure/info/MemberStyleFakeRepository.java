@@ -12,33 +12,33 @@ public class MemberStyleFakeRepository implements MemberStyleRepository {
     private long id = 1L;
 
     @Override
-    public void save(final MemberStyle style) {
+    public void save(final MemberStyle memberStyle) {
         MemberStyle newStyle = MemberStyle.builder()
                 .id(id)
-                .memberId(style.getMemberId())
-                .style(style.getStyle())
+                .memberId(memberStyle.getMemberId())
+                .style(memberStyle.getStyle())
                 .build();
         map.put(id, newStyle);
         id++;
     }
 
     @Override
-    public void saveAll(final List<MemberStyle> styles) {
-        styles.stream()
-                .map(style -> new MemberStyle(style.getMemberId(), style.getStyle()))
+    public void saveAll(final List<MemberStyle> memberStyles) {
+        memberStyles.stream()
+                .map(memberStyle -> new MemberStyle(memberStyle.getMemberId(), memberStyle.getStyle()))
                 .forEach(style -> map.put(id++, style));
     }
 
     @Override
     public void deleteStylesByMemberId(final Long memberId) {
-        map.values().removeIf(style -> memberId.equals(style.getMemberId()));
+        map.values().removeIf(memberStyle -> memberId.equals(memberStyle.getMemberId()));
     }
 
     @Override
     public List<MemberStyle> findAllByMemberId(final Long memberId) {
         return map.values()
                 .stream()
-                .filter(style -> memberId.equals(style.getMemberId()))
+                .filter(memberStyle -> memberId.equals(memberStyle.getMemberId()))
                 .toList();
     }
 }

@@ -13,13 +13,13 @@ public class MemberStyleRepositoryImpl implements MemberStyleRepository {
     private final MemberStyleJpaRepository memberStyleJpaRepository;
 
     @Override
-    public void save(final MemberStyle style) {
-        memberStyleJpaRepository.save(style);
+    public void save(final MemberStyle memberStyle) {
+        memberStyleJpaRepository.save(memberStyle);
     }
 
     @Override
-    public void saveAll(final List<MemberStyle> styles) {
-        memberStyleJpaRepository.saveAll(styles);
+    public void saveAll(final List<MemberStyle> memberStyles) {
+        memberStyleJpaRepository.saveAll(memberStyles);
     }
 
     @Override

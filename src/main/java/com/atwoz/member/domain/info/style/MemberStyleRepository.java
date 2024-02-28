@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface MemberStyleRepository {
 
-    void save(final MemberStyle style);
-    void saveAll(final List<MemberStyle> styles);
+    void save(final MemberStyle memberStyle);
+    void saveAll(final List<MemberStyle> memberStyles);
     void deleteStylesByMemberId(final Long memberId);
     List<MemberStyle> findAllByMemberId(Long memberId);
 }

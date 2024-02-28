@@ -71,7 +71,7 @@ public enum Style {
         }
 
         int validSize = Arrays.stream(values())
-                .filter(hobbyName -> uniqueCodes.contains(hobbyName.getCode()))
+                .filter(style -> uniqueCodes.contains(style.getCode()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {
@@ -81,12 +81,12 @@ public enum Style {
 
     private static Style findByCode(final String code) {
         return Arrays.stream(values())
-                .filter(styleName -> styleName.isSame(code))
+                .filter(style -> style.isSameCode(code))
                 .findFirst()
                 .orElseThrow(StyleInvalidException::new);
     }
 
-    private boolean isSame(final String code) {
-        return this.code.equals(code);
+    private boolean isSameCode(final String code) {
+        return code.equals(this.code);
     }
 }

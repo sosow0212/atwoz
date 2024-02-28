@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
 import java.util.Arrays;
 
 public enum Mbti {
@@ -26,6 +26,6 @@ public enum Mbti {
         return Arrays.stream(values())
                 .filter(mbti -> name.equals(mbti.name()))
                 .findFirst()
-                .orElseThrow(PropertyNotFoundException::new);
+                .orElseThrow(MbtiInvalidException::new);
     }
 }

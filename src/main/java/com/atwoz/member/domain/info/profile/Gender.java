@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -20,6 +20,6 @@ public enum Gender {
         return Arrays.stream(values())
                 .filter(gender -> name.equals(gender.getName()))
                 .findFirst()
-                .orElseThrow(PropertyNotFoundException::new);
+                .orElseThrow(GenderInvalidException::new);
     }
 }

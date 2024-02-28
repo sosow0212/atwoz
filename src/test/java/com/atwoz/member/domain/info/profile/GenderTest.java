@@ -3,7 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -28,6 +28,6 @@ class GenderTest {
 
         // when & then
         assertThatThrownBy(() -> Gender.findByName(genderName))
-                .isInstanceOf(PropertyNotFoundException.class);
+                .isInstanceOf(GenderInvalidException.class);
     }
 }

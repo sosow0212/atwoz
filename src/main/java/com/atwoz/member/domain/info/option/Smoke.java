@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.option.SmokeInvalidException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -23,6 +23,6 @@ public enum Smoke {
         return Arrays.stream(values())
                 .filter(smoke -> name.equals(smoke.getName()))
                 .findFirst()
-                .orElseThrow(PropertyNotFoundException::new);
+                .orElseThrow(SmokeInvalidException::new);
     }
 }

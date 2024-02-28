@@ -1,6 +1,5 @@
 package com.atwoz.global.exception;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +29,5 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(INTERNAL_SERVER_ERROR_MESSAGE);
-    }
-
-    @ExceptionHandler(PropertyNotFoundException.class)
-    public ResponseEntity<String> handlePropertyNotFoundException(final PropertyNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(exception.getMessage());
     }
 }

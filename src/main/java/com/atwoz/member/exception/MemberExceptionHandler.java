@@ -1,6 +1,5 @@
 package com.atwoz.member.exception;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
 import com.atwoz.member.exception.exceptions.auth.ExpiredTokenException;
 import com.atwoz.member.exception.exceptions.auth.JsonDataInvalidException;
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
@@ -12,9 +11,15 @@ import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
+import com.atwoz.member.exception.exceptions.info.option.DrinkInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
+import com.atwoz.member.exception.exceptions.info.option.ReligionInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.SmokeInvalidException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
+import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
@@ -95,12 +100,6 @@ public class MemberExceptionHandler {
         return getNotFoundResponse(e);
     }
 
-    // info - enum
-    @ExceptionHandler(PropertyNotFoundException.class)
-    public ResponseEntity<String> handlePropertyNotFoundException(final PropertyNotFoundException e) {
-        return getNotFoundResponse(e);
-    }
-
     // info - hobby
     @ExceptionHandler(HobbyNotFoundException.class)
     public ResponseEntity<String> handleHobbyNotFoundException(final HobbyNotFoundException e) {
@@ -149,6 +148,11 @@ public class MemberExceptionHandler {
         return getBadRequest(e);
     }
 
+    @ExceptionHandler(GenderInvalidException.class)
+    public ResponseEntity<String> handleGenderInvalidException(final GenderInvalidException e) {
+        return getBadRequest(e);
+    }
+
     @ExceptionHandler(LatitudeRangeException.class)
     public ResponseEntity<String> handleLatitudeRangeException(final LatitudeRangeException e) {
         return getBadRequest(e);
@@ -163,6 +167,31 @@ public class MemberExceptionHandler {
     @ExceptionHandler(OptionNotFoundException.class)
     public ResponseEntity<String> handleOptionNotFoundException(final OptionNotFoundException e) {
         return getNotFoundResponse(e);
+    }
+
+    @ExceptionHandler(DrinkInvalidException.class)
+    public ResponseEntity<String> handleDrinkNInvalidException(final DrinkInvalidException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(GraduateInvalidException.class)
+    public ResponseEntity<String> handleGraduateInvalidException(final GraduateInvalidException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(MbtiInvalidException.class)
+    public ResponseEntity<String> handleMbtiInvalidException(final MbtiInvalidException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(SmokeInvalidException.class)
+    public ResponseEntity<String> handleSmokeInvalidException(final SmokeInvalidException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(ReligionInvalidException.class)
+    public ResponseEntity<String> handleReligionInvalidException(final ReligionInvalidException e) {
+        return getBadRequest(e);
     }
 
     private ResponseEntity<String> getNotFoundResponse(final Exception e) {

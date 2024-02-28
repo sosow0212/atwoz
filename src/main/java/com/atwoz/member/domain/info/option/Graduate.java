@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -27,6 +27,6 @@ public enum Graduate {
         return Arrays.stream(values())
                 .filter(graduate -> name.equals(graduate.getName()))
                 .findFirst()
-                .orElseThrow(PropertyNotFoundException::new);
+                .orElseThrow(GraduateInvalidException::new);
     }
 }

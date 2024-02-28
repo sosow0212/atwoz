@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.global.exception.exceptions.PropertyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.option.ReligionInvalidException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -23,6 +23,6 @@ public enum Religion {
         return Arrays.stream(values())
                 .filter(religion -> name.equals(religion.getName()))
                 .findFirst()
-                .orElseThrow(PropertyNotFoundException::new);
+                .orElseThrow(ReligionInvalidException::new);
     }
 }

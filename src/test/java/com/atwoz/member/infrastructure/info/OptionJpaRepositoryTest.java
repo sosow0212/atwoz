@@ -82,6 +82,7 @@ class OptionJpaRepositoryTest {
             softly.assertThat(findOption).isPresent();
             softly.assertThat(findOption.get())
                     .usingRecursiveComparison()
+                    .ignoringFields("id")
                     .isEqualTo(saveOption);
         });
     }

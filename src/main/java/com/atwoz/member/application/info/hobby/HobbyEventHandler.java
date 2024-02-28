@@ -11,19 +11,21 @@ import java.util.List;
 @Component
 public class HobbyEventHandler {
 
-    private final HobbyService hobbyService;
+    private final MemberHobbyService memberHobbyService;
 
     @EventListener
     public void writeHobbies(final HobbyWroteEvent event) {
         Long memberId = event.getMemberId();
         List<String> hobbyCodes = event.getHobbyCodes();
 
-        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
+        memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
     }
 
     @EventListener
     public void updateHobbies(final HobbyUpdatedEvent event) {
         Long memberId = event.getMemberId();
         List<String> hobbyCodes = event.getHobbyCodes();
+
+        memberHobbyService.updateMemberHobbies(memberId, hobbyCodes);
     }
 }

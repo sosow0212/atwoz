@@ -1,10 +1,13 @@
 package com.atwoz.member.application.info;
 
 import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
+import static com.atwoz.member.domain.info.hobby.Hobby.WALK;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
+import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import com.atwoz.member.application.info.hobby.HobbyService;
+import com.atwoz.member.application.info.hobby.MemberHobbyService;
 import com.atwoz.member.domain.info.hobby.MemberHobby;
 import com.atwoz.member.domain.info.hobby.MemberHobbyRepository;
 import com.atwoz.member.infrastructure.info.MemberHobbyFakeRepository;
@@ -18,13 +21,13 @@ import java.util.List;
 @SuppressWarnings("NonAsciiCharacters")
 class MemberHobbyServiceTest {
 
-    private HobbyService hobbyService;
+    private MemberHobbyService memberHobbyService;
     private MemberHobbyRepository memberHobbyRepository;
 
     @BeforeEach
     void init() {
         memberHobbyRepository = new MemberHobbyFakeRepository();
-        hobbyService = new HobbyService(memberHobbyRepository);
+        memberHobbyService = new MemberHobbyService(memberHobbyRepository);
     }
 
     @Test
@@ -32,40 +35,44 @@ class MemberHobbyServiceTest {
         // given
         Long memberId = 1L;
         List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
+        List<MemberHobby> expectedMemberHobbies = List.of(
+                new MemberHobby(memberId, WINE),
+                new MemberHobby(memberId, COOK)
+        );
 
         // when
-        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
+        memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // then
         List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
-        assertThat(saveMemberHobbies.size()).isEqualTo(hobbyCodes.size());
+        assertThat(saveMemberHobbies).containsAll(expectedMemberHobbies);
     }
 
     @Test
-    void 회원의_모든_취미를_삭제한다() {
+    void 회원의_취미를_수정한다() {
         // given
         Long memberId = 1L;
         List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
-        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
+        List<String> updateHobbyCodes = List.of(WALK.getCode(), WRITE.getCode());
+        List<MemberHobby> originMemberHobbies = List.of(
+                new MemberHobby(memberId, WINE),
+                new MemberHobby(memberId, COOK)
+        );
+        List<MemberHobby> updateMemberHobbies = List.of(
+                new MemberHobby(memberId, WALK),
+                new MemberHobby(memberId, WRITE)
+        );
+
+        memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
 
         // when
-        hobbyService.deleteMemberHobbies(memberId);
+        memberHobbyService.updateMemberHobbies(memberId, updateHobbyCodes);
 
         // then
-        assertThat(memberHobbyRepository.findAllByMemberId(memberId)).isEmpty();
-    }
-
-    @Test
-    void 회원의_모든_취미를_조회한다() {
-        // given
-        Long memberId = 1L;
-        List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
-        hobbyService.saveMemberHobbies(memberId, hobbyCodes);
-
-        // when
-        List<MemberHobby> memberHobbies = hobbyService.findMemberHobbies(memberId);
-
-        // then
-        assertThat(memberHobbies.size()).isEqualTo(hobbyCodes.size());
+        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
+        assertSoftly(softly -> {
+            softly.assertThat(saveMemberHobbies).doesNotContainAnyElementsOf(originMemberHobbies);
+            softly.assertThat(saveMemberHobbies).containsAll(updateMemberHobbies);
+        });
     }
 }

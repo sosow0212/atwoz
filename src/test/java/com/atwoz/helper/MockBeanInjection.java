@@ -1,7 +1,7 @@
 package com.atwoz.helper;
 
 import com.atwoz.member.application.auth.AuthService;
-import com.atwoz.member.application.info.hobby.HobbyService;
+import com.atwoz.member.application.info.hobby.MemberHobbyService;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.application.info.profile.ProfileService;
 import com.atwoz.member.application.info.style.StyleService;
@@ -28,7 +28,7 @@ public class MockBeanInjection {
     protected AuthService authService;
 
     @MockBean
-    protected HobbyService hobbyService;
+    protected MemberHobbyService memberHobbyService;
 
     @MockBean
     protected OptionService optionService;

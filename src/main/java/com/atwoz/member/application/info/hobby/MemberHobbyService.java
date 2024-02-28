@@ -11,13 +11,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class HobbyService {
+public class MemberHobbyService {
 
     private final MemberHobbyRepository memberHobbyRepository;
 
     @Transactional
     public void saveMemberHobbies(final Long memberId, final List<String> hobbyCodes) {
-        deleteMemberHobbies(memberId);
+        saveMemberHobbiesByHobbyCodes(memberId, hobbyCodes);
+    }
+
+    private void saveMemberHobbiesByHobbyCodes(final Long memberId, final List<String> hobbyCodes) {
         List<MemberHobby> memberHobbies = Hobby.findAllByCodes(hobbyCodes)
                 .stream()
                 .map(hobby -> new MemberHobby(memberId, hobby))
@@ -27,11 +30,9 @@ public class HobbyService {
     }
 
     @Transactional
-    public void deleteMemberHobbies(final Long memberId) {
+    public void updateMemberHobbies(final Long memberId, final List<String> hobbyCodes) {
         memberHobbyRepository.deleteHobbiesByMemberId(memberId);
-    }
 
-    public List<MemberHobby> findMemberHobbies(final Long memberId) {
-        return memberHobbyRepository.findAllByMemberId(memberId);
+        saveMemberHobbiesByHobbyCodes(memberId, hobbyCodes);
     }
 }

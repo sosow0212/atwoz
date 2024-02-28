@@ -29,8 +29,8 @@ public class MemberStyle {
     @Column(nullable = false)
     private Long memberId;
 
-    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Style style;
 
     public MemberStyle(final Long memberId, final Style style) {

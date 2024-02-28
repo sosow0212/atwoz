@@ -29,8 +29,8 @@ public class MemberHobby {
     @Column(nullable = false)
     private Long memberId;
 
-    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Hobby hobby;
 
     public MemberHobby(final Long memberId, final Hobby hobby) {

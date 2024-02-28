@@ -3,7 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
+import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -28,6 +28,6 @@ public class JobTest {
 
         // when & then
         assertThatThrownBy(() -> Job.findByCode(jobCode))
-                .isInstanceOf(JobInvalidException.class);
+                .isInstanceOf(InvalidJobException.class);
     }
 }

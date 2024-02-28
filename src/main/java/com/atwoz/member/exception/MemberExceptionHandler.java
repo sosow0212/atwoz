@@ -12,15 +12,15 @@ import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.InvalidHobbyException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.option.InvalidDrinkException;
-import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
-import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidGraduateException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidMbtiException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
-import com.atwoz.member.exception.exceptions.info.option.ReligionInvalidException;
-import com.atwoz.member.exception.exceptions.info.option.SmokeInvalidException;
-import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidReligionException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidSmokeException;
+import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
-import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
+import com.atwoz.member.exception.exceptions.info.profile.body.InvalidGenderException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
@@ -149,8 +149,8 @@ public class MemberExceptionHandler {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(GenderInvalidException.class)
-    public ResponseEntity<String> handleGenderInvalidException(final GenderInvalidException e) {
+    @ExceptionHandler(InvalidGenderException.class)
+    public ResponseEntity<String> handleGenderInvalidException(final InvalidGenderException e) {
         return getBadRequest(e);
     }
 
@@ -164,8 +164,8 @@ public class MemberExceptionHandler {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(JobInvalidException.class)
-    public ResponseEntity<String> handleJobInvalidException(final JobInvalidException e) {
+    @ExceptionHandler(InvalidJobException.class)
+    public ResponseEntity<String> handleJobInvalidException(final InvalidJobException e) {
         return getBadRequest(e);
     }
 
@@ -180,23 +180,23 @@ public class MemberExceptionHandler {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(GraduateInvalidException.class)
-    public ResponseEntity<String> handleGraduateInvalidException(final GraduateInvalidException e) {
+    @ExceptionHandler(InvalidGraduateException.class)
+    public ResponseEntity<String> handleGraduateInvalidException(final InvalidGraduateException e) {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(MbtiInvalidException.class)
-    public ResponseEntity<String> handleMbtiInvalidException(final MbtiInvalidException e) {
+    @ExceptionHandler(InvalidMbtiException.class)
+    public ResponseEntity<String> handleMbtiInvalidException(final InvalidMbtiException e) {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(SmokeInvalidException.class)
-    public ResponseEntity<String> handleSmokeInvalidException(final SmokeInvalidException e) {
+    @ExceptionHandler(InvalidSmokeException.class)
+    public ResponseEntity<String> handleSmokeInvalidException(final InvalidSmokeException e) {
         return getBadRequest(e);
     }
 
-    @ExceptionHandler(ReligionInvalidException.class)
-    public ResponseEntity<String> handleReligionInvalidException(final ReligionInvalidException e) {
+    @ExceptionHandler(InvalidReligionException.class)
+    public ResponseEntity<String> handleReligionInvalidException(final InvalidReligionException e) {
         return getBadRequest(e);
     }
 

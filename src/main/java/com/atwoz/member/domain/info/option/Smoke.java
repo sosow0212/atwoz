@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.exception.exceptions.info.option.SmokeInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidSmokeException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -23,6 +23,6 @@ public enum Smoke {
         return Arrays.stream(values())
                 .filter(smoke -> name.equals(smoke.getName()))
                 .findFirst()
-                .orElseThrow(SmokeInvalidException::new);
+                .orElseThrow(InvalidSmokeException::new);
     }
 }

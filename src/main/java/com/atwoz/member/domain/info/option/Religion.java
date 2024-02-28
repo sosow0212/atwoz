@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.exception.exceptions.info.option.ReligionInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidReligionException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -23,6 +23,6 @@ public enum Religion {
         return Arrays.stream(values())
                 .filter(religion -> name.equals(religion.getName()))
                 .findFirst()
-                .orElseThrow(ReligionInvalidException::new);
+                .orElseThrow(InvalidReligionException::new);
     }
 }

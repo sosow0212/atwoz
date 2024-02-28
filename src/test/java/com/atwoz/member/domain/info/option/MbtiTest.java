@@ -3,7 +3,7 @@ package com.atwoz.member.domain.info.option;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidMbtiException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -28,6 +28,6 @@ public class MbtiTest {
 
         // when & then
         assertThatThrownBy(() -> Mbti.findByName(mbtiName))
-                .isInstanceOf(MbtiInvalidException.class);
+                .isInstanceOf(InvalidMbtiException.class);
     }
 }

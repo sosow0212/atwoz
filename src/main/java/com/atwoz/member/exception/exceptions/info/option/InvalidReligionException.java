@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.option;
 
-public class ReligionInvalidException extends RuntimeException {
+public class InvalidReligionException extends RuntimeException {
 
-    public ReligionInvalidException() {
+    public InvalidReligionException() {
         super("등록되지 않은 종교입니다.");
     }
 }

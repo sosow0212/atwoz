@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.option;
 
-public class SmokeInvalidException extends RuntimeException {
+public class InvalidSmokeException extends RuntimeException {
 
-    public SmokeInvalidException() {
+    public InvalidSmokeException() {
         super("등록되지 않은 흡연 단계입니다.");
     }
 }

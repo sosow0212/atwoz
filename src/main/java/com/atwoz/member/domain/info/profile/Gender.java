@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
+import com.atwoz.member.exception.exceptions.info.profile.body.InvalidGenderException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -20,6 +20,6 @@ public enum Gender {
         return Arrays.stream(values())
                 .filter(gender -> name.equals(gender.getName()))
                 .findFirst()
-                .orElseThrow(GenderInvalidException::new);
+                .orElseThrow(InvalidGenderException::new);
     }
 }

@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidMbtiException;
 import java.util.Arrays;
 
 public enum Mbti {
@@ -26,6 +26,6 @@ public enum Mbti {
         return Arrays.stream(values())
                 .filter(mbti -> name.equals(mbti.name()))
                 .findFirst()
-                .orElseThrow(MbtiInvalidException::new);
+                .orElseThrow(InvalidMbtiException::new);
     }
 }

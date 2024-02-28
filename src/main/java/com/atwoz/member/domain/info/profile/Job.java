@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
+import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -40,7 +40,7 @@ public enum Job {
         return Arrays.stream(values())
                 .filter(job -> job.isSame(code))
                 .findFirst()
-                .orElseThrow(JobInvalidException::new);
+                .orElseThrow(InvalidJobException::new);
     }
 
     private boolean isSame(final String code) {

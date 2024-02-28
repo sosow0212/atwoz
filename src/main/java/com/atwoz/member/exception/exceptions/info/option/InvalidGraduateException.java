@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.option;
 
-public class GraduateInvalidException extends RuntimeException {
+public class InvalidGraduateException extends RuntimeException {
 
-    public GraduateInvalidException() {
+    public InvalidGraduateException() {
         super("등록되지 않은 최종 학력입니다.");
     }
 }

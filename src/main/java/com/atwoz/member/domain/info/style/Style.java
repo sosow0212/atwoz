@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.style;
 
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
-import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
+import com.atwoz.member.exception.exceptions.info.style.StyleInvalidException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import lombok.Getter;
 import java.util.Arrays;
@@ -83,7 +83,7 @@ public enum Style {
         return Arrays.stream(values())
                 .filter(styleName -> styleName.isSame(code))
                 .findFirst()
-                .orElseThrow(StyleNotFoundException::new);
+                .orElseThrow(StyleInvalidException::new);
     }
 
     private boolean isSame(final String code) {

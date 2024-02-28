@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
-import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbyInvalidException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -58,7 +58,7 @@ class HobbyTest {
 
         // when & then
         assertThatThrownBy(() -> Hobby.findAllByCodes(hobbyCodes))
-                .isInstanceOf(HobbyNotFoundException.class);
+                .isInstanceOf(HobbyInvalidException.class);
     }
 
     @Test

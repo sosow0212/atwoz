@@ -9,7 +9,7 @@ import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
-import com.atwoz.member.exception.exceptions.info.hobby.HobbyNotFoundException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbyInvalidException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.option.DrinkInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
@@ -25,7 +25,7 @@ import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeExcept
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
-import com.atwoz.member.exception.exceptions.info.style.StyleNotFoundException;
+import com.atwoz.member.exception.exceptions.info.style.StyleInvalidException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import com.atwoz.member.exception.exceptions.member.MemberAlreadyExistedException;
 import com.atwoz.member.exception.exceptions.member.MemberNotFoundException;
@@ -102,9 +102,9 @@ public class MemberExceptionHandler {
     }
 
     // info - hobby
-    @ExceptionHandler(HobbyNotFoundException.class)
-    public ResponseEntity<String> handleHobbyNotFoundException(final HobbyNotFoundException e) {
-        return getNotFoundResponse(e);
+    @ExceptionHandler(HobbyInvalidException.class)
+    public ResponseEntity<String> handleHobbyInvalidException(final HobbyInvalidException e) {
+        return getBadRequest(e);
     }
 
     @ExceptionHandler(HobbySizeException.class)
@@ -118,9 +118,9 @@ public class MemberExceptionHandler {
     }
 
     // info - style
-    @ExceptionHandler(StyleNotFoundException.class)
-    public ResponseEntity<String> handleStyleNotFoundException(final StyleNotFoundException e) {
-        return getNotFoundResponse(e);
+    @ExceptionHandler(StyleInvalidException.class)
+    public ResponseEntity<String> handleStyleInvalidException(final StyleInvalidException e) {
+        return getBadRequest(e);
     }
 
     @ExceptionHandler(StyleSizeException.class)

@@ -11,7 +11,7 @@ import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.InvalidHobbyException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
-import com.atwoz.member.exception.exceptions.info.option.DrinkInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidDrinkException;
 import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
@@ -175,8 +175,8 @@ public class MemberExceptionHandler {
         return getNotFoundResponse(e);
     }
 
-    @ExceptionHandler(DrinkInvalidException.class)
-    public ResponseEntity<String> handleDrinkNInvalidException(final DrinkInvalidException e) {
+    @ExceptionHandler(InvalidDrinkException.class)
+    public ResponseEntity<String> handleDrinkNInvalidException(final InvalidDrinkException e) {
         return getBadRequest(e);
     }
 

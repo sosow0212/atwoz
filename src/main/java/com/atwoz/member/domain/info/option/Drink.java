@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.exception.exceptions.info.option.DrinkInvalidException;
+import com.atwoz.member.exception.exceptions.info.option.InvalidDrinkException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -23,6 +23,6 @@ public enum Drink {
         return Arrays.stream(values())
                 .filter(drink -> name.equals(drink.getName()))
                 .findFirst()
-                .orElseThrow(DrinkInvalidException::new);
+                .orElseThrow(InvalidDrinkException::new);
     }
 }

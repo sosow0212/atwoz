@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.option;
 
-public class DrinkInvalidException extends RuntimeException {
+public class InvalidDrinkException extends RuntimeException {
 
-    public DrinkInvalidException() {
+    public InvalidDrinkException() {
         super("등록되지 않은 음주 단계입니다.");
     }
 }

@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.hobby;
 
-public class HobbyInvalidException extends RuntimeException {
+public class InvalidHobbyException extends RuntimeException {
 
-    public HobbyInvalidException() {
+    public InvalidHobbyException() {
         super("등록되지 않은 취미입니다.");
     }
 }

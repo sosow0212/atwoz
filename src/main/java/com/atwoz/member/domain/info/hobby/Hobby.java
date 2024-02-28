@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.hobby;
 
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
-import com.atwoz.member.exception.exceptions.info.hobby.HobbyInvalidException;
+import com.atwoz.member.exception.exceptions.info.hobby.InvalidHobbyException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import lombok.Getter;
 import java.util.Arrays;
@@ -92,7 +92,7 @@ public enum Hobby {
         return Arrays.stream(values())
                 .filter(hobby -> hobby.isSameCode(code))
                 .findFirst()
-                .orElseThrow(HobbyInvalidException::new);
+                .orElseThrow(InvalidHobbyException::new);
     }
 
     private boolean isSameCode(final String code) {

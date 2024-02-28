@@ -9,7 +9,7 @@ import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
-import com.atwoz.member.exception.exceptions.info.hobby.HobbyInvalidException;
+import com.atwoz.member.exception.exceptions.info.hobby.InvalidHobbyException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.option.DrinkInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.GraduateInvalidException;
@@ -102,8 +102,8 @@ public class MemberExceptionHandler {
     }
 
     // info - hobby
-    @ExceptionHandler(HobbyInvalidException.class)
-    public ResponseEntity<String> handleHobbyInvalidException(final HobbyInvalidException e) {
+    @ExceptionHandler(InvalidHobbyException.class)
+    public ResponseEntity<String> handleHobbyInvalidException(final InvalidHobbyException e) {
         return getBadRequest(e);
     }
 

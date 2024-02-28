@@ -26,7 +26,7 @@ public class MemberHobbyFakeRepository implements MemberHobbyRepository {
     public void saveAll(final List<MemberHobby> memberHobbies) {
         memberHobbies.stream()
                 .map(memberHobby -> new MemberHobby(memberHobby.getMemberId(), memberHobby.getHobby()))
-                .forEach(hobby -> map.put(id++, hobby));
+                .forEach(memberHobby -> map.put(id++, memberHobby));
     }
 
     @Override

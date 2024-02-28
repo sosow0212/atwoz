@@ -18,6 +18,7 @@ public class ProfileFactory {
         Location location = createLocation(request.location());
         Position position = createPosition(request.position());
         Job job = createJob(request.job());
+
         return new Profile(memberId, body, location, position, job);
     }
 

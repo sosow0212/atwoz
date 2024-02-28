@@ -75,8 +75,8 @@ class MemberHobbyJpaRepositoryTest {
         // given
         Long memberId = member.getId();
         List<MemberHobby> memberHobbies = Stream.of(Hobby.BICYCLE, Hobby.DANCE)
-                .map(hobbyName -> new MemberHobby(memberId, hobbyName))
-                .map(hobby -> hobbyJpaRepository.save(hobby))
+                .map(hobby -> new MemberHobby(memberId, hobby))
+                .map(memberHobby -> hobbyJpaRepository.save(memberHobby))
                 .toList();
 
         // when

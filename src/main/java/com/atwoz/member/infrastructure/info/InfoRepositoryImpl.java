@@ -1,7 +1,8 @@
 package com.atwoz.member.infrastructure.info;
 
+import static com.atwoz.member.domain.info.hobby.QMemberHobby.memberHobby;
+
 import com.atwoz.member.domain.info.InfoRepository;
-import com.atwoz.member.domain.info.hobby.QHobby;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.QOption;
 import com.atwoz.member.domain.info.profile.Profile;
@@ -56,9 +57,9 @@ public class InfoRepositoryImpl implements InfoRepository {
     }
 
     private List<HobbySearchResponse> selectHobbyResponseByMemberId(final Long memberId) {
-        return queryFactory.select(QHobby.hobby)
-                .from(QHobby.hobby)
-                .where(QHobby.hobby.memberId.eq(memberId))
+        return queryFactory.select(memberHobby)
+                .from(memberHobby)
+                .where(memberHobby.memberId.eq(memberId))
                 .fetch()
                 .stream()
                 .map(HobbySearchResponse::from)

@@ -6,7 +6,7 @@ public record LocationWriteRequest(
         @NotBlank(message = "시/도가 작성되어야 합니다.")
         String city,
 
-        @NotBlank(message = "구가 작성되어야 합니다.")
+        @NotBlank(message = "구/군이 작성되어야 합니다.")
         String sector
 ) {
 }

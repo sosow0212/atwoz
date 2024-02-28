@@ -42,9 +42,9 @@ class MemberHobbyServiceTest {
 
         // when
         memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
+        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
 
         // then
-        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
         assertThat(saveMemberHobbies).containsAll(expectedMemberHobbies);
     }
 
@@ -67,9 +67,9 @@ class MemberHobbyServiceTest {
 
         // when
         memberHobbyService.updateMemberHobbies(memberId, updateHobbyCodes);
+        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
 
         // then
-        List<MemberHobby> saveMemberHobbies = memberHobbyRepository.findAllByMemberId(memberId);
         assertSoftly(softly -> {
             softly.assertThat(saveMemberHobbies).doesNotContainAnyElementsOf(originMemberHobbies);
             softly.assertThat(saveMemberHobbies).containsAll(updateMemberHobbies);

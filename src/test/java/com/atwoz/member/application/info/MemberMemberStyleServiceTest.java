@@ -7,7 +7,7 @@ import static com.atwoz.member.domain.info.style.Style.PROUD;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import com.atwoz.member.application.info.style.StyleService;
+import com.atwoz.member.application.info.style.MemberStyleService;
 import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.MemberStyleRepository;
 import com.atwoz.member.infrastructure.info.MemberStyleFakeRepository;
@@ -19,15 +19,15 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class MemberStyleServiceTest {
+class MemberMemberStyleServiceTest {
 
-    private StyleService styleService;
+    private MemberStyleService memberStyleService;
     private MemberStyleRepository memberStyleRepository;
 
     @BeforeEach
     void init() {
         memberStyleRepository = new MemberStyleFakeRepository();
-        styleService = new StyleService(memberStyleRepository);
+        memberStyleService = new MemberStyleService(memberStyleRepository);
     }
 
     @Test
@@ -41,7 +41,7 @@ class MemberStyleServiceTest {
         );
 
         // when
-        styleService.saveMemberStyles(memberId, styleCodes);
+        memberStyleService.saveMemberStyles(memberId, styleCodes);
         List<MemberStyle> saveMemberStyles = memberStyleRepository.findAllByMemberId(memberId);
 
         // then
@@ -63,10 +63,10 @@ class MemberStyleServiceTest {
                 new MemberStyle(memberId, PROUD)
         );
 
-        styleService.saveMemberStyles(memberId, styleCodes);
+        memberStyleService.saveMemberStyles(memberId, styleCodes);
 
         // when
-        styleService.updateMemberStyles(memberId, updateStyleCodes);
+        memberStyleService.updateMemberStyles(memberId, updateStyleCodes);
         List<MemberStyle> saveMemberStyles = memberStyleRepository.findAllByMemberId(memberId);
 
         // then

@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class StyleService {
+public class MemberStyleService {
 
     private final MemberStyleRepository memberStyleRepository;
 

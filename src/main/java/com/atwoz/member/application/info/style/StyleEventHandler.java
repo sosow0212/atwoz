@@ -11,14 +11,14 @@ import java.util.List;
 @Component
 public class StyleEventHandler {
 
-    private final StyleService styleService;
+    private final MemberStyleService memberStyleService;
 
     @EventListener
     public void writeHobbies(final StyleWroteEvent event) {
         Long memberId = event.getMemberId();
         List<String> styleCodes = event.getStyleCodes();
 
-        styleService.saveMemberStyles(memberId, styleCodes);
+        memberStyleService.saveMemberStyles(memberId, styleCodes);
     }
 
     @EventListener
@@ -26,6 +26,6 @@ public class StyleEventHandler {
         Long memberId = event.getMemberId();
         List<String> styleCodes = event.getStyleCodes();
 
-        styleService.updateMemberStyles(memberId, styleCodes);
+        memberStyleService.updateMemberStyles(memberId, styleCodes);
     }
 }

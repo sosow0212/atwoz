@@ -13,12 +13,12 @@ public class MemberStyleFakeRepository implements MemberStyleRepository {
 
     @Override
     public void save(final MemberStyle memberStyle) {
-        MemberStyle newStyle = MemberStyle.builder()
+        MemberStyle newMemberStyle = MemberStyle.builder()
                 .id(id)
                 .memberId(memberStyle.getMemberId())
                 .style(memberStyle.getStyle())
                 .build();
-        map.put(id, newStyle);
+        map.put(id, newMemberStyle);
         id++;
     }
 
@@ -26,7 +26,7 @@ public class MemberStyleFakeRepository implements MemberStyleRepository {
     public void saveAll(final List<MemberStyle> memberStyles) {
         memberStyles.stream()
                 .map(memberStyle -> new MemberStyle(memberStyle.getMemberId(), memberStyle.getStyle()))
-                .forEach(style -> map.put(id++, style));
+                .forEach(memberStyle -> map.put(id++, memberStyle));
     }
 
     @Override

@@ -17,6 +17,7 @@ import com.atwoz.member.exception.exceptions.info.option.MbtiInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.exception.exceptions.info.option.ReligionInvalidException;
 import com.atwoz.member.exception.exceptions.info.option.SmokeInvalidException;
+import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.GenderInvalidException;
@@ -160,6 +161,11 @@ public class MemberExceptionHandler {
 
     @ExceptionHandler(LongitudeRangeException.class)
     public ResponseEntity<String> handleLongitudeRangeException(final LongitudeRangeException e) {
+        return getBadRequest(e);
+    }
+
+    @ExceptionHandler(JobInvalidException.class)
+    public ResponseEntity<String> handleJobInvalidException(final JobInvalidException e) {
         return getBadRequest(e);
     }
 

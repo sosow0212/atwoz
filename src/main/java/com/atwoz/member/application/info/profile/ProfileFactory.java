@@ -38,6 +38,6 @@ public class ProfileFactory {
     }
 
     private static Job createJob(final String code) {
-        return Job.findBy(code);
+        return Job.findByCode(code);
     }
 }

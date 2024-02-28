@@ -3,7 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import com.atwoz.member.exception.exceptions.info.profile.JobNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class JobTest {
         String jobCode = "A001";
 
         // when & then
-        assertDoesNotThrow(() -> Job.findBy(jobCode));
+        assertDoesNotThrow(() -> Job.findByCode(jobCode));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class JobTest {
         String jobCode = "hello";
 
         // when & then
-        assertThatThrownBy(() -> Job.findBy(jobCode))
-                .isInstanceOf(JobNotFoundException.class);
+        assertThatThrownBy(() -> Job.findByCode(jobCode))
+                .isInstanceOf(JobInvalidException.class);
     }
 }

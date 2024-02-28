@@ -1,8 +1,8 @@
 package com.atwoz.member.exception.exceptions.info.profile;
 
-public class JobNotFoundException extends RuntimeException {
+public class JobInvalidException extends RuntimeException {
 
-    public JobNotFoundException() {
+    public JobInvalidException() {
         super("직업을 찾을 수 없습니다.");
     }
 }

@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.exception.exceptions.info.profile.JobNotFoundException;
+import com.atwoz.member.exception.exceptions.info.profile.JobInvalidException;
 import lombok.Getter;
 import java.util.Arrays;
 
@@ -36,11 +36,11 @@ public enum Job {
         this.code = code;
     }
 
-    public static Job findBy(final String code) {
+    public static Job findByCode(final String code) {
         return Arrays.stream(values())
                 .filter(job -> job.isSame(code))
                 .findFirst()
-                .orElseThrow(JobNotFoundException::new);
+                .orElseThrow(JobInvalidException::new);
     }
 
     private boolean isSame(final String code) {

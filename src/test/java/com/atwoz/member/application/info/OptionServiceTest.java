@@ -1,16 +1,16 @@
 package com.atwoz.member.application.info;
 
+import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.옵션_수정_요청;
 import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.option.OptionFactory;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
-import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.infrastructure.info.OptionFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -36,7 +36,7 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionWriteRequest request = 옵션_생성_요청();
-        Option expectedOption = OptionFactory.of(memberId, request);
+        Option expectedOption = OptionFactory.createNewOption(memberId, request);
 
         // when
         optionService.writeOption(memberId, request);
@@ -44,38 +44,31 @@ class OptionServiceTest {
         // then
         assertSoftly(softly -> {
             softly.assertThat(optionRepository.isExistMemberOption(memberId)).isTrue();
-            softly.assertThat(optionRepository.findByMemberId(memberId)).isPresent();
             softly.assertThat(optionRepository.findByMemberId(memberId).get())
                     .usingRecursiveComparison()
+                    .ignoringFields("id")
                     .isEqualTo(expectedOption);
         });
     }
 
     @Test
-    void option을_조회한다() {
+    void option을_수정한다() {
         // given
         Long memberId = 1L;
 
-        OptionWriteRequest request = 옵션_생성_요청();
-        
-        optionService.writeOption(memberId, request);
-        Option expectedOption = OptionFactory.of(memberId, request);
+        OptionUpdateRequest updateRequest = 옵션_수정_요청();
+        Option exprectedOption = OptionFactory.createUpdateOption(memberId, updateRequest);
+
+        OptionWriteRequest writeRequest = 옵션_생성_요청();
+        optionService.writeOption(memberId, writeRequest);
 
         // when
-        Option memberOption = optionService.findByMemberId(memberId);
+        optionService.updateOption(memberId, updateRequest);
 
         // then
-        assertThat(memberOption).usingRecursiveComparison()
-                .isEqualTo(expectedOption);
-    }
-
-    @Test
-    void 처음에는_option이_존재하지_않는다() {
-        // given
-        Long memberId = 1L;
-
-        // when & then
-        assertThatThrownBy(() -> optionService.findByMemberId(memberId))
-                .isInstanceOf(OptionNotFoundException.class);
+        assertThat(optionRepository.findByMemberId(memberId).get())
+                .usingRecursiveComparison()
+                .ignoringFields("id")
+                .isEqualTo(exprectedOption);
     }
 }

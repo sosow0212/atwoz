@@ -1,5 +1,6 @@
 package com.atwoz.member.application.info.option;
 
+import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
@@ -17,12 +18,22 @@ public class OptionService {
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Option newOption = OptionFactory.of(memberId, request);
+        Option newOption = OptionFactory.createNewOption(memberId, request);
         if (!optionRepository.isExistMemberOption(memberId)) {
             optionRepository.save(newOption);
-            return;
         }
+    }
+
+    private Option findByMemberId(final Long memberId) {
+        return optionRepository.findByMemberId(memberId)
+                .orElseThrow(OptionNotFoundException::new);
+    }
+
+    @Transactional
+    public void updateOption(final Long memberId, final OptionUpdateRequest request) {
         Option existOption = findByMemberId(memberId);
+        Option newOption = OptionFactory.createUpdateOption(memberId, request);
+
         existOption.updateContents(
                 newOption.getSmoke(),
                 newOption.getReligion(),
@@ -30,10 +41,5 @@ public class OptionService {
                 newOption.getMbti(),
                 newOption.getGraduate()
         );
-    }
-
-    public Option findByMemberId(final Long memberId) {
-        return optionRepository.findByMemberId(memberId)
-                .orElseThrow(OptionNotFoundException::new);
     }
 }

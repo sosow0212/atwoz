@@ -26,5 +26,7 @@ public class OptionEventHandler {
     public void updateOption(final OptionUpdatedEvent event) {
         Long memberId = event.getMemberId();
         OptionUpdateRequest request = event.getRequest();
+
+        optionService.updateOption(memberId, request);
     }
 }

@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @EqualsAndHashCode(exclude = "id")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member_option")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Option {
 

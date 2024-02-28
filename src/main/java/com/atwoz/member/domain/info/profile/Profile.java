@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @EqualsAndHashCode(exclude = "id")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member_profile")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Profile {
 

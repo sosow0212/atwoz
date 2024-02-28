@@ -7,6 +7,7 @@ import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
 import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class OptionSearchResponseFixture {
 
     public static OptionSearchResponse 옵션_정보_조회_응답() {

@@ -2,6 +2,7 @@ package com.atwoz.member.fixture.info.dto.response;
 
 import com.atwoz.member.ui.info.dto.profile.LocationSearchResponse;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class LocationSearchResponseFixture {
 
     public static LocationSearchResponse 위치_정보_조회_응답() {

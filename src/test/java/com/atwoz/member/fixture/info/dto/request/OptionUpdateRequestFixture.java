@@ -7,6 +7,7 @@ import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class OptionUpdateRequestFixture {
 
     public static OptionUpdateRequest 옵션_수정_요청() {

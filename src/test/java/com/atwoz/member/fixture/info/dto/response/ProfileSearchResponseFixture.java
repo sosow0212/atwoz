@@ -9,6 +9,7 @@ import com.atwoz.member.ui.info.dto.profile.LocationSearchResponse;
 import com.atwoz.member.ui.info.dto.profile.PositionSearchResponse;
 import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class ProfileSearchResponseFixture {
 
     public static ProfileSearchResponse 프로필_정보_조회_응답() {

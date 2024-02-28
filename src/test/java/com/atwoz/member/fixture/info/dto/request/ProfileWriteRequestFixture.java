@@ -9,6 +9,7 @@ import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.Gender;
 import com.atwoz.member.domain.info.profile.Job;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class ProfileWriteRequestFixture {
 
     public static ProfileWriteRequest 프로필_생성_요청() {

@@ -2,6 +2,7 @@ package com.atwoz.member.fixture.info.dto.request;
 
 import com.atwoz.member.application.info.dto.profile.LocationWriteRequest;
 
+@SuppressWarnings("NonAsciiCharacters")
 public class LocationWriteRequestFixture {
 
     public static LocationWriteRequest 위치_생성_요청() {

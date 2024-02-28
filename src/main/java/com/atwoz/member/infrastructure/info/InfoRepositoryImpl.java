@@ -1,13 +1,13 @@
 package com.atwoz.member.infrastructure.info;
 
 import static com.atwoz.member.domain.info.hobby.QMemberHobby.memberHobby;
+import static com.atwoz.member.domain.info.style.QMemberStyle.memberStyle;
 
 import com.atwoz.member.domain.info.InfoRepository;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.QOption;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.QProfile;
-import com.atwoz.member.domain.info.style.QStyle;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
@@ -67,9 +67,9 @@ public class InfoRepositoryImpl implements InfoRepository {
     }
 
     private List<StyleSearchResponse> selectStyleResponseByMemberId(final Long memberId) {
-        return queryFactory.select(QStyle.style)
-                .from(QStyle.style)
-                .where(QStyle.style.memberId.eq(memberId))
+        return queryFactory.select(memberStyle)
+                .from(memberStyle)
+                .where(memberStyle.memberId.eq(memberId))
                 .fetch()
                 .stream()
                 .map(StyleSearchResponse::from)

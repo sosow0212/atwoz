@@ -16,9 +16,12 @@ public class StyleService {
     private final MemberStyleRepository memberStyleRepository;
 
     @Transactional
-    public void saveMemberStyles(final Long memberId, final List<String> styleNames) {
-        deleteMemberStyles(memberId);
-        List<MemberStyle> memberStyles = Style.findAllByCodes(styleNames)
+    public void saveMemberStyles(final Long memberId, final List<String> styleCodes) {
+        saveMemberStylesByStyleCodes(memberId, styleCodes);
+    }
+
+    private void saveMemberStylesByStyleCodes(final Long memberId, final List<String> styleCodes) {
+        List<MemberStyle> memberStyles = Style.findAllByCodes(styleCodes)
                 .stream()
                 .map(style -> new MemberStyle(memberId, style))
                 .toList();
@@ -27,11 +30,9 @@ public class StyleService {
     }
 
     @Transactional
-    public void deleteMemberStyles(final Long memberId) {
+    public void updateMemberStyles(final Long memberId, final List<String> styleCodes) {
         memberStyleRepository.deleteStylesByMemberId(memberId);
-    }
 
-    public List<MemberStyle> findMemberStyles(final Long memberId) {
-        return memberStyleRepository.findAllByMemberId(memberId);
+        saveMemberStylesByStyleCodes(memberId, styleCodes);
     }
 }

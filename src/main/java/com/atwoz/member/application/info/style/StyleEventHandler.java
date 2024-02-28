@@ -25,5 +25,7 @@ public class StyleEventHandler {
     public void updateHobbies(final StyleUpdatedEvent event) {
         Long memberId = event.getMemberId();
         List<String> styleCodes = event.getStyleCodes();
+
+        styleService.updateMemberStyles(memberId, styleCodes);
     }
 }

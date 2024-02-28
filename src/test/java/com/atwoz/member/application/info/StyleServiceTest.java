@@ -1,8 +1,11 @@
 package com.atwoz.member.application.info;
 
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
+import static com.atwoz.member.domain.info.style.Style.POLITE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
+import static com.atwoz.member.domain.info.style.Style.PROUD;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.style.StyleService;
 import com.atwoz.member.domain.info.style.MemberStyle;
@@ -32,40 +35,44 @@ class StyleServiceTest {
         // given
         Long memberId = 1L;
         List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
+        List<MemberStyle> expectedMemberStyles = List.of(
+                new MemberStyle(memberId, POSITIVE),
+                new MemberStyle(memberId, GENTLE)
+        );
 
         // when
         styleService.saveMemberStyles(memberId, styleCodes);
+        List<MemberStyle> saveMemberStyles = memberStyleRepository.findAllByMemberId(memberId);
 
         // then
-        List<MemberStyle> saveStyles = memberStyleRepository.findAllByMemberId(memberId);
-        assertThat(saveStyles.size()).isEqualTo(2);
+        assertThat(saveMemberStyles).containsAll(expectedMemberStyles);
     }
 
     @Test
-    void 회원의_모든_스타일을_삭제한다() {
+    void 회원의_스타일을_수정한다() {
         // given
         Long memberId = 1L;
         List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
+        List<String> updateStyleCodes = List.of(POLITE.getCode(), PROUD.getCode());
+        List<MemberStyle> originMemberStyles = List.of(
+                new MemberStyle(memberId, POSITIVE),
+                new MemberStyle(memberId, GENTLE)
+        );
+        List<MemberStyle> updateMemberStyles = List.of(
+                new MemberStyle(memberId, POLITE),
+                new MemberStyle(memberId, PROUD)
+        );
+
         styleService.saveMemberStyles(memberId, styleCodes);
 
         // when
-        styleService.deleteMemberStyles(memberId);
+        styleService.updateMemberStyles(memberId, updateStyleCodes);
+        List<MemberStyle> saveMemberStyles = memberStyleRepository.findAllByMemberId(memberId);
 
         // then
-        assertThat(memberStyleRepository.findAllByMemberId(memberId)).isEmpty();
-    }
-
-    @Test
-    void 회원의_모든_스타일을_조회한다() {
-        // given
-        Long memberId = 1L;
-        List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
-        styleService.saveMemberStyles(memberId, styleCodes);
-
-        // when
-        List<MemberStyle> memberStyles = styleService.findMemberStyles(memberId);
-
-        // then
-        assertThat(memberStyles.size()).isEqualTo(2);
+        assertSoftly(softly -> {
+            softly.assertThat(saveMemberStyles).doesNotContainAnyElementsOf(originMemberStyles);
+            softly.assertThat(saveMemberStyles).containsAll(updateMemberStyles);
+        });
     }
 }

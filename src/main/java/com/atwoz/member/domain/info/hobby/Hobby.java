@@ -80,7 +80,7 @@ public enum Hobby {
 
     private static void validateIsNotOverMaxSizeOfHobby(final List<String> codes) {
         int validSize = Arrays.stream(values())
-                .filter(hobbyName -> codes.contains(hobbyName.getCode()))
+                .filter(hobby -> codes.contains(hobby.getCode()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {
@@ -90,12 +90,12 @@ public enum Hobby {
 
     private static Hobby findByCode(final String code) {
         return Arrays.stream(values())
-                .filter(hobbyName -> hobbyName.isSame(code))
+                .filter(hobby -> hobby.isSameCode(code))
                 .findFirst()
                 .orElseThrow(HobbyInvalidException::new);
     }
 
-    private boolean isSame(final String code) {
-        return this.code.equals(code);
+    private boolean isSameCode(final String code) {
+        return code.equals(this.code);
     }
 }

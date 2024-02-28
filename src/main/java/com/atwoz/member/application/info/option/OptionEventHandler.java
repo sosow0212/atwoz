@@ -16,6 +16,7 @@ public class OptionEventHandler {
     public void writeOption(final OptionWroteEvent event) {
         Long memberId = event.getMemberId();
         OptionWriteRequest request = event.getRequest();
+
         optionService.writeOption(memberId, request);
     }
 }

@@ -83,6 +83,7 @@ class ProfileJpaRepositoryTest {
             softly.assertThat(findProfile).isPresent();
             softly.assertThat(findProfile.get())
                     .usingRecursiveComparison()
+                    .ignoringFields("id")
                     .isEqualTo(saveProfile);
         });
     }

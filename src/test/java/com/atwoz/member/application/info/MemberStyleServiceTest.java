@@ -19,7 +19,7 @@ import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-class MemberMemberStyleServiceTest {
+class MemberStyleServiceTest {
 
     private MemberStyleService memberStyleService;
     private MemberStyleRepository memberStyleRepository;

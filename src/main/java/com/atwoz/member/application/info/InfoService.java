@@ -1,10 +1,10 @@
 package com.atwoz.member.application.info;
 
 import com.atwoz.global.event.Events;
-import com.atwoz.member.application.event.HobbyWroteEvent;
-import com.atwoz.member.application.event.OptionWroteEvent;
-import com.atwoz.member.application.event.ProfileWroteEvent;
-import com.atwoz.member.application.event.StyleWroteEvent;
+import com.atwoz.member.application.event.info.HobbyWroteEvent;
+import com.atwoz.member.application.event.info.OptionWroteEvent;
+import com.atwoz.member.application.event.info.ProfileWroteEvent;
+import com.atwoz.member.application.event.info.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;

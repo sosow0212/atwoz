@@ -1,6 +1,8 @@
 package com.atwoz.member.application.info.option;
 
-import com.atwoz.member.application.event.OptionWroteEvent;
+import com.atwoz.member.application.event.info.OptionUpdatedEvent;
+import com.atwoz.member.application.event.info.OptionWroteEvent;
+import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
@@ -18,5 +20,11 @@ public class OptionEventHandler {
         OptionWriteRequest request = event.getRequest();
 
         optionService.writeOption(memberId, request);
+    }
+
+    @EventListener
+    public void updateOption(final OptionUpdatedEvent event) {
+        Long memberId = event.getMemberId();
+        OptionUpdateRequest request = event.getRequest();
     }
 }

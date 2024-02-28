@@ -1,6 +1,7 @@
 package com.atwoz.member.application.info.style;
 
-import com.atwoz.member.application.event.StyleWroteEvent;
+import com.atwoz.member.application.event.info.StyleUpdatedEvent;
+import com.atwoz.member.application.event.info.StyleWroteEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -18,5 +19,11 @@ public class StyleEventHandler {
         List<String> styleCodes = event.getStyleCodes();
 
         styleService.saveMemberStyles(memberId, styleCodes);
+    }
+
+    @EventListener
+    public void updateHobbies(final StyleUpdatedEvent event) {
+        Long memberId = event.getMemberId();
+        List<String> styleCodes = event.getStyleCodes();
     }
 }

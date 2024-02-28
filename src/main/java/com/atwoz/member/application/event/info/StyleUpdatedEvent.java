@@ -1,4 +1,4 @@
-package com.atwoz.member.application.event;
+package com.atwoz.member.application.event.info;
 
 import com.atwoz.global.event.Event;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class StyleWroteEvent extends Event {
+public class StyleUpdatedEvent extends Event {
 
     private final Long memberId;
     private final List<String> styleCodes;

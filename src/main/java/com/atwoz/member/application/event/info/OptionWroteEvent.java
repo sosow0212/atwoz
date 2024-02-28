@@ -1,4 +1,4 @@
-package com.atwoz.member.application.event;
+package com.atwoz.member.application.event.info;
 
 import com.atwoz.global.event.Event;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;

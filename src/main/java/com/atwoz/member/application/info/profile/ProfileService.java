@@ -26,11 +26,6 @@ public class ProfileService {
         }
     }
 
-    private Profile findByMemberId(final Long memberId) {
-        return profileRepository.findByMemberId(memberId)
-                .orElseThrow(ProfileNotFoundException::new);
-    }
-
     @Transactional
     public void updateProfile(final Long memberId, final ProfileUpdateRequest request) {
         Profile existProfile = findByMemberId(memberId);
@@ -42,5 +37,10 @@ public class ProfileService {
                 newProfile.getPosition(),
                 newProfile.getJob()
         );
+    }
+
+    private Profile findByMemberId(final Long memberId) {
+        return profileRepository.findByMemberId(memberId)
+                .orElseThrow(ProfileNotFoundException::new);
     }
 }

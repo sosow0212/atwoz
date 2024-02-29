@@ -8,6 +8,7 @@ public record LocationSearchResponse(
 
         String sector
 ) {
+
     public static LocationSearchResponse from(final Location location) {
         return new LocationSearchResponse(location.getCity(), location.getSector());
     }

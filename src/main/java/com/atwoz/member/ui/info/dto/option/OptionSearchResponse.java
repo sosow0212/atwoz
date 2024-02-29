@@ -19,6 +19,7 @@ public record OptionSearchResponse(
 
         String mbti
 ) {
+
     public static OptionSearchResponse from(final Option option) {
         Drink drink = option.getDrink();
         Graduate graduate = option.getGraduate();

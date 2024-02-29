@@ -21,6 +21,7 @@ public record ProfileSearchResponse(
 
         String job
 ) {
+
     public static ProfileSearchResponse from(final Profile profile) {
         Body body = profile.getBody();
         int age = body.getAge();

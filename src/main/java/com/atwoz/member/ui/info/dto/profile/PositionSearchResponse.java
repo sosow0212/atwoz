@@ -9,6 +9,7 @@ public record PositionSearchResponse(
 
         BigDecimal longitude
 ) {
+
     public static PositionSearchResponse from(final Position position) {
         return new PositionSearchResponse(position.getLatitude(), position.getLongitude());
     }

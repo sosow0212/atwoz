@@ -1,7 +1,8 @@
 package com.atwoz.member.domain.info.style;
 
-import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
+import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.style.InvalidStyleException;
+import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import lombok.Getter;
 import java.util.Arrays;
@@ -61,17 +62,27 @@ public enum Style {
     }
 
     public static void validateSize(final List<String> codes) {
-        if (codes.isEmpty()) {
-            throw new StyleSizeException();
-        }
+        validateIsNotEmptyCodes(codes);
+        validateIsUniqueCodes(codes);
+        validateIsNotOverMaxSizeOfStyle(codes);
+    }
 
+    private static void validateIsNotEmptyCodes(final List<String> codes) {
+        if (codes.isEmpty()) {
+            throw new HobbySizeException();
+        }
+    }
+
+    private static void validateIsUniqueCodes(final List<String> codes) {
         Set<String> uniqueCodes = new HashSet<>(codes);
         if (uniqueCodes.size() != codes.size()) {
             throw new StyleDuplicateException();
         }
+    }
 
+    private static void validateIsNotOverMaxSizeOfStyle(final List<String> codes) {
         int validSize = Arrays.stream(values())
-                .filter(style -> uniqueCodes.contains(style.getCode()))
+                .filter(style -> codes.contains(style.getCode()))
                 .toList()
                 .size();
         if (validSize > MAX_SIZE) {

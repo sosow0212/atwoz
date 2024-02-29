@@ -26,5 +26,7 @@ public class ProfileEventHandler {
     public void updateProfile(final ProfileUpdatedEvent event) {
         Long memberId = event.getMemberId();
         ProfileUpdateRequest request = event.getRequest();
+
+        profileService.updateProfile(memberId, request);
     }
 }

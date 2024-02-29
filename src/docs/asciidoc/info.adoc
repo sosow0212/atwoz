@@ -22,6 +22,7 @@ include::{snippets}/info-controller-web-mvc-test/write_info/http-response.adoc[]
 ==== 요청
 include::{snippets}/info-controller-web-mvc-test/update_info/http-request.adoc[]
 include::{snippets}/info-controller-web-mvc-test/update_info/request-headers.adoc[]
+include::{snippets}/info-controller-web-mvc-test/update_info/request-fields.adoc[]
 
 ==== 응답
 include::{snippets}/info-controller-web-mvc-test/update_info/http-response.adoc[]

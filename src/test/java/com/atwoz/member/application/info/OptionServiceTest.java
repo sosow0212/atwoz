@@ -36,7 +36,14 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionWriteRequest request = 옵션_생성_요청();
-        Option expectedOption = OptionFactory.createNewOption(memberId, request);
+        Option expectedOption = OptionFactory.createOption(
+                memberId,
+                request.smoke(),
+                request.religion(),
+                request.drink(),
+                request.mbti(),
+                request.graduate()
+        );
 
         // when
         optionService.writeOption(memberId, request);
@@ -57,7 +64,14 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionUpdateRequest updateRequest = 옵션_수정_요청();
-        Option exprectedOption = OptionFactory.createUpdateOption(memberId, updateRequest);
+        Option exprectedOption = OptionFactory.createOption(
+                memberId,
+                updateRequest.smoke(),
+                updateRequest.religion(),
+                updateRequest.drink(),
+                updateRequest.mbti(),
+                updateRequest.graduate()
+        );
 
         OptionWriteRequest writeRequest = 옵션_생성_요청();
         optionService.writeOption(memberId, writeRequest);

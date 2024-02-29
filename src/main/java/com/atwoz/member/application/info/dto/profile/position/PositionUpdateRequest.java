@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 public class PositionUpdateRequest implements PositionRequest {
 
         @NotNull(message = "위도가 있어야 합니다.")
-        BigDecimal latitude;
+        private BigDecimal latitude;
 
         @NotNull(message = "경도가 있어야 합니다.")
-        BigDecimal longitude;
+        private BigDecimal longitude;
 }

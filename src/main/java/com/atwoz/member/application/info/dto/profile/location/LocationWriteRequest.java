@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class LocationWriteRequest implements LocationRequest {
 
         @NotBlank(message = "시/도가 작성되어야 합니다.")
-        String city;
+        private String city;
 
         @NotBlank(message = "구/군이 작성되어야 합니다.")
-        String sector;
+        private String sector;
 }

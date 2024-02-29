@@ -16,22 +16,22 @@ import lombok.NoArgsConstructor;
 public class ProfileUpdateRequest implements ProfileRequest {
 
         @NotNull(message = "출생년도가 작성되어야 합니다.")
-        Integer birthYear;
+        private Integer birthYear;
 
         @NotNull(message = "키가 작성되어야 합니다.")
-        Integer height;
+        private Integer height;
 
         @NotBlank(message = "성별이 작성되어야 합니다.")
-        String gender;
+        private String gender;
 
         @Valid
         @NotNull(message = "위치가 작성되어야 합니다.")
-        LocationUpdateRequest location;
+        private LocationUpdateRequest location;
 
         @Valid
         @NotNull(message = "위도-경도가 작성되어야 합니다.")
-        PositionUpdateRequest position;
+        private PositionUpdateRequest position;
 
         @NotBlank(message = "직업이 작성되어야 합니다.")
-        String job;
+        private String job;
 }

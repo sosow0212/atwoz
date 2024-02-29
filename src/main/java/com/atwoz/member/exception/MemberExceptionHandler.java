@@ -25,7 +25,7 @@ import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeExcept
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
-import com.atwoz.member.exception.exceptions.info.style.StyleInvalidException;
+import com.atwoz.member.exception.exceptions.info.style.InvalidStyleException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import com.atwoz.member.exception.exceptions.member.MemberAlreadyExistedException;
 import com.atwoz.member.exception.exceptions.member.MemberNotFoundException;
@@ -118,8 +118,8 @@ public class MemberExceptionHandler {
     }
 
     // info - style
-    @ExceptionHandler(StyleInvalidException.class)
-    public ResponseEntity<String> handleStyleInvalidException(final StyleInvalidException e) {
+    @ExceptionHandler(InvalidStyleException.class)
+    public ResponseEntity<String> handleStyleInvalidException(final InvalidStyleException e) {
         return getBadRequest(e);
     }
 

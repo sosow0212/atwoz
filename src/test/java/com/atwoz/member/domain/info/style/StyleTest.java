@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
-import com.atwoz.member.exception.exceptions.info.style.StyleInvalidException;
+import com.atwoz.member.exception.exceptions.info.style.InvalidStyleException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -58,7 +58,7 @@ class StyleTest {
 
         // when & then
         assertThatThrownBy(() -> Style.findAllByCodes(styleCodes))
-                .isInstanceOf(StyleInvalidException.class);
+                .isInstanceOf(InvalidStyleException.class);
     }
 
     @Test

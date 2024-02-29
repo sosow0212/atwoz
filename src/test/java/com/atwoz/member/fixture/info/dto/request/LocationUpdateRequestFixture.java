@@ -1,6 +1,6 @@
 package com.atwoz.member.fixture.info.dto.request;
 
-import com.atwoz.member.application.info.dto.profile.LocationUpdateRequest;
+import com.atwoz.member.application.info.dto.profile.location.LocationUpdateRequest;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class LocationUpdateRequestFixture {

@@ -1,6 +1,5 @@
 package com.atwoz.member.domain.info.style;
 
-import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
 import com.atwoz.member.exception.exceptions.info.style.InvalidStyleException;
 import com.atwoz.member.exception.exceptions.info.style.StyleDuplicateException;
 import com.atwoz.member.exception.exceptions.info.style.StyleSizeException;
@@ -69,7 +68,7 @@ public enum Style {
 
     private static void validateIsNotEmptyCodes(final List<String> codes) {
         if (codes.isEmpty()) {
-            throw new HobbySizeException();
+            throw new StyleSizeException();
         }
     }
 

@@ -2,10 +2,16 @@ package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
 import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
+import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;
+import static com.atwoz.member.domain.info.hobby.Hobby.GOLF;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
+import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
+import static com.atwoz.member.domain.info.style.Style.PURE;
+import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.옵션_수정_요청;
 import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.ProfileUpdateRequestFixture.프로필_수정_요청;
 import static com.atwoz.member.fixture.info.dto.request.ProfileWriteRequestFixture.프로필_생성_요청;
 import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.옵션_정보_조회_응답;
 import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.프로필_정보_조회_응답;
@@ -18,6 +24,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -25,10 +32,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.info.InfoService;
+import com.atwoz.member.application.info.dto.HobbyUpdateRequest;
 import com.atwoz.member.application.info.dto.HobbyWriteRequest;
+import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
+import com.atwoz.member.application.info.dto.StyleUpdateRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
+import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
+import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
@@ -90,6 +102,59 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                 .andExpect(status().isCreated())
                 .andDo(print())
                 .andDo(customDocument("write_info",
+                        requestHeaders(
+                                headerWithName("Authorization").description("유저 토큰 정보")
+                        ),
+                        requestFields(
+                                fieldWithPath("profile.birthYear").description("출생년도"),
+                                fieldWithPath("profile.height").description("키"),
+                                fieldWithPath("profile.gender").description("성별"),
+                                fieldWithPath("profile.location.city").description("위치 (시/도)"),
+                                fieldWithPath("profile.location.sector").description("위치 (구/군)"),
+                                fieldWithPath("profile.position.latitude").description("좌표 (위도)"),
+                                fieldWithPath("profile.position.longitude").description("좌표 (경도)"),
+                                fieldWithPath("profile.job").description("직업 코드"),
+                                fieldWithPath("option.drink").description("음주 단계"),
+                                fieldWithPath("option.graduate").description("최종 학력"),
+                                fieldWithPath("option.religion").description("종교"),
+                                fieldWithPath("option.smoke").description("흡연 단계"),
+                                fieldWithPath("option.mbti").description("MBTI"),
+                                fieldWithPath("hobbies").description("취미 목록"),
+                                fieldWithPath("hobbies[].hobby").description("취미 코드"),
+                                fieldWithPath("styles").description("스타일 목록"),
+                                fieldWithPath("styles[].style").description("스타일 코드")
+                        )
+                ));
+    }
+
+    @Test
+    void 회원_정보를_수정한다() throws Exception {
+        // given
+        String bearerToken = "Bearer token";
+
+        ProfileUpdateRequest profileUpdateRequest = 프로필_수정_요청();
+        OptionUpdateRequest optionUpdateRequest = 옵션_수정_요청();
+
+        List<HobbyUpdateRequest> hobbies = List.of(
+                new HobbyUpdateRequest(DRAMA.getCode()),
+                new HobbyUpdateRequest(WRITE.getCode())
+        );
+
+        List<StyleUpdateRequest> styles = List.of(
+                new StyleUpdateRequest(PURE.getCode()),
+                new StyleUpdateRequest(GOLF.getCode())
+        );
+
+        InfoUpdateRequest infoWriteRequest = new InfoUpdateRequest(profileUpdateRequest, optionUpdateRequest, hobbies, styles);
+
+        // when & then
+        mockMvc.perform(patch("/api/info")
+                        .header(AUTHORIZATION, bearerToken)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(infoWriteRequest)))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andDo(customDocument("update_info",
                         requestHeaders(
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),

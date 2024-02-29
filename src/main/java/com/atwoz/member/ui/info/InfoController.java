@@ -1,6 +1,7 @@
 package com.atwoz.member.ui.info;
 
 import com.atwoz.member.application.info.InfoService;
+import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,14 @@ public class InfoController {
                                           @Valid @RequestBody final InfoWriteRequest request) {
         infoService.writeInfo(memberId, request);
         return ResponseEntity.status(HttpStatus.CREATED)
+                .build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<Void> updateInfo(@AuthMember final Long memberId,
+                                           @Valid @RequestBody final InfoUpdateRequest request) {
+        infoService.updateInfo(memberId, request);
+        return ResponseEntity.ok()
                 .build();
     }
 

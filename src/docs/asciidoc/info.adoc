@@ -17,6 +17,15 @@ include::{snippets}/info-controller-web-mvc-test/write_info/request-fields.adoc[
 ==== 응답
 include::{snippets}/info-controller-web-mvc-test/write_info/http-response.adoc[]
 
+=== 회원 정보 수정
+
+==== 요청
+include::{snippets}/info-controller-web-mvc-test/update_info/http-request.adoc[]
+include::{snippets}/info-controller-web-mvc-test/update_info/request-headers.adoc[]
+
+==== 응답
+include::{snippets}/info-controller-web-mvc-test/update_info/http-response.adoc[]
+
 === 회원 정보 조회
 
 ==== 요청

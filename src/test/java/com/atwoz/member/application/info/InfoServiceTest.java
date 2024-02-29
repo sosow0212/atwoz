@@ -1,22 +1,19 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
-import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
-import static com.atwoz.member.domain.info.style.Style.GENTLE;
-import static com.atwoz.member.domain.info.style.Style.POSITIVE;
-import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.ProfileWriteRequestFixture.프로필_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.InfoUpdateRequestFixture.정보_수정_요청;
+import static com.atwoz.member.fixture.info.dto.request.InfoWriteRequestFixture.정보_생성_요청;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.application.event.info.HobbyUpdatedEvent;
 import com.atwoz.member.application.event.info.HobbyWroteEvent;
+import com.atwoz.member.application.event.info.OptionUpdatedEvent;
 import com.atwoz.member.application.event.info.OptionWroteEvent;
+import com.atwoz.member.application.event.info.ProfileUpdatedEvent;
 import com.atwoz.member.application.event.info.ProfileWroteEvent;
+import com.atwoz.member.application.event.info.StyleUpdatedEvent;
 import com.atwoz.member.application.event.info.StyleWroteEvent;
-import com.atwoz.member.application.info.dto.HobbyWriteRequest;
+import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
-import com.atwoz.member.application.info.dto.StyleWriteRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -24,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
-import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -42,25 +38,7 @@ class InfoServiceTest {
     void 모든_정보를_저장한다() {
         // given
         Long memberId = 1L;
-        ProfileWriteRequest profileWriteRequest = 프로필_생성_요청();
-        OptionWriteRequest optionWriteRequest = 옵션_생성_요청();
-
-        List<HobbyWriteRequest> hobbyWriteRequests = List.of(
-            new HobbyWriteRequest(WINE.getCode()),
-            new HobbyWriteRequest(COOK.getCode())
-        );
-
-        List<StyleWriteRequest> styleWriteRequests = List.of(
-            new StyleWriteRequest(POSITIVE.getCode()),
-            new StyleWriteRequest(GENTLE.getCode())
-        );
-
-        InfoWriteRequest request = new InfoWriteRequest(
-                profileWriteRequest,
-                optionWriteRequest,
-                hobbyWriteRequests,
-                styleWriteRequests
-        );
+        InfoWriteRequest request = 정보_생성_요청();
 
         // when
         infoService.writeInfo(memberId, request);
@@ -76,6 +54,32 @@ class InfoServiceTest {
             softly.assertThat(optionWroteEventCount).isEqualTo(1);
             softly.assertThat(hobbyWroteEventCount).isEqualTo(1);
             softly.assertThat(styleWroteEventCount).isEqualTo(1);
+        });
+    }
+
+    @Test
+    void 모든_정보를_수정한다() {
+        // given
+        Long memberId = 1L;
+        InfoWriteRequest infoWriteRequest = 정보_생성_요청();
+        InfoUpdateRequest infoUpdateRequest = 정보_수정_요청();
+
+        infoService.writeInfo(memberId, infoWriteRequest);
+
+        // when
+        infoService.updateInfo(memberId, infoUpdateRequest);
+
+        // then
+        int profileUpdatedEventCount = (int) events.stream(ProfileUpdatedEvent.class).count();
+        int optionUpdatedEventCount = (int) events.stream(OptionUpdatedEvent.class).count();
+        int hobbyUpdatedEventCount = (int) events.stream(HobbyUpdatedEvent.class).count();
+        int styleUpdatedEventCount = (int) events.stream(StyleUpdatedEvent.class).count();
+
+        assertSoftly(softly -> {
+            softly.assertThat(profileUpdatedEventCount).isEqualTo(1);
+            softly.assertThat(optionUpdatedEventCount).isEqualTo(1);
+            softly.assertThat(hobbyUpdatedEventCount).isEqualTo(1);
+            softly.assertThat(styleUpdatedEventCount).isEqualTo(1);
         });
     }
 }

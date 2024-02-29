@@ -7,5 +7,5 @@ import java.util.List;
 public interface MemberStyleJpaRepository extends JpaRepository<MemberStyle, Long> {
 
     void deleteByMemberId(final Long memberId);
-    List<MemberStyle> findAllByMemberId(Long memberId);
+    List<MemberStyle> findAllByMemberId(final Long memberId);
 }

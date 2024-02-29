@@ -50,6 +50,7 @@ class ProfileServiceTest {
             softly.assertThat(profileRepository.findByMemberId(memberId)).isPresent();
             softly.assertThat(profileRepository.findByMemberId(memberId).get())
                     .usingRecursiveComparison()
+                    .ignoringFields("id")
                     .isEqualTo(expectedProfile);
         });
     }

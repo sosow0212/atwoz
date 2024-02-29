@@ -1,5 +1,6 @@
 package com.atwoz.member.application.info.profile;
 
+import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
@@ -19,28 +20,27 @@ public class ProfileService {
 
     @Transactional
     public void writeProfile(final Long memberId, final ProfileWriteRequest request) {
-        Profile newProfile = ProfileFactory.of(memberId, request, yearManager);
-
-        if (!isMemberProfileExist(memberId)) {
+        Profile newProfile = ProfileFactory.createNewProfile(memberId, request, yearManager);
+        if (!profileRepository.isExistMemberProfile(memberId)) {
             profileRepository.save(newProfile);
-            return;
         }
+    }
 
+    private Profile findByMemberId(final Long memberId) {
+        return profileRepository.findByMemberId(memberId)
+                .orElseThrow(ProfileNotFoundException::new);
+    }
+
+    @Transactional
+    public void updateProfile(final Long memberId, final ProfileUpdateRequest request) {
         Profile existProfile = findByMemberId(memberId);
+        Profile newProfile = ProfileFactory.createUpdateProfile(memberId, request, yearManager);
+
         existProfile.updateContents(
                 newProfile.getBody(),
                 newProfile.getLocation(),
                 newProfile.getPosition(),
                 newProfile.getJob()
         );
-    }
-
-    private boolean isMemberProfileExist(final Long memberId) {
-        return profileRepository.isExistMemberProfile(memberId);
-    }
-
-    public Profile findByMemberId(final Long memberId) {
-        return profileRepository.findByMemberId(memberId)
-                .orElseThrow(ProfileNotFoundException::new);
     }
 }

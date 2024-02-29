@@ -24,11 +24,6 @@ public class OptionService {
         }
     }
 
-    private Option findByMemberId(final Long memberId) {
-        return optionRepository.findByMemberId(memberId)
-                .orElseThrow(OptionNotFoundException::new);
-    }
-
     @Transactional
     public void updateOption(final Long memberId, final OptionUpdateRequest request) {
         Option existOption = findByMemberId(memberId);
@@ -41,5 +36,10 @@ public class OptionService {
                 newOption.getMbti(),
                 newOption.getGraduate()
         );
+    }
+
+    private Option findByMemberId(final Long memberId) {
+        return optionRepository.findByMemberId(memberId)
+                .orElseThrow(OptionNotFoundException::new);
     }
 }

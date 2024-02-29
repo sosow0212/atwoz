@@ -3,6 +3,7 @@ package com.atwoz.member.application.info;
 import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.옵션_수정_요청;
 import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
@@ -11,6 +12,7 @@ import com.atwoz.member.application.info.option.OptionFactory;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
+import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.infrastructure.info.OptionFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -31,7 +33,7 @@ class OptionServiceTest {
     }
 
     @Test
-    void option을_저장한다() {
+    void 옵션을_저장한다() {
         // given
         Long memberId = 1L;
 
@@ -52,7 +54,7 @@ class OptionServiceTest {
     }
 
     @Test
-    void option을_수정한다() {
+    void 옵션을_수정한다() {
         // given
         Long memberId = 1L;
 
@@ -70,5 +72,16 @@ class OptionServiceTest {
                 .usingRecursiveComparison()
                 .ignoringFields("id")
                 .isEqualTo(exprectedOption);
+    }
+
+    @Test
+    void 옵션이_없을_때_수정을_시도하면_예외가_발생한다() {
+        // given
+        Long memberId = 1L;
+        OptionUpdateRequest updateRequest = 옵션_수정_요청();
+
+        // when & then
+        assertThatThrownBy(() -> optionService.updateOption(memberId, updateRequest))
+                .isInstanceOf(OptionNotFoundException.class);
     }
 }

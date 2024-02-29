@@ -1,20 +1,9 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
-import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
-import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;
-import static com.atwoz.member.domain.info.hobby.Hobby.GOLF;
-import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
-import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
-import static com.atwoz.member.domain.info.style.Style.GENTLE;
-import static com.atwoz.member.domain.info.style.Style.POSITIVE;
-import static com.atwoz.member.domain.info.style.Style.PURE;
-import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.옵션_수정_요청;
-import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.ProfileUpdateRequestFixture.프로필_수정_요청;
-import static com.atwoz.member.fixture.info.dto.request.ProfileWriteRequestFixture.프로필_생성_요청;
-import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.옵션_정보_조회_응답;
-import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.프로필_정보_조회_응답;
+import static com.atwoz.member.fixture.info.dto.request.InfoUpdateRequestFixture.정보_수정_요청;
+import static com.atwoz.member.fixture.info.dto.request.InfoWriteRequestFixture.정보_생성_요청;
+import static com.atwoz.member.fixture.info.dto.response.InfoSearchResponseFixture.정보_조회_응답;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
@@ -32,21 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.info.InfoService;
-import com.atwoz.member.application.info.dto.HobbyUpdateRequest;
-import com.atwoz.member.application.info.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
-import com.atwoz.member.application.info.dto.StyleUpdateRequest;
-import com.atwoz.member.application.info.dto.StyleWriteRequest;
-import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
-import com.atwoz.member.ui.info.dto.StyleSearchResponse;
-import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -57,7 +34,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import java.util.List;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -78,21 +54,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_작성한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-
-        ProfileWriteRequest profileWriteRequest = 프로필_생성_요청();
-        OptionWriteRequest optionWriteRequest = 옵션_생성_요청();
-
-        List<HobbyWriteRequest> hobbies = List.of(
-                new HobbyWriteRequest(WINE.getCode()),
-                new HobbyWriteRequest(COOK.getCode())
-        );
-
-        List<StyleWriteRequest> styles = List.of(
-                new StyleWriteRequest(POSITIVE.getCode()),
-                new StyleWriteRequest(GENTLE.getCode())
-        );
-
-        InfoWriteRequest infoWriteRequest = new InfoWriteRequest(profileWriteRequest, optionWriteRequest, hobbies, styles);
+        InfoWriteRequest infoWriteRequest = 정보_생성_요청();
 
         // when & then
         mockMvc.perform(post("/api/info")
@@ -131,27 +93,13 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_수정한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-
-        ProfileUpdateRequest profileUpdateRequest = 프로필_수정_요청();
-        OptionUpdateRequest optionUpdateRequest = 옵션_수정_요청();
-
-        List<HobbyUpdateRequest> hobbies = List.of(
-                new HobbyUpdateRequest(DRAMA.getCode()),
-                new HobbyUpdateRequest(WRITE.getCode())
-        );
-
-        List<StyleUpdateRequest> styles = List.of(
-                new StyleUpdateRequest(PURE.getCode()),
-                new StyleUpdateRequest(GOLF.getCode())
-        );
-
-        InfoUpdateRequest infoWriteRequest = new InfoUpdateRequest(profileUpdateRequest, optionUpdateRequest, hobbies, styles);
+        InfoUpdateRequest infoUpdateRequest = 정보_수정_요청();
 
         // when & then
         mockMvc.perform(patch("/api/info")
                         .header(AUTHORIZATION, bearerToken)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(infoWriteRequest)))
+                        .content(objectMapper.writeValueAsString(infoUpdateRequest)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andDo(customDocument("update_info",
@@ -184,21 +132,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_조회한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-
-        ProfileSearchResponse profileSearchResponse = 프로필_정보_조회_응답();
-        OptionSearchResponse optionSearchResponse = 옵션_정보_조회_응답();
-
-        List<HobbySearchResponse> hobbies = List.of(
-                new HobbySearchResponse(WINE.getCode()),
-                new HobbySearchResponse(COOK.getCode())
-        );
-
-        List<StyleSearchResponse> styles = List.of(
-                new StyleSearchResponse(POSITIVE.getCode()),
-                new StyleSearchResponse(GENTLE.getCode())
-        );
-
-        InfoSearchResponse infoSearchResponse = new InfoSearchResponse(profileSearchResponse, optionSearchResponse, hobbies, styles);
+        InfoSearchResponse infoSearchResponse = 정보_조회_응답();
 
         when(infoService.findInfo(any())).thenReturn(infoSearchResponse);
 

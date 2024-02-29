@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @EqualsAndHashCode(exclude = "id")
 @Table(name = "member_styles")
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Entity

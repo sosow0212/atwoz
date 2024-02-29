@@ -38,12 +38,12 @@ public enum Job {
 
     public static Job findByCode(final String code) {
         return Arrays.stream(values())
-                .filter(job -> job.isSame(code))
+                .filter(job -> job.isSameCode(code))
                 .findFirst()
                 .orElseThrow(InvalidJobException::new);
     }
 
-    private boolean isSame(final String code) {
+    private boolean isSameCode(final String code) {
         return this.code.equals(code);
     }
 }

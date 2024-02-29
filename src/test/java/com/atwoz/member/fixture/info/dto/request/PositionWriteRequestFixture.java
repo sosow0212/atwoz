@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 public class PositionWriteRequestFixture {
 
     public static PositionWriteRequest 좌표_생성_요청() {
-        BigDecimal latitude = BigDecimal.valueOf(70.3);
-        BigDecimal longitude = BigDecimal.valueOf(140.3);
+        BigDecimal latitude = BigDecimal.valueOf(70.39);
+        BigDecimal longitude = BigDecimal.valueOf(140.38);
 
         return new PositionWriteRequest(latitude, longitude);
     }

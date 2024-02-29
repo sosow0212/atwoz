@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 public class PositionSearchResponseFixture {
 
     public static PositionSearchResponse 좌표_정보_조회_응답() {
-        BigDecimal latitude = BigDecimal.valueOf(70.3);
-        BigDecimal longitude = BigDecimal.valueOf(140.3);
+        BigDecimal latitude = BigDecimal.valueOf(70.39);
+        BigDecimal longitude = BigDecimal.valueOf(140.38);
 
         return new PositionSearchResponse(latitude, longitude);
     }

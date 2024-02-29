@@ -2,8 +2,11 @@ package com.atwoz.member.application.info;
 
 import static com.atwoz.member.fixture.info.dto.request.InfoUpdateRequestFixture.정보_수정_요청;
 import static com.atwoz.member.fixture.info.dto.request.InfoWriteRequestFixture.정보_생성_요청;
+import static com.atwoz.member.fixture.info.dto.response.InfoSearchResponseFixture.정보_조회_응답;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.helper.IntegrationHelper;
 import com.atwoz.member.application.event.info.HobbyUpdatedEvent;
 import com.atwoz.member.application.event.info.HobbyWroteEvent;
 import com.atwoz.member.application.event.info.OptionUpdatedEvent;
@@ -14,19 +17,18 @@ import com.atwoz.member.application.event.info.StyleUpdatedEvent;
 import com.atwoz.member.application.event.info.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
+import com.atwoz.member.ui.info.dto.InfoSearchResponse;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.event.ApplicationEvents;
 import org.springframework.test.context.event.RecordApplicationEvents;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-@SpringBootTest
 @RecordApplicationEvents
-class InfoServiceTest {
+class InfoServiceTest extends IntegrationHelper {
 
     @Autowired
     private InfoService infoService;
@@ -81,5 +83,20 @@ class InfoServiceTest {
             softly.assertThat(hobbyUpdatedEventCount).isEqualTo(1);
             softly.assertThat(styleUpdatedEventCount).isEqualTo(1);
         });
+    }
+
+    @Test
+    void 모든_정보를_조회한다() {
+        // given
+        Long memberId = 1L;
+        InfoWriteRequest request = 정보_생성_요청();
+        infoService.writeInfo(memberId, request);
+        InfoSearchResponse expectedInfoSearchResponse = 정보_조회_응답();
+
+        // when
+        InfoSearchResponse infoSearchResponse = infoService.findInfo(memberId);
+
+        // then
+        assertThat(infoSearchResponse).isEqualTo(expectedInfoSearchResponse);
     }
 }

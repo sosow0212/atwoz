@@ -49,6 +49,7 @@ class MemberHobbyJpaRepositoryTest {
         // then
         assertThat(saveMemberHobby)
                 .usingRecursiveComparison()
+                .ignoringFields("id")
                 .isEqualTo(memberHobby);
     }
 

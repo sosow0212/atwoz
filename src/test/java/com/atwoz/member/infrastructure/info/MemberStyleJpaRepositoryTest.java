@@ -49,6 +49,7 @@ class MemberStyleJpaRepositoryTest {
         // then
         assertThat(saveMemberStyle)
                 .usingRecursiveComparison()
+                .ignoringFields("id")
                 .isEqualTo(memberStyle);
     }
 

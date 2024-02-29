@@ -7,7 +7,7 @@ import com.atwoz.member.domain.info.hobby.Hobby;
 import com.atwoz.member.domain.info.hobby.MemberHobby;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.fixture.member.MemberFixture;
-import com.atwoz.member.infrastructure.info.hobby.HobbyJpaRepository;
+import com.atwoz.member.infrastructure.info.hobby.MemberHobbyJpaRepository;
 import com.atwoz.member.infrastructure.member.MemberJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 class MemberHobbyJpaRepositoryTest {
 
     @Autowired
-    private HobbyJpaRepository hobbyJpaRepository;
+    private MemberHobbyJpaRepository memberHobbyJpaRepository;
 
     @Autowired
     private MemberJpaRepository memberJpaRepository;
@@ -44,7 +44,7 @@ class MemberHobbyJpaRepositoryTest {
         MemberHobby memberHobby = new MemberHobby(memberId, hobby);
 
         // when
-        MemberHobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
+        MemberHobby saveMemberHobby = memberHobbyJpaRepository.save(memberHobby);
 
         // then
         assertThat(saveMemberHobby)
@@ -58,10 +58,10 @@ class MemberHobbyJpaRepositoryTest {
         Hobby hobby = Hobby.ANIMATION;
         Long memberId = member.getId();
         MemberHobby memberHobby = new MemberHobby(memberId, hobby);
-        MemberHobby saveMemberHobby = hobbyJpaRepository.save(memberHobby);
+        MemberHobby saveMemberHobby = memberHobbyJpaRepository.save(memberHobby);
 
         // when
-        List<MemberHobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
+        List<MemberHobby> findMemberHobbies = memberHobbyJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {
@@ -76,11 +76,11 @@ class MemberHobbyJpaRepositoryTest {
         Long memberId = member.getId();
         List<MemberHobby> memberHobbies = Stream.of(Hobby.BICYCLE, Hobby.DANCE)
                 .map(hobby -> new MemberHobby(memberId, hobby))
-                .map(memberHobby -> hobbyJpaRepository.save(memberHobby))
+                .map(memberHobby -> memberHobbyJpaRepository.save(memberHobby))
                 .toList();
 
         // when
-        List<MemberHobby> findMemberHobbies = hobbyJpaRepository.findAllByMemberId(memberId);
+        List<MemberHobby> findMemberHobbies = memberHobbyJpaRepository.findAllByMemberId(memberId);
 
         // then
         assertSoftly(softly -> {

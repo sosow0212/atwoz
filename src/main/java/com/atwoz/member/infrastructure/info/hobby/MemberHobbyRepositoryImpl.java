@@ -10,25 +10,25 @@ import java.util.List;
 @Repository
 public class MemberHobbyRepositoryImpl implements MemberHobbyRepository {
 
-    private final HobbyJpaRepository hobbyJpaRepository;
+    private final MemberHobbyJpaRepository memberHobbyJpaRepository;
 
     @Override
     public void save(final MemberHobby memberHobby) {
-        hobbyJpaRepository.save(memberHobby);
+        memberHobbyJpaRepository.save(memberHobby);
     }
 
     @Override
     public void saveAll(final List<MemberHobby> memberHobbies) {
-        hobbyJpaRepository.saveAll(memberHobbies);
+        memberHobbyJpaRepository.saveAll(memberHobbies);
     }
 
     @Override
     public void deleteHobbiesByMemberId(final Long memberId) {
-        hobbyJpaRepository.deleteByMemberId(memberId);
+        memberHobbyJpaRepository.deleteByMemberId(memberId);
     }
 
     @Override
     public List<MemberHobby> findAllByMemberId(final Long memberId) {
-        return hobbyJpaRepository.findAllByMemberId(memberId);
+        return memberHobbyJpaRepository.findAllByMemberId(memberId);
     }
 }

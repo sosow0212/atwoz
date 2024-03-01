@@ -20,7 +20,7 @@ public class IntegrationHelper extends AbstractTestExecutionListener {
     private JdbcTemplate jdbcTemplate;
 
     @BeforeEach
-    void init() {
+    void initIntegrationHelper() {
         RestAssured.port = this.port;
         validateH2Database();
         List<String> truncateAllTablesQuery = jdbcTemplate.queryForList("SELECT CONCAT('TRUNCATE TABLE ', TABLE_NAME, ';') AS q FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'PUBLIC'", String.class);

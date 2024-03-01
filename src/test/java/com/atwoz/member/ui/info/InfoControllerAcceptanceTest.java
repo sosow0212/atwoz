@@ -19,7 +19,7 @@ class InfoControllerAcceptanceTest extends InfoControllerAcceptanceFixture {
     private String 토큰;
 
     @BeforeEach
-    void init() {
+    void setup() {
         회원 = 회원_생성();
         토큰 = 토큰_생성(회원.getEmail());
     }

@@ -1,13 +1,13 @@
 package com.atwoz.member.infrastructure.info;
 
 import static com.atwoz.member.domain.info.hobby.QMemberHobby.memberHobby;
+import static com.atwoz.member.domain.info.option.QOption.option;
+import static com.atwoz.member.domain.info.profile.QProfile.profile;
 import static com.atwoz.member.domain.info.style.QMemberStyle.memberStyle;
 
 import com.atwoz.member.domain.info.InfoRepository;
 import com.atwoz.member.domain.info.option.Option;
-import com.atwoz.member.domain.info.option.QOption;
 import com.atwoz.member.domain.info.profile.Profile;
-import com.atwoz.member.domain.info.profile.QProfile;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
@@ -41,17 +41,17 @@ public class InfoRepositoryImpl implements InfoRepository {
     }
 
     private Profile selectProfileByMemberId(final Long memberId) {
-        return Optional.ofNullable(queryFactory.select(QProfile.profile)
-                .from(QProfile.profile)
-                .where(QProfile.profile.memberId.eq(memberId))
+        return Optional.ofNullable(queryFactory.select(profile)
+                .from(profile)
+                .where(profile.memberId.eq(memberId))
                 .fetchOne())
                 .orElseThrow(ProfileNotFoundException::new);
     }
 
     private Option selectOptionByMemberId(final Long memberId) {
-        return Optional.ofNullable(queryFactory.select(QOption.option)
-                .from(QOption.option)
-                .where(QOption.option.memberId.eq(memberId))
+        return Optional.ofNullable(queryFactory.select(option)
+                .from(option)
+                .where(option.memberId.eq(memberId))
                 .fetchOne())
                 .orElseThrow(OptionNotFoundException::new);
     }

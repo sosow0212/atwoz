@@ -1,5 +1,6 @@
 package com.atwoz.member.domain.info.option;
 
+import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -13,14 +14,7 @@ public class OptionTest {
     @Test
     void 내용_수정_검증() {
         // given
-        Long memberId = 1L;
-        Smoke smoke = Smoke.NEVER;
-        Religion religion = Religion.CHRIST;
-        Drink drink = Drink.NEVER;
-        Mbti mbti = Mbti.INFJ;
-        Graduate graduate = Graduate.SEOUL_FOURTH;
-
-        Option option = new Option(memberId, smoke, religion, drink, mbti, graduate);
+        Option option = 회원_일반_옵션_생성();
 
         Smoke updateSmoke = Smoke.ELECTRONIC;
         Religion updateReligion = Religion.BUDDHA;

@@ -4,6 +4,8 @@ import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
 import static com.atwoz.member.domain.info.hobby.Hobby.WALK;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
+import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_수정_취미_생성;
+import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_일반_취미_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
@@ -35,10 +37,7 @@ class MemberHobbyServiceTest {
         // given
         Long memberId = 1L;
         List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
-        List<MemberHobby> expectedMemberHobbies = List.of(
-                new MemberHobby(memberId, WINE),
-                new MemberHobby(memberId, COOK)
-        );
+        List<MemberHobby> expectedMemberHobbies = 회원_일반_취미_생성();
 
         // when
         memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
@@ -54,14 +53,8 @@ class MemberHobbyServiceTest {
         Long memberId = 1L;
         List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
         List<String> updateHobbyCodes = List.of(WALK.getCode(), WRITE.getCode());
-        List<MemberHobby> originMemberHobbies = List.of(
-                new MemberHobby(memberId, WINE),
-                new MemberHobby(memberId, COOK)
-        );
-        List<MemberHobby> updateMemberHobbies = List.of(
-                new MemberHobby(memberId, WALK),
-                new MemberHobby(memberId, WRITE)
-        );
+        List<MemberHobby> originMemberHobbies = 회원_일반_취미_생성();
+        List<MemberHobby> updateMemberHobbies = 회원_수정_취미_생성();
 
         memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
 

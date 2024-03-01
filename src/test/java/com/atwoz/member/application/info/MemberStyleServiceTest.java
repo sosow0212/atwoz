@@ -4,6 +4,8 @@ import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POLITE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
 import static com.atwoz.member.domain.info.style.Style.PROUD;
+import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_수정_스타일_생성;
+import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_일반_스타일_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
@@ -35,10 +37,7 @@ class MemberStyleServiceTest {
         // given
         Long memberId = 1L;
         List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
-        List<MemberStyle> expectedMemberStyles = List.of(
-                new MemberStyle(memberId, POSITIVE),
-                new MemberStyle(memberId, GENTLE)
-        );
+        List<MemberStyle> expectedMemberStyles = 회원_일반_스타일_생성();
 
         // when
         memberStyleService.saveMemberStyles(memberId, styleCodes);
@@ -54,14 +53,8 @@ class MemberStyleServiceTest {
         Long memberId = 1L;
         List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
         List<String> updateStyleCodes = List.of(POLITE.getCode(), PROUD.getCode());
-        List<MemberStyle> originMemberStyles = List.of(
-                new MemberStyle(memberId, POSITIVE),
-                new MemberStyle(memberId, GENTLE)
-        );
-        List<MemberStyle> updateMemberStyles = List.of(
-                new MemberStyle(memberId, POLITE),
-                new MemberStyle(memberId, PROUD)
-        );
+        List<MemberStyle> originMemberStyles = 회원_일반_스타일_생성();
+        List<MemberStyle> updateMemberStyles = 회원_수정_스타일_생성();
 
         memberStyleService.saveMemberStyles(memberId, styleCodes);
 

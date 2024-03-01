@@ -8,15 +8,10 @@ import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
 
 public record OptionSearchResponse(
-
         String drink,
-
         String graduate,
-
         String religion,
-
         String smoke,
-
         String mbti
 ) {
 

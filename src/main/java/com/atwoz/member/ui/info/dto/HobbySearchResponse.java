@@ -4,7 +4,6 @@ import com.atwoz.member.domain.info.hobby.Hobby;
 import com.atwoz.member.domain.info.hobby.MemberHobby;
 
 public record HobbySearchResponse(
-
         String hobby
 ) {
 

@@ -4,9 +4,7 @@ import com.atwoz.member.domain.info.profile.Position;
 import java.math.BigDecimal;
 
 public record PositionSearchResponse(
-
         BigDecimal latitude,
-
         BigDecimal longitude
 ) {
 

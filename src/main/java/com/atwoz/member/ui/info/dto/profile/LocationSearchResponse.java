@@ -3,9 +3,7 @@ package com.atwoz.member.ui.info.dto.profile;
 import com.atwoz.member.domain.info.profile.Location;
 
 public record LocationSearchResponse(
-
         String city,
-
         String sector
 ) {
 

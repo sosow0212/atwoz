@@ -8,17 +8,11 @@ import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
 
 public record ProfileSearchResponse(
-
         int age,
-
         int height,
-
         String gender,
-
         LocationSearchResponse location,
-
         PositionSearchResponse position,
-
         String job
 ) {
 

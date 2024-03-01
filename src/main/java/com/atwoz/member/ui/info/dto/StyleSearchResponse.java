@@ -4,7 +4,6 @@ import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.Style;
 
 public record StyleSearchResponse(
-
         String style
 ) {
 

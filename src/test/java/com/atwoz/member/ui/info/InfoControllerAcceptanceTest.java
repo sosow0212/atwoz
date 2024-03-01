@@ -39,7 +39,7 @@ class InfoControllerAcceptanceTest extends InfoControllerAcceptanceFixture {
     @Test
     void 회원의_정보를_조회한다() {
         // given
-        var 회원_정보_생성_요청 = 회원_정보를_생성한다(토큰, 회원_정보_생성_요청(), 회원_정보_생성_요청_url);
+        회원_정보_생성();
 
         // when
         var 회원_정보_조회_결과 = 회원_정보를_조회한다(토큰, 회원_정보_조회_요청_url);

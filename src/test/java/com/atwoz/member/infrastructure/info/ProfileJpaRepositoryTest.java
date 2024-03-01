@@ -46,10 +46,10 @@ class ProfileJpaRepositoryTest {
     void profile을_저장한다() {
         // given
         Long memberId = member.getId();
-        Body body = BodyFixture.일반_body_생성();
-        Location location = LocationFixture.일반_위치_생성();
-        Position position = PositionFixture.일반_좌표_생성();
-        Job job = JobFixture.일반_직업_생성();
+        Body body = BodyFixture.회원_일반_body_생성();
+        Location location = LocationFixture.회원_일반_위치_생성();
+        Position position = PositionFixture.회원_일반_좌표_생성();
+        Job job = JobFixture.회원_일반_직업_생성();
 
         Profile newProfile = new Profile(memberId, body, location, position, job);
 
@@ -67,10 +67,10 @@ class ProfileJpaRepositoryTest {
     void profile을_조회한다() {
         // given
         Long memberId = member.getId();
-        Body body = BodyFixture.일반_body_생성();
-        Location location = LocationFixture.일반_위치_생성();
-        Position position = PositionFixture.일반_좌표_생성();
-        Job job = JobFixture.일반_직업_생성();
+        Body body = BodyFixture.회원_일반_body_생성();
+        Location location = LocationFixture.회원_일반_위치_생성();
+        Position position = PositionFixture.회원_일반_좌표_생성();
+        Job job = JobFixture.회원_일반_직업_생성();
 
         Profile newProfile = new Profile(memberId, body, location, position, job);
         Profile saveProfile = profileJpaRepository.save(newProfile);

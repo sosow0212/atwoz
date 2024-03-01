@@ -5,7 +5,7 @@ import com.atwoz.member.application.info.dto.profile.location.LocationUpdateRequ
 @SuppressWarnings("NonAsciiCharacters")
 public class LocationUpdateRequestFixture {
 
-    public static LocationUpdateRequest 위치_수정_요청() {
+    public static LocationUpdateRequest 회원_위치_수정_요청() {
         String city = "경기도";
         String sector = "성남시";
 

@@ -10,7 +10,7 @@ import com.atwoz.member.domain.info.option.Smoke;
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionWriteRequestFixture {
 
-    public static OptionWriteRequest 옵션_생성_요청() {
+    public static OptionWriteRequest 회원_옵션_생성_요청() {
         String drink = Drink.NEVER.getName();
         String graduate = Graduate.SEOUL_FOURTH.getName();
         String religion = Religion.CHRIST.getName();

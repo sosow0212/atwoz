@@ -10,7 +10,7 @@ import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionSearchResponseFixture {
 
-    public static OptionSearchResponse 옵션_정보_조회_응답() {
+    public static OptionSearchResponse 회원_옵션_조회_응답() {
         String drink = Drink.NEVER.getName();
         String graduate = Graduate.SEOUL_FOURTH.getName();
         String religion = Religion.CHRIST.getName();

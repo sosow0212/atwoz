@@ -1,9 +1,9 @@
 package com.atwoz.member.ui.info;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
-import static com.atwoz.member.fixture.info.dto.request.InfoUpdateRequestFixture.정보_수정_요청;
-import static com.atwoz.member.fixture.info.dto.request.InfoWriteRequestFixture.정보_생성_요청;
-import static com.atwoz.member.fixture.info.dto.response.InfoSearchResponseFixture.정보_조회_응답;
+import static com.atwoz.member.fixture.info.dto.request.InfoUpdateRequestFixture.회원_정보_수정_요청;
+import static com.atwoz.member.fixture.info.dto.request.InfoWriteRequestFixture.회원_정보_생성_요청;
+import static com.atwoz.member.fixture.info.dto.response.InfoSearchResponseFixture.회원_정보_조회_응답;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
@@ -49,7 +49,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_작성한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-        InfoWriteRequest infoWriteRequest = 정보_생성_요청();
+        InfoWriteRequest infoWriteRequest = 회원_정보_생성_요청();
 
         // when & then
         mockMvc.perform(post("/api/info")
@@ -88,7 +88,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_수정한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-        InfoUpdateRequest infoUpdateRequest = 정보_수정_요청();
+        InfoUpdateRequest infoUpdateRequest = 회원_정보_수정_요청();
 
         // when & then
         mockMvc.perform(patch("/api/info")
@@ -127,7 +127,7 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
     void 회원_정보를_조회한다() throws Exception {
         // given
         String bearerToken = "Bearer token";
-        InfoSearchResponse infoSearchResponse = 정보_조회_응답();
+        InfoSearchResponse infoSearchResponse = 회원_정보_조회_응답();
 
         when(infoService.findInfo(any())).thenReturn(infoSearchResponse);
 

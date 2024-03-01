@@ -1,7 +1,7 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.옵션_수정_요청;
-import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.옵션_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.OptionUpdateRequestFixture.회원_옵션_수정_요청;
+import static com.atwoz.member.fixture.info.dto.request.OptionWriteRequestFixture.회원_옵션_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -37,7 +37,7 @@ class OptionServiceTest {
         // given
         Long memberId = 1L;
 
-        OptionWriteRequest writeRequest = 옵션_생성_요청();
+        OptionWriteRequest writeRequest = 회원_옵션_생성_요청();
         Option expectedOption = OptionFactory.createNewOption(memberId, writeRequest);
 
         // when
@@ -58,10 +58,10 @@ class OptionServiceTest {
         // given
         Long memberId = 1L;
 
-        OptionUpdateRequest updateRequest = 옵션_수정_요청();
+        OptionUpdateRequest updateRequest = 회원_옵션_수정_요청();
         Option exprectedOption = OptionFactory.createUpdatedOption(memberId, updateRequest);
 
-        OptionWriteRequest writeRequest = 옵션_생성_요청();
+        OptionWriteRequest writeRequest = 회원_옵션_생성_요청();
         optionService.writeOption(memberId, writeRequest);
 
         // when
@@ -78,7 +78,7 @@ class OptionServiceTest {
     void 옵션이_없을_때_수정을_시도하면_예외가_발생한다() {
         // given
         Long memberId = 1L;
-        OptionUpdateRequest updateRequest = 옵션_수정_요청();
+        OptionUpdateRequest updateRequest = 회원_옵션_수정_요청();
 
         // when & then
         assertThatThrownBy(() -> optionService.updateOption(memberId, updateRequest))

@@ -4,8 +4,8 @@ import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
-import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.옵션_정보_조회_응답;
-import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.프로필_정보_조회_응답;
+import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.회원_옵션_조회_응답;
+import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.회원_프로필_조회_응답;
 
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
@@ -17,9 +17,9 @@ import java.util.List;
 @SuppressWarnings("NonAsciiCharacters")
 public class InfoSearchResponseFixture {
 
-    public static InfoSearchResponse 정보_조회_응답() {
-        ProfileSearchResponse profileSearchResponse = 프로필_정보_조회_응답();
-        OptionSearchResponse optionSearchResponse = 옵션_정보_조회_응답();
+    public static InfoSearchResponse 회원_정보_조회_응답() {
+        ProfileSearchResponse profileSearchResponse = 회원_프로필_조회_응답();
+        OptionSearchResponse optionSearchResponse = 회원_옵션_조회_응답();
 
         List<HobbySearchResponse> hobbies = List.of(
                 new HobbySearchResponse(WINE.getCode()),

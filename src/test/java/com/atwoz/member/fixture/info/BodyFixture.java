@@ -8,7 +8,7 @@ import com.atwoz.member.infrastructure.info.FakeYearManager;
 @SuppressWarnings("NonAsciiCharacters")
 public class BodyFixture {
 
-    public static Body 일반_body_생성() {
+    public static Body 회원_일반_body_생성() {
         YearManager yearManager = new FakeYearManager();
         int birthYear = 2000;
         int height = 171;
@@ -17,7 +17,7 @@ public class BodyFixture {
         return new Body(yearManager, birthYear, height, gender);
     }
 
-    public static Body 수정_body_생성() {
+    public static Body 회원_수정_body_생성() {
         YearManager yearManager = new FakeYearManager();
         int birthYear = 2001;
         int height = 170;

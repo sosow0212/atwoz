@@ -5,7 +5,7 @@ import com.atwoz.member.application.info.dto.profile.location.LocationWriteReque
 @SuppressWarnings("NonAsciiCharacters")
 public class LocationWriteRequestFixture {
 
-    public static LocationWriteRequest 위치_생성_요청() {
+    public static LocationWriteRequest 회원_위치_생성_요청() {
         String city = "서울시";
         String sector = "강남구";
         

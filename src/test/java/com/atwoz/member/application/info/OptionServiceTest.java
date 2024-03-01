@@ -38,7 +38,7 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionWriteRequest writeRequest = 옵션_생성_요청();
-        Option expectedOption = OptionFactory.createOption(memberId, writeRequest);
+        Option expectedOption = OptionFactory.createNewOption(memberId, writeRequest);
 
         // when
         optionService.writeOption(memberId, writeRequest);
@@ -59,7 +59,7 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionUpdateRequest updateRequest = 옵션_수정_요청();
-        Option exprectedOption = OptionFactory.createOption(memberId, updateRequest);
+        Option exprectedOption = OptionFactory.createUpdatedOption(memberId, updateRequest);
 
         OptionWriteRequest writeRequest = 옵션_생성_요청();
         optionService.writeOption(memberId, writeRequest);

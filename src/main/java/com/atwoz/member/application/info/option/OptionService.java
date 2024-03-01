@@ -18,7 +18,7 @@ public class OptionService {
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Option newOption = OptionFactory.createOption(memberId, request);
+        Option newOption = OptionFactory.createNewOption(memberId, request);
         if (!optionRepository.isExistMemberOption(memberId)) {
             optionRepository.save(newOption);
         }
@@ -27,7 +27,7 @@ public class OptionService {
     @Transactional
     public void updateOption(final Long memberId, final OptionUpdateRequest request) {
         Option existOption = findByMemberId(memberId);
-        Option newOption = OptionFactory.createOption(memberId, request);
+        Option newOption = OptionFactory.createUpdatedOption(memberId, request);
 
         existOption.updateContents(
                 newOption.getSmoke(),

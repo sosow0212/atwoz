@@ -20,7 +20,7 @@ public class ProfileService {
 
     @Transactional
     public void writeProfile(final Long memberId, final ProfileWriteRequest request) {
-        Profile newProfile = ProfileFactory.createProfile(memberId, request, yearManager);
+        Profile newProfile = ProfileFactory.createNewProfile(memberId, request, yearManager);
         if (!profileRepository.isExistMemberProfile(memberId)) {
             profileRepository.save(newProfile);
         }
@@ -29,7 +29,7 @@ public class ProfileService {
     @Transactional
     public void updateProfile(final Long memberId, final ProfileUpdateRequest request) {
         Profile existProfile = findByMemberId(memberId);
-        Profile newProfile = ProfileFactory.createProfile(memberId, request, yearManager);
+        Profile newProfile = ProfileFactory.createUpdatedProfile(memberId, request, yearManager);
 
         existProfile.updateContents(
                 newProfile.getBody(),

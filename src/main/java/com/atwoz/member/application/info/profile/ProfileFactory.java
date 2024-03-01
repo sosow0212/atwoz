@@ -1,8 +1,11 @@
 package com.atwoz.member.application.info.profile;
 
-import com.atwoz.member.application.info.dto.profile.ProfileRequest;
-import com.atwoz.member.application.info.dto.profile.location.LocationRequest;
-import com.atwoz.member.application.info.dto.profile.position.PositionRequest;
+import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
+import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
+import com.atwoz.member.application.info.dto.profile.location.LocationUpdateRequest;
+import com.atwoz.member.application.info.dto.profile.location.LocationWriteRequest;
+import com.atwoz.member.application.info.dto.profile.position.PositionUpdateRequest;
+import com.atwoz.member.application.info.dto.profile.position.PositionWriteRequest;
 import com.atwoz.member.domain.info.profile.Body;
 import com.atwoz.member.domain.info.profile.Gender;
 import com.atwoz.member.domain.info.profile.Job;
@@ -14,23 +17,44 @@ import java.math.BigDecimal;
 
 public class ProfileFactory {
 
-    public static Profile createProfile(final Long memberId, final ProfileRequest request, final YearManager yearManager) {
-        int birthYear = request.getBirthYear();
-        int height = request.getHeight();
-        Gender gender = Gender.findByName(request.getGender());
+    public static Profile createNewProfile(final Long memberId, final ProfileWriteRequest request, final YearManager yearManager) {
+        int birthYear = request.birthYear();
+        int height = request.height();
+        Gender gender = Gender.findByName(request.gender());
         Body body = new Body(yearManager, birthYear, height, gender);
 
-        LocationRequest locationWriteRequest = request.getLocation();
-        String city = locationWriteRequest.getCity();
-        String sector = locationWriteRequest.getSector();
+        LocationWriteRequest locationWriteRequest = request.location();
+        String city = locationWriteRequest.city();
+        String sector = locationWriteRequest.sector();
         Location location = new Location(city, sector);
 
-        PositionRequest positionWriteRequest = request.getPosition();
-        BigDecimal latitude = positionWriteRequest.getLatitude();
-        BigDecimal longitude = positionWriteRequest.getLongitude();
+        PositionWriteRequest positionWriteRequest = request.position();
+        BigDecimal latitude = positionWriteRequest.latitude();
+        BigDecimal longitude = positionWriteRequest.longitude();
         Position position = new Position(latitude, longitude);
 
-        Job job = Job.findByCode(request.getJob());
+        Job job = Job.findByCode(request.job());
+
+        return new Profile(memberId, body, location, position, job);
+    }
+
+    public static Profile createUpdatedProfile(final Long memberId, final ProfileUpdateRequest request, final YearManager yearManager) {
+        int birthYear = request.birthYear();
+        int height = request.height();
+        Gender gender = Gender.findByName(request.gender());
+        Body body = new Body(yearManager, birthYear, height, gender);
+
+        LocationUpdateRequest locationUpdateRequest = request.location();
+        String city = locationUpdateRequest.city();
+        String sector = locationUpdateRequest.sector();
+        Location location = new Location(city, sector);
+
+        PositionUpdateRequest positionUpdateRequest = request.position();
+        BigDecimal latitude = positionUpdateRequest.latitude();
+        BigDecimal longitude = positionUpdateRequest.longitude();
+        Position position = new Position(latitude, longitude);
+
+        Job job = Job.findByCode(request.job());
 
         return new Profile(memberId, body, location, position, job);
     }

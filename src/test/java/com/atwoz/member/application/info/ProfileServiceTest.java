@@ -42,7 +42,7 @@ class ProfileServiceTest {
         Long memberId = 1L;
         ProfileWriteRequest request = 프로필_생성_요청();
 
-        Profile expectedProfile = ProfileFactory.createProfile(memberId, request, yearManager);
+        Profile expectedProfile = ProfileFactory.createNewProfile(memberId, request, yearManager);
 
         // when
         profileService.writeProfile(memberId, request);
@@ -63,7 +63,7 @@ class ProfileServiceTest {
         Long memberId = 1L;
 
         ProfileUpdateRequest profileUpdateRequest = 프로필_수정_요청();
-        Profile expectedProfile = ProfileFactory.createProfile(memberId, profileUpdateRequest, yearManager);
+        Profile expectedProfile = ProfileFactory.createUpdatedProfile(memberId, profileUpdateRequest, yearManager);
 
         ProfileWriteRequest profileWriteRequest = 프로필_생성_요청();
         profileService.writeProfile(memberId, profileWriteRequest);

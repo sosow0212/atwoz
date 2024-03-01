@@ -5,33 +5,26 @@ import com.atwoz.member.application.info.dto.profile.position.PositionUpdateRequ
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-public class ProfileUpdateRequest implements ProfileRequest {
-
+public record ProfileUpdateRequest(
         @NotNull(message = "출생년도가 작성되어야 합니다.")
-        private Integer birthYear;
+        Integer birthYear,
 
         @NotNull(message = "키가 작성되어야 합니다.")
-        private Integer height;
+        Integer height,
 
         @NotBlank(message = "성별이 작성되어야 합니다.")
-        private String gender;
+        String gender,
 
         @Valid
         @NotNull(message = "위치가 작성되어야 합니다.")
-        private LocationUpdateRequest location;
+        LocationUpdateRequest location,
 
         @Valid
         @NotNull(message = "위도-경도가 작성되어야 합니다.")
-        private PositionUpdateRequest position;
+        PositionUpdateRequest position,
 
         @NotBlank(message = "직업이 작성되어야 합니다.")
-        private String job;
+        String job
+) {
 }

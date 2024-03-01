@@ -1,11 +1,9 @@
 package com.atwoz.member.fixture.info.dto.response;
 
-import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
-import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
-import static com.atwoz.member.domain.info.style.Style.GENTLE;
-import static com.atwoz.member.domain.info.style.Style.POSITIVE;
+import static com.atwoz.member.fixture.info.dto.response.HobbiesSearchResponseFixture.회원_취미_조회_응답;
 import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.회원_옵션_조회_응답;
 import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.회원_프로필_조회_응답;
+import static com.atwoz.member.fixture.info.dto.response.StylesSearchResponseFixture.회원_스타일_조회_응답;
 
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
@@ -21,14 +19,8 @@ public class InfoSearchResponseFixture {
         ProfileSearchResponse profileSearchResponse = 회원_프로필_조회_응답();
         OptionSearchResponse optionSearchResponse = 회원_옵션_조회_응답();
 
-        List<HobbySearchResponse> hobbies = List.of(
-                new HobbySearchResponse(WINE.getCode()),
-                new HobbySearchResponse(COOK.getCode())
-        );
-        List<StyleSearchResponse> styles = List.of(
-                new StyleSearchResponse(POSITIVE.getCode()),
-                new StyleSearchResponse(GENTLE.getCode())
-        );
+        List<HobbySearchResponse> hobbies = 회원_취미_조회_응답();
+        List<StyleSearchResponse> styles = 회원_스타일_조회_응답();
 
         return new InfoSearchResponse(profileSearchResponse, optionSearchResponse, hobbies, styles);
     }

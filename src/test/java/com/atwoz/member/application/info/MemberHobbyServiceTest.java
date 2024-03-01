@@ -1,7 +1,7 @@
 package com.atwoz.member.application.info;
 
 import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
-import static com.atwoz.member.domain.info.hobby.Hobby.WALK;
+import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
 import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_수정_취미_생성;
@@ -52,7 +52,7 @@ class MemberHobbyServiceTest {
         // given
         Long memberId = 1L;
         List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
-        List<String> updateHobbyCodes = List.of(WALK.getCode(), WRITE.getCode());
+        List<String> updateHobbyCodes = List.of(DRAMA.getCode(), WRITE.getCode());
         List<MemberHobby> originMemberHobbies = 회원_일반_취미_생성();
         List<MemberHobby> updateMemberHobbies = 회원_수정_취미_생성();
 

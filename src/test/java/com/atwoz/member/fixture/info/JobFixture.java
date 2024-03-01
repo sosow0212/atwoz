@@ -10,6 +10,6 @@ public class JobFixture {
     }
 
     public static Job 회원_수정_직업_생성() {
-        return Job.ETC;
+        return Job.LAW;
     }
 }

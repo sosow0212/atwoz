@@ -1,7 +1,7 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.request.ProfileUpdateRequestFixture.회원_프로필_수정_요청;
-import static com.atwoz.member.fixture.info.dto.request.ProfileWriteRequestFixture.회원_프로필_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_수정_요청;
+import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_생성_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;

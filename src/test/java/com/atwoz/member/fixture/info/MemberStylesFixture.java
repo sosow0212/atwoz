@@ -18,8 +18,8 @@ public class MemberStylesFixture {
     public static List<MemberStyle> 회원_수정_스타일_생성() {
         Long memberId = 1L;
         return List.of(
-                new MemberStyle(memberId, Style.POLITE),
-                new MemberStyle(memberId, Style.PROUD)
+                new MemberStyle(memberId, Style.PURE),
+                new MemberStyle(memberId, Style.FASHION)
         );
     }
 }

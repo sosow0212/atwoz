@@ -1,9 +1,9 @@
 package com.atwoz.member.application.info;
 
+import static com.atwoz.member.domain.info.style.Style.FASHION;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
-import static com.atwoz.member.domain.info.style.Style.POLITE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
-import static com.atwoz.member.domain.info.style.Style.PROUD;
+import static com.atwoz.member.domain.info.style.Style.PURE;
 import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_수정_스타일_생성;
 import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_일반_스타일_생성;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,7 +52,7 @@ class MemberStyleServiceTest {
         // given
         Long memberId = 1L;
         List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
-        List<String> updateStyleCodes = List.of(POLITE.getCode(), PROUD.getCode());
+        List<String> updateStyleCodes = List.of(PURE.getCode(), FASHION.getCode());
         List<MemberStyle> originMemberStyles = 회원_일반_스타일_생성();
         List<MemberStyle> updateMemberStyles = 회원_수정_스타일_생성();
 

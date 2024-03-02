@@ -68,4 +68,19 @@ public class Option {
         this.mbti = mbti;
         this.graduate = graduate;
     }
+
+    public static Option of(final Long memberId,
+                            final String smokeName,
+                            final String religionName,
+                            final String drinkName,
+                            final String mbtiName,
+                            final String graduateName) {
+        Smoke smoke = Smoke.findByName(smokeName);
+        Religion religion = Religion.findByName(religionName);
+        Drink drink = Drink.findByName(drinkName);
+        Mbti mbti = Mbti.findByName(mbtiName);
+        Graduate graduate = Graduate.findByName(graduateName);
+
+        return new Option(memberId, smoke, religion, drink, mbti, graduate);
+    }
 }

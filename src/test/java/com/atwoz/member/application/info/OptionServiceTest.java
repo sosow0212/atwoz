@@ -10,7 +10,6 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.option.OptionFactory;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
@@ -40,7 +39,14 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionWriteRequest writeRequest = 회원_옵션_생성_요청();
-        Option expectedOption = OptionFactory.createNewOption(memberId, writeRequest);
+        Option expectedOption = Option.of(
+                memberId,
+                writeRequest.smoke(),
+                writeRequest.religion(),
+                writeRequest.drink(),
+                writeRequest.mbti(),
+                writeRequest.graduate()
+        );
 
         // when
         optionService.writeOption(memberId, writeRequest);

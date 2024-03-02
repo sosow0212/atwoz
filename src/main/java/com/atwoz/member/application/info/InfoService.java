@@ -16,6 +16,7 @@ import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.application.info.dto.StyleUpdateRequest;
 import com.atwoz.member.application.info.dto.StyleWriteRequest;
 import com.atwoz.member.domain.info.InfoRepository;
+import com.atwoz.member.exception.exceptions.info.InfoNotFoundException;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -82,6 +83,7 @@ public class InfoService {
     }
 
     public InfoSearchResponse findInfo(final Long memberId) {
-        return infoRepository.findByMemberId(memberId);
+        return infoRepository.findByMemberId(memberId)
+                .orElseThrow(InfoNotFoundException::new);
     }
 }

@@ -8,6 +8,7 @@ import com.atwoz.member.exception.exceptions.auth.SignatureInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenFormInvalidException;
 import com.atwoz.member.exception.exceptions.auth.TokenInvalidException;
 import com.atwoz.member.exception.exceptions.auth.UnsupportedTokenException;
+import com.atwoz.member.exception.exceptions.info.InfoNotFoundException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbyDuplicateException;
 import com.atwoz.member.exception.exceptions.info.hobby.InvalidHobbyException;
 import com.atwoz.member.exception.exceptions.info.hobby.HobbySizeException;
@@ -198,6 +199,12 @@ public class MemberExceptionHandler {
     @ExceptionHandler(InvalidReligionException.class)
     public ResponseEntity<String> handleReligionInvalidException(final InvalidReligionException e) {
         return getBadRequest(e);
+    }
+
+    // info
+    @ExceptionHandler(InfoNotFoundException.class)
+    public ResponseEntity<String> handleInfoNotFoundException(final InfoNotFoundException e) {
+        return getNotFoundResponse(e);
     }
 
     private ResponseEntity<String> getNotFoundResponse(final Exception e) {

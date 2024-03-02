@@ -7,8 +7,6 @@ import static com.atwoz.member.domain.info.style.QMemberStyle.memberStyle;
 
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.profile.Profile;
-import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
-import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
 import com.atwoz.member.ui.info.dto.StyleSearchResponse;
@@ -26,32 +24,38 @@ public class InfoQueryRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public InfoSearchResponse findByMemberId(final Long memberId) {
+    public Optional<InfoSearchResponse> findByMemberId(final Long memberId) {
         Profile profile = selectProfileByMemberId(memberId);
+        if (profile == null) {
+            return Optional.empty();
+        }
+
         Option option = selectOptionByMemberId(memberId);
+        if (option == null) {
+            return Optional.empty();
+        }
+
         ProfileSearchResponse profileSearchResponse = ProfileSearchResponse.from(profile);
         OptionSearchResponse optionSearchResponse = OptionSearchResponse.from(option);
 
         List<HobbySearchResponse> hobbyCodes = selectHobbyResponseByMemberId(memberId);
         List<StyleSearchResponse> styleCodes = selectStyleResponseByMemberId(memberId);
 
-        return new InfoSearchResponse(profileSearchResponse, optionSearchResponse, hobbyCodes, styleCodes);
+        return Optional.of(new InfoSearchResponse(profileSearchResponse, optionSearchResponse, hobbyCodes, styleCodes));
     }
 
     private Profile selectProfileByMemberId(final Long memberId) {
-        return Optional.ofNullable(queryFactory.select(profile)
+        return queryFactory.select(profile)
                         .from(profile)
                         .where(profile.memberId.eq(memberId))
-                        .fetchOne())
-                .orElseThrow(ProfileNotFoundException::new);
+                        .fetchOne();
     }
 
     private Option selectOptionByMemberId(final Long memberId) {
-        return Optional.ofNullable(queryFactory.select(option)
+        return queryFactory.select(option)
                         .from(option)
                         .where(option.memberId.eq(memberId))
-                        .fetchOne())
-                .orElseThrow(OptionNotFoundException::new);
+                        .fetchOne();
     }
 
     private List<HobbySearchResponse> selectHobbyResponseByMemberId(final Long memberId) {

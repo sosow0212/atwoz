@@ -43,14 +43,7 @@ public class OptionService {
                 request.mbti(),
                 request.graduate()
         );
-
-        existOption.updateContents(
-                newOption.getSmoke(),
-                newOption.getReligion(),
-                newOption.getDrink(),
-                newOption.getMbti(),
-                newOption.getGraduate()
-        );
+        existOption.updateContentsFrom(newOption);
     }
 
     private Option findByMemberId(final Long memberId) {

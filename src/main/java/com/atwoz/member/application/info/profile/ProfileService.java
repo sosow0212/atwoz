@@ -30,13 +30,7 @@ public class ProfileService {
     public void updateProfile(final Long memberId, final ProfileUpdateRequest request) {
         Profile existProfile = findByMemberId(memberId);
         Profile newProfile = ProfileFactory.createUpdatedProfile(memberId, request, yearManager);
-
-        existProfile.updateContents(
-                newProfile.getBody(),
-                newProfile.getLocation(),
-                newProfile.getPosition(),
-                newProfile.getJob()
-        );
+        existProfile.updateContentsFrom(newProfile);
     }
 
     private Profile findByMemberId(final Long memberId) {

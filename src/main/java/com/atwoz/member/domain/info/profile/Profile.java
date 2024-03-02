@@ -58,4 +58,11 @@ public class Profile {
         this.position = position;
         this.job = job;
     }
+
+    public void updateContentsFrom(final Profile newProfile) {
+        this.body = newProfile.getBody();
+        this.location = newProfile.getLocation();
+        this.position = newProfile.getPosition();
+        this.job = newProfile.getJob();
+    }
 }

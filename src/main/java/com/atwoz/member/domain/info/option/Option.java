@@ -83,4 +83,12 @@ public class Option {
 
         return new Option(memberId, smoke, religion, drink, mbti, graduate);
     }
+
+    public void updateContentsFrom(final Option newOption) {
+        this.smoke = newOption.getSmoke();
+        this.religion = newOption.getReligion();
+        this.drink = newOption.getDrink();
+        this.mbti = newOption.getMbti();
+        this.graduate = newOption.getGraduate();
+    }
 }

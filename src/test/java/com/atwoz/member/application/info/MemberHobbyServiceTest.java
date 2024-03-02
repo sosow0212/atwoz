@@ -51,12 +51,11 @@ class MemberHobbyServiceTest {
     void 회원의_취미를_수정한다() {
         // given
         Long memberId = 1L;
-        List<String> hobbyCodes = List.of(WINE.getCode(), COOK.getCode());
-        List<String> updateHobbyCodes = List.of(DRAMA.getCode(), WRITE.getCode());
         List<MemberHobby> originMemberHobbies = 회원_일반_취미_생성();
         List<MemberHobby> updateMemberHobbies = 회원_수정_취미_생성();
+        List<String> updateHobbyCodes = List.of(DRAMA.getCode(), WRITE.getCode());
 
-        memberHobbyService.saveMemberHobbies(memberId, hobbyCodes);
+        memberHobbyRepository.saveAll(originMemberHobbies);
 
         // when
         memberHobbyService.updateMemberHobbies(memberId, updateHobbyCodes);

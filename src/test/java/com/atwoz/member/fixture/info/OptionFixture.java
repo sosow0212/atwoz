@@ -20,4 +20,15 @@ public class OptionFixture {
 
         return new Option(memberId, smoke, religion, drink, mbti, graduate);
     }
+
+    public static Option 회원_수정_옵션_생성() {
+        Long memberId = 1L;
+        Smoke smoke = Smoke.ELECTRONIC;
+        Religion religion = Religion.BUDDHA;
+        Drink drink = Drink.ENJOY;
+        Mbti mbti = Mbti.ISFJ;
+        Graduate graduate = Graduate.DOCTOR;
+
+        return new Option(memberId, smoke, religion, drink, mbti, graduate);
+    }
 }

@@ -1,14 +1,15 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_수정_요청;
+import static com.atwoz.member.fixture.info.ProfileFixture.회원_수정_프로필_생성;
+import static com.atwoz.member.fixture.info.ProfileFixture.회원_일반_프로필_생성;
 import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_수정_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.application.info.profile.ProfileFactory;
 import com.atwoz.member.application.info.profile.ProfileService;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
@@ -41,8 +42,7 @@ class ProfileServiceTest {
         // given
         Long memberId = 1L;
         ProfileWriteRequest request = 회원_프로필_생성_요청();
-
-        Profile expectedProfile = ProfileFactory.createNewProfile(memberId, request, yearManager);
+        Profile expectedProfile = 회원_일반_프로필_생성();
 
         // when
         profileService.writeProfile(memberId, request);
@@ -61,12 +61,11 @@ class ProfileServiceTest {
     void 프로필을_수정한다() {
         // given
         Long memberId = 1L;
+        Profile profile = 회원_일반_프로필_생성();
+        profileRepository.save(profile);
 
+        Profile expectedProfile = 회원_수정_프로필_생성();
         ProfileUpdateRequest profileUpdateRequest = 회원_프로필_수정_요청();
-        Profile expectedProfile = ProfileFactory.createUpdatedProfile(memberId, profileUpdateRequest, yearManager);
-
-        ProfileWriteRequest profileWriteRequest = 회원_프로필_생성_요청();
-        profileService.writeProfile(memberId, profileWriteRequest);
 
         // when
         profileService.updateProfile(memberId, profileUpdateRequest);

@@ -1,7 +1,9 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청;
+import static com.atwoz.member.fixture.info.OptionFixture.회원_수정_옵션_생성;
+import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
 import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_생성_요청;
+import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -57,12 +59,11 @@ class OptionServiceTest {
     void 옵션을_수정한다() {
         // given
         Long memberId = 1L;
+        Option option = 회원_일반_옵션_생성();
+        optionRepository.save(option);
 
+        Option expectedOption = 회원_수정_옵션_생성();
         OptionUpdateRequest updateRequest = 회원_옵션_수정_요청();
-        Option exprectedOption = OptionFactory.createUpdatedOption(memberId, updateRequest);
-
-        OptionWriteRequest writeRequest = 회원_옵션_생성_요청();
-        optionService.writeOption(memberId, writeRequest);
 
         // when
         optionService.updateOption(memberId, updateRequest);
@@ -71,7 +72,7 @@ class OptionServiceTest {
         assertThat(optionRepository.findByMemberId(memberId).get())
                 .usingRecursiveComparison()
                 .ignoringFields("id")
-                .isEqualTo(exprectedOption);
+                .isEqualTo(expectedOption);
     }
 
     @Test

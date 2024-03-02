@@ -1,8 +1,12 @@
 package com.atwoz.member.fixture.info;
 
+import static com.atwoz.member.fixture.info.BodyFixture.회원_수정_body_생성;
 import static com.atwoz.member.fixture.info.BodyFixture.회원_일반_body_생성;
+import static com.atwoz.member.fixture.info.JobFixture.회원_수정_직업_생성;
 import static com.atwoz.member.fixture.info.JobFixture.회원_일반_직업_생성;
+import static com.atwoz.member.fixture.info.LocationFixture.회원_수정_위치_생성;
 import static com.atwoz.member.fixture.info.LocationFixture.회원_일반_위치_생성;
+import static com.atwoz.member.fixture.info.PositionFixture.회원_수정_좌표_생성;
 import static com.atwoz.member.fixture.info.PositionFixture.회원_일반_좌표_생성;
 
 import com.atwoz.member.domain.info.profile.Body;
@@ -20,6 +24,16 @@ public class ProfileFixture {
         Job job = 회원_일반_직업_생성();
         Location location = 회원_일반_위치_생성();
         Position position = 회원_일반_좌표_생성();
+
+        return new Profile(memberId, body, location, position, job);
+    }
+
+    public static Profile 회원_수정_프로필_생성() {
+        Long memberId = 1L;
+        Body body = 회원_수정_body_생성();
+        Job job = 회원_수정_직업_생성();
+        Location location = 회원_수정_위치_생성();
+        Position position = 회원_수정_좌표_생성();
 
         return new Profile(memberId, body, location, position, job);
     }

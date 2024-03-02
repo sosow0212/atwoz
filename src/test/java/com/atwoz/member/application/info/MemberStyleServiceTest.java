@@ -51,12 +51,11 @@ class MemberStyleServiceTest {
     void 회원의_스타일을_수정한다() {
         // given
         Long memberId = 1L;
-        List<String> styleCodes = List.of(POSITIVE.getCode(), GENTLE.getCode());
-        List<String> updateStyleCodes = List.of(PURE.getCode(), FASHION.getCode());
         List<MemberStyle> originMemberStyles = 회원_일반_스타일_생성();
         List<MemberStyle> updateMemberStyles = 회원_수정_스타일_생성();
+        List<String> updateStyleCodes = List.of(PURE.getCode(), FASHION.getCode());
 
-        memberStyleService.saveMemberStyles(memberId, styleCodes);
+        memberStyleRepository.saveAll(originMemberStyles);
 
         // when
         memberStyleService.updateMemberStyles(memberId, updateStyleCodes);

@@ -1,5 +1,7 @@
 package com.atwoz.member.domain.info.option;
 
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -54,14 +56,6 @@ public class Option {
                   final Mbti mbti,
                   final Graduate graduate) {
         this.memberId = memberId;
-        updateContents(smoke, religion, drink, mbti, graduate);
-    }
-
-    public void updateContents(final Smoke smoke,
-                               final Religion religion,
-                               final Drink drink,
-                               final Mbti mbti,
-                               final Graduate graduate) {
         this.smoke = smoke;
         this.religion = religion;
         this.drink = drink;
@@ -69,26 +63,21 @@ public class Option {
         this.graduate = graduate;
     }
 
-    public static Option of(final Long memberId,
-                            final String smokeName,
-                            final String religionName,
-                            final String drinkName,
-                            final String mbtiName,
-                            final String graduateName) {
-        Smoke smoke = Smoke.findByName(smokeName);
-        Religion religion = Religion.findByName(religionName);
-        Drink drink = Drink.findByName(drinkName);
-        Mbti mbti = Mbti.findByName(mbtiName);
-        Graduate graduate = Graduate.findByName(graduateName);
+    public static Option createFrom(final InnerOptionWriteRequest request) {
+        Smoke smoke = Smoke.findByName(request.smokeName());
+        Religion religion = Religion.findByName(request.religionName());
+        Drink drink = Drink.findByName(request.drinkName());
+        Mbti mbti = Mbti.findByName(request.mbtiName());
+        Graduate graduate = Graduate.findByName(request.graduateName());
 
-        return new Option(memberId, smoke, religion, drink, mbti, graduate);
+        return new Option(request.memberId(), smoke, religion, drink, mbti, graduate);
     }
 
-    public void updateContentsFrom(final Option newOption) {
-        this.smoke = newOption.getSmoke();
-        this.religion = newOption.getReligion();
-        this.drink = newOption.getDrink();
-        this.mbti = newOption.getMbti();
-        this.graduate = newOption.getGraduate();
+    public void updateContentsFrom(final InnerOptionUpdateRequest request) {
+        this.smoke = Smoke.findByName(request.smokeName());
+        this.religion = Religion.findByName(request.religionName());
+        this.drink = Drink.findByName(request.drinkName());
+        this.mbti = Mbti.findByName(request.mbtiName());
+        this.graduate = Graduate.findByName(request.graduateName());
     }
 }

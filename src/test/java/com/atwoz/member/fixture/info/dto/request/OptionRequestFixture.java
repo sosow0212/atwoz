@@ -7,6 +7,7 @@ import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionRequestFixture {
@@ -40,6 +41,22 @@ public class OptionRequestFixture {
                 religion,
                 smoke,
                 mbti
+        );
+    }
+
+    public static InnerOptionUpdateRequest 회원_옵션_수정_요청_내부() {
+        String smoke = Smoke.ELECTRONIC.getName();
+        String religion = Religion.BUDDHA.getName();
+        String drink = Drink.ENJOY.getName();
+        String mbti = Mbti.ISFJ.name();
+        String graduate = Graduate.DOCTOR.getName();
+
+        return new InnerOptionUpdateRequest(
+                smoke,
+                religion,
+                drink,
+                mbti,
+                graduate
         );
     }
 }

@@ -1,8 +1,10 @@
 package com.atwoz.member.domain.info.option;
 
 import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
+import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청_내부;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -15,23 +17,18 @@ public class OptionTest {
     void 내용_수정_검증() {
         // given
         Option option = 회원_일반_옵션_생성();
-
-        Smoke updateSmoke = Smoke.ELECTRONIC;
-        Religion updateReligion = Religion.BUDDHA;
-        Drink updateDrink = Drink.ENJOY;
-        Mbti updateMbti = Mbti.ENFJ;
-        Graduate updateGraduate = Graduate.DOCTOR;
+        InnerOptionUpdateRequest request = 회원_옵션_수정_요청_내부();
 
         // when
-        option.updateContents(updateSmoke, updateReligion, updateDrink, updateMbti, updateGraduate);
+        option.updateContentsFrom(request);
 
         // then
         assertSoftly(softly -> {
-            softly.assertThat(option.getSmoke()).isEqualTo(updateSmoke);
-            softly.assertThat(option.getReligion()).isEqualTo(updateReligion);
-            softly.assertThat(option.getDrink()).isEqualTo(updateDrink);
-            softly.assertThat(option.getMbti()).isEqualTo(updateMbti);
-            softly.assertThat(option.getGraduate()).isEqualTo(updateGraduate);
+            softly.assertThat(option.getSmoke().getName()).isEqualTo(request.smokeName());
+            softly.assertThat(option.getReligion().getName()).isEqualTo(request.religionName());
+            softly.assertThat(option.getDrink().getName()).isEqualTo(request.drinkName());
+            softly.assertThat(option.getMbti().name()).isEqualTo(request.mbtiName());
+            softly.assertThat(option.getGraduate().getName()).isEqualTo(request.graduateName());
         });
     }
 }

@@ -13,6 +13,7 @@ import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
+import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.infrastructure.info.OptionFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,14 +40,8 @@ class OptionServiceTest {
         Long memberId = 1L;
 
         OptionWriteRequest writeRequest = 회원_옵션_생성_요청();
-        Option expectedOption = Option.of(
-                memberId,
-                writeRequest.smoke(),
-                writeRequest.religion(),
-                writeRequest.drink(),
-                writeRequest.mbti(),
-                writeRequest.graduate()
-        );
+        InnerOptionWriteRequest innerOptionWriteRequest = InnerOptionWriteRequest.of(memberId, writeRequest);
+        Option expectedOption = Option.createFrom(innerOptionWriteRequest);
 
         // when
         optionService.writeOption(memberId, writeRequest);

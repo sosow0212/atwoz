@@ -4,6 +4,8 @@ import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,15 +20,8 @@ public class OptionService {
 
     @Transactional
     public void writeOption(final Long memberId, final OptionWriteRequest request) {
-        Option newOption = Option.of(
-                memberId,
-                request.smoke(),
-                request.religion(),
-                request.drink(),
-                request.mbti(),
-                request.graduate()
-        );
-
+        InnerOptionWriteRequest optionWriteRequest = InnerOptionWriteRequest.of(memberId, request);
+        Option newOption = Option.createFrom(optionWriteRequest);
         if (!optionRepository.isExistMemberOption(memberId)) {
             optionRepository.save(newOption);
         }
@@ -34,16 +29,9 @@ public class OptionService {
 
     @Transactional
     public void updateOption(final Long memberId, final OptionUpdateRequest request) {
+        InnerOptionUpdateRequest optionUpdateRequest = InnerOptionUpdateRequest.from(request);
         Option existOption = findByMemberId(memberId);
-        Option newOption = Option.of(
-                memberId,
-                request.smoke(),
-                request.religion(),
-                request.drink(),
-                request.mbti(),
-                request.graduate()
-        );
-        existOption.updateContentsFrom(newOption);
+        existOption.updateContentsFrom(optionUpdateRequest);
     }
 
     private Option findByMemberId(final Long memberId) {

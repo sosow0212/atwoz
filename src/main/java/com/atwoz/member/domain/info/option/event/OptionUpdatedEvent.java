@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.option.event;
 
 import com.atwoz.global.event.Event;
-import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
+import com.atwoz.member.application.info.option.dto.OptionUpdateRequest;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

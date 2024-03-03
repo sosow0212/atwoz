@@ -1,9 +1,9 @@
 package com.atwoz.member.application.info.dto;
 
-import com.atwoz.member.application.info.dto.hobby.HobbyWriteRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.application.info.dto.style.StyleWriteRequest;
+import com.atwoz.member.application.info.hobby.dto.HobbyWriteRequest;
+import com.atwoz.member.application.info.option.dto.OptionWriteRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
+import com.atwoz.member.application.info.style.dto.StyleWriteRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.util.List;

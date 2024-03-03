@@ -5,7 +5,7 @@ import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.domain.info.profile.Gender;
+import com.atwoz.member.domain.info.profile.body.Gender;
 import com.atwoz.member.domain.info.profile.Job;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

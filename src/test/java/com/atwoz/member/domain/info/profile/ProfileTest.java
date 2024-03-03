@@ -7,6 +7,9 @@ import static com.atwoz.member.fixture.info.PositionFixture.회원_수정_좌표
 import static com.atwoz.member.fixture.info.ProfileFixture.회원_일반_프로필_생성;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.domain.info.profile.body.Body;
+import com.atwoz.member.domain.info.profile.location.Location;
+import com.atwoz.member.domain.info.profile.position.Position;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;

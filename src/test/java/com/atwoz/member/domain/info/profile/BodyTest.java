@@ -3,6 +3,8 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import com.atwoz.member.domain.info.profile.body.Body;
+import com.atwoz.member.domain.info.profile.body.Gender;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import com.atwoz.member.infrastructure.info.FakeYearManager;

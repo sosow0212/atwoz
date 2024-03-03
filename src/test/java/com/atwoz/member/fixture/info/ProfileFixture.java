@@ -9,10 +9,10 @@ import static com.atwoz.member.fixture.info.LocationFixture.회원_일반_위치
 import static com.atwoz.member.fixture.info.PositionFixture.회원_수정_좌표_생성;
 import static com.atwoz.member.fixture.info.PositionFixture.회원_일반_좌표_생성;
 
-import com.atwoz.member.domain.info.profile.Body;
+import com.atwoz.member.domain.info.profile.body.Body;
 import com.atwoz.member.domain.info.profile.Job;
-import com.atwoz.member.domain.info.profile.Location;
-import com.atwoz.member.domain.info.profile.Position;
+import com.atwoz.member.domain.info.profile.location.Location;
+import com.atwoz.member.domain.info.profile.position.Position;
 import com.atwoz.member.domain.info.profile.Profile;
 
 @SuppressWarnings("NonAsciiCharacters")

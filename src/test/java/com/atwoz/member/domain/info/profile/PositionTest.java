@@ -3,6 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import com.atwoz.member.domain.info.profile.position.Position;
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import org.junit.jupiter.api.DisplayNameGeneration;

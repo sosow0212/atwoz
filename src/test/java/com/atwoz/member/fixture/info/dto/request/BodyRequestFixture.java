@@ -1,8 +1,8 @@
 package com.atwoz.member.fixture.info.dto.request;
 
-import com.atwoz.member.application.info.dto.profile.body.BodyUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.body.BodyWriteRequest;
-import com.atwoz.member.domain.info.profile.Gender;
+import com.atwoz.member.application.info.profile.body.dto.BodyUpdateRequest;
+import com.atwoz.member.application.info.profile.body.dto.BodyWriteRequest;
+import com.atwoz.member.domain.info.profile.body.Gender;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class BodyRequestFixture {

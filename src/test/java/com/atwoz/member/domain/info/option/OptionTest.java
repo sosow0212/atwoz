@@ -4,7 +4,7 @@ import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_�
 import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청_내부;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import com.atwoz.member.domain.info.dto.option.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package com.atwoz.member.ui.info.dto.profile;
 
-import com.atwoz.member.domain.info.profile.Gender;
+import com.atwoz.member.domain.info.profile.body.Gender;
 import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
 
 public record ProfileSearchResponse(

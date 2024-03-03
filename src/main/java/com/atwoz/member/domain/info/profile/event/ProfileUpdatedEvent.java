@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.profile.event;
 
 import com.atwoz.global.event.Event;
-import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

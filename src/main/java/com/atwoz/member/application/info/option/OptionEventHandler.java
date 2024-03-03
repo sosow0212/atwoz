@@ -2,8 +2,8 @@ package com.atwoz.member.application.info.option;
 
 import com.atwoz.member.domain.info.option.event.OptionUpdatedEvent;
 import com.atwoz.member.domain.info.option.event.OptionWroteEvent;
-import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
+import com.atwoz.member.application.info.option.dto.OptionUpdateRequest;
+import com.atwoz.member.application.info.option.dto.OptionWriteRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,10 @@
 package com.atwoz.member.domain.info.profile;
 
-import com.atwoz.member.domain.info.dto.profile.InnerProfileUpdateRequest;
-import com.atwoz.member.domain.info.dto.profile.InnerProfileWriteRequest;
+import com.atwoz.member.domain.info.profile.body.Body;
+import com.atwoz.member.domain.info.profile.dto.InnerProfileUpdateRequest;
+import com.atwoz.member.domain.info.profile.dto.InnerProfileWriteRequest;
+import com.atwoz.member.domain.info.profile.location.Location;
+import com.atwoz.member.domain.info.profile.position.Position;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

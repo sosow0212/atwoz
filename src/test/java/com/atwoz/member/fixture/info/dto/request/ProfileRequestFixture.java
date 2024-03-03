@@ -7,14 +7,14 @@ import static com.atwoz.member.fixture.info.dto.request.LocationRequestFixture.�
 import static com.atwoz.member.fixture.info.dto.request.PositionRequestFixture.회원_좌표_생성_요청;
 import static com.atwoz.member.fixture.info.dto.request.PositionRequestFixture.회원_좌표_수정_요청;
 
-import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.application.info.dto.profile.body.BodyUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.body.BodyWriteRequest;
-import com.atwoz.member.application.info.dto.profile.location.LocationUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.location.LocationWriteRequest;
-import com.atwoz.member.application.info.dto.profile.position.PositionUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.position.PositionWriteRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
+import com.atwoz.member.application.info.profile.body.dto.BodyUpdateRequest;
+import com.atwoz.member.application.info.profile.body.dto.BodyWriteRequest;
+import com.atwoz.member.application.info.profile.location.dto.LocationUpdateRequest;
+import com.atwoz.member.application.info.profile.location.dto.LocationWriteRequest;
+import com.atwoz.member.application.info.profile.position.dto.PositionUpdateRequest;
+import com.atwoz.member.application.info.profile.position.dto.PositionWriteRequest;
 import com.atwoz.member.domain.info.profile.Job;
 
 @SuppressWarnings("NonAsciiCharacters")

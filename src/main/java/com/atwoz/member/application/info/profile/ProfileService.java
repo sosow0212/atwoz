@@ -1,12 +1,12 @@
 package com.atwoz.member.application.info.profile;
 
-import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
-import com.atwoz.member.domain.info.dto.profile.InnerProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
+import com.atwoz.member.domain.info.profile.dto.InnerProfileUpdateRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
 import com.atwoz.member.domain.info.profile.YearManager;
-import com.atwoz.member.domain.info.dto.profile.InnerProfileWriteRequest;
+import com.atwoz.member.domain.info.profile.dto.InnerProfileWriteRequest;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

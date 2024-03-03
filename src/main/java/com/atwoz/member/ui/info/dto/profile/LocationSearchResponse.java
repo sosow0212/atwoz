@@ -1,6 +1,6 @@
 package com.atwoz.member.ui.info.dto.profile;
 
-import com.atwoz.member.domain.info.profile.Location;
+import com.atwoz.member.domain.info.profile.location.Location;
 
 public record LocationSearchResponse(
         String city,

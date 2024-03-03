@@ -3,10 +3,10 @@ package com.atwoz.member.infrastructure.info;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import com.atwoz.member.domain.info.profile.Body;
+import com.atwoz.member.domain.info.profile.body.Body;
 import com.atwoz.member.domain.info.profile.Job;
-import com.atwoz.member.domain.info.profile.Location;
-import com.atwoz.member.domain.info.profile.Position;
+import com.atwoz.member.domain.info.profile.location.Location;
+import com.atwoz.member.domain.info.profile.position.Position;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.member.Member;
 import com.atwoz.member.fixture.info.BodyFixture;

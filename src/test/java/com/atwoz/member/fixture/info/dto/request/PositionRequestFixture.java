@@ -1,7 +1,7 @@
 package com.atwoz.member.fixture.info.dto.request;
 
-import com.atwoz.member.application.info.dto.profile.position.PositionUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.position.PositionWriteRequest;
+import com.atwoz.member.application.info.profile.position.dto.PositionUpdateRequest;
+import com.atwoz.member.application.info.profile.position.dto.PositionWriteRequest;
 import java.math.BigDecimal;
 
 @SuppressWarnings("NonAsciiCharacters")

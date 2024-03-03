@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
-import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.application.info.profile.ProfileService;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;

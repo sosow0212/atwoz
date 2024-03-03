@@ -5,8 +5,8 @@ import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
 
-import com.atwoz.member.application.info.dto.hobby.HobbyUpdateRequest;
-import com.atwoz.member.application.info.dto.hobby.HobbyWriteRequest;
+import com.atwoz.member.application.info.hobby.dto.HobbyUpdateRequest;
+import com.atwoz.member.application.info.hobby.dto.HobbyWriteRequest;
 import java.util.List;
 
 @SuppressWarnings("NonAsciiCharacters")

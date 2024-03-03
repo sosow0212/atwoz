@@ -1,11 +1,11 @@
 package com.atwoz.member.application.info.option;
 
-import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
+import com.atwoz.member.application.info.option.dto.OptionUpdateRequest;
+import com.atwoz.member.application.info.option.dto.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
-import com.atwoz.member.domain.info.dto.option.InnerOptionUpdateRequest;
-import com.atwoz.member.domain.info.dto.option.InnerOptionWriteRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

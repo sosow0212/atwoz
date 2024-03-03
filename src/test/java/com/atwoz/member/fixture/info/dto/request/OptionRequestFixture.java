@@ -1,13 +1,13 @@
 package com.atwoz.member.fixture.info.dto.request;
 
-import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
-import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
+import com.atwoz.member.application.info.option.dto.OptionUpdateRequest;
+import com.atwoz.member.application.info.option.dto.OptionWriteRequest;
 import com.atwoz.member.domain.info.option.Drink;
 import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.domain.info.dto.option.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionRequestFixture {

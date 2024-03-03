@@ -1,6 +1,6 @@
 package com.atwoz.member.ui.info.dto.profile;
 
-import com.atwoz.member.domain.info.profile.Body;
+import com.atwoz.member.domain.info.profile.body.Body;
 
 public record BodySearchResponse(
         int age,

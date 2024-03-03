@@ -1,6 +1,6 @@
 package com.atwoz.member.fixture.info;
 
-import com.atwoz.member.domain.info.profile.Location;
+import com.atwoz.member.domain.info.profile.location.Location;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class LocationFixture {

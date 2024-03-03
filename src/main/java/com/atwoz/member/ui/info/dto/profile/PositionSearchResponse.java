@@ -1,6 +1,6 @@
 package com.atwoz.member.ui.info.dto.profile;
 
-import com.atwoz.member.domain.info.profile.Position;
+import com.atwoz.member.domain.info.profile.position.Position;
 import java.math.BigDecimal;
 
 public record PositionSearchResponse(

@@ -1,7 +1,7 @@
 package com.atwoz.member.fixture.info;
 
-import com.atwoz.member.domain.info.profile.Body;
-import com.atwoz.member.domain.info.profile.Gender;
+import com.atwoz.member.domain.info.profile.body.Body;
+import com.atwoz.member.domain.info.profile.body.Gender;
 import com.atwoz.member.domain.info.profile.YearManager;
 import com.atwoz.member.infrastructure.info.FakeYearManager;
 

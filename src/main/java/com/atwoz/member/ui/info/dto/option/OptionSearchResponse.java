@@ -3,9 +3,9 @@ package com.atwoz.member.ui.info.dto.option;
 import com.atwoz.member.domain.info.option.Drink;
 import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
-import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
+import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
 
 public record OptionSearchResponse(
         String drink,
@@ -15,12 +15,12 @@ public record OptionSearchResponse(
         String mbti
 ) {
 
-    public static OptionSearchResponse from(final Option option) {
-        Drink drink = option.getDrink();
-        Graduate graduate = option.getGraduate();
-        Religion religion = option.getReligion();
-        Smoke smoke = option.getSmoke();
-        Mbti mbti = option.getMbti();
+    public static OptionSearchResponse from(final ProfileAndOptionSearchResponse response) {
+        Drink drink = response.getDrink();
+        Graduate graduate = response.getGraduate();
+        Religion religion = response.getReligion();
+        Smoke smoke = response.getSmoke();
+        Mbti mbti = response.getMbti();
 
         return new OptionSearchResponse(
                 drink.getName(),

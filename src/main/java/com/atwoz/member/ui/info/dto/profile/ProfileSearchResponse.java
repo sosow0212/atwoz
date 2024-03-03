@@ -1,10 +1,7 @@
 package com.atwoz.member.ui.info.dto.profile;
 
-import com.atwoz.member.domain.info.profile.Body;
-import com.atwoz.member.domain.info.profile.Job;
-import com.atwoz.member.domain.info.profile.Location;
-import com.atwoz.member.domain.info.profile.Position;
-import com.atwoz.member.domain.info.profile.Profile;
+import com.atwoz.member.domain.info.profile.Gender;
+import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
 
 public record ProfileSearchResponse(
         BodySearchResponse body,
@@ -12,18 +9,16 @@ public record ProfileSearchResponse(
         PositionSearchResponse position,
         String job
 ) {
+    public static ProfileSearchResponse from(final ProfileAndOptionSearchResponse response) {
+        int age = response.getAge();
+        int height = response.getHeight();
+        Gender gender = response.getGender();
+        BodySearchResponse body = new BodySearchResponse(age, height, gender.getName());
 
-    public static ProfileSearchResponse from(final Profile profile) {
-        Body body = profile.getBody();
-        Location location = profile.getLocation();
-        Position position = profile.getPosition();
-        Job job = profile.getJob();
+        LocationSearchResponse location = new LocationSearchResponse(response.getCity(), response.getSector());
+        PositionSearchResponse position = new PositionSearchResponse(response.getLatitude(), response.getLongitude());
+        String job = response.getJob().getCode();
 
-        return new ProfileSearchResponse(
-                BodySearchResponse.from(body),
-                LocationSearchResponse.from(location),
-                PositionSearchResponse.from(position),
-                job.getCode()
-        );
+        return new ProfileSearchResponse(body, location, position, job);
     }
 }

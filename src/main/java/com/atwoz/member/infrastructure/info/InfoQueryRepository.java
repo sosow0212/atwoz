@@ -5,13 +5,11 @@ import static com.atwoz.member.domain.info.option.QOption.option;
 import static com.atwoz.member.domain.info.profile.QProfile.profile;
 import static com.atwoz.member.domain.info.style.QMemberStyle.memberStyle;
 
-import com.atwoz.member.domain.info.option.Option;
-import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.ui.info.dto.HobbySearchResponse;
 import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
 import com.atwoz.member.ui.info.dto.StyleSearchResponse;
-import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -25,37 +23,35 @@ public class InfoQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     public Optional<InfoSearchResponse> findByMemberId(final Long memberId) {
-        Profile profile = selectProfileByMemberId(memberId);
-        if (profile == null) {
+        Optional<ProfileAndOptionSearchResponse> profileAndOptionSearchResponse = Optional.ofNullable(queryFactory
+                .select(Projections.fields(ProfileAndOptionSearchResponse.class,
+                        profile.body.age.as("age"),
+                        profile.body.height.as("height"),
+                        profile.body.gender.as("gender"),
+                        profile.job.as("job"),
+                        profile.location.city.as("city"),
+                        profile.location.sector.as("sector"),
+                        profile.position.latitude.as("latitude"),
+                        profile.position.longitude.as("longitude"),
+                        option.drink.as("drink"),
+                        option.graduate.as("graduate"),
+                        option.mbti.as("mbti"),
+                        option.religion.as("religion"),
+                        option.smoke.as("smoke")))
+                .from(profile)
+                .join(option)
+                .on(profile.memberId.eq(option.memberId))
+                .where(profile.memberId.eq(memberId))
+                .fetchOne());
+
+        if (profileAndOptionSearchResponse.isEmpty()) {
             return Optional.empty();
         }
-
-        Option option = selectOptionByMemberId(memberId);
-        if (option == null) {
-            return Optional.empty();
-        }
-
-        ProfileSearchResponse profileSearchResponse = ProfileSearchResponse.from(profile);
-        OptionSearchResponse optionSearchResponse = OptionSearchResponse.from(option);
 
         List<HobbySearchResponse> hobbyCodes = selectHobbyResponseByMemberId(memberId);
         List<StyleSearchResponse> styleCodes = selectStyleResponseByMemberId(memberId);
 
-        return Optional.of(new InfoSearchResponse(profileSearchResponse, optionSearchResponse, hobbyCodes, styleCodes));
-    }
-
-    private Profile selectProfileByMemberId(final Long memberId) {
-        return queryFactory.select(profile)
-                        .from(profile)
-                        .where(profile.memberId.eq(memberId))
-                        .fetchOne();
-    }
-
-    private Option selectOptionByMemberId(final Long memberId) {
-        return queryFactory.select(option)
-                        .from(option)
-                        .where(option.memberId.eq(memberId))
-                        .fetchOne();
+        return Optional.of(InfoSearchResponse.of(profileAndOptionSearchResponse.get(), hobbyCodes, styleCodes));
     }
 
     private List<HobbySearchResponse> selectHobbyResponseByMemberId(final Long memberId) {

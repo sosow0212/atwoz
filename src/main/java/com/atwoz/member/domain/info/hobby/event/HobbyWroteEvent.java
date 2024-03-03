@@ -1,4 +1,4 @@
-package com.atwoz.member.application.event.info;
+package com.atwoz.member.domain.info.hobby.event;
 
 import com.atwoz.global.event.Event;
 import lombok.Getter;

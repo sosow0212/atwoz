@@ -2,7 +2,7 @@ package com.atwoz.member.application.auth;
 
 import com.atwoz.global.event.Events;
 import com.atwoz.member.application.auth.dto.LoginRequest;
-import com.atwoz.member.application.event.ValidatedLoginEvent;
+import com.atwoz.member.domain.auth.event.ValidatedLoginEvent;
 import com.atwoz.member.domain.auth.TokenProvider;
 import com.atwoz.member.infrastructure.auth.dto.MemberInfoResponse;
 import com.atwoz.member.infrastructure.auth.dto.OAuthProviderRequest;

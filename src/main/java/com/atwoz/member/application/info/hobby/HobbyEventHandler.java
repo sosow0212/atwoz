@@ -1,7 +1,7 @@
 package com.atwoz.member.application.info.hobby;
 
-import com.atwoz.member.application.event.info.HobbyUpdatedEvent;
-import com.atwoz.member.application.event.info.HobbyWroteEvent;
+import com.atwoz.member.domain.info.hobby.event.HobbyUpdatedEvent;
+import com.atwoz.member.domain.info.hobby.event.HobbyWroteEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

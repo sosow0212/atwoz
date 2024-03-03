@@ -1,7 +1,7 @@
 package com.atwoz.member.application.info.style;
 
-import com.atwoz.member.application.event.info.StyleUpdatedEvent;
-import com.atwoz.member.application.event.info.StyleWroteEvent;
+import com.atwoz.member.domain.info.style.event.StyleUpdatedEvent;
+import com.atwoz.member.domain.info.style.event.StyleWroteEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

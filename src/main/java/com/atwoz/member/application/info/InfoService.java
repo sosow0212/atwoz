@@ -1,14 +1,14 @@
 package com.atwoz.member.application.info;
 
 import com.atwoz.global.event.Events;
-import com.atwoz.member.application.event.info.HobbyUpdatedEvent;
-import com.atwoz.member.application.event.info.HobbyWroteEvent;
-import com.atwoz.member.application.event.info.OptionUpdatedEvent;
-import com.atwoz.member.application.event.info.OptionWroteEvent;
-import com.atwoz.member.application.event.info.ProfileUpdatedEvent;
-import com.atwoz.member.application.event.info.ProfileWroteEvent;
-import com.atwoz.member.application.event.info.StyleUpdatedEvent;
-import com.atwoz.member.application.event.info.StyleWroteEvent;
+import com.atwoz.member.domain.info.hobby.event.HobbyUpdatedEvent;
+import com.atwoz.member.domain.info.hobby.event.HobbyWroteEvent;
+import com.atwoz.member.domain.info.option.event.OptionUpdatedEvent;
+import com.atwoz.member.domain.info.option.event.OptionWroteEvent;
+import com.atwoz.member.domain.info.profile.event.ProfileUpdatedEvent;
+import com.atwoz.member.domain.info.profile.event.ProfileWroteEvent;
+import com.atwoz.member.domain.info.style.event.StyleUpdatedEvent;
+import com.atwoz.member.domain.info.style.event.StyleWroteEvent;
 import com.atwoz.member.application.info.dto.hobby.HobbyUpdateRequest;
 import com.atwoz.member.application.info.dto.hobby.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;

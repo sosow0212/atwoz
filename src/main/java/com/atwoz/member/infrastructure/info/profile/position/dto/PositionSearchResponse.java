@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto.profile;
+package com.atwoz.member.infrastructure.info.profile.position.dto;
 
 import com.atwoz.member.domain.info.profile.position.Position;
 import java.math.BigDecimal;

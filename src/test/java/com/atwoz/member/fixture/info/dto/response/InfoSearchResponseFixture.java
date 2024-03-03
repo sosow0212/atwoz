@@ -5,11 +5,11 @@ import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFix
 import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.회원_프로필_조회_응답;
 import static com.atwoz.member.fixture.info.dto.response.StylesSearchResponseFixture.회원_스타일_조회_응답;
 
-import com.atwoz.member.ui.info.dto.HobbySearchResponse;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
-import com.atwoz.member.ui.info.dto.StyleSearchResponse;
-import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
+import com.atwoz.member.infrastructure.info.hobby.dto.HobbySearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.style.dto.StyleSearchResponse;
+import com.atwoz.member.infrastructure.info.option.dto.OptionSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.dto.ProfileSearchResponse;
 import java.util.List;
 
 @SuppressWarnings("NonAsciiCharacters")

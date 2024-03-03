@@ -5,10 +5,10 @@ import static com.atwoz.member.domain.info.option.QOption.option;
 import static com.atwoz.member.domain.info.profile.QProfile.profile;
 import static com.atwoz.member.domain.info.style.QMemberStyle.memberStyle;
 
-import com.atwoz.member.ui.info.dto.HobbySearchResponse;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
-import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
-import com.atwoz.member.ui.info.dto.StyleSearchResponse;
+import com.atwoz.member.infrastructure.info.hobby.dto.HobbySearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.ProfileAndOptionSearchResponse;
+import com.atwoz.member.infrastructure.info.style.dto.StyleSearchResponse;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

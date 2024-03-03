@@ -5,10 +5,10 @@ import static com.atwoz.member.fixture.info.dto.response.LocationSearchResponseF
 import static com.atwoz.member.fixture.info.dto.response.PositionSearchResponseFixture.회원_좌표_조회_응답;
 
 import com.atwoz.member.domain.info.profile.Job;
-import com.atwoz.member.ui.info.dto.profile.BodySearchResponse;
-import com.atwoz.member.ui.info.dto.profile.LocationSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.PositionSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.body.dto.BodySearchResponse;
+import com.atwoz.member.infrastructure.info.profile.location.dto.LocationSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.position.dto.PositionSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.dto.ProfileSearchResponse;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class ProfileSearchResponseFixture {

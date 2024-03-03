@@ -1,6 +1,6 @@
 package com.atwoz.member.fixture.info.dto.response;
 
-import com.atwoz.member.ui.info.dto.profile.LocationSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.location.dto.LocationSearchResponse;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class LocationSearchResponseFixture {

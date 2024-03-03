@@ -1,7 +1,7 @@
 package com.atwoz.member.fixture.info.dto.response;
 
 import com.atwoz.member.domain.info.profile.body.Gender;
-import com.atwoz.member.ui.info.dto.profile.BodySearchResponse;
+import com.atwoz.member.infrastructure.info.profile.body.dto.BodySearchResponse;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class BodySearchResponseFixture {

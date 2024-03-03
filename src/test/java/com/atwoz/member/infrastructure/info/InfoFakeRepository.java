@@ -6,7 +6,7 @@ import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFi
 import static com.atwoz.member.fixture.info.dto.response.StylesSearchResponseFixture.회원_스타일_조회_응답;
 
 import com.atwoz.member.domain.info.InfoRepository;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
 import java.util.Optional;
 
 @SuppressWarnings("NonAsciiCharacters")

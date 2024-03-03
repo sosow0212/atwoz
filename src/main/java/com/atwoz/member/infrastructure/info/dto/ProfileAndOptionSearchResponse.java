@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto;
+package com.atwoz.member.infrastructure.info.dto;
 
 import com.atwoz.member.domain.info.option.Drink;
 import com.atwoz.member.domain.info.option.Graduate;

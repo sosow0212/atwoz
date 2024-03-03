@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto.profile;
+package com.atwoz.member.infrastructure.info.profile.body.dto;
 
 import com.atwoz.member.domain.info.profile.body.Body;
 

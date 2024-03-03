@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.atwoz.helper.MockBeanInjection;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

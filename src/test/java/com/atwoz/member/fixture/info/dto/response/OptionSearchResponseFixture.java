@@ -5,7 +5,7 @@ import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
+import com.atwoz.member.infrastructure.info.option.dto.OptionSearchResponse;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionSearchResponseFixture {

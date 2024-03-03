@@ -1,11 +1,11 @@
-package com.atwoz.member.ui.info.dto.option;
+package com.atwoz.member.infrastructure.info.option.dto;
 
 import com.atwoz.member.domain.info.option.Drink;
 import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.ui.info.dto.ProfileAndOptionSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.ProfileAndOptionSearchResponse;
 
 public record OptionSearchResponse(
         String drink,

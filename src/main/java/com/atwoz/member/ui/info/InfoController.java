@@ -4,7 +4,7 @@ import com.atwoz.member.application.info.InfoService;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

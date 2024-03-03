@@ -1,7 +1,9 @@
-package com.atwoz.member.ui.info.dto;
+package com.atwoz.member.infrastructure.info.dto;
 
-import com.atwoz.member.ui.info.dto.option.OptionSearchResponse;
-import com.atwoz.member.ui.info.dto.profile.ProfileSearchResponse;
+import com.atwoz.member.infrastructure.info.hobby.dto.HobbySearchResponse;
+import com.atwoz.member.infrastructure.info.style.dto.StyleSearchResponse;
+import com.atwoz.member.infrastructure.info.option.dto.OptionSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.dto.ProfileSearchResponse;
 import java.util.List;
 
 public record InfoSearchResponse(

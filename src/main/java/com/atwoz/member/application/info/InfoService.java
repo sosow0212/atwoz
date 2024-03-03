@@ -17,7 +17,7 @@ import com.atwoz.member.application.info.style.dto.StyleUpdateRequest;
 import com.atwoz.member.application.info.style.dto.StyleWriteRequest;
 import com.atwoz.member.domain.info.InfoRepository;
 import com.atwoz.member.exception.exceptions.info.InfoNotFoundException;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

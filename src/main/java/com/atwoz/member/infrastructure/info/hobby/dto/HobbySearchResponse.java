@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto;
+package com.atwoz.member.infrastructure.info.hobby.dto;
 
 import com.atwoz.member.domain.info.hobby.Hobby;
 import com.atwoz.member.domain.info.hobby.MemberHobby;

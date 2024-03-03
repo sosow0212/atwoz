@@ -1,7 +1,7 @@
 package com.atwoz.member.infrastructure.info;
 
 import com.atwoz.member.domain.info.InfoRepository;
-import com.atwoz.member.ui.info.dto.InfoSearchResponse;
+import com.atwoz.member.infrastructure.info.dto.InfoSearchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;

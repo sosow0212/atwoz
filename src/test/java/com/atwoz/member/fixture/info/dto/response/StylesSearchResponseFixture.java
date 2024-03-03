@@ -3,7 +3,7 @@ package com.atwoz.member.fixture.info.dto.response;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
 
-import com.atwoz.member.ui.info.dto.StyleSearchResponse;
+import com.atwoz.member.infrastructure.info.style.dto.StyleSearchResponse;
 import java.util.List;
 
 @SuppressWarnings("NonAsciiCharacters")

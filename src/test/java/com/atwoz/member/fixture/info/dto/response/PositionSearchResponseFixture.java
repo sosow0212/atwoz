@@ -1,6 +1,6 @@
 package com.atwoz.member.fixture.info.dto.response;
 
-import com.atwoz.member.ui.info.dto.profile.PositionSearchResponse;
+import com.atwoz.member.infrastructure.info.profile.position.dto.PositionSearchResponse;
 import java.math.BigDecimal;
 
 @SuppressWarnings("NonAsciiCharacters")

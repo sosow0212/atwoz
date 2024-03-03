@@ -1,4 +1,4 @@
-package com.atwoz.member.ui.info.dto;
+package com.atwoz.member.infrastructure.info.style.dto;
 
 import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.Style;

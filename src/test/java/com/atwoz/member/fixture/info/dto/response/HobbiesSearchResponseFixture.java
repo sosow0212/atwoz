@@ -3,7 +3,7 @@ package com.atwoz.member.fixture.info.dto.response;
 import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 
-import com.atwoz.member.ui.info.dto.HobbySearchResponse;
+import com.atwoz.member.infrastructure.info.hobby.dto.HobbySearchResponse;
 import java.util.List;
 
 @SuppressWarnings("NonAsciiCharacters")

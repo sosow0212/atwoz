@@ -4,15 +4,15 @@ import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
 import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;
 import static com.atwoz.member.domain.info.hobby.Hobby.WINE;
 import static com.atwoz.member.domain.info.hobby.Hobby.WRITE;
-import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_수정_취미_생성;
-import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_일반_취미_생성;
+import static com.atwoz.member.fixture.domain.info.hobby.MemberHobbiesFixture.회원_수정_취미_생성;
+import static com.atwoz.member.fixture.domain.info.hobby.MemberHobbiesFixture.회원_일반_취미_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.hobby.MemberHobbyService;
 import com.atwoz.member.domain.info.hobby.MemberHobby;
 import com.atwoz.member.domain.info.hobby.MemberHobbyRepository;
-import com.atwoz.member.infrastructure.info.MemberHobbyFakeRepository;
+import com.atwoz.member.infrastructure.info.hobby.MemberHobbyFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

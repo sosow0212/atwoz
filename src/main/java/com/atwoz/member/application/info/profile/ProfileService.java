@@ -5,7 +5,7 @@ import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.application.info.profile.dto.InnerProfileUpdateRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
-import com.atwoz.member.domain.info.profile.YearManager;
+import com.atwoz.member.domain.info.profile.body.YearManager;
 import com.atwoz.member.application.info.profile.dto.InnerProfileWriteRequest;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;

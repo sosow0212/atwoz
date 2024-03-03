@@ -1,8 +1,8 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.dto.request.InfoRequestFixture.회원_정보_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.InfoRequestFixture.회원_정보_수정_요청;
-import static com.atwoz.member.fixture.info.dto.response.InfoSearchResponseFixture.회원_정보_조회_응답;
+import static com.atwoz.member.fixture.application.info.InfoRequestFixture.회원_정보_생성_요청;
+import static com.atwoz.member.fixture.application.info.InfoRequestFixture.회원_정보_수정_요청;
+import static com.atwoz.member.fixture.infrastructure.info.InfoSearchResponseFixture.회원_정보_조회_응답;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.mockito.ArgumentMatchers.any;

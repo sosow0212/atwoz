@@ -5,9 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import com.atwoz.member.domain.info.profile.body.Body;
 import com.atwoz.member.domain.info.profile.body.Gender;
+import com.atwoz.member.domain.info.profile.body.YearManager;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
-import com.atwoz.member.infrastructure.info.FakeYearManager;
+import com.atwoz.member.infrastructure.info.profile.body.FakeYearManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

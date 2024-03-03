@@ -1,14 +1,14 @@
 package com.atwoz.member.ui.info;
 
-import static com.atwoz.member.fixture.info.MemberHobbiesFixture.회원_일반_취미_생성;
-import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_일반_스타일_생성;
-import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
-import static com.atwoz.member.fixture.info.ProfileFixture.회원_일반_프로필_생성;
-import static com.atwoz.member.fixture.info.dto.response.HobbiesSearchResponseFixture.회원_취미_조회_응답;
-import static com.atwoz.member.fixture.info.dto.response.OptionSearchResponseFixture.회원_옵션_조회_응답;
-import static com.atwoz.member.fixture.info.dto.response.ProfileSearchResponseFixture.회원_프로필_조회_응답;
-import static com.atwoz.member.fixture.info.dto.response.StylesSearchResponseFixture.회원_스타일_조회_응답;
-import static com.atwoz.member.fixture.member.MemberFixture.일반_유저_생성;
+import static com.atwoz.member.fixture.domain.info.hobby.MemberHobbiesFixture.회원_일반_취미_생성;
+import static com.atwoz.member.fixture.domain.info.style.MemberStylesFixture.회원_일반_스타일_생성;
+import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_일반_옵션_생성;
+import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_일반_프로필_생성;
+import static com.atwoz.member.fixture.infrastructure.info.hobby.HobbiesSearchResponseFixture.회원_취미_조회_응답;
+import static com.atwoz.member.fixture.infrastructure.info.option.OptionSearchResponseFixture.회원_옵션_조회_응답;
+import static com.atwoz.member.fixture.infrastructure.info.profile.ProfileSearchResponseFixture.회원_프로필_조회_응답;
+import static com.atwoz.member.fixture.infrastructure.info.style.StylesSearchResponseFixture.회원_스타일_조회_응답;
+import static com.atwoz.member.fixture.domain.member.MemberFixture.일반_유저_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 

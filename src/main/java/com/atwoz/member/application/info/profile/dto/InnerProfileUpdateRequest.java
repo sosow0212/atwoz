@@ -3,7 +3,7 @@ package com.atwoz.member.application.info.profile.dto;
 import com.atwoz.member.domain.info.profile.body.dto.InnerBodyUpdateRequest;
 import com.atwoz.member.domain.info.profile.location.dto.InnerLocationUpdateRequest;
 import com.atwoz.member.domain.info.profile.position.dto.InnerPositionUpdateRequest;
-import com.atwoz.member.domain.info.profile.YearManager;
+import com.atwoz.member.domain.info.profile.body.YearManager;
 
 public record InnerProfileUpdateRequest(
         Long memberId,

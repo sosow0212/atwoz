@@ -1,7 +1,7 @@
 package com.atwoz.member.ui.info;
 
-import static com.atwoz.member.fixture.info.dto.request.InfoRequestFixture.회원_정보_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.InfoRequestFixture.회원_정보_수정_요청;
+import static com.atwoz.member.fixture.application.info.InfoRequestFixture.회원_정보_생성_요청;
+import static com.atwoz.member.fixture.application.info.InfoRequestFixture.회원_정보_수정_요청;
 
 import com.atwoz.member.domain.member.Member;
 import org.junit.jupiter.api.BeforeEach;

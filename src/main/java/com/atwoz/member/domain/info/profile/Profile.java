@@ -3,6 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import com.atwoz.member.domain.info.profile.body.Body;
 import com.atwoz.member.application.info.profile.dto.InnerProfileUpdateRequest;
 import com.atwoz.member.application.info.profile.dto.InnerProfileWriteRequest;
+import com.atwoz.member.domain.info.profile.job.Job;
 import com.atwoz.member.domain.info.profile.location.Location;
 import com.atwoz.member.domain.info.profile.position.Position;
 import jakarta.persistence.Column;

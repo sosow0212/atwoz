@@ -1,7 +1,7 @@
 package com.atwoz.member.ui.auth;
 
 import static com.atwoz.helper.RestDocsHelper.customDocument;
-import static com.atwoz.member.fixture.auth.OAuthProviderFixture.인증_기관_생성;
+import static com.atwoz.member.fixture.infrastructure.auth.OAuthProviderFixture.인증_기관_생성;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;

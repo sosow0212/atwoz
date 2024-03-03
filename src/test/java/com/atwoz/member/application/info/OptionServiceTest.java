@@ -1,9 +1,9 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.OptionFixture.회원_수정_옵션_생성;
-import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
-import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청;
+import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_수정_옵션_생성;
+import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_일반_옵션_생성;
+import static com.atwoz.member.fixture.application.info.option.OptionRequestFixture.회원_옵션_생성_요청;
+import static com.atwoz.member.fixture.application.info.option.OptionRequestFixture.회원_옵션_수정_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -15,7 +15,7 @@ import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
 import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
-import com.atwoz.member.infrastructure.info.OptionFakeRepository;
+import com.atwoz.member.infrastructure.info.option.OptionFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

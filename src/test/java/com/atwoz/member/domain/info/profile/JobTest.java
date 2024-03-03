@@ -3,6 +3,7 @@ package com.atwoz.member.domain.info.profile;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import com.atwoz.member.domain.info.profile.job.Job;
 import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

@@ -4,15 +4,15 @@ import static com.atwoz.member.domain.info.style.Style.FASHION;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
 import static com.atwoz.member.domain.info.style.Style.PURE;
-import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_수정_스타일_생성;
-import static com.atwoz.member.fixture.info.MemberStylesFixture.회원_일반_스타일_생성;
+import static com.atwoz.member.fixture.domain.info.style.MemberStylesFixture.회원_수정_스타일_생성;
+import static com.atwoz.member.fixture.domain.info.style.MemberStylesFixture.회원_일반_스타일_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.application.info.style.MemberStyleService;
 import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.MemberStyleRepository;
-import com.atwoz.member.infrastructure.info.MemberStyleFakeRepository;
+import com.atwoz.member.infrastructure.info.style.MemberStyleFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

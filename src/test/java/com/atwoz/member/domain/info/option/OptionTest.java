@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.option;
 
-import static com.atwoz.member.fixture.info.OptionFixture.회원_일반_옵션_생성;
-import static com.atwoz.member.fixture.info.dto.request.OptionRequestFixture.회원_옵션_수정_요청_내부;
+import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_일반_옵션_생성;
+import static com.atwoz.member.fixture.application.info.option.OptionRequestFixture.회원_옵션_수정_요청_내부;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;

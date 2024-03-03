@@ -1,13 +1,14 @@
 package com.atwoz.member.domain.info.profile;
 
-import static com.atwoz.member.fixture.info.BodyFixture.회원_수정_body_생성;
-import static com.atwoz.member.fixture.info.JobFixture.회원_수정_직업_생성;
-import static com.atwoz.member.fixture.info.LocationFixture.회원_수정_위치_생성;
-import static com.atwoz.member.fixture.info.PositionFixture.회원_수정_좌표_생성;
-import static com.atwoz.member.fixture.info.ProfileFixture.회원_일반_프로필_생성;
+import static com.atwoz.member.fixture.domain.info.profile.body.BodyFixture.회원_수정_body_생성;
+import static com.atwoz.member.fixture.domain.info.profile.job.JobFixture.회원_수정_직업_생성;
+import static com.atwoz.member.fixture.domain.info.profile.location.LocationFixture.회원_수정_위치_생성;
+import static com.atwoz.member.fixture.domain.info.profile.position.PositionFixture.회원_수정_좌표_생성;
+import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_일반_프로필_생성;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.domain.info.profile.body.Body;
+import com.atwoz.member.domain.info.profile.job.Job;
 import com.atwoz.member.domain.info.profile.location.Location;
 import com.atwoz.member.domain.info.profile.position.Position;
 import org.junit.jupiter.api.DisplayNameGeneration;

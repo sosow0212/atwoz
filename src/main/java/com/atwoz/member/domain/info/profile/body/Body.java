@@ -2,7 +2,6 @@ package com.atwoz.member.domain.info.profile.body;
 
 import com.atwoz.member.domain.info.profile.body.dto.InnerBodyUpdateRequest;
 import com.atwoz.member.domain.info.profile.body.dto.InnerBodyWriteRequest;
-import com.atwoz.member.domain.info.profile.YearManager;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import jakarta.persistence.Column;

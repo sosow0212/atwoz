@@ -1,9 +1,9 @@
 package com.atwoz.member.application.info;
 
-import static com.atwoz.member.fixture.info.ProfileFixture.회원_수정_프로필_생성;
-import static com.atwoz.member.fixture.info.ProfileFixture.회원_일반_프로필_생성;
-import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_생성_요청;
-import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.회원_프로필_수정_요청;
+import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_수정_프로필_생성;
+import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_일반_프로필_생성;
+import static com.atwoz.member.fixture.application.info.profile.ProfileRequestFixture.회원_프로필_생성_요청;
+import static com.atwoz.member.fixture.application.info.profile.ProfileRequestFixture.회원_프로필_수정_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -13,10 +13,10 @@ import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.application.info.profile.ProfileService;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
-import com.atwoz.member.domain.info.profile.YearManager;
+import com.atwoz.member.domain.info.profile.body.YearManager;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
-import com.atwoz.member.infrastructure.info.FakeYearManager;
-import com.atwoz.member.infrastructure.info.ProfileFakeRepository;
+import com.atwoz.member.infrastructure.info.profile.body.FakeYearManager;
+import com.atwoz.member.infrastructure.info.profile.ProfileFakeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

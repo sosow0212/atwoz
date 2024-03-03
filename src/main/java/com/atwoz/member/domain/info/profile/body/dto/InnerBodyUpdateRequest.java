@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.profile.body.dto;
 
 import com.atwoz.member.application.info.profile.body.dto.BodyUpdateRequest;
-import com.atwoz.member.domain.info.profile.YearManager;
+import com.atwoz.member.domain.info.profile.body.YearManager;
 
 public record InnerBodyUpdateRequest(
         YearManager yearManager,

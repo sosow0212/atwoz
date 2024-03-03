@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.style.event;
+package com.atwoz.member.application.info.style.event;
 
 import com.atwoz.global.event.Event;
 import lombok.Getter;

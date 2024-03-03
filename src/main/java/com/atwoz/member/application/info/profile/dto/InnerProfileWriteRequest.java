@@ -1,6 +1,5 @@
-package com.atwoz.member.domain.info.profile.dto;
+package com.atwoz.member.application.info.profile.dto;
 
-import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.domain.info.profile.body.dto.InnerBodyWriteRequest;
 import com.atwoz.member.domain.info.profile.location.dto.InnerLocationWriteRequest;
 import com.atwoz.member.domain.info.profile.position.dto.InnerPositionWriteRequest;

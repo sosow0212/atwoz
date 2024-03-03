@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.style.event;
+package com.atwoz.member.application.info.hobby.event;
 
 import com.atwoz.global.event.Event;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class StyleWroteEvent extends Event {
+public class HobbyWroteEvent extends Event {
 
     private final Long memberId;
-    private final List<String> styleCodes;
+    private final List<String> hobbyCodes;
 }

@@ -1,14 +1,14 @@
 package com.atwoz.member.application.info;
 
 import com.atwoz.global.event.Events;
-import com.atwoz.member.domain.info.hobby.event.HobbyUpdatedEvent;
-import com.atwoz.member.domain.info.hobby.event.HobbyWroteEvent;
-import com.atwoz.member.domain.info.option.event.OptionUpdatedEvent;
-import com.atwoz.member.domain.info.option.event.OptionWroteEvent;
-import com.atwoz.member.domain.info.profile.event.ProfileUpdatedEvent;
-import com.atwoz.member.domain.info.profile.event.ProfileWroteEvent;
-import com.atwoz.member.domain.info.style.event.StyleUpdatedEvent;
-import com.atwoz.member.domain.info.style.event.StyleWroteEvent;
+import com.atwoz.member.application.info.hobby.event.HobbyUpdatedEvent;
+import com.atwoz.member.application.info.hobby.event.HobbyWroteEvent;
+import com.atwoz.member.application.info.option.event.OptionUpdatedEvent;
+import com.atwoz.member.application.info.option.event.OptionWroteEvent;
+import com.atwoz.member.application.info.profile.event.ProfileUpdatedEvent;
+import com.atwoz.member.application.info.profile.event.ProfileWroteEvent;
+import com.atwoz.member.application.info.style.event.StyleUpdatedEvent;
+import com.atwoz.member.application.info.style.event.StyleWroteEvent;
 import com.atwoz.member.application.info.hobby.dto.HobbyUpdateRequest;
 import com.atwoz.member.application.info.hobby.dto.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;

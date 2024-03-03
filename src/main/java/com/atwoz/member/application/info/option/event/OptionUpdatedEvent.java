@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.option.event;
+package com.atwoz.member.application.info.option.event;
 
 import com.atwoz.global.event.Event;
 import com.atwoz.member.application.info.option.dto.OptionUpdateRequest;

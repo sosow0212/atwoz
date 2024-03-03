@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.profile.event;
+package com.atwoz.member.application.info.profile.event;
 
 import com.atwoz.global.event.Event;
 import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;

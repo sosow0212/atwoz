@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.profile;
+package com.atwoz.member.domain.info.profile.body;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

@@ -1,4 +1,4 @@
-package com.atwoz.member.application.info;
+package com.atwoz.member.application.info.option;
 
 import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_수정_옵션_생성;
 import static com.atwoz.member.fixture.domain.info.option.OptionFixture.회원_일반_옵션_생성;

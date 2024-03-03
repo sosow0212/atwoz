@@ -1,4 +1,4 @@
-package com.atwoz.member.application.info;
+package com.atwoz.member.application.info.hobby;
 
 import static com.atwoz.member.domain.info.hobby.Hobby.COOK;
 import static com.atwoz.member.domain.info.hobby.Hobby.DRAMA;

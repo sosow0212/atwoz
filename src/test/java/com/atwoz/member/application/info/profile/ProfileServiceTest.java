@@ -1,4 +1,4 @@
-package com.atwoz.member.application.info;
+package com.atwoz.member.application.info.profile;
 
 import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_수정_프로필_생성;
 import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_일반_프로필_생성;

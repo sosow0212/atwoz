@@ -1,4 +1,4 @@
-package com.atwoz.member.application.info;
+package com.atwoz.member.application.info.style;
 
 import static com.atwoz.member.domain.info.style.Style.FASHION;
 import static com.atwoz.member.domain.info.style.Style.GENTLE;

@@ -1,19 +1,19 @@
 package com.atwoz.member.infrastructure.info.profile;
 
+import static com.atwoz.member.fixture.domain.info.profile.body.BodyFixture.회원_일반_body_생성;
+import static com.atwoz.member.fixture.domain.info.profile.job.JobFixture.회원_일반_직업_생성;
+import static com.atwoz.member.fixture.domain.info.profile.location.LocationFixture.회원_일반_위치_생성;
+import static com.atwoz.member.fixture.domain.info.profile.position.PositionFixture.회원_일반_좌표_생성;
+import static com.atwoz.member.fixture.domain.member.MemberFixture.일반_유저_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
+import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.body.Body;
 import com.atwoz.member.domain.info.profile.job.Job;
 import com.atwoz.member.domain.info.profile.location.Location;
 import com.atwoz.member.domain.info.profile.position.Position;
-import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.member.Member;
-import com.atwoz.member.fixture.domain.info.profile.body.BodyFixture;
-import com.atwoz.member.fixture.domain.info.profile.job.JobFixture;
-import com.atwoz.member.fixture.domain.info.profile.location.LocationFixture;
-import com.atwoz.member.fixture.domain.info.profile.position.PositionFixture;
-import com.atwoz.member.fixture.domain.member.MemberFixture;
 import com.atwoz.member.infrastructure.member.MemberJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -38,17 +38,17 @@ class ProfileJpaRepositoryTest {
 
     @BeforeEach
     void init() {
-        member = memberJpaRepository.save(MemberFixture.일반_유저_생성());
+        member = memberJpaRepository.save(일반_유저_생성());
     }
 
     @Test
     void profile을_저장한다() {
         // given
         Long memberId = member.getId();
-        Body body = BodyFixture.회원_일반_body_생성();
-        Location location = LocationFixture.회원_일반_위치_생성();
-        Position position = PositionFixture.회원_일반_좌표_생성();
-        Job job = JobFixture.회원_일반_직업_생성();
+        Body body = 회원_일반_body_생성();
+        Location location = 회원_일반_위치_생성();
+        Position position = 회원_일반_좌표_생성();
+        Job job = 회원_일반_직업_생성();
 
         Profile newProfile = new Profile(memberId, body, location, position, job);
 
@@ -66,10 +66,10 @@ class ProfileJpaRepositoryTest {
     void profile을_조회한다() {
         // given
         Long memberId = member.getId();
-        Body body = BodyFixture.회원_일반_body_생성();
-        Location location = LocationFixture.회원_일반_위치_생성();
-        Position position = PositionFixture.회원_일반_좌표_생성();
-        Job job = JobFixture.회원_일반_직업_생성();
+        Body body = 회원_일반_body_생성();
+        Location location = 회원_일반_위치_생성();
+        Position position = 회원_일반_좌표_생성();
+        Job job = 회원_일반_직업_생성();
 
         Profile newProfile = new Profile(memberId, body, location, position, job);
         Profile saveProfile = profileJpaRepository.save(newProfile);

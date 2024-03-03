@@ -1,13 +1,12 @@
 package com.atwoz.member.infrastructure.info.style;
 
+import static com.atwoz.member.fixture.domain.member.MemberFixture.일반_유저_생성;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 import com.atwoz.member.domain.info.style.MemberStyle;
 import com.atwoz.member.domain.info.style.Style;
 import com.atwoz.member.domain.member.Member;
-import com.atwoz.member.fixture.domain.member.MemberFixture;
-import com.atwoz.member.infrastructure.info.style.MemberStyleJpaRepository;
 import com.atwoz.member.infrastructure.member.MemberJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -33,7 +32,7 @@ class MemberStyleJpaRepositoryTest {
 
     @BeforeEach
     void init() {
-        member = memberJpaRepository.save(MemberFixture.일반_유저_생성());
+        member = memberJpaRepository.save(일반_유저_생성());
     }
 
     @Test

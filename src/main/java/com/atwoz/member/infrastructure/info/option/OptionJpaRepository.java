@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public interface OptionJpaRepository extends JpaRepository<Option, Long> {
 
+    Option save(final Option option);
+
     Optional<Option> findByMemberId(final Long memberId);
 
     boolean existsByMemberId(final Long memberId);

@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public interface ProfileJpaRepository extends JpaRepository<Profile, Long> {
 
+    Profile save(final Profile profile);
+
     Optional<Profile> findByMemberId(final Long memberId);
     
     boolean existsByMemberId(final Long memberId);

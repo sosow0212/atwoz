@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface MemberStyleJpaRepository extends JpaRepository<MemberStyle, Long> {
 
+    MemberStyle save(final MemberStyle memberStyle);
+
+    void saveAll(final List<MemberStyle> memberStyles);
+
     @Modifying
     @Query("delete from MemberStyle ms where ms.memberId = :memberId")
     void deleteByMemberId(final Long memberId);

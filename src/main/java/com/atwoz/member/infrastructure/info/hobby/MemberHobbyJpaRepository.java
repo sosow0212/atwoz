@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface MemberHobbyJpaRepository extends JpaRepository<MemberHobby, Long> {
 
+    MemberHobby save(final MemberHobby memberHobby);
+
+    void saveAll(final List<MemberHobby> memberHobbies);
+
     @Modifying
     @Query("delete from MemberHobby mh where mh.memberId = :memberId")
     void deleteByMemberId(final Long memberId);

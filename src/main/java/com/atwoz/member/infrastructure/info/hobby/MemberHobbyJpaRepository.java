@@ -10,8 +10,6 @@ public interface MemberHobbyJpaRepository extends JpaRepository<MemberHobby, Lon
 
     MemberHobby save(final MemberHobby memberHobby);
 
-    void saveAll(final List<MemberHobby> memberHobbies);
-
     @Modifying
     @Query("delete from MemberHobby mh where mh.memberId = :memberId")
     void deleteByMemberId(final Long memberId);

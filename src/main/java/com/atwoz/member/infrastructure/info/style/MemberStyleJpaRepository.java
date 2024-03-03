@@ -10,8 +10,6 @@ public interface MemberStyleJpaRepository extends JpaRepository<MemberStyle, Lon
 
     MemberStyle save(final MemberStyle memberStyle);
 
-    void saveAll(final List<MemberStyle> memberStyles);
-
     @Modifying
     @Query("delete from MemberStyle ms where ms.memberId = :memberId")
     void deleteByMemberId(final Long memberId);

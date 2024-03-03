@@ -1,5 +1,6 @@
 package com.atwoz.member.application.info.dto.profile;
 
+import com.atwoz.member.application.info.dto.profile.body.BodyUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.location.LocationUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.position.PositionUpdateRequest;
 import jakarta.validation.Valid;
@@ -7,14 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record ProfileUpdateRequest(
-        @NotNull(message = "출생년도가 작성되어야 합니다.")
-        Integer birthYear,
-
-        @NotNull(message = "키가 작성되어야 합니다.")
-        Integer height,
-
-        @NotBlank(message = "성별이 작성되어야 합니다.")
-        String gender,
+        @Valid
+        @NotNull(message = "신체 정보가 작성되어야 합니다.")
+        BodyUpdateRequest body,
 
         @Valid
         @NotNull(message = "위치가 작성되어야 합니다.")

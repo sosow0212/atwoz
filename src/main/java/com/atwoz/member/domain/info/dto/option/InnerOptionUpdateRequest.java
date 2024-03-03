@@ -1,4 +1,4 @@
-package com.atwoz.member.domain.info.option.dto;
+package com.atwoz.member.domain.info.dto.option;
 
 import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 

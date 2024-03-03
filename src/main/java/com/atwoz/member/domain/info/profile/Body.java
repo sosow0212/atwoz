@@ -1,5 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
+import com.atwoz.member.domain.info.dto.profile.body.InnerBodyUpdateRequest;
+import com.atwoz.member.domain.info.dto.profile.body.InnerBodyWriteRequest;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.HeightRangeException;
 import jakarta.persistence.Column;
@@ -53,5 +55,15 @@ public class Body {
             throw new AgeRangeException();
         }
         return memberAge;
+    }
+
+    public static Body createFrom(final InnerBodyWriteRequest request) {
+        Gender gender = Gender.findByName(request.gender());
+        return new Body(request.yearManager(), request.birthYear(), request.height(), gender);
+    }
+
+    public static Body updateContentsFrom(final InnerBodyUpdateRequest request) {
+        Gender gender = Gender.findByName(request.gender());
+        return new Body(request.yearManager(), request.birthYear(), request.height(), gender);
     }
 }

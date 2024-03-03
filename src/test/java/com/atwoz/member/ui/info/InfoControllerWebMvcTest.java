@@ -63,9 +63,10 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),
                         requestFields(
-                                fieldWithPath("profile.birthYear").description("출생년도"),
-                                fieldWithPath("profile.height").description("키"),
-                                fieldWithPath("profile.gender").description("성별"),
+                                fieldWithPath("profile.body").description("신체 정보"),
+                                fieldWithPath("profile.body.birthYear").description("출생년도"),
+                                fieldWithPath("profile.body.height").description("키"),
+                                fieldWithPath("profile.body.gender").description("성별"),
                                 fieldWithPath("profile.location.city").description("위치 (시/도)"),
                                 fieldWithPath("profile.location.sector").description("위치 (구/군)"),
                                 fieldWithPath("profile.position.latitude").description("좌표 (위도)"),
@@ -102,9 +103,10 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),
                         requestFields(
-                                fieldWithPath("profile.birthYear").description("출생년도"),
-                                fieldWithPath("profile.height").description("키"),
-                                fieldWithPath("profile.gender").description("성별"),
+                                fieldWithPath("profile.body").description("신체 정보"),
+                                fieldWithPath("profile.body.birthYear").description("출생년도"),
+                                fieldWithPath("profile.body.height").description("키"),
+                                fieldWithPath("profile.body.gender").description("성별"),
                                 fieldWithPath("profile.location.city").description("위치 (시/도)"),
                                 fieldWithPath("profile.location.sector").description("위치 (구/군)"),
                                 fieldWithPath("profile.position.latitude").description("좌표 (위도)"),
@@ -136,8 +138,10 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                         .header(AUTHORIZATION, bearerToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("profile").exists())
-                .andExpect(jsonPath("profile.height").exists())
-                .andExpect(jsonPath("profile.gender").exists())
+                .andExpect(jsonPath("profile.body").exists())
+                .andExpect(jsonPath("profile.body.age").exists())
+                .andExpect(jsonPath("profile.body.height").exists())
+                .andExpect(jsonPath("profile.body.gender").exists())
                 .andExpect(jsonPath("profile.location").exists())
                 .andExpect(jsonPath("profile.location.city").exists())
                 .andExpect(jsonPath("profile.location.sector").exists())
@@ -161,9 +165,10 @@ class InfoControllerWebMvcTest extends MockBeanInjection {
                                 headerWithName("Authorization").description("유저 토큰 정보")
                         ),
                         responseFields(
-                                fieldWithPath("profile.age").description("나이"),
-                                fieldWithPath("profile.height").description("키"),
-                                fieldWithPath("profile.gender").description("성별"),
+                                fieldWithPath("profile.body").description("신체 정보"),
+                                fieldWithPath("profile.body.age").description("나이"),
+                                fieldWithPath("profile.body.height").description("키"),
+                                fieldWithPath("profile.body.gender").description("성별"),
                                 fieldWithPath("profile.location.city").description("위치 (시/도)"),
                                 fieldWithPath("profile.location.sector").description("위치 (구/군)"),
                                 fieldWithPath("profile.position.latitude").description("좌표 (위도)"),

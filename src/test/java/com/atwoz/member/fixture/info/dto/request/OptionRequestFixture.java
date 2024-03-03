@@ -7,7 +7,7 @@ import com.atwoz.member.domain.info.option.Graduate;
 import com.atwoz.member.domain.info.option.Mbti;
 import com.atwoz.member.domain.info.option.Religion;
 import com.atwoz.member.domain.info.option.Smoke;
-import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.dto.option.InnerOptionUpdateRequest;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class OptionRequestFixture {

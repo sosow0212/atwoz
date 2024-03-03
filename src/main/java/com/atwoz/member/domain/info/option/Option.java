@@ -1,7 +1,7 @@
 package com.atwoz.member.domain.info.option;
 
-import com.atwoz.member.domain.info.option.dto.InnerOptionUpdateRequest;
-import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
+import com.atwoz.member.domain.info.dto.option.InnerOptionUpdateRequest;
+import com.atwoz.member.domain.info.dto.option.InnerOptionWriteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

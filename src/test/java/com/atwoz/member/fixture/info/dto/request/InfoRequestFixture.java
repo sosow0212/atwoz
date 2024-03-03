@@ -9,12 +9,12 @@ import static com.atwoz.member.fixture.info.dto.request.ProfileRequestFixture.�
 import static com.atwoz.member.fixture.info.dto.request.StylesRequestFixture.회원_스타일_생성_요청;
 import static com.atwoz.member.fixture.info.dto.request.StylesRequestFixture.회원_스타일_수정_요청;
 
-import com.atwoz.member.application.info.dto.HobbyUpdateRequest;
-import com.atwoz.member.application.info.dto.HobbyWriteRequest;
+import com.atwoz.member.application.info.dto.hobby.HobbyUpdateRequest;
+import com.atwoz.member.application.info.dto.hobby.HobbyWriteRequest;
 import com.atwoz.member.application.info.dto.InfoUpdateRequest;
 import com.atwoz.member.application.info.dto.InfoWriteRequest;
-import com.atwoz.member.application.info.dto.StyleUpdateRequest;
-import com.atwoz.member.application.info.dto.StyleWriteRequest;
+import com.atwoz.member.application.info.dto.style.StyleUpdateRequest;
+import com.atwoz.member.application.info.dto.style.StyleWriteRequest;
 import com.atwoz.member.application.info.dto.option.OptionUpdateRequest;
 import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;

@@ -13,7 +13,7 @@ import com.atwoz.member.application.info.dto.option.OptionWriteRequest;
 import com.atwoz.member.application.info.option.OptionService;
 import com.atwoz.member.domain.info.option.Option;
 import com.atwoz.member.domain.info.option.OptionRepository;
-import com.atwoz.member.domain.info.option.dto.InnerOptionWriteRequest;
+import com.atwoz.member.domain.info.dto.option.InnerOptionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.infrastructure.info.OptionFakeRepository;
 import org.junit.jupiter.api.BeforeEach;

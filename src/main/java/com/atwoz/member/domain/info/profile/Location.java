@@ -1,5 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
+import com.atwoz.member.domain.info.dto.profile.location.InnerLocationUpdateRequest;
+import com.atwoz.member.domain.info.dto.profile.location.InnerLocationWriteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;
@@ -22,5 +24,13 @@ public class Location {
     public Location(final String city, final String sector) {
         this.city = city;
         this.sector = sector;
+    }
+
+    public static Location createFrom(final InnerLocationWriteRequest request) {
+        return new Location(request.city(), request.sector());
+    }
+
+    public static Location updateContentsFrom(final InnerLocationUpdateRequest request) {
+        return new Location(request.city(), request.sector());
     }
 }

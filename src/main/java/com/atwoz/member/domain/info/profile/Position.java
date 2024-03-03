@@ -1,5 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
+import com.atwoz.member.domain.info.dto.profile.position.InnerPositionUpdateRequest;
+import com.atwoz.member.domain.info.dto.profile.position.InnerPositionWriteRequest;
 import com.atwoz.member.exception.exceptions.info.profile.position.LatitudeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.position.LongitudeRangeException;
 import jakarta.persistence.Embeddable;
@@ -41,5 +43,13 @@ public class Position {
         if (longitude.compareTo(MIN_LONGITUDE) < 0 || longitude.compareTo(MAX_LONGITUDE) > 0) {
             throw new LongitudeRangeException();
         }
+    }
+
+    public static Position createFrom(final InnerPositionWriteRequest position) {
+        return new Position(position.latitude(), position.longitude());
+    }
+
+    public static Position updateContentsFrom(final InnerPositionUpdateRequest position) {
+        return new Position(position.latitude(), position.longitude());
     }
 }

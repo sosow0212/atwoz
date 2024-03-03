@@ -1,5 +1,7 @@
 package com.atwoz.member.domain.info.profile;
 
+import com.atwoz.member.domain.info.dto.profile.InnerProfileUpdateRequest;
+import com.atwoz.member.domain.info.dto.profile.InnerProfileWriteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -59,10 +61,19 @@ public class Profile {
         this.job = job;
     }
 
-    public void updateContentsFrom(final Profile newProfile) {
-        this.body = newProfile.getBody();
-        this.location = newProfile.getLocation();
-        this.position = newProfile.getPosition();
-        this.job = newProfile.getJob();
+    public static Profile createFrom(final InnerProfileWriteRequest request) {
+        Body body = Body.createFrom(request.body());
+        Location location = Location.createFrom(request.location());
+        Position position = Position.createFrom(request.position());
+        Job job = Job.findByCode(request.jobCode());
+
+        return new Profile(request.memberId(), body, location, position, job);
+    }
+
+    public void updateContentsFrom(final InnerProfileUpdateRequest request) {
+        this.body = Body.updateContentsFrom(request.body());
+        this.location = Location.updateContentsFrom(request.location());
+        this.position = Position.updateContentsFrom(request.position());
+        this.job = Job.findByCode(request.jobCode());
     }
 }

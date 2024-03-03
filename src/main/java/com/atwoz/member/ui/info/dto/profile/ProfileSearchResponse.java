@@ -1,16 +1,13 @@
 package com.atwoz.member.ui.info.dto.profile;
 
 import com.atwoz.member.domain.info.profile.Body;
-import com.atwoz.member.domain.info.profile.Gender;
 import com.atwoz.member.domain.info.profile.Job;
 import com.atwoz.member.domain.info.profile.Location;
 import com.atwoz.member.domain.info.profile.Position;
 import com.atwoz.member.domain.info.profile.Profile;
 
 public record ProfileSearchResponse(
-        int age,
-        int height,
-        String gender,
+        BodySearchResponse body,
         LocationSearchResponse location,
         PositionSearchResponse position,
         String job
@@ -18,18 +15,12 @@ public record ProfileSearchResponse(
 
     public static ProfileSearchResponse from(final Profile profile) {
         Body body = profile.getBody();
-        int age = body.getAge();
-        int height = body.getHeight();
-        Gender gender = body.getGender();
-
         Location location = profile.getLocation();
         Position position = profile.getPosition();
         Job job = profile.getJob();
 
         return new ProfileSearchResponse(
-                age,
-                height,
-                gender.getName(),
+                BodySearchResponse.from(body),
                 LocationSearchResponse.from(location),
                 PositionSearchResponse.from(position),
                 job.getCode()

@@ -5,8 +5,8 @@ import static com.atwoz.member.domain.info.style.Style.GENTLE;
 import static com.atwoz.member.domain.info.style.Style.POSITIVE;
 import static com.atwoz.member.domain.info.style.Style.PURE;
 
-import com.atwoz.member.application.info.dto.StyleUpdateRequest;
-import com.atwoz.member.application.info.dto.StyleWriteRequest;
+import com.atwoz.member.application.info.dto.style.StyleUpdateRequest;
+import com.atwoz.member.application.info.dto.style.StyleWriteRequest;
 import java.util.List;
 
 @SuppressWarnings("NonAsciiCharacters")

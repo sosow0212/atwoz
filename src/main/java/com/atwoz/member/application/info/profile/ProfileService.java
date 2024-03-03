@@ -2,9 +2,11 @@ package com.atwoz.member.application.info.profile;
 
 import com.atwoz.member.application.info.dto.profile.ProfileUpdateRequest;
 import com.atwoz.member.application.info.dto.profile.ProfileWriteRequest;
+import com.atwoz.member.domain.info.dto.profile.InnerProfileUpdateRequest;
 import com.atwoz.member.domain.info.profile.Profile;
 import com.atwoz.member.domain.info.profile.ProfileRepository;
 import com.atwoz.member.domain.info.profile.YearManager;
+import com.atwoz.member.domain.info.dto.profile.InnerProfileWriteRequest;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +22,8 @@ public class ProfileService {
 
     @Transactional
     public void writeProfile(final Long memberId, final ProfileWriteRequest request) {
-        Profile newProfile = ProfileFactory.createNewProfile(memberId, request, yearManager);
+        InnerProfileWriteRequest profileWriteRequest = InnerProfileWriteRequest.of(memberId, yearManager, request);
+        Profile newProfile = Profile.createFrom(profileWriteRequest);
         if (!profileRepository.isExistMemberProfile(memberId)) {
             profileRepository.save(newProfile);
         }
@@ -28,9 +31,9 @@ public class ProfileService {
 
     @Transactional
     public void updateProfile(final Long memberId, final ProfileUpdateRequest request) {
+        InnerProfileUpdateRequest profileUpdateRequest = InnerProfileUpdateRequest.of(memberId, yearManager, request);
         Profile existProfile = findByMemberId(memberId);
-        Profile newProfile = ProfileFactory.createUpdatedProfile(memberId, request, yearManager);
-        existProfile.updateContentsFrom(newProfile);
+        existProfile.updateContentsFrom(profileUpdateRequest);
     }
 
     private Profile findByMemberId(final Long memberId) {

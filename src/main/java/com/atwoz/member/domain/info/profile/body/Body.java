@@ -58,12 +58,20 @@ public class Body {
     }
 
     public static Body createFrom(final InnerBodyWriteRequest request) {
-        Gender gender = Gender.findByName(request.gender());
-        return new Body(request.yearManager(), request.birthYear(), request.height(), gender);
+        return new Body(
+                request.yearManager(),
+                request.birthYear(),
+                request.height(),
+                Gender.findByName(request.gender())
+        );
     }
 
     public static Body updateContentsFrom(final InnerBodyUpdateRequest request) {
-        Gender gender = Gender.findByName(request.gender());
-        return new Body(request.yearManager(), request.birthYear(), request.height(), gender);
+        return new Body(
+                request.yearManager(),
+                request.birthYear(),
+                request.height(),
+                Gender.findByName(request.gender())
+        );
     }
 }

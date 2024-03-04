@@ -64,13 +64,14 @@ public class Option {
     }
 
     public static Option createFrom(final InnerOptionWriteRequest request) {
-        Smoke smoke = Smoke.findByName(request.smokeName());
-        Religion religion = Religion.findByName(request.religionName());
-        Drink drink = Drink.findByName(request.drinkName());
-        Mbti mbti = Mbti.findByName(request.mbtiName());
-        Graduate graduate = Graduate.findByName(request.graduateName());
-
-        return new Option(request.memberId(), smoke, religion, drink, mbti, graduate);
+        return new Option(
+                request.memberId(),
+                Smoke.findByName(request.smokeName()),
+                Religion.findByName(request.religionName()),
+                Drink.findByName(request.drinkName()),
+                Mbti.findByName(request.mbtiName()),
+                Graduate.findByName(request.graduateName())
+        );
     }
 
     public void updateContentsFrom(final InnerOptionUpdateRequest request) {

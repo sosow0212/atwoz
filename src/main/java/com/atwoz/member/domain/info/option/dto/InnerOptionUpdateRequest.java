@@ -12,11 +12,11 @@ public record InnerOptionUpdateRequest(
 
     public static InnerOptionUpdateRequest from(final OptionUpdateRequest request) {
         return new InnerOptionUpdateRequest(
-          request.smoke(),
-          request.religion(),
-          request.drink(),
-          request.mbti(),
-          request.graduate()
+                request.smoke(),
+                request.religion(),
+                request.drink(),
+                request.mbti(),
+                request.graduate()
         );
     }
 }

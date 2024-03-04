@@ -6,16 +6,21 @@ import static com.atwoz.member.fixture.application.info.profile.location.Locatio
 import static com.atwoz.member.fixture.application.info.profile.location.LocationRequestFixture.회원_위치_수정_요청;
 import static com.atwoz.member.fixture.application.info.profile.position.PositionRequestFixture.회원_좌표_생성_요청;
 import static com.atwoz.member.fixture.application.info.profile.position.PositionRequestFixture.회원_좌표_수정_요청;
+import static com.atwoz.member.fixture.domain.info.profile.ProfileFixture.회원_일반_프로필_생성;
 
-import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
-import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.application.info.profile.body.dto.BodyUpdateRequest;
 import com.atwoz.member.application.info.profile.body.dto.BodyWriteRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileUpdateRequest;
+import com.atwoz.member.application.info.profile.dto.ProfileWriteRequest;
 import com.atwoz.member.application.info.profile.location.dto.LocationUpdateRequest;
 import com.atwoz.member.application.info.profile.location.dto.LocationWriteRequest;
 import com.atwoz.member.application.info.profile.position.dto.PositionUpdateRequest;
 import com.atwoz.member.application.info.profile.position.dto.PositionWriteRequest;
+import com.atwoz.member.domain.info.profile.Profile;
+import com.atwoz.member.domain.info.profile.body.YearManager;
+import com.atwoz.member.domain.info.profile.dto.InnerProfileUpdateRequest;
 import com.atwoz.member.domain.info.profile.job.Job;
+import com.atwoz.member.infrastructure.info.profile.body.FakeYearManager;
 
 @SuppressWarnings("NonAsciiCharacters")
 public class ProfileRequestFixture {
@@ -45,6 +50,18 @@ public class ProfileRequestFixture {
                 locationUpdateRequest,
                 positionUpdateRequest,
                 job
+        );
+    }
+
+    public static InnerProfileUpdateRequest 회원_프로필_수정_요청_내부() {
+        Profile profile = 회원_일반_프로필_생성();
+        YearManager yearManager = new FakeYearManager();
+        ProfileUpdateRequest profileUpdateRequest = 회원_프로필_수정_요청();
+
+        return InnerProfileUpdateRequest.of(
+                profile.getMemberId(),
+                yearManager,
+                profileUpdateRequest
         );
     }
 }

@@ -55,14 +55,17 @@ public class Profile {
                    final Position position,
                    final Job job) {
         this.memberId = memberId;
-        updateContents(body, location, position, job);
-    }
-
-    public void updateContents(final Body body, final Location location, final Position position, final Job job) {
         this.body = body;
         this.location = location;
         this.position = position;
         this.job = job;
+    }
+
+    public void updateContentsFrom(final InnerProfileUpdateRequest request) {
+        this.body = Body.updateContentsFrom(request.body());
+        this.location = Location.updateContentsFrom(request.location());
+        this.position = Position.updateContentsFrom(request.position());
+        this.job = Job.findByCode(request.jobCode());
     }
 
     public static Profile createFrom(final InnerProfileWriteRequest request) {
@@ -72,12 +75,5 @@ public class Profile {
         Job job = Job.findByCode(request.jobCode());
 
         return new Profile(request.memberId(), body, location, position, job);
-    }
-
-    public void updateContentsFrom(final InnerProfileUpdateRequest request) {
-        this.body = Body.updateContentsFrom(request.body());
-        this.location = Location.updateContentsFrom(request.location());
-        this.position = Position.updateContentsFrom(request.position());
-        this.job = Job.findByCode(request.jobCode());
     }
 }

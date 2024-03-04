@@ -1,4 +1,4 @@
-package com.atwoz.member.exception.exceptions.info.profile;
+package com.atwoz.member.exception.exceptions.info.profile.job;
 
 public class InvalidJobException extends RuntimeException {
 

@@ -1,6 +1,6 @@
 package com.atwoz.member.domain.info.profile.job;
 
-import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
+import com.atwoz.member.exception.exceptions.info.profile.job.InvalidJobException;
 import lombok.Getter;
 import java.util.Arrays;
 

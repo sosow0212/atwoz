@@ -18,7 +18,7 @@ import com.atwoz.member.exception.exceptions.info.option.InvalidMbtiException;
 import com.atwoz.member.exception.exceptions.info.option.OptionNotFoundException;
 import com.atwoz.member.exception.exceptions.info.option.InvalidReligionException;
 import com.atwoz.member.exception.exceptions.info.option.InvalidSmokeException;
-import com.atwoz.member.exception.exceptions.info.profile.InvalidJobException;
+import com.atwoz.member.exception.exceptions.info.profile.job.InvalidJobException;
 import com.atwoz.member.exception.exceptions.info.profile.ProfileNotFoundException;
 import com.atwoz.member.exception.exceptions.info.profile.body.AgeRangeException;
 import com.atwoz.member.exception.exceptions.info.profile.body.InvalidGenderException;

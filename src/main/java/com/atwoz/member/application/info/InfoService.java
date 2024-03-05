@@ -32,8 +32,8 @@ public class InfoService {
 
     @Transactional
     public void writeInfo(final Long memberId, final InfoWriteRequest request) {
-        List<String> hobbyCodes = extractHobbyNamesFromInfoWriteRequest(request);
-        List<String> styleCodes = extractStyleNamesFromInfoWriteRequest(request);
+        List<String> hobbyCodes = extractHobbyNamesFromInfoWriteRequest(request.hobbies());
+        List<String> styleCodes = extractStyleNamesFromInfoWriteRequest(request.styles());
 
         Events.raise(new ProfileWroteEvent(memberId, request.profile()));
         Events.raise(new OptionWroteEvent(memberId, request.option()));
@@ -42,24 +42,22 @@ public class InfoService {
         Events.raise(new StyleWroteEvent(memberId, styleCodes));
     }
 
-    private List<String> extractHobbyNamesFromInfoWriteRequest(final InfoWriteRequest request) {
-        return request.hobbies()
-                .stream()
+    private List<String> extractHobbyNamesFromInfoWriteRequest(final List<HobbyWriteRequest> hobbies) {
+        return hobbies.stream()
                 .map(HobbyWriteRequest::hobby)
                 .toList();
     }
 
-    private List<String> extractStyleNamesFromInfoWriteRequest(final InfoWriteRequest request) {
-        return request.styles()
-                .stream()
+    private List<String> extractStyleNamesFromInfoWriteRequest(final List<StyleWriteRequest> styles) {
+        return styles.stream()
                 .map(StyleWriteRequest::style)
                 .toList();
     }
 
     @Transactional
     public void updateInfo(final Long memberId, final InfoUpdateRequest request) {
-        List<String> hobbyCodes = extractHobbyNamesFromInfoUpdateRequest(request);
-        List<String> styleCodes = extractStyleNamesFromInfoUpdateRequest(request);
+        List<String> hobbyCodes = extractHobbyNamesFromInfoUpdateRequest(request.hobbies());
+        List<String> styleCodes = extractStyleNamesFromInfoUpdateRequest(request.styles());
 
         Events.raise(new ProfileUpdatedEvent(memberId, request.profile()));
         Events.raise(new OptionUpdatedEvent(memberId, request.option()));
@@ -68,16 +66,14 @@ public class InfoService {
         Events.raise(new StyleUpdatedEvent(memberId, styleCodes));
     }
 
-    private List<String> extractHobbyNamesFromInfoUpdateRequest(final InfoUpdateRequest request) {
-        return request.hobbies()
-                .stream()
+    private List<String> extractHobbyNamesFromInfoUpdateRequest(final List<HobbyUpdateRequest> hobbies) {
+        return hobbies.stream()
                 .map(HobbyUpdateRequest::hobby)
                 .toList();
     }
 
-    private List<String> extractStyleNamesFromInfoUpdateRequest(final InfoUpdateRequest request) {
-        return request.styles()
-                .stream()
+    private List<String> extractStyleNamesFromInfoUpdateRequest(final List<StyleUpdateRequest> styles) {
+        return styles.stream()
                 .map(StyleUpdateRequest::style)
                 .toList();
     }

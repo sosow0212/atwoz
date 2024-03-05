@@ -1,17 +1,18 @@
 package com.atwoz.member.ui.auth.interceptor;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import com.atwoz.member.exception.exceptions.auth.LoginInvalidException;
 import com.atwoz.member.infrastructure.auth.JwtTokenProvider;
+import com.atwoz.member.infrastructure.member.MemberFakeRepository;
 import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -25,7 +26,8 @@ class LoginValidCheckerInterceptorTest {
         // given
         LoginValidCheckerInterceptor loginValidCheckerInterceptor = new LoginValidCheckerInterceptor(
                 new JwtTokenProvider(),
-                new AuthenticationContext()
+                new AuthenticationContext(),
+                new MemberFakeRepository()
         );
 
         when(req.getHeader("any")).thenReturn(null);

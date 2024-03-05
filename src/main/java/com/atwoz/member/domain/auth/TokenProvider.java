@@ -4,5 +4,5 @@ public interface TokenProvider {
 
     String createTokenWith(final String email);
 
-    Long extract(final String token);
+    String extract(final String token);
 }

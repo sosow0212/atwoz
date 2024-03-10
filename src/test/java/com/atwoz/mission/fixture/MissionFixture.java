@@ -15,4 +15,13 @@ public class MissionFixture {
                 .publicOption(PublicOption.PUBLIC)
                 .build();
     }
+
+    public static Mission 미션_생성_리워드_100_데일리_공개_id없음() {
+        return Mission.builder()
+                .title("mission")
+                .reward(100)
+                .missionType(MissionType.DAILY)
+                .publicOption(PublicOption.PUBLIC)
+                .build();
+    }
 }

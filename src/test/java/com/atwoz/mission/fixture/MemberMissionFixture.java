@@ -1,6 +1,6 @@
 package com.atwoz.mission.fixture;
 
-import com.atwoz.mission.domain.MemberMission;
+import com.atwoz.mission.domain.membermission.MemberMission;
 
 import static com.atwoz.mission.fixture.MissionFixture.미션_생성_리워드_100_데일리_공개;
 

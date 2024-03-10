@@ -1,4 +1,4 @@
-package com.atwoz.mission.domain.vo;
+package com.atwoz.mission.domain.mission.vo;
 
 import com.atwoz.mission.exception.PublicOptionInvalidException;
 import lombok.Getter;

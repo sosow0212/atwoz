@@ -1,4 +1,4 @@
-package com.atwoz.mission.domain;
+package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
 import com.atwoz.mission.exception.MissionNotFoundException;

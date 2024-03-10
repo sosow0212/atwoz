@@ -1,8 +1,8 @@
-package com.atwoz.mission.domain;
+package com.atwoz.mission.domain.mission;
 
 import com.atwoz.global.domain.BaseEntity;
-import com.atwoz.mission.domain.vo.MissionType;
-import com.atwoz.mission.domain.vo.PublicOption;
+import com.atwoz.mission.domain.mission.vo.MissionType;
+import com.atwoz.mission.domain.mission.vo.PublicOption;
 import com.atwoz.mission.exception.RewardValueInvalidException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -1,7 +1,7 @@
 package com.atwoz.mission.fixture;
 
-import com.atwoz.mission.domain.MemberMission;
-import com.atwoz.mission.domain.MemberMissions;
+import com.atwoz.mission.domain.membermission.MemberMission;
+import com.atwoz.mission.domain.membermission.MemberMissions;
 
 import java.util.ArrayList;
 import java.util.List;

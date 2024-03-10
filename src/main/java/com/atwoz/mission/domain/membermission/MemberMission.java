@@ -1,6 +1,7 @@
-package com.atwoz.mission.domain;
+package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
+import com.atwoz.mission.domain.mission.Mission;
 import com.atwoz.mission.exception.MissionNotClearException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,9 +36,13 @@ public class MemberMission extends BaseEntity {
 
     private boolean isStatusClear;
 
-    public MemberMission(final Mission mission) {
+    private MemberMission(final Mission mission) {
         this.mission = mission;
         this.isStatusClear = DEFAULT_CLEAR_STATUS;
+    }
+
+    public static MemberMission createDefault(final Mission mission) {
+        return new MemberMission(mission);
     }
 
     public void clear() {

@@ -1,8 +1,8 @@
 package com.atwoz.mission.fixture;
 
-import com.atwoz.mission.domain.Mission;
-import com.atwoz.mission.domain.vo.MissionType;
-import com.atwoz.mission.domain.vo.PublicOption;
+import com.atwoz.mission.domain.mission.Mission;
+import com.atwoz.mission.domain.mission.vo.MissionType;
+import com.atwoz.mission.domain.mission.vo.PublicOption;
 
 public class MissionFixture {
 

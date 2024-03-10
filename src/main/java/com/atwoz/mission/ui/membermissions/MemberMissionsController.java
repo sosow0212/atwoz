@@ -24,8 +24,8 @@ public class MemberMissionsController {
         return null;
     }
 
-    @GetMapping
-    public ResponseEntity<Void> findNotClearMissions(@RequestParam("status") final Boolean isStatusClear) {
+    @GetMapping("/clear")
+    public ResponseEntity<Void> findMissionsByStatus(@RequestParam("status") final Boolean isStatusClear) {
         memberMissionsQueryService.findMissionsByStatus(isStatusClear);
         return null;
     }

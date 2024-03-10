@@ -7,6 +7,7 @@ import com.atwoz.mission.domain.mission.dto.MissionPagingResponse;
 import com.atwoz.mission.domain.mission.dto.MissionSimpleResponse;
 import com.atwoz.mission.domain.mission.vo.MissionType;
 import com.atwoz.mission.domain.mission.vo.PublicOption;
+import com.atwoz.mission.ui.mission.MissionController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -47,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @AutoConfigureRestDocs
-@WebMvcTest
+@WebMvcTest(MissionController.class)
 class MissionControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired

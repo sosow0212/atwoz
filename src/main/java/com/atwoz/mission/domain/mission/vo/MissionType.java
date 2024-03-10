@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
-@RequiredArgsConstructor
 @Getter
+@RequiredArgsConstructor
 public enum MissionType {
 
     DAILY("daily", "일일"),
@@ -20,7 +20,7 @@ public enum MissionType {
         String missionName = missionType.toLowerCase();
 
         return Arrays.stream(values())
-                .filter(it -> it.isSame(missionName))
+                .filter(mission -> mission.isSame(missionName))
                 .findAny()
                 .orElseThrow(MissionTypeInvalidException::new);
     }

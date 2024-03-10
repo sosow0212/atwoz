@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import static com.atwoz.mission.fixture.MissionFixture.미션_생성_리워드_100_데일리_공개;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
@@ -71,6 +72,6 @@ class MissionServiceTest {
         Mission savedMission = missionRepository.save(미션_생성_리워드_100_데일리_공개());
 
         // when & then
-        Assertions.assertDoesNotThrow(() -> missionService.deleteMissionById(savedMission.getId()));
+        assertDoesNotThrow(() -> missionService.deleteMissionById(savedMission.getId()));
     }
 }

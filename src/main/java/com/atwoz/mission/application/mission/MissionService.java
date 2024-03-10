@@ -15,7 +15,12 @@ public class MissionService {
     private final MissionRepository missionRepository;
 
     public Long createNewMission(final MissionCreateRequest request) {
-        Mission mission = Mission.createDefaultRule(request.title(), request.reward(), request.missionType(), request.publicOption());
+        Mission mission = Mission.createDefaultRule(
+                request.title(),
+                request.reward(),
+                request.missionType(),
+                request.publicOption()
+        );
 
         return missionRepository.save(mission)
                 .getId();

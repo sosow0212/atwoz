@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 
-@RequiredArgsConstructor
 @Getter
+@RequiredArgsConstructor
 public enum PublicOption {
 
     PUBLIC("public", "공개"),

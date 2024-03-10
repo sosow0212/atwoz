@@ -8,9 +8,8 @@ import java.util.List;
 
 public class MemberMissionsFixture {
 
-    public static MemberMissions 멤버_미션들_생성(final MemberMission... args) {
-        List<MemberMission> memberMissions = new ArrayList<>();
-        memberMissions.addAll(List.of(args));
+    public static MemberMissions 멤버_미션들_생성(final MemberMission... givenMemberMissions) {
+        List<MemberMission> memberMissions = new ArrayList<>(List.of(givenMemberMissions));
 
         return MemberMissions.builder()
                 .id(1L)

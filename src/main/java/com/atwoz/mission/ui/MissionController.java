@@ -48,8 +48,7 @@ public class MissionController {
 
     @GetMapping
     public ResponseEntity<MissionPagingResponse> findAllMissionsWithPaging(@PageableDefault(sort = "id", direction = DESC) final Pageable pageable) {
-        Page<MissionSimpleResponse> missions = missionQueryService.findMissions(pageable);
-        return ResponseEntity.ok(MissionPagingResponse.of(missions, pageable));
+        return ResponseEntity.ok(missionQueryService.findMissions(pageable));
     }
 
 

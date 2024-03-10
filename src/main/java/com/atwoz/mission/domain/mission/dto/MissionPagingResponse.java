@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public record MissionPagingResponse(
-        List<MissionSimpleResponse> boards,
+        List<MissionSimpleResponse> missions,
         int nextPage
 ) {
 

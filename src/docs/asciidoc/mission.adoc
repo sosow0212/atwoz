@@ -1,0 +1,63 @@
+:toc: left
+:source-highlighter: highlightjs
+:sectlinks:
+:toclevels: 2
+:sectlinks:
+:sectnums:
+
+== Mission
+
+=== 미션 생성 (GET /api/missions)
+
+==== 요청
+
+include::{snippets}/mission-controller-web-mvc-test/미션_생성/request-headers.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_생성/request-fields.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_생성/http-request.adoc[]
+
+==== 응답
+
+include::{snippets}/mission-controller-web-mvc-test/미션_생성/response-headers.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_생성/http-response.adoc[]
+
+=== 미션 제거 (DELETE /api/missions/{missionId})
+
+==== 요청
+
+include::{snippets}/mission-controller-web-mvc-test/미션_제거/request-headers.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_제거/path-parameters.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_제거/http-request.adoc[]
+
+==== 응답
+
+include::{snippets}/mission-controller-web-mvc-test/미션_제거/http-response.adoc[]
+
+=== 미션 단건 조회 (GET /api/missions/{missionId})
+
+==== 요청
+
+include::{snippets}/mission-controller-web-mvc-test/미션_단건_조회/request-headers.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_단건_조회/http-request.adoc[]
+
+==== 응답
+
+include::{snippets}/mission-controller-web-mvc-test/미션_단건_조회/response-fields.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/미션_단건_조회/http-response.adoc[]
+
+
+=== 미션 전체 페이징 조회 (GET /api/missions})
+
+==== 요청
+
+include::{snippets}/mission-controller-web-mvc-test/전체_미션_페이징조회/request-headers.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/전체_미션_페이징조회/request-parts.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/전체_미션_페이징조회/http-request.adoc[]
+
+==== 응답
+
+include::{snippets}/mission-controller-web-mvc-test/전체_미션_페이징조회/response-fields.adoc[]
+include::{snippets}/mission-controller-web-mvc-test/전체_미션_페이징조회/http-response.adoc[]
+
+
+
+

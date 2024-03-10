@@ -13,6 +13,8 @@ import com.atwoz.member.ui.auth.support.auth.AuthenticationContext;
 import com.atwoz.member.ui.auth.support.auth.OAuthProperties;
 import com.atwoz.member.ui.auth.support.resolver.AuthArgumentResolver;
 import com.atwoz.member.ui.auth.support.resolver.OAuthArgumentResolver;
+import com.atwoz.mission.application.mission.MissionQueryService;
+import com.atwoz.mission.application.mission.MissionService;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 
@@ -57,4 +59,10 @@ public class MockBeanInjection {
 
     @MockBean
     protected LoginValidCheckerInterceptor loginValidCheckerInterceptor;
+
+    @MockBean
+    protected MissionService missionService;
+
+    @MockBean
+    protected MissionQueryService missionQueryService;
 }

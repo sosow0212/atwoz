@@ -18,11 +18,13 @@ public class MemberMissionsQueryService {
 
     }
 
-    public void findNotClearMissions() {
+    public void findMissionsByStatus(final boolean isStatusClear) {
+        if (isStatusClear) {
+            // TODO
+            return;
+        }
 
-    }
-
-    public void findClearMissions() {
-
+        // TODO
+        return;
     }
 }

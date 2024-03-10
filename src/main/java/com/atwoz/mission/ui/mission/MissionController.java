@@ -1,4 +1,4 @@
-package com.atwoz.mission.ui;
+package com.atwoz.mission.ui.mission;
 
 import com.atwoz.mission.application.mission.MissionQueryService;
 import com.atwoz.mission.application.mission.MissionService;

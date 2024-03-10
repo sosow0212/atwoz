@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class MemberMission extends BaseEntity {
 
-    private static final boolean DEFAULT_CLEAR_STATUS = false;
+    private static final boolean DEFAULT_STATUS = false;
     private static final boolean CLEAR_STATUS = true;
 
     @Id
@@ -36,17 +36,24 @@ public class MemberMission extends BaseEntity {
 
     private boolean isStatusClear;
 
+    private boolean doesGetReward;
+
     private MemberMission(final Mission mission) {
         this.mission = mission;
-        this.isStatusClear = DEFAULT_CLEAR_STATUS;
+        this.isStatusClear = DEFAULT_STATUS;
+        this.doesGetReward = DEFAULT_STATUS;
     }
 
     public static MemberMission createDefault(final Mission mission) {
         return new MemberMission(mission);
     }
 
-    public void clear() {
+    public void clearMission() {
         this.isStatusClear = CLEAR_STATUS;
+    }
+
+    public void earnReward() {
+        this.doesGetReward = CLEAR_STATUS;
     }
 
     public boolean isSameMission(final Long missionId) {

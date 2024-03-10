@@ -1,6 +1,5 @@
 package com.atwoz.mission.domain.membermission;
 
-import com.atwoz.mission.domain.membermission.MemberMission;
 import com.atwoz.mission.exception.MissionNotClearException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -23,7 +22,7 @@ class MemberMissionTest {
         boolean beforeStatus = memberMission.isStatusClear();
 
         // when
-        memberMission.clear();
+        memberMission.clearMission();
 
         // then
         assertThat(memberMission.isStatusClear()).isEqualTo(!beforeStatus);

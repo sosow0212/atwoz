@@ -2,6 +2,7 @@ package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
 import com.atwoz.mission.exception.MissionNotFoundException;
+import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionNotFoundException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -47,6 +48,16 @@ public class MemberMissions extends BaseEntity {
 
     public void addMission(final MemberMission memberMission) {
         this.memberMissions.add(memberMission);
+    }
+
+    public void clearMission(final Long missionId) {
+        MemberMission targetMemberMission = this.memberMissions.stream()
+                .filter(memberMission -> memberMission.isSameMission(missionId))
+                .findAny()
+                .orElseThrow(MemberMissionNotFoundException::new);
+
+        targetMemberMission.clearMission();
+        targetMemberMission.earnReward();
     }
 
     public Integer getRewardBy(final Long missionId) {

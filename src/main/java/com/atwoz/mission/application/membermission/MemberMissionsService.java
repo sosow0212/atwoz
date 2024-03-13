@@ -43,8 +43,9 @@ public class MemberMissionsService {
         memberMissions.addMission(MemberMission.createDefault(mission));
     }
 
-    public void clearMemberMission() {
-        // 멤버가 미션 클리어한 경우
+    public void clearMemberMission(final Long memberId, final Long missionId) {
+        MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
+        memberMissions.clearMission(missionId);
     }
 
     public Integer getRewardByMissionId(final Long memberId, final Long missionId) {

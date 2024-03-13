@@ -1,5 +1,6 @@
 package com.atwoz.mission.exception.membermissions;
 
+import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionNotFoundException;
 import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionsNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,11 @@ public class MemberMissionsExceptionHandler {
 
     @ExceptionHandler(MemberMissionsNotFoundException.class)
     public ResponseEntity<String> handleInfoNotFoundException(final MemberMissionsNotFoundException e) {
+        return getNotFoundResponse(e);
+    }
+
+    @ExceptionHandler(MemberMissionNotFoundException.class)
+    public ResponseEntity<String> handleMemberMissionNotFoundException(final MemberMissionNotFoundException e) {
         return getNotFoundResponse(e);
     }
 

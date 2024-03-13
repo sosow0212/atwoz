@@ -37,7 +37,8 @@ public class AuthConfig implements WebMvcConfigurer {
     private HandlerInterceptor parseMemberIdFromTokenInterceptor() {
         return new PathMatcherInterceptor(parseMemberIdFromTokenInterceptor)
                 .excludePathPattern("/**", OPTIONS)
-                .addPathPatterns("/api/info/**", ANY);
+                .addPathPatterns("/api/info/**", ANY)
+                .addPathPatterns("/api/members/me/missions/**", ANY);
     }
 
     /**

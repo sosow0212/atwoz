@@ -2,7 +2,7 @@ package com.atwoz.mission.application.membermission;
 
 import com.atwoz.mission.domain.membermission.MemberMissions;
 import com.atwoz.mission.domain.membermission.MemberMissionsRepository;
-import com.atwoz.mission.exception.MemberMissionsNotFoundException;
+import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionsNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

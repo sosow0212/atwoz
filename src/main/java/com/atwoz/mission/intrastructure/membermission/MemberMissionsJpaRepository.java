@@ -6,5 +6,9 @@ import java.util.Optional;
 
 public interface MemberMissionsJpaRepository extends JpaRepository<MemberMissions, Long> {
 
+    MemberMissions save(final MemberMissions memberMissions);
+
     Optional<MemberMissions> findByMemberId(final Long memberId);
+
+    boolean existsByMemberId(final Long memberId);
 }

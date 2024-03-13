@@ -38,6 +38,13 @@ public class MemberMissions extends BaseEntity {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MemberMission> memberMissions = new ArrayList<>();
 
+    public static MemberMissions createWithMemberId(final Long memberId) {
+        return MemberMissions.builder()
+                .memberId(memberId)
+                .memberMissions(new ArrayList<>())
+                .build();
+    }
+
     public void addMission(final MemberMission memberMission) {
         this.memberMissions.add(memberMission);
     }

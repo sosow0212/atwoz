@@ -6,6 +6,7 @@ import com.atwoz.mission.application.membermission.MemberMissionsService;
 import com.atwoz.mission.ui.membermissions.dto.RewardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,13 @@ public class MemberMissionsController {
     @PostMapping
     public ResponseEntity<Void> clearMission() {
         return null;
+    }
+
+    @PostMapping("/{missionId}")
+    public ResponseEntity<Void> addMemberMission(@AuthMember final Long memberId, @PathVariable final Long missionId) {
+        memberMissionsService.addMemberMission(memberId, missionId);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .build();
     }
 
     @GetMapping("/{missionId}")

@@ -13,7 +13,17 @@ public class MemberMissionsRepositoryImpl implements MemberMissionsRepository {
     private final MemberMissionsJpaRepository memberMissionsJpaRepository;
 
     @Override
+    public void save(final MemberMissions memberMissions) {
+        memberMissionsJpaRepository.save(memberMissions);
+    }
+
+    @Override
     public Optional<MemberMissions> findByMemberId(final Long memberId) {
         return memberMissionsJpaRepository.findByMemberId(memberId);
+    }
+
+    @Override
+    public boolean isExistMemberMissions(final Long memberId) {
+        return memberMissionsJpaRepository.existsByMemberId(memberId);
     }
 }

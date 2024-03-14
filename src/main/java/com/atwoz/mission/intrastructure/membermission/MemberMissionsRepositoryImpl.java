@@ -13,8 +13,10 @@ public class MemberMissionsRepositoryImpl implements MemberMissionsRepository {
     private final MemberMissionsJpaRepository memberMissionsJpaRepository;
 
     @Override
-    public void save(final MemberMissions memberMissions) {
+    public MemberMissions save(final MemberMissions memberMissions) {
         memberMissionsJpaRepository.save(memberMissions);
+
+        return memberMissions;
     }
 
     @Override

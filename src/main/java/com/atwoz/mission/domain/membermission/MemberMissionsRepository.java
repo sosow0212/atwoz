@@ -4,6 +4,6 @@ import java.util.Optional;
 
 public interface MemberMissionsRepository {
 
-    void save(MemberMissions memberMissions);
+    MemberMissions save(MemberMissions memberMissions);
     Optional<MemberMissions> findByMemberId(Long memberId);
 }

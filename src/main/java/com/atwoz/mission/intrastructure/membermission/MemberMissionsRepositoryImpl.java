@@ -21,9 +21,4 @@ public class MemberMissionsRepositoryImpl implements MemberMissionsRepository {
     public Optional<MemberMissions> findByMemberId(final Long memberId) {
         return memberMissionsJpaRepository.findByMemberId(memberId);
     }
-
-    @Override
-    public boolean isExistMemberMissions(final Long memberId) {
-        return memberMissionsJpaRepository.existsByMemberId(memberId);
-    }
 }

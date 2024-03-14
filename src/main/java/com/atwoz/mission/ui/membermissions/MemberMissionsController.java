@@ -38,7 +38,8 @@ public class MemberMissionsController {
     @PatchMapping("/{missionId}")
     public ResponseEntity<Void> clearMission(@AuthMember final Long memberId, @PathVariable final Long missionId) {
         memberMissionsService.clearMemberMission(memberId, missionId);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok()
+                .build();
     }
 
     @PostMapping("/{missionId}")

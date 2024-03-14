@@ -2,7 +2,7 @@ package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
 import com.atwoz.mission.exception.MissionNotFoundException;
-import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionNotFoundException;
+import com.atwoz.mission.exception.membermission.exceptions.MemberMissionNotFoundException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

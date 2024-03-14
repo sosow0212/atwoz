@@ -1,7 +1,7 @@
-package com.atwoz.mission.exception.membermissions;
+package com.atwoz.mission.exception.membermission;
 
-import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionNotFoundException;
-import com.atwoz.mission.exception.membermissions.exceptions.MemberMissionsNotFoundException;
+import com.atwoz.mission.exception.membermission.exceptions.MemberMissionNotFoundException;
+import com.atwoz.mission.exception.membermission.exceptions.MemberMissionsNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

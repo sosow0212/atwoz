@@ -1,9 +1,9 @@
-package com.atwoz.mission.ui.membermissions;
+package com.atwoz.mission.ui.membermission;
 
 import com.atwoz.member.ui.auth.support.auth.AuthMember;
 import com.atwoz.mission.application.membermission.MemberMissionsQueryService;
 import com.atwoz.mission.application.membermission.MemberMissionsService;
-import com.atwoz.mission.ui.membermissions.dto.RewardResponse;
+import com.atwoz.mission.ui.membermission.dto.RewardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

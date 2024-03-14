@@ -22,25 +22,24 @@ public class MemberMissionsService {
     private final MissionRepository missionRepository;
 
     public void addMemberMission(final Long memberId, final Long missionId) {
-        if (memberMissionsRepository.isExistMemberMissions(memberId)) {
-            MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
-            addMissionToMemberMissions(missionId, memberMissions);
-            return;
-        }
+        MemberMissions memberMissions = memberMissionsRepository.findByMemberId(memberId)
+                .orElseGet(() -> createNewMemberMissionsWithMemberId(memberId));
+
+        Mission mission = missionRepository.findById(missionId)
+                .orElseThrow(MissionNotFoundException::new);
+
+        memberMissions.addMission(MemberMission.createDefault(mission));
+    }
+
+    private MemberMissions createNewMemberMissionsWithMemberId(final Long memberId) {
         MemberMissions memberMissions = MemberMissions.createWithMemberId(memberId);
         memberMissionsRepository.save(memberMissions);
-        addMissionToMemberMissions(missionId, memberMissions);
+        return memberMissions;
     }
 
     private MemberMissions findMemberMissionsByMemberId(final Long memberId) {
         return memberMissionsRepository.findByMemberId(memberId)
                 .orElseThrow(MemberMissionsNotFoundException::new);
-    }
-
-    private void addMissionToMemberMissions(final Long missionId, final MemberMissions memberMissions) {
-        Mission mission = missionRepository.findById(missionId)
-                .orElseThrow(MissionNotFoundException::new);
-        memberMissions.addMission(MemberMission.createDefault(mission));
     }
 
     public void clearMemberMission(final Long memberId, final Long missionId) {

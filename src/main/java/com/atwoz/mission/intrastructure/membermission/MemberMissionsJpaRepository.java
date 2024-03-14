@@ -9,6 +9,4 @@ public interface MemberMissionsJpaRepository extends JpaRepository<MemberMission
     MemberMissions save(final MemberMissions memberMissions);
 
     Optional<MemberMissions> findByMemberId(final Long memberId);
-
-    boolean existsByMemberId(final Long memberId);
 }

@@ -18,6 +18,7 @@ public class MemberMissionFixture {
         return MemberMission.builder()
                 .id(1L)
                 .isStatusClear(true)
+                .doesGetReward(true)
                 .mission(미션_생성_리워드_100_데일리_공개())
                 .build();
     }

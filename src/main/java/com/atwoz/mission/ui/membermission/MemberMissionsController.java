@@ -39,8 +39,9 @@ public class MemberMissionsController {
     }
 
     @GetMapping("/clear")
-    public ResponseEntity<List<MemberMissionSimpleResponse>> findMissionsByStatus(@AuthMember final Long memberId,
-                                                                                  @RequestParam("status") final Boolean isStatusClear) {
+    public ResponseEntity<List<MemberMissionSimpleResponse>> findMissionsByStatus(
+            @AuthMember final Long memberId,
+            @RequestParam(value = "status", defaultValue = "false") final Boolean isStatusClear) {
         return ResponseEntity.ok(memberMissionsQueryService.findMemberMissionsByStatus(memberId, isStatusClear));
     }
 

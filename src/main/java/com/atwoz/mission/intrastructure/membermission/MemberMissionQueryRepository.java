@@ -1,6 +1,7 @@
 package com.atwoz.mission.intrastructure.membermission;
 
 import com.atwoz.mission.intrastructure.membermission.dto.MemberMissionSimpleResponse;
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ public class MemberMissionQueryRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     public Page<MemberMissionSimpleResponse> findMemberMissionsWithPaging(final Long memberId, final Pageable pageable) {
-        List<MemberMissionSimpleResponse> result = jpaQueryFactory.select(
+        QueryResults<MemberMissionSimpleResponse> result = jpaQueryFactory.select(
                         constructor(MemberMissionSimpleResponse.class,
                                 memberMission.mission.id,
                                 memberMission.doesGetReward,
@@ -33,9 +34,9 @@ public class MemberMissionQueryRepository {
                 .orderBy(memberMission.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .fetch();
+                .fetchResults();
 
-        return new PageImpl<>(result, pageable, result.size());
+        return new PageImpl<>(result.getResults(), pageable, result.getTotal());
     }
 
     public List<MemberMissionSimpleResponse> findMemberMissionsByStatus(final Long memberId, final boolean isStatusClear) {

@@ -54,25 +54,6 @@ public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper
         return missionRepository.save(미션_생성_리워드_100_데일리_공개_id없음());
     }
 
-    protected void 회원_미완료_미션_등록() {
-        MemberMission memberMission = MemberMission.createDefault(미션_생성());
-        MemberMissions memberMissions = MemberMissions.createWithMemberId(1L);
-
-        memberMissions.addMission(memberMission);
-
-        memberMissionsRepository.save(memberMissions);
-    }
-
-    protected void 회원_완료_미션_등록() {
-        MemberMission memberMission = MemberMission.createDefault(미션_생성());
-        MemberMissions memberMissions = MemberMissions.createWithMemberId(1L);
-
-        memberMissions.addMission(memberMission);
-        memberMissions.clearMission(memberMission.getMission().getId());
-
-        memberMissionsRepository.save(memberMissions);
-    }
-
     protected ExtractableResponse 회원_미션을_페이징_조회한다(final String token, final String url) {
         return RestAssured.given().log().all()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
@@ -90,7 +71,7 @@ public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper
         });
     }
 
-    protected ExtractableResponse 회원_미션을_status로_조회한다(final String token, final String url) {
+    protected ExtractableResponse 회원_미션을_클리어_여부로_조회한다(final String token, final String url) {
         return RestAssured.given().log().all()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 .get(url)
@@ -108,6 +89,46 @@ public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper
         });
     }
 
+    protected  ExtractableResponse 회원_미션_목록의_완료된_미션의_보상_총합을_조회한다(final String token, final String url) {
+        return RestAssured.given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                .when()
+                .get(url)
+                .then().log().all()
+                .extract();
+    }
+
+    protected void 회원의_완료된_미션_보상_총합_조회_결과_검증(final ExtractableResponse response) {
+        RewardResponse result = response.as(RewardResponse.class);
+        assertSoftly(softly -> {
+            assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+            assertThat(result.reward()).isEqualTo(미션_생성_리워드_100_데일리_공개().getReward());
+        });
+    }
+
+    protected void 회원의_완료된_미션_보상_총합_조회_결과_예외_검증(final ExtractableResponse response) {
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.NOT_FOUND.value());
+    }
+
+    protected void 회원_완료_미션_등록() {
+        MemberMission memberMission = MemberMission.createDefault(미션_생성());
+        MemberMissions memberMissions = MemberMissions.createWithMemberId(1L);
+
+        memberMissions.addMission(memberMission);
+        memberMissions.clearMission(memberMission.getMission().getId());
+
+        memberMissionsRepository.save(memberMissions);
+    }
+
+    protected void 회원_미완료_미션_등록() {
+        MemberMission memberMission = MemberMission.createDefault(미션_생성());
+        MemberMissions memberMissions = MemberMissions.createWithMemberId(1L);
+
+        memberMissions.addMission(memberMission);
+
+        memberMissionsRepository.save(memberMissions);
+    }
+
     protected ExtractableResponse 회원_미션을_등록한다(final String token, final Long missionId, final String url) {
         return RestAssured.given().log().all()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
@@ -122,23 +143,6 @@ public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper
     }
 
     protected void 회원_미션_등록_결과_예외_검증(final ExtractableResponse response) {
-        assertThat(response.statusCode()).isEqualTo(HttpStatus.NOT_FOUND.value());
-    }
-
-    protected ExtractableResponse 회원의_미션을_클리어한다(final String token, final Long missionId, final String url) {
-        return RestAssured.given().log().all()
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                .param("missionId", missionId)
-                .patch(url + missionId)
-                .then().log().all()
-                .extract();
-    }
-
-    protected void 회원_미션_클리어_결과_검증(final ExtractableResponse response) {
-        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
-    }
-
-    protected void 회원_미션_클리어_결과_미션_없음_예외_검증(final ExtractableResponse response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
@@ -171,24 +175,20 @@ public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper
         assertThat(response.statusCode()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
-    protected  ExtractableResponse 회원_미션_목록의_완료된_미션의_보상_총합을_조회한다(final String token, final String url) {
+    protected ExtractableResponse 회원의_미션을_클리어한다(final String token, final Long missionId, final String url) {
         return RestAssured.given().log().all()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                .when()
-                .get(url)
+                .param("missionId", missionId)
+                .patch(url + missionId)
                 .then().log().all()
                 .extract();
     }
 
-    protected void 회원의_완료된_미션_보상_총합_조회_결과_검증(final ExtractableResponse response) {
-        RewardResponse result = response.as(RewardResponse.class);
-        assertSoftly(softly -> {
-            assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
-            assertThat(result.reward()).isEqualTo(미션_생성_리워드_100_데일리_공개().getReward());
-        });
+    protected void 회원_미션_클리어_결과_검증(final ExtractableResponse response) {
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
 
-    protected void 회원의_완료된_미션_보상_총합_조회_결과_예외_검증(final ExtractableResponse response) {
+    protected void 회원_미션_클리어_결과_미션_없음_예외_검증(final ExtractableResponse response) {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 }

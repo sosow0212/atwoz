@@ -19,6 +19,16 @@ public class MemberMissionsService {
     private final MemberMissionsRepository memberMissionsRepository;
     private final MissionRepository missionRepository;
 
+    public Integer getAllClearMissionsRewards(final Long memberId) {
+        MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
+        return memberMissions.getTotalClearedReward();
+    }
+
+    private MemberMissions findMemberMissionsByMemberId(final Long memberId) {
+        return memberMissionsRepository.findByMemberId(memberId)
+                .orElseThrow(MemberMissionsNotFoundException::new);
+    }
+
     public void addMemberMission(final Long memberId, final Long missionId) {
         MemberMissions memberMissions = memberMissionsRepository.findByMemberId(memberId)
                 .orElseGet(() -> createNewMemberMissionsWithMemberId(memberId));
@@ -35,23 +45,13 @@ public class MemberMissionsService {
         return memberMissions;
     }
 
-    private MemberMissions findMemberMissionsByMemberId(final Long memberId) {
-        return memberMissionsRepository.findByMemberId(memberId)
-                .orElseThrow(MemberMissionsNotFoundException::new);
-    }
-
-    public void clearMemberMission(final Long memberId, final Long missionId) {
-        MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
-        memberMissions.clearMission(missionId);
-    }
-
     public Integer getRewardByMissionId(final Long memberId, final Long missionId) {
         MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
         return memberMissions.getRewardBy(missionId);
     }
 
-    public Integer getAllClearMissionsRewards(final Long memberId) {
+    public void clearMemberMission(final Long memberId, final Long missionId) {
         MemberMissions memberMissions = findMemberMissionsByMemberId(memberId);
-        return memberMissions.getTotalClearedReward();
+        memberMissions.clearMission(missionId);
     }
 }

@@ -1,8 +1,6 @@
 package com.atwoz.mission.domain.membermission;
 
-import com.atwoz.mission.domain.membermission.MemberMission;
-import com.atwoz.mission.domain.membermission.MemberMissions;
-import com.atwoz.mission.exception.MissionNotFoundException;
+import com.atwoz.mission.exception.mission.exceptions.MissionNotFoundException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;

@@ -5,7 +5,7 @@ import com.atwoz.mission.domain.membermission.MemberMissions;
 import com.atwoz.mission.domain.membermission.MemberMissionsRepository;
 import com.atwoz.mission.domain.mission.Mission;
 import com.atwoz.mission.domain.mission.MissionRepository;
-import com.atwoz.mission.exception.MissionNotFoundException;
+import com.atwoz.mission.exception.mission.exceptions.MissionNotFoundException;
 import com.atwoz.mission.exception.membermission.exceptions.MemberMissionsNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

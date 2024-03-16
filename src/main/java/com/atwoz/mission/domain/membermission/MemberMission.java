@@ -2,7 +2,7 @@ package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
 import com.atwoz.mission.domain.mission.Mission;
-import com.atwoz.mission.exception.MissionNotClearException;
+import com.atwoz.mission.exception.mission.exceptions.MissionNotClearException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

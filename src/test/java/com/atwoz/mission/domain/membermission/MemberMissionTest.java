@@ -1,6 +1,6 @@
 package com.atwoz.mission.domain.membermission;
 
-import com.atwoz.mission.exception.MissionNotClearException;
+import com.atwoz.mission.exception.mission.exceptions.MissionNotClearException;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class MemberMissionsExceptionHandler {
 
     @ExceptionHandler(MemberMissionsNotFoundException.class)
-    public ResponseEntity<String> handleInfoNotFoundException(final MemberMissionsNotFoundException e) {
+    public ResponseEntity<String> handleMemberMissionNotFoundException(final MemberMissionsNotFoundException e) {
         return getNotFoundResponse(e);
     }
 

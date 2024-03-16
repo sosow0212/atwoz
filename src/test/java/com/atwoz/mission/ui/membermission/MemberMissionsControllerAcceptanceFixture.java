@@ -28,7 +28,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-public class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper {
+class MemberMissionsControllerAcceptanceFixture extends IntegrationHelper {
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;

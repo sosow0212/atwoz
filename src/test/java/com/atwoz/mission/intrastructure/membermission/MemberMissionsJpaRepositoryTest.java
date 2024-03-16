@@ -16,7 +16,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
 @DataJpaTest
-public class MemberMissionsJpaRepositoryTest {
+class MemberMissionsJpaRepositoryTest {
 
     @Autowired
     private MemberMissionsJpaRepository memberMissionsJpaRepository;

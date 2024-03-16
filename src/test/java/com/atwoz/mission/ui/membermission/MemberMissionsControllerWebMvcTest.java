@@ -42,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SuppressWarnings("NonAsciiCharacters")
 @AutoConfigureRestDocs
 @WebMvcTest(MemberMissionsController.class)
-public class MemberMissionsControllerWebMvcTest extends MockBeanInjection {
+class MemberMissionsControllerWebMvcTest extends MockBeanInjection {
 
     @Autowired
     private MockMvc mockMvc;

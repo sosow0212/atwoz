@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @SuppressWarnings("NonAsciiCharacters")
-public class MemberMissionsControllerAcceptanceTest extends MemberMissionsControllerAcceptanceFixture {
+class MemberMissionsControllerAcceptanceTest extends MemberMissionsControllerAcceptanceFixture {
 
     private static final String 회원_미션_페이징_url = "/api/members/me/missions?page=0&size=10";
     private static final String 회원_미션_클리어_조회_url = "/api/members/me/missions/clear?status=true";

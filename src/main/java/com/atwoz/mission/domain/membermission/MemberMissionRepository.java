@@ -9,5 +9,6 @@ import java.util.List;
 public interface MemberMissionRepository {
 
     Page<MemberMissionSimpleResponse> findMemberMissionsWithPaging(Long memberId, Pageable pageable);
+
     List<MemberMissionSimpleResponse> findMemberMissionsByStatus(Long memberId, boolean isStatusClear);
 }

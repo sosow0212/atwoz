@@ -17,7 +17,7 @@ public record MemberMissionPagingResponse(
         return new MemberMissionPagingResponse(memberMissions.getContent(), getNextPage(pageable.getPageNumber(), memberMissions));
     }
 
-    private static int getNextPage(int pageNumber, Page<MemberMissionSimpleResponse> memberMissions) {
+    private static int getNextPage(final int pageNumber, final Page<MemberMissionSimpleResponse> memberMissions) {
         if (memberMissions.hasNext()) {
             return pageNumber + NEXT_PAGE_INDEX;
         }

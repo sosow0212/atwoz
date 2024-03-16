@@ -15,9 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class MemberMissionsService {
-
-    // TODO : MemberMissionsService 완성하기
-
+    
     private final MemberMissionsRepository memberMissionsRepository;
     private final MissionRepository missionRepository;
 

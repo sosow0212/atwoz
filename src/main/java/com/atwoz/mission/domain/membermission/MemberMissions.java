@@ -1,7 +1,8 @@
 package com.atwoz.mission.domain.membermission;
 
 import com.atwoz.global.domain.BaseEntity;
-import com.atwoz.mission.exception.MissionNotFoundException;
+import com.atwoz.mission.exception.mission.exceptions.MissionNotFoundException;
+import com.atwoz.mission.exception.membermission.exceptions.MemberMissionNotFoundException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,8 +39,25 @@ public class MemberMissions extends BaseEntity {
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MemberMission> memberMissions = new ArrayList<>();
 
+    public static MemberMissions createWithMemberId(final Long memberId) {
+        return MemberMissions.builder()
+                .memberId(memberId)
+                .memberMissions(new ArrayList<>())
+                .build();
+    }
+
     public void addMission(final MemberMission memberMission) {
         this.memberMissions.add(memberMission);
+    }
+
+    public void clearMission(final Long missionId) {
+        MemberMission targetMemberMission = this.memberMissions.stream()
+                .filter(memberMission -> memberMission.isSameMission(missionId))
+                .findAny()
+                .orElseThrow(MemberMissionNotFoundException::new);
+
+        targetMemberMission.clearMission();
+        targetMemberMission.earnReward();
     }
 
     public Integer getRewardBy(final Long missionId) {
